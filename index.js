@@ -1,5 +1,5 @@
 
-let simulationSteps = 0;
+let simulationSteps = 7;
 let timePerStep = 1000; //In milliseconds
 
 let legend = { 
@@ -96,11 +96,9 @@ function oneStepSimulation(index,staticStage,dynamicElementsArray,simulationStep
         console.log("simulation number: "+index)
         let completeStageAux;
         completeStageAux = oneSimulationStepCalculation(index,staticStage,dynamicElementsArray);
-        /* console.log("completeStageAux"); */
-        /* console.log(completeStageAux) */
-        //materialGeneration
-        //drawingStage(staticStage,squareSide);
-        drawingStage(completeStageAux,squareSide);
+        //drawingStage(completeStageAux,squareSide);
+        matrixStage = matrixGenerationInit(dynamicElementsArray,legend,squareSide,wideDimension,heightDimension)
+        drawingStage(matrixStage[1],squareSide);
         completeStageAux = [] //Borramos este array2D
         index = index + 1;
         if(index<simulationSteps){
@@ -125,10 +123,7 @@ function generateCompleteStage(staticStage,dynamicElementsArray,squareSide){
     dynamicElementsArray.forEach( item =>{
        completeStageAux[item.y+(heightDimension/squareSide-1)][item.x] = item.color;
     })
-   
-
     return completeStageAux;
-
 }
 /* 
 function drawingCell(stage,squareSide,cell){
@@ -235,10 +230,10 @@ function movementFunction(index,dynamicElementsArray){
         if(item.walkmode == "autonomous"){
           item.walk[0]();
         } else {
-
-         /*    item.x = item.x + item.trajectory_x[index];
-            item.y = item.y + item.trajectory_y[index];
-         */
+          console.log(item)
+          item.x = item.x + item.trajectory_x[index];
+          item.y = item.y + item.trajectory_y[index];
+         
         }
     
     })
