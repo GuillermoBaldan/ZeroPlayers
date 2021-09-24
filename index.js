@@ -1,6 +1,5 @@
-
 let simulationSteps = 7;
-let timePerStep = 1000; //In milliseconds
+let timePerStep = 100; //In milliseconds
 
 let legend = { 
     ground : "brown",
@@ -14,7 +13,7 @@ let cell = {
     color  : "yellow",
     x      : 13,
     y      : 13,
-    walkmode : "trayectory",
+    walkmode : "autonomous",
     trajectory_x : [1,1,1,1,1,1,1],
     trajectory_y : [0,0,0,0,0,0,0],
     walk   : [randomWalk]
@@ -26,8 +25,9 @@ let squareSide = 25;
 //let dynamicStage = []; //Creo que de momento no lo estoy usando.
 //let matrixStage = []; He pasado esta variable a local
 
-dynamicElementsArray = [cell];
-
+let dynamicElementsArray = [cell];
+let staticStage = [];
+let rulesArray =[];
 /* let lienzo = document.getElementById("lienzo");
 console.log(lienzo)
    /*  lienzo.setAttribute("width", wideDimension);
@@ -72,6 +72,7 @@ function matrixGenerationInit(dynamicElementsArray,legend,squareSide,wideDimensi
     let staticStageAux;
     staticStageAux = generateStaticStage(legend,wideDimension,heightDimension);
     completeStageAux = generateCompleteStageInit(staticStageAux,dynamicElementsArray,squareSide);
+    staticStage = copyArray2D(staticStageAux,staticStage);
     return [staticStageAux,completeStageAux];
 }
 
@@ -96,7 +97,6 @@ function oneStepSimulation(index,staticStage,dynamicElementsArray,simulationStep
         console.log("simulation number: "+index)
         let completeStageAux;
         completeStageAux = oneSimulationStepCalculation(index,staticStage,dynamicElementsArray);
-        //drawingStage(completeStageAux,squareSide);
         matrixStage = matrixGenerationInit(dynamicElementsArray,legend,squareSide,wideDimension,heightDimension)
         drawingStage(matrixStage[1],squareSide);
         completeStageAux = [] //Borramos este array2D
@@ -118,7 +118,8 @@ function oneSimulationStepCalculation(index,staticStage,dynamicElementsArray){
 function generateCompleteStage(staticStage,dynamicElementsArray,squareSide){
     let a;
     let b;
-    let completeStageAux = cloneArray2D(staticStage);
+    let completeStageAux = [];
+    completeStageAux = cloneArray2D(staticStage,completeStageAux);
     
     dynamicElementsArray.forEach( item =>{
        completeStageAux[item.y+(heightDimension/squareSide-1)][item.x] = item.color;
@@ -138,7 +139,7 @@ function drawingStage(completeStage,squareSide){
     let Ax = squareSide;
     let Ay = squareSide;
     //completeStageAux = completeStage;
-    completeStageAux = cloneArray2D(completeStage);
+    completeStageAux = cloneArray2D(completeStage,completeStageAux);
     /* console.log(completeStageAux)
     console.log(completeStageAux[0][0]); */
     //Borramos todo el canva;
@@ -169,8 +170,6 @@ function cloneArray2D(original){
 }
 
 function copyArray2D(original,copy){
-    let a;
-    let b;
     let row = [];
     original.forEach(item =>{
         item.forEach(subitem => {
@@ -256,7 +255,7 @@ function positionElement(id,ElementsArray,x,y){
 }
 
 function refreshCanvas(){
-    matrixStage = matrixGenerationInit(dynamicElementsArray,legend,squareSide,wideDimension,heightDimension)
+    matrixStage = matrixGeneration(staticStage, dynamicElementsArray,legend,squareSide,wideDimension,heightDimension)
     drawingStage(matrixStage[1],squareSide);
 } 
 
