@@ -20,9 +20,8 @@ let cell = {
 let wideDimension = 650;
 let heightDimension = 650;
 let squareSide = 25;
-let staticStage = [];
-let dynamicStage = []; //Creo que de momento no lo estoy usando.
-let completeStage = [];
+//let dynamicStage = []; //Creo que de momento no lo estoy usando.
+//let matrixStage = []; He pasado esta variable a local
 
 dynamicElementsArray = [cell];
 
@@ -36,6 +35,18 @@ let lienzo;
 let ctx;
 
     //FUNCIONES
+function Init(){
+        let matrixStage = [];
+        //1.1 Matrix Generation
+        matrixStage = matrixGenerationInit(dynamicElementsArray,legend,squareSide,wideDimension,heightDimension)
+        //1.2 Drawing StageMatrix
+        canvasInit();
+        drawingStage(matrixStage[1],squareSide);
+        //drawingDinamicStage(stage,dynamicElementsArray,squareSide);
+        runSimulation(simulationSteps,matrixStage[0],dynamicElementsArray)
+        //canvasInit();
+        
+}
 
 function drawSquare(x,y, width, height,color){
     ctx.beginPath();
@@ -44,86 +55,136 @@ function drawSquare(x,y, width, height,color){
     ctx.stroke();
 }
 
-function Init(){
-        //1.1 Matrix Generation
-        staticStage = generateStaticStage(staticStage,legend,wideDimension,heightDimension);
-        completeStage = generateDinamicStage(staticStage,dynamicElementsArray,squareSide)
-        //1.2 Drawing StageMatrix
-        lienzo = document.getElementById("lienzo");
-        lienzo.setAttribute("width", wideDimension);
-        lienzo.setAttribute("height", heightDimension); 
-        ctx = lienzo.getContext('2d');
-        drawingStage(completeStage,squareSide);
-        //drawingDinamicStage(stage,dynamicElementsArray,squareSide);
-        runSimulation(simulationSteps,staticStage,dynamicElementsArray)
-        }
+
+
+function canvasInit(){
+    lienzo = document.getElementById("lienzo");
+    lienzo.setAttribute("width", wideDimension);
+    lienzo.setAttribute("height", heightDimension); 
+    ctx = lienzo.getContext('2d');
+}
+
+function matrixGenerationInit(dynamicElementsArray,legend,squareSide,wideDimension,heightDimension){
+    let completeStageAux;
+    let staticStageAux;
+    staticStageAux = generateStaticStage(legend,wideDimension,heightDimension);
+    completeStageAux = generateCompleteStageInit(staticStageAux,dynamicElementsArray,squareSide);
+    return [staticStageAux,completeStageAux];
+}
+
+function matrixGeneration(staticStage, dynamicElementsArray,legend,squareSide,wideDimension,heightDimension){
+    let completeStageAux;
+    let staticStageAux;
+    staticStageAux = generateStaticStage(staticStage,legend,wideDimension,heightDimension);
+    completeStageAux = generateCompleteStage(staticStageAux,dynamicElementsArray,squareSide);
+    return completeStageAux;
+}
 
 function runSimulation(simulationSteps,staticStage,dynamicElementsArray){
     let index = 0;
-  /*   for(a=0;a<simulationSteps-1;a++){
-        console.log("a: "+a)
-        setTimeout(function(){
-            let b;
-            b = a; 
-            completeStage = oneSimulationStepCalculation(b,staticStage,dynamicElementsArray);
-            drawingStage(completeStage,squareSide); 
-            }, timePerStep);
-           
-
-    } */
     oneStepSimulation(index,staticStage,dynamicElementsArray,simulationSteps)
-
-
 }
 
 function oneStepSimulation(index,staticStage,dynamicElementsArray,simulationSteps){
     setTimeout(function(){
-       
-        completeStage = oneSimulationStepCalculation(index,staticStage,dynamicElementsArray);
-        drawingStage(completeStage,squareSide);
+        console.log("simulation number: "+index)
+        let completeStageAux;
+        completeStageAux = oneSimulationStepCalculation(index,staticStage,dynamicElementsArray);
+        /* console.log("completeStageAux"); */
+        /* console.log(completeStageAux) */
+        //materialGeneration
+        //drawingStage(staticStage,squareSide);
+        drawingStage(completeStageAux,squareSide);
+        completeStageAux = [] //Borramos este array2D
         index = index + 1;
         if(index<simulationSteps){
             oneStepSimulation(index,staticStage,dynamicElementsArray,simulationSteps);
         }
-        
+            
         }, timePerStep);
 }
 
 function oneSimulationStepCalculation(index,staticStage,dynamicElementsArray){
-    let completeStage = [];
+    let completeStageAux = [];
     dynamicElementsArray.forEach(item => {
         console.log("index: "+index);
         item.x = item.x + item.trajectory_x[index];
         item.y = item.y + item.trajectory_y[index];
     })
-    completeStage = generateDinamicStage(staticStage,dynamicElementsArray,squareSide)
-    return completeStage
+    completeStageAux = generateCompleteStage(staticStage,dynamicElementsArray,squareSide)
+    return completeStageAux
 }
 
+function generateCompleteStage(staticStage,dynamicElementsArray,squareSide){
+    let a;
+    let b;
+    let completeStageAux = cloneArray2D(staticStage);
+    
+    dynamicElementsArray.forEach( item =>{
+       completeStageAux[item.y+(heightDimension/squareSide-1)][item.x] = item.color;
+    })
+   
 
+    return completeStageAux;
+
+}
+/* 
 function drawingCell(stage,squareSide,cell){
     drawSquare(cell.x,cell.y,squareSide,squareSide,cell.color);
 }
-
-function drawingStage(stage,squareSide){
+ */
+function drawingStage(completeStage,squareSide){
     //1. Recorremos el array stage
+    let completeStageAux = [];
     let x = 0;
     let y = 0;
     let Ax = squareSide;
     let Ay = squareSide;
-    console.log(stage[0][0])
-    //drawSquare(x,y,squareSide,squareSide,stage[0][0]);
-    stage.forEach(row => {
+    //completeStageAux = completeStage;
+    completeStageAux = cloneArray2D(completeStage);
+    /* console.log(completeStageAux)
+    console.log(completeStageAux[0][0]); */
+    //Borramos todo el canva;
+    //canvasInit()
+     completeStageAux.forEach(row => {
         row.forEach( column => {
-          
             drawSquare(x,y,squareSide,squareSide,column);
             x = x + Ax;        
         })
         x = 0;
         y = y + Ay;
-    }) 
+    })
+    completeStageAux = []; 
     
 }
+
+function cloneArray2D(original){
+    let clone = [];
+    let row = [];
+    original.forEach(item =>{
+        item.forEach(subitem => {
+            row.push(subitem);
+        })
+        clone.push(row)
+        row = [];
+    })
+    return clone;
+}
+
+function copyArray2D(original,copy){
+    let a;
+    let b;
+    let row = [];
+    original.forEach(item =>{
+        item.forEach(subitem => {
+            row.push(subitem);
+        })
+        copy.push(row)
+    })
+    return copy;
+}
+
+
 
 
 
@@ -135,53 +196,47 @@ function materialGeneration(legend){
     return materialArray;
 }
 
-function  generateStaticStage(stage,legend,wideDimiension,heightDimension){
+function  generateStaticStage(legend,wideDimiension,heightDimension){
     let a;
     let b;
     let row = [];
     let numberMaterials = materialGeneration(legend).length;
+    let stageAux =[];
     for(b=0;b<heightDimension;b++){
         row = [];
         for(a = 0;a<wideDimiension;a++){
             row.push(materialGeneration(legend)[Math.floor(Math.random()*numberMaterials)]);
             }
-            stage.push(row)
+            stageAux.push(row)
     }
 
-    return stage;
+    return stageAux;
 }
 
-function  generateDinamicStage(stage,dynamicElementsArray,squareSide){
+function generateCompleteStageInit(staticStage,dynamicElementsArray,squareSide){
     let a;
     let b;
-    let row = [];
-    /* let numberMaterials = materialGeneration(legend).length;
-    for(b=0;b<heightDimension;b++){
-        row = [];
-        for(a = 0;a<wideDimiension;a++){
-            row.push(materialGeneration(legend)[Math.floor(Math.random()*numberMaterials)]);
-            }
-            stage.push(row)
-    } */
-   /*  console.log(dynamicElementsArray) */
+    let completeStage = cloneArray2D(staticStage);
+    
     dynamicElementsArray.forEach( item =>{
-        stage[item.y+(heightDimension/squareSide-1)][item.x] = item.color;
+       completeStage[item.y+(heightDimension/squareSide-1)][item.x] = item.color;
     })
    
 
-    return stage;
+    return completeStage;
 }
 
 
 
-//1. Inicialization - load stage
+//1. Inicialization - load stage - f: Init()
 
-    //1.1 Matrix Generation 
+    //1.1 Matrix Generation - f: matrixGenerationInit
         //1.1.1 Static Elements Matrix Generation
         //1.1.2 Dinamic Elements Matrix Generation 
     
-    //1.2 Drawing Stage Matrix into html file
-       
-    
-//2. Run simulation
+    //1.2 Drawing Stage Matrix into html file - f: drawingStage
+
+    //1.3 Run simulation  - f: runSimulation
+        //1.3.1 Matrix Generation - f: Matrix Generation
+        //1.3.2 Drawing Matrix Stage
 
