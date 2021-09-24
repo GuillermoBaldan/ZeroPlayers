@@ -1,5 +1,5 @@
 
-let simulationSteps = 7;
+let simulationSteps = 0;
 let timePerStep = 1000; //In milliseconds
 
 let legend = { 
@@ -10,11 +10,14 @@ let legend = {
 }
 
 let cell = {
+    id     : "cell_1",
     color  : "yellow",
-    x      : 0,
-    y      : 0,
+    x      : 13,
+    y      : 13,
+    walkmode : "trayectory",
     trajectory_x : [1,1,1,1,1,1,1],
-    trajectory_y : [0,0,0,0,0,0,0] 
+    trajectory_y : [0,0,0,0,0,0,0],
+    walk   : [randomWalk]
 }
 
 let wideDimension = 650;
@@ -82,7 +85,10 @@ function matrixGeneration(staticStage, dynamicElementsArray,legend,squareSide,wi
 
 function runSimulation(simulationSteps,staticStage,dynamicElementsArray){
     let index = 0;
-    oneStepSimulation(index,staticStage,dynamicElementsArray,simulationSteps)
+    if (simulationSteps>0){
+        oneStepSimulation(index,staticStage,dynamicElementsArray,simulationSteps)
+    }
+    
 }
 
 function oneStepSimulation(index,staticStage,dynamicElementsArray,simulationSteps){
@@ -106,11 +112,7 @@ function oneStepSimulation(index,staticStage,dynamicElementsArray,simulationStep
 
 function oneSimulationStepCalculation(index,staticStage,dynamicElementsArray){
     let completeStageAux = [];
-    dynamicElementsArray.forEach(item => {
-        console.log("index: "+index);
-        item.x = item.x + item.trajectory_x[index];
-        item.y = item.y + item.trajectory_y[index];
-    })
+    movementFunction(index,dynamicElementsArray)   
     completeStageAux = generateCompleteStage(staticStage,dynamicElementsArray,squareSide)
     return completeStageAux
 }
@@ -219,11 +221,63 @@ function generateCompleteStageInit(staticStage,dynamicElementsArray,squareSide){
     let completeStage = cloneArray2D(staticStage);
     
     dynamicElementsArray.forEach( item =>{
-       completeStage[item.y+(heightDimension/squareSide-1)][item.x] = item.color;
+       completeStage[-item.y+(heightDimension/squareSide-1)][item.x] = item.color;
     })
    
 
     return completeStage;
+}
+
+//Funciones del motor de Físicas
+function movementFunction(index,dynamicElementsArray){
+    dynamicElementsArray.forEach(item => {
+        console.log("index: "+index);
+        if(item.walkmode == "autonomous"){
+          item.walk[0]();
+        } else {
+
+         /*    item.x = item.x + item.trajectory_x[index];
+            item.y = item.y + item.trajectory_y[index];
+         */
+        }
+    
+    })
+}
+
+function positionElement(id,ElementsArray,x,y){
+    let pointer = null;
+    //1. Encontrarmos al elmento con el id dado
+    ElementsArray.forEach(
+        item => {
+            if(item.id == id){
+                pointer = item;
+            }
+        }
+    )
+    //2.Posicionamos el elemento;
+    pointer.x = x;
+    pointer.y = y;
+    return pointer;
+}
+
+function refreshCanvas(){
+    matrixStage = matrixGenerationInit(dynamicElementsArray,legend,squareSide,wideDimension,heightDimension)
+    drawingStage(matrixStage[1],squareSide);
+} 
+
+
+//Funciones de seres vivos
+
+function randomWalk(rulesArray){
+  /*   let cell = {
+        color  : "yellow",
+        x      : 0,
+        y      : 0,
+        trajectory_x : [1,1,1,1,1,1,1],
+        trajectory_y : [0,0,0,0,0,0,0],
+        walk   : [randomWalk]
+    } */
+
 }
 
 
