@@ -1,0 +1,5 @@
+function randomWalk(){
+
+}
+
+export {randomWalk}
