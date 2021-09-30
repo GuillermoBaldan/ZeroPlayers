@@ -16,17 +16,17 @@ let legend = {
 let cell = {
     id     : "cell_1",
     color  : "yellow",
-    x      : 13,
-    y      : 13,
+    x      : 1,
+    y      : 9,
     walkmode : "trajectory",
     trajectory_x : [1,1,1,1,1,1,1],
     trajectory_y : [0,0,0,0,0,0,0],
     walk   : [randomWalk]
 }
 
-let wideDimension = 5;
+let wideDimension = 30;
 let heightDimension = wideDimension;
-let squareSide = 25;
+let squareSide = 2;
 let dynamicElementsArray = [cell];
 let staticStage;
 let rulesArray =[];

@@ -1,3 +1,5 @@
+import { cloneArray2D } from './zeroPlayers_f_arraysManipulation.js'
+
 function  generateStaticStage(legend,wideDimension){
     let a;
     let b;
@@ -24,5 +26,17 @@ function materialGeneration(legend){
     return materialArray;
 }
 
+function matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension){
+    let a;
+    let b;
+    let heightDimension = wideDimension;
+    let matrixAux = [];
+    matrixAux = cloneArray2D(staticStage);
+    dynamicElementsArray.forEach( item =>{
+        matrixAux[-item.y+heightDimension-1][item.x] = item.color;
+    })
+    return matrixAux;
+}
 
-export {generateStaticStage}
+
+export {generateStaticStage,matrixGenerator}
