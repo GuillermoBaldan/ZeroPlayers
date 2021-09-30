@@ -26,7 +26,7 @@ let cell = {
 
 let wideDimension = 600;
 let heightDimension = wideDimension;
-let squareSide = 20;
+let squareSide = 15;
 let dynamicElementsArray = [cell];
 let staticStage;
 let rulesArray =[];
