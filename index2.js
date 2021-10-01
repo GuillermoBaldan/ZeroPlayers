@@ -3,8 +3,7 @@ import {randomWalk} from './zeroPlayers_f_livingbeings.js';
 import {generateStaticStage} from './zeroPlayers_f_matrixGeneration.js';
 //import simulation from 'functions_zeroPlayers';
 
-let simulationSteps = 7;
-let timePerStep = 100; //In milliseconds
+
 
 let legend = { 
     ground : "brown",
@@ -24,6 +23,8 @@ let cell = {
     walk   : [randomWalk]
 }
 
+let simulationSteps = 7;
+let timePerStep = 100; //In milliseconds
 let wideDimension = 600;
 let heightDimension = wideDimension;
 let squareSide = 15;
@@ -34,6 +35,10 @@ let lienzo;
 let ctx;
 let init_output;
 
-init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,ctx);
-//init_output = init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,ctx);
-simulation();
+init_output = init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,ctx);
+//simulation(staticStage,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx)
+console.log("f: mean program: squareSide: "+squareSide)
+simulation(init_output[0],dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
+//simulation(staticStage,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx)
+
+//oneSimulationStep(simulationSteps,staticStage,dynamicElementsArray,ctx,squareSide,wideDimension) 
