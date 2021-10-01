@@ -27,10 +27,10 @@ function init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,ctx){
 }
 //simulation(init_output[0],dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
 function simulation(staticStage,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx){
+    let simulationIndex = 0;
     //1. Hacemos la simulación paso a paso.
-    console.log("f:simulation: squareSide: "+squareSide)
-    //oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx,squareSide,wideDimension)
-    oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
+     //oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx,squareSide,wideDimension)
+    oneSimulationStep(simulationSteps,simulationIndex,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
    }
 
 export { init, simulation }

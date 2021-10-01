@@ -15,8 +15,8 @@ let legend = {
 let cell = {
     id     : "cell_1",
     color  : "yellow",
-    x      : 14,
-    y      : 14,
+    x      : 0,
+    y      : 0,
     walkmode : "trajectory",
     trajectory_x : [1,1,1,1,1,1,1],
     trajectory_y : [0,0,0,0,0,0,0],
@@ -37,7 +37,6 @@ let init_output;
 
 init_output = init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,ctx);
 //simulation(staticStage,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx)
-console.log("f: mean program: squareSide: "+squareSide)
 simulation(init_output[0],dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
 //simulation(staticStage,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx)
 
