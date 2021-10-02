@@ -44,12 +44,21 @@ function matrixGenerator(staticStage,dynamicElementsArray,simulationIndex,wideDi
     let heightDimension = wideDimension;
     let matrixAux = [];
     matrixAux = cloneArray2D(staticStage);
-    //Caso Simulación
     dynamicElementsArray.forEach( item =>{
+        //Modo 'trajectory'
+        if (item.walkmode == 'trajectory'){
         item.y = item.y+item.trajectory_y[simulationIndex];
         item.x = item.x+item.trajectory_x[simulationIndex];
         matrixAux[-item.y+Math.floor(heightDimension/squareSide)-1][item.x] = item.color;
+        }else{
+        //Modo 'autonomous'
+        item.y = item.y+item.walk();
+        item.x = item.x+item.walk();
+        matrixAux[-item.y+Math.floor(heightDimension/squareSide)-1][item.x] = item.color;
+        }
     })
+    
+
     
     return matrixAux;
 }

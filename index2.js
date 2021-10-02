@@ -1,5 +1,5 @@
 import {init, simulation} from './zeroPlayers_f_level1.js';
-import {randomWalk} from './zeroPlayers_f_livingbeings.js';
+import {randomWalk, totalFreedom} from './zeroPlayers_f_livingbeings.js';
 import {generateStaticStage} from './zeroPlayers_f_matrixGeneration.js';
 //import simulation from 'functions_zeroPlayers';
 
@@ -15,12 +15,12 @@ let legend = {
 let cell = {
     id     : "cell_1",
     color  : "yellow",
-    x      : 0,
-    y      : 0,
-    walkmode : "trajectory",
+    x      : 14,
+    y      : 14,
+    walkmode : "autonomous",
     trajectory_x : [1,1,1,1,1,1,1],
     trajectory_y : [0,0,0,0,0,0,0],
-    walk   : [randomWalk]
+    walk   : totalFreedom
 }
 
 let simulationSteps = 7;
