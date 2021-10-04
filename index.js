@@ -37,7 +37,10 @@ let init_output;
 
 init_output = init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,ctx);
 //simulation(staticStage,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx)
-simulation(init_output[0],dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
-//simulation(staticStage,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx)
 
-//oneSimulationStep(simulationSteps,staticStage,dynamicElementsArray,ctx,squareSide,wideDimension) 
+//simulation(staticStage,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx)
+document.getElementById("stopButton").addEventListener("click", function(){simulation(init_output[0],dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])}, false);
+/*If true, the listener receives synthetic events dispatched by web content
+ (the default is false for chrome and true for regular web pages). 
+ çThis parameter is only available in Gecko and is mainly useful for the code in add-ons and the browser itself. 
+ See Interaction between privileged and non-privileged pages for an example.*/
