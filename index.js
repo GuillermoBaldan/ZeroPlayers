@@ -39,7 +39,11 @@ init_output = init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,c
 //simulation(staticStage,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx)
 
 //simulation(staticStage,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx)
-document.getElementById("stopButton").addEventListener("click", function(){simulation(init_output[0],dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])}, false);
+document.getElementById("playButton").addEventListener("click", function(){
+    simulation(init_output[0],dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
+    document.getElementById("playButton").disabled = true;
+
+}, false);
 /*If true, the listener receives synthetic events dispatched by web content
  (the default is false for chrome and true for regular web pages). 
  çThis parameter is only available in Gecko and is mainly useful for the code in add-ons and the browser itself. 

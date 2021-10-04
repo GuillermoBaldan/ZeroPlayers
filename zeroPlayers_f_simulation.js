@@ -15,6 +15,9 @@ function oneSimulationStep(simulationSteps,simulationIndex,timePerStep, staticSt
        
     } else {
         console.log("Fin de la simulation");
+        document.getElementById("playButton").innerHTML = "New Simulation";
+        document.getElementById("playButton").disabled = false;
+
     }
 }
 
