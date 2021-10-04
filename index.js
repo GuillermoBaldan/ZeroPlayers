@@ -1,5 +1,9 @@
+import {init, simulation} from './zeroPlayers_f_level1.js';
+import {randomWalk, totalFreedom} from './zeroPlayers_f_livingbeings.js';
+import {generateStaticStage} from './zeroPlayers_f_matrixGeneration.js';
+//import simulation from 'functions_zeroPlayers';
 
-let simulationSteps = 100;
+
 
 let legend = { 
     ground : "brown",
@@ -8,41 +12,35 @@ let legend = {
 
 }
 
-let wideDimiension = 10;
-let hightDimension = 10;
-let stage = [];
-
-
-function materialGeneration(legend){
-    let materialArray = [];
-    for (const prop in legend){
-        materialArray.push(legend[prop]);
-    }
-    return materialArray;
+let cell = {
+    id     : "cell_1",
+    color  : "yellow",
+    x      : 14,
+    y      : 14,
+    walkmode : "autonomous",
+    trajectory_x : [1,1,1,1,1,1,1],
+    trajectory_y : [0,0,0,0,0,0,0],
+    walk   : totalFreedom
 }
 
-function  generateStage(stage,legend,wideDimiension,hightDimension){
-    let a;
-    let b;
-    let row = [];
-    let numberMaterials = materialGeneration(legend).length;
-    console.log(numberMaterials);
-    for(b=0;b<hightDimension;b++){
-        row = [];
-        for(a = 0;a<wideDimiension;a++){
-            row.push(materialGeneration(legend)[Math.floor(Math.random()*numberMaterials)]);
-            }
-            stage.push(row)
-    }
+let simulationSteps = 7;
+let timePerStep = 100; //In milliseconds
+let wideDimension = 600;
+let heightDimension = wideDimension;
+let squareSide = 15;
+let dynamicElementsArray = [cell];
+let staticStage;
+let rulesArray =[];
+let lienzo;
+let ctx;
+let init_output;
 
-    return stage;
-}
+init_output = init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,ctx);
+//simulation(staticStage,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx)
 
-console.log("Conexión done");
-console.log(generateStage(stage,legend,wideDimiension,hightDimension))
-
-//1. Inicialization - load stage
-    //1.1 Matrix Generation
-    //1.2 Drawing Stage Matrix into html file
-//2. Run simulation
-
+//simulation(staticStage,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx)
+document.getElementById("stopButton").addEventListener("click", function(){simulation(init_output[0],dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])}, false);
+/*If true, the listener receives synthetic events dispatched by web content
+ (the default is false for chrome and true for regular web pages). 
+ çThis parameter is only available in Gecko and is mainly useful for the code in add-ons and the browser itself. 
+ See Interaction between privileged and non-privileged pages for an example.*/
