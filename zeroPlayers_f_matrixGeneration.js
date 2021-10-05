@@ -44,6 +44,7 @@ function matrixGeneratorInit(staticStage,dynamicElementsArray,squareSide,wideDim
 function matrixGenerator(staticStage,dynamicElementsArray,simulationIndex,wideDimension,squareSide){
     let heightDimension = wideDimension;
     let matrixAux = [];
+    let xy =[];
     let rulesObject = {
         movementType : "zigzag"
     }
@@ -57,12 +58,9 @@ function matrixGenerator(staticStage,dynamicElementsArray,simulationIndex,wideDi
         matrixAux[-item.y+Math.floor(heightDimension/squareSide)-1][item.x] = item.color;
         }else{
         //Modo 'autonomous'
-        item.x = movement(item.x,item.y, item.walk, rulesObject)[0];
-        item.y = movement(item.x,item.y, item.walk, rulesObject)[1];
-        matrixAux[-item.y+Math.floor(heightDimension/squareSide)-1][item.x] = item.color;
-        /* item.y = item.y+item.walk();
-        item.x = item.x+item.walk();
-        matrixAux[-item.y+Math.floor(heightDimension/squareSide)-1][item.x] = item.color; */
+        xy = movement(item.x,item.y, item.walk, rulesObject)
+        console.log(`${xy[0]},${xy[1]}`);
+        matrixAux[-xy[1]+Math.floor(heightDimension/squareSide)-1][xy[0]] = item.color;
         }
     })
     
