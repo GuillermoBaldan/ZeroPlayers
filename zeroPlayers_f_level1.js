@@ -2,6 +2,9 @@ import {generateStaticStage, matrixGeneratorInit} from './zeroPlayers_f_matrixGe
 import {initCanvas, drawingMatrix} from './zeroPlayers_f_canvas.js'
 import {checkDataCoherence} from './zeroPlayers_f_dataCoherence.js'
 import {oneSimulationStep} from './zeroPlayers_f_simulation.js'
+import {stopFlag} from './index.js'
+import {globalSimulationIndex} from './index.js'
+
 
 function init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,ctx){
     let staticStageAux = [];
@@ -26,11 +29,11 @@ function init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,ctx){
 
 }
 //simulation(init_output[0],dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
-function simulation(staticStage,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx){
-    let simulationIndex = 0;
+function simulation(staticStage,simulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx){
+    let simulationIndexAux = 0;
     //1. Hacemos la simulación paso a paso.
-     //oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx,squareSide,wideDimension)
-    oneSimulationStep(simulationSteps,simulationIndex,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
+   simulationIndexAux =  oneSimulationStep(simulationSteps,simulationIndex,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
+   return simulationIndexAux;
    }
 
 export { init, simulation }
