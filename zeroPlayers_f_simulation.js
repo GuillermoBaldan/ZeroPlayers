@@ -4,16 +4,18 @@ import {globalSimulationIndex, stopFlag, loadGlobalSimulationIndex} from './inde
 
 function oneSimulationStep(simulationSteps,simulationIndex,timePerStep, staticStage,dynamicElementsArray,ctx,squareSide,wideDimension){
     // oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
+    console.log("----------------------------------")
+    console.log("simulationStep: "+simulationIndex)
     let matrixAux = matrixGenerator(staticStage,dynamicElementsArray,simulationIndex,wideDimension,squareSide);
     //matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension)
     drawingMatrix(matrixAux,squareSide,ctx);
     simulationIndex +=1;
-    console.log("simulationStep: "+simulationIndex)
     loadGlobalSimulationIndex(simulationIndex);
     if (simulationSteps-simulationIndex>0 && stopFlag == false){
         setTimeout(function(){
         oneSimulationStep(simulationSteps,simulationIndex,timePerStep,staticStage,dynamicElementsArray,ctx,squareSide,wideDimension)
         },timePerStep)
+        
        
     } else {
         if (stopFlag == true){

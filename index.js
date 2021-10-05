@@ -24,7 +24,7 @@ let cell = {
 }
 
 let simulationSteps = 50;
-let timePerStep = 100; //In milliseconds
+let timePerStep = 500; //In milliseconds
 let wideDimension = 600;
 let heightDimension = wideDimension;
 let squareSide = 15;
