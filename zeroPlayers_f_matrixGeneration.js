@@ -1,4 +1,5 @@
 import { cloneArray2D } from './zeroPlayers_f_arraysManipulation.js'
+import {movement} from './zeroPlayers_f_movement.js'
 
 function  generateStaticStage(legend,wideDimension,squareSide){
     let a;
@@ -43,6 +44,10 @@ function matrixGeneratorInit(staticStage,dynamicElementsArray,squareSide,wideDim
 function matrixGenerator(staticStage,dynamicElementsArray,simulationIndex,wideDimension,squareSide){
     let heightDimension = wideDimension;
     let matrixAux = [];
+    let rulesObject = {
+        movementType : "zigzag"
+    }
+
     matrixAux = cloneArray2D(staticStage);
     dynamicElementsArray.forEach( item =>{
         //Modo 'trajectory'
@@ -52,9 +57,12 @@ function matrixGenerator(staticStage,dynamicElementsArray,simulationIndex,wideDi
         matrixAux[-item.y+Math.floor(heightDimension/squareSide)-1][item.x] = item.color;
         }else{
         //Modo 'autonomous'
-        item.y = item.y+item.walk();
-        item.x = item.x+item.walk();
+        item.x = movement(item.x,item.y, item.walk, rulesObject)[0];
+        item.y = movement(item.x,item.y, item.walk, rulesObject)[1];
         matrixAux[-item.y+Math.floor(heightDimension/squareSide)-1][item.x] = item.color;
+        /* item.y = item.y+item.walk();
+        item.x = item.x+item.walk();
+        matrixAux[-item.y+Math.floor(heightDimension/squareSide)-1][item.x] = item.color; */
         }
     })
     
