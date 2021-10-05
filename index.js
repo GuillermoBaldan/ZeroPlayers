@@ -44,7 +44,8 @@ function loadGlobalSimulationIndex(index){
 init_output = init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,ctx);
 
 document.getElementById("playButton").addEventListener("click", function(){
-    globalSimulationIndex = simulation(init_output[0],globalSimulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
+    globalSimulationIndex = 0;
+    simulation(init_output[0],globalSimulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
     document.getElementById("playButton").disabled = true;
 }, false);
 
