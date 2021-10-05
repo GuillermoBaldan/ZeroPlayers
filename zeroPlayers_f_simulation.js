@@ -16,10 +16,15 @@ function oneSimulationStep(simulationSteps,simulationIndex,timePerStep, staticSt
         },timePerStep)
        
     } else {
-        console.log("Fin de la simulation");
+        if (stopFlag == true){
+            console.log("Simulación parada")
+        }else{
+            console.log("Fin de la simulation");
         document.getElementById("playButton").innerHTML = "New Simulation";
         document.getElementById("playButton").disabled = false;
         return simulationIndex;
+        }
+        
 
     }
 }

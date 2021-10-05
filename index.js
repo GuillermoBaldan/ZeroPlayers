@@ -46,17 +46,15 @@ init_output = init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,c
 document.getElementById("playButton").addEventListener("click", function(){
     globalSimulationIndex = simulation(init_output[0],globalSimulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
     document.getElementById("playButton").disabled = true;
-    console.log("globalSimulationIndex: "+globalSimulationIndex)
-
 }, false);
 
 document.getElementById("stopButton").addEventListener("click", function(){
     if (stopFlag == false){
         stopFlag = true;
-        console.log("stopFlag: "+stopFlag)
-        console.log("globalSimulationIndex: "+globalSimulationIndex)
-    }else{
+        document.getElementById("stopButton").innerHTML = "Continue Simulation";
+        }else{
         stopFlag = false;
+        document.getElementById("stopButton").innerHTML = "Stop Simulation";
         simulation(init_output[0],globalSimulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
         console.log("stopFlag: "+stopFlag)
     }
