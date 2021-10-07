@@ -20,11 +20,12 @@ let cell = {
     walkmode : "autonomous",
     trajectory_x : [1,1,1,1,1,1,1],
     trajectory_y : [0,0,0,0,0,0,0],
-    walk   : down
+    walk   : totalFreedom
 }
 
 let universeRules = {
-    movementType : "zigzag"
+    movementType : "zigzag",
+    frontier : "close"  //There are two options: 'close' and 'adjacent ends'
 }
 
 let simulationSteps = 50;
