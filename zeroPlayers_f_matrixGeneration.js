@@ -41,15 +41,11 @@ function matrixGeneratorInit(staticStage,dynamicElementsArray,squareSide,wideDim
     return matrixAux;
 }
 
-function matrixGenerator(staticStage,dynamicElementsArray,simulationIndex,wideDimension,squareSide){
+function matrixGenerator(universeRules, staticStage,dynamicElementsArray,simulationIndex,wideDimension,squareSide){
     let heightDimension = wideDimension;
     let matrixAux = [];
     let xy;
-    let rulesObject = {
-        movementType : "zigzag"
-    }
-
-    matrixAux = cloneArray2D(staticStage);
+       matrixAux = cloneArray2D(staticStage);
     dynamicElementsArray.forEach( item =>{
         //Modo 'trajectory'
         if (item.walkmode == 'trajectory'){
@@ -58,7 +54,7 @@ function matrixGenerator(staticStage,dynamicElementsArray,simulationIndex,wideDi
         matrixAux[-item.y+Math.floor(heightDimension/squareSide)-1][item.x] = item.color;
         }else{
         //Modo 'autonomous'
-        xy = movement(item.x,item.y, item.walk, rulesObject)
+        xy = movement(item.x,item.y, item.walk, universeRules)
         item.x = xy[0]
         item.y = xy[1]
         //console.log(`(${xy[0]},${xy[1]})`);

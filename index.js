@@ -23,6 +23,10 @@ let cell = {
     walk   : totalFreedom
 }
 
+let universeRules = {
+    movementType : "zigzag"
+}
+
 let simulationSteps = 50;
 let timePerStep = 100; //In milliseconds
 let wideDimension = 600;
@@ -45,7 +49,7 @@ init_output = init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,c
 
 document.getElementById("playButton").addEventListener("click", function(){
     globalSimulationIndex = 0;
-    simulation(init_output[0],globalSimulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
+    simulation(universeRules,init_output[0],globalSimulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
     document.getElementById("playButton").disabled = true;
 }, false);
 
@@ -56,7 +60,7 @@ document.getElementById("stopButton").addEventListener("click", function(){
         }else{
         stopFlag = false;
         document.getElementById("stopButton").innerHTML = "Stop Simulation";
-        simulation(init_output[0],globalSimulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
+        simulation(universeRules, init_output[0],globalSimulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
         console.log("stopFlag: "+stopFlag)
     }
 }, false);
