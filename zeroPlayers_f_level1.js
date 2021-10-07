@@ -17,11 +17,11 @@ function init(stageParamenters,simulationParameters){
         //1.Initialize Canvas
         canvas = initCanvas(simulationParameters)
         //2.staticStage
-        staticStageAux = generateStaticStage(legend,wideDimension,squareSide);
+        staticStageAux = generateStaticStage(simulationParameters);
         //3.Add dynamic Elements
-        matrixAux = matrixGeneratorInit(staticStageAux,dynamicElementsArray,squareSide,wideDimension);
+        matrixAux = matrixGeneratorInit(staticStageAux,simulationParameters);
         //4. Draw canvas
-        drawingMatrix(matrixAux,squareSide,canvas[1]);
+        drawingMatrix(matrixAux,canvas[1],simulationParameters);
         return [staticStageAux, matrixAux ,canvas[0], canvas[1]];//lienzo = canvas[0];ctx = canvas[1]
     } else {
         console.log("Los datos no son coherentes")
@@ -29,10 +29,10 @@ function init(stageParamenters,simulationParameters){
 
 }
 //simulation(init_output[0],dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
-function simulation(universeRules,staticStage,simulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx){
+function simulation(stageParameters,simulationParameters){
     let simulationIndexAux = 0;
     //1. Hacemos la simulación paso a paso.
-   simulationIndexAux =  oneSimulationStep(universeRules, simulationSteps,simulationIndex,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
+   simulationIndexAux =  oneSimulationStep(stageParameters,simulationParameters)
    return simulationIndexAux;
    }
 
