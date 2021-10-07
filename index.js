@@ -15,8 +15,8 @@ let legend = {
 let cell = {
     id     : "cell_1",
     color  : "yellow",
-    x      : 14,
-    y      : 14,
+    x      : 39,
+    y      : 0,
     walkmode : "autonomous",
     trajectory_x : [1,1,1,1,1,1,1],
     trajectory_y : [0,0,0,0,0,0,0],
@@ -25,7 +25,7 @@ let cell = {
 
 let universeRules = {
     movementType : "zigzag",
-    frontier : "close"  //There are two options: 'close' and 'adjacent ends'
+    frontier : "adjacent ends"  //There are two options: 'close' and 'adjacent ends'
 }
 
 let simulationSteps = 50;
