@@ -1,17 +1,17 @@
 import { cloneArray2D } from './zeroPlayers_f_arraysManipulation.js'
 import {movement} from './zeroPlayers_f_movement.js'
 
-function  generateStaticStage(legend,wideDimension,squareSide){
+function  generateStaticStage(stageParameters, simulationParameters){
     let a;
     let b;
     let row = [];
-    let numberMaterials = materialGeneration(legend).length;
+    let numberMaterials = materialGeneration(stageParameters.legend).length;
     let staticStageAux =[];
     let heightDimension = wideDimension;
-    for(b=0;b<Math.floor(heightDimension/squareSide);b++){
+    for(b=0;b<Math.floor(simulationParameters.heightDimension/stageParameters.squareSide);b++){
         row = [];
-        for(a = 0;a<Math.floor(wideDimension/squareSide);a++){
-            row.push(materialGeneration(legend)[Math.floor(Math.random()*numberMaterials)]);
+        for(a = 0;a<Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide);a++){
+            row.push(materialGeneration(stageParameters.legend)[Math.floor(Math.random()*numberMaterials)]);
             }
             staticStageAux.push(row)
     }
@@ -27,38 +27,37 @@ function materialGeneration(legend){
     return materialArray;
 }
 
-function matrixGeneratorInit(staticStage,dynamicElementsArray,squareSide,wideDimension){
+function matrixGeneratorInit(stageParameters, simulationParameters){
     let a;
     let b;
-    let heightDimension = wideDimension;
     let matrixAux = [];
-    matrixAux = cloneArray2D(staticStage);
+    matrixAux = cloneArray2D(simulationParameters.staticStage);
     //Caso Inicial
-    dynamicElementsArray.forEach( item =>{
-        matrixAux[-item.y+Math.floor(heightDimension/squareSide)-1][item.x] = item.color;
+    simulationParameters.dynamicElementsArray.forEach( item =>{
+        matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
     })
    
     return matrixAux;
 }
 
-function matrixGenerator(universeRules, staticStage,dynamicElementsArray,simulationIndex,wideDimension,squareSide){
-    let heightDimension = wideDimension;
+function matrixGenerator(stageParameters, simulationParameters){
+    //let heightDimension = wideDimension;
     let matrixAux = [];
     let xy;
-       matrixAux = cloneArray2D(staticStage);
-    dynamicElementsArray.forEach( item =>{
+    matrixAux = cloneArray2D(stageParameter.staticStage);
+    simulationParameters.dynamicElementsArray.forEach( item =>{
         //Modo 'trajectory'
         if (item.walkmode == 'trajectory'){
         item.y = item.y+item.trajectory_y[simulationIndex];
         item.x = item.x+item.trajectory_x[simulationIndex];
-        matrixAux[-item.y+Math.floor(heightDimension/squareSide)-1][item.x] = item.color;
+        matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
         }else{
         //Modo 'autonomous'
-        xy = movement(item.x,item.y, item.walk, universeRules)
+        xy = movement(item.x,item.y, item.walk, stageParameters.universeRules)
         item.x = xy[0]
         item.y = xy[1]
         //console.log(`(${xy[0]},${xy[1]})`);
-        matrixAux[-xy[1]+Math.floor(heightDimension/squareSide)-1][xy[0]] = item.color;
+        matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][xy[0]] = item.color;
         }
     })
     
