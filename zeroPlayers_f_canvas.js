@@ -1,29 +1,30 @@
 import {cloneArray2D} from './zeroPlayers_f_arraysManipulation.js'
+import { simulation } from './zeroPlayers_f_level1.js';
 
-function initCanvas(lienzo,ctx,wideDimension){
-    lienzo = document.getElementById("lienzo");
-    lienzo.setAttribute("width", wideDimension);
-    lienzo.setAttribute("height", wideDimension); 
-    ctx = lienzo.getContext('2d');
-    return [lienzo, ctx]
+function initCanvas(simulationParameters){
+    simulationParameters.lienzo = document.getElementById("lienzo");
+    simulationParameters.lienzo.setAttribute("width", wideDimension);
+    simulationParameters.lienzo.setAttribute("height", wideDimension); 
+    simulationParameters.ctx = simulationParameters.lienzo.getContext('2d');
+    return [simulationParameters.lienzo, simulationParameters.ctx]
     }
 
-    function drawingMatrix(matrix,squareSide,ctx){
+    function drawingMatrix(simulationParameters){
         //1. Recorremos el array stage
         let matrixAux = [];
         let x = 0;
         let y = 0;
-        let Ax = squareSide;
-        let Ay = squareSide;
+        let Ax = simulationParameters.squareSide
+        let Ay = simulationParameters.squareSide
         //matrixAux = matrix;
-        matrixAux = cloneArray2D(matrix,matrixAux);
+        matrixAux = cloneArray2D(simulationParameters.matrix,matrixAux);
         /* console.log(matrixAux)
         console.log(matrixAux[0][0]); */
         //Borramos todo el canva;
         //canvasInit()
          matrixAux.forEach(row => {
             row.forEach( column => {
-                drawSquare(ctx,x,y,squareSide,squareSide,column);
+                drawSquare(x,y,column,simulationParameters);
                 x = x + Ax;        
             })
             x = 0;
@@ -33,10 +34,10 @@ function initCanvas(lienzo,ctx,wideDimension){
         
     }
 
-    function drawSquare(ctx,x,y, width, height,color){
+    function drawSquare(x,y, color, simulationParameters){
         ctx.beginPath();
         ctx.fillStyle = `${color}`;
-        ctx.fillRect(x, y, width, height);
+        ctx.fillRect(x, y, simulationParameters.wideDimension, simulationParameters.heightDimension);
         ctx.stroke();
     }
 

@@ -66,7 +66,7 @@ simulationParameters.init_output = init(stageParameters,simulationParameters);
 
 document.getElementById("playButton").addEventListener("click", function(){
     globalSimulationIndex = 0;
-    simulation(universeRules,init_output[0],globalSimulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
+    simulation(stageParameters,simulationParameters);
     document.getElementById("playButton").disabled = true;
 }, false);
 
@@ -77,7 +77,7 @@ document.getElementById("stopButton").addEventListener("click", function(){
         }else{
         stopFlag = false;
         document.getElementById("stopButton").innerHTML = "Stop Simulation";
-        simulation(universeRules, init_output[0],globalSimulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
+        simulation(stageParameters, simulationParameters)
         console.log("stopFlag: "+stopFlag)
     }
 }, false);
