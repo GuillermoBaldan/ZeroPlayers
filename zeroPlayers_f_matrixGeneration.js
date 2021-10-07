@@ -44,7 +44,7 @@ function matrixGeneratorInit(staticStage,dynamicElementsArray,squareSide,wideDim
 function matrixGenerator(staticStage,dynamicElementsArray,simulationIndex,wideDimension,squareSide){
     let heightDimension = wideDimension;
     let matrixAux = [];
-    let xy =[];
+    let xy;
     let rulesObject = {
         movementType : "zigzag"
     }
@@ -59,7 +59,9 @@ function matrixGenerator(staticStage,dynamicElementsArray,simulationIndex,wideDi
         }else{
         //Modo 'autonomous'
         xy = movement(item.x,item.y, item.walk, rulesObject)
-        console.log(`${xy[0]},${xy[1]}`);
+        item.x = xy[0]
+        item.y = xy[1]
+        //console.log(`(${xy[0]},${xy[1]})`);
         matrixAux[-xy[1]+Math.floor(heightDimension/squareSide)-1][xy[0]] = item.color;
         }
     })
