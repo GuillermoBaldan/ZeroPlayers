@@ -1,18 +1,24 @@
 function movement(dynamicItem_x, dynamicItem_y, f_movement, rulesObject){
-    let coordinatesArray = [dynamicItem_x,dynamicItem_y]
-    
-    if (rulesObject.movementType == "zigzag"){
-        let index = Math.round(Math.random()*1);
-        let aux = f_movement();
-        coordinatesArray[index] = coordinatesArray[index] + aux;
-        console.log(`f_movement(): ${aux}`)
-        console.log("zigzag")
-    }else{
-        dynamicItem_y = dynamicItem_y + f_movement();
-        dynamicItem_x = dynamicItem_x + f_movement();
+   let buffer;
+    buffer = f_movement()
+    console.log(`(${dynamicItem_x},${dynamicItem_y})`)
+    dynamicItem_x = dynamicItem_x + buffer
+    console.log("buffer: "+buffer)
+    if (buffer != 0){
+        let n = 0;
+        console.log("n: "+n);
+        console.log(`(${dynamicItem_x},${dynamicItem_y})`)
+        n+=1;
+        return [dynamicItem_x,dynamicItem_y]
+    } else{
+        buffer = f_movement();
+        dynamicItem_y = dynamicItem_y + buffer
+        console.log("se hace el else ")
+        console.log("buffer: "+buffer)
+        console.log(`(${dynamicItem_x},${dynamicItem_y})`)
+        return [dynamicItem_x,dynamicItem_y]
     }
-   
-    return [coordinatesArray[0],coordinatesArray[1]]
+    
 }
 
 export {movement}
