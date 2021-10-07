@@ -29,10 +29,10 @@ function init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,ctx){
 
 }
 //simulation(init_output[0],dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
-function simulation(staticStage,simulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx){
+function simulation(universeRules,staticStage,simulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,ctx){
     let simulationIndexAux = 0;
     //1. Hacemos la simulación paso a paso.
-   simulationIndexAux =  oneSimulationStep(simulationSteps,simulationIndex,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
+   simulationIndexAux =  oneSimulationStep(universeRules, simulationSteps,simulationIndex,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
    return simulationIndexAux;
    }
 

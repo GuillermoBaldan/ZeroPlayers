@@ -1,5 +1,5 @@
 import {init, simulation} from './zeroPlayers_f_level1.js';
-import {randomWalk, totalFreedom} from './zeroPlayers_f_livingbeings.js';
+import {down, left, right, totalFreedom, up} from './zeroPlayers_f_livingbeings.js';
 import {generateStaticStage} from './zeroPlayers_f_matrixGeneration.js';
 //import simulation from 'functions_zeroPlayers';
 
@@ -15,12 +15,17 @@ let legend = {
 let cell = {
     id     : "cell_1",
     color  : "yellow",
-    x      : 14,
-    y      : 14,
+    x      : 39,
+    y      : 0,
     walkmode : "autonomous",
     trajectory_x : [1,1,1,1,1,1,1],
     trajectory_y : [0,0,0,0,0,0,0],
     walk   : totalFreedom
+}
+
+let universeRules = {
+    movementType : "zigzag",
+    frontier : "adjacent ends"  //There are two options: 'close' and 'adjacent ends'
 }
 
 let simulationSteps = 50;
@@ -45,7 +50,7 @@ init_output = init(legend,wideDimension,squareSide,dynamicElementsArray,lienzo,c
 
 document.getElementById("playButton").addEventListener("click", function(){
     globalSimulationIndex = 0;
-    simulation(init_output[0],globalSimulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
+    simulation(universeRules,init_output[0],globalSimulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
     document.getElementById("playButton").disabled = true;
 }, false);
 
@@ -56,7 +61,7 @@ document.getElementById("stopButton").addEventListener("click", function(){
         }else{
         stopFlag = false;
         document.getElementById("stopButton").innerHTML = "Stop Simulation";
-        simulation(init_output[0],globalSimulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
+        simulation(universeRules, init_output[0],globalSimulationIndex,dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
         console.log("stopFlag: "+stopFlag)
     }
 }, false);
