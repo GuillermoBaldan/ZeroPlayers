@@ -7,25 +7,7 @@ function movement(dynamicItem_x, dynamicItem_y, f_movement, rulesObject){
 }
 
 function zigzag(dynamicItem_x,dynamicItem_y,f_movement){
-    let buffer;
-    buffer = f_movement()
-    console.log(`(${dynamicItem_x},${dynamicItem_y})`)
-    dynamicItem_x = dynamicItem_x + buffer
-    console.log("buffer: "+buffer)
-    if (buffer != 0){
-        let n = 0;
-        console.log("n: "+n);
-        console.log(`(${dynamicItem_x},${dynamicItem_y})`)
-        n+=1;
-        return [dynamicItem_x,dynamicItem_y]
-    } else{
-        buffer = f_movement();
-        dynamicItem_y = dynamicItem_y + buffer
-        console.log("se hace el else ")
-        console.log("buffer: "+buffer)
-        console.log(`(${dynamicItem_x},${dynamicItem_y})`)
-        return [dynamicItem_x,dynamicItem_y]
-    }
+    return f_movement(dynamicItem_x,dynamicItem_y)
 }
 
 function diagonal(dynamicItem_x,dynamicItem_y,f_movement){

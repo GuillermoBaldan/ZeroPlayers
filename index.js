@@ -1,5 +1,5 @@
 import {init, simulation} from './zeroPlayers_f_level1.js';
-import {randomWalk, totalFreedom} from './zeroPlayers_f_livingbeings.js';
+import {down, left, right, totalFreedom, up} from './zeroPlayers_f_livingbeings.js';
 import {generateStaticStage} from './zeroPlayers_f_matrixGeneration.js';
 //import simulation from 'functions_zeroPlayers';
 
@@ -20,7 +20,7 @@ let cell = {
     walkmode : "autonomous",
     trajectory_x : [1,1,1,1,1,1,1],
     trajectory_y : [0,0,0,0,0,0,0],
-    walk   : totalFreedom
+    walk   : down
 }
 
 let universeRules = {
