@@ -51,10 +51,12 @@ let simulationParameters = {
     squareSide : 15,
     dynamicElementsArray : [cell],
     staticStage : staticStage,
+    matrix : matrix,
     lienzo : lienzo,
     ctx : ctx,
     init_output : init_output,
     stopFlag : false,
+    simulationIndex : 0,
     globalSimulationIndex : 0
 }
 

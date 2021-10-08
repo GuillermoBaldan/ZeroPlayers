@@ -2,19 +2,19 @@ import {matrixGenerator} from './zeroPlayers_f_matrixGeneration.js';
 import {drawingMatrix} from './zeroPlayers_f_canvas.js'
 import {globalSimulationIndex, stopFlag, loadGlobalSimulationIndex} from './index.js'
 
-function oneSimulationStep(universeRules,simulationSteps,simulationIndex,timePerStep, staticStage,dynamicElementsArray,ctx,squareSide,wideDimension){
+function oneSimulationStep(stageParameters,simulationParameters){
     // oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
     console.log("----------------------------------")
-    console.log("simulationStep: "+simulationIndex)
-    let matrixAux = matrixGenerator(universeRules, staticStage,dynamicElementsArray,simulationIndex,wideDimension,squareSide);
+    console.log("simulationStep: "+simulationParameters.simulationIndex)
+    let matrixAux = matrixGenerator(stageParameters, simulationParameters);
     //matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension)
-    drawingMatrix(matrixAux,squareSide,ctx);
-    simulationIndex +=1;
-    loadGlobalSimulationIndex(simulationIndex);
-    if (simulationSteps-simulationIndex>0 && stopFlag == false){
+    drawingMatrix(matrixAux,simulationParameters.squareSide,simulationParameters.ctx);
+    simulationParameters.simulationIndex +=1;
+    loadGlobalSimulationIndex(simulationParameters.simulationIndex);
+    if (simulationParameters.simulationSteps-simulationParameters.simulationIndex>0 && stopFlag == false){
         setTimeout(function(){
-        oneSimulationStep(universeRules,simulationSteps,simulationIndex,timePerStep,staticStage,dynamicElementsArray,ctx,squareSide,wideDimension)
-        },timePerStep)
+        oneSimulationStep(stageParameters, simulationParameters)
+        },simulationParameters.timePerStep)
         
        
     } else {
