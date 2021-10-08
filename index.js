@@ -40,7 +40,10 @@ let universeRules = {
 let stageParameters = {
     universeRules : universeRules,
     legend : legend,
-    livingBeingsCollectionTypes : [cell]
+    livingBeingsCollectionTypes : [cell],
+    dynamicElementsArray : [cell],
+    staticStage : []
+
 }
 
 let simulationParameters = {
@@ -49,8 +52,6 @@ let simulationParameters = {
     wideDimension : 600,
     heightDimension : 600,
     squareSide : 15,
-    dynamicElementsArray : [cell],
-    staticStage : staticStage,
     lienzo : lienzo,
     ctx : ctx,
     init_output : init_output,

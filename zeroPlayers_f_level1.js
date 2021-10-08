@@ -6,18 +6,18 @@ import {stopFlag} from './index.js'
 import {globalSimulationIndex} from './index.js'
 
 
-function init(stageParamenters,simulationParameters){
+function init(stageParameters,simulationParameters){
     let staticStageAux = [];
     let matrixAux = [];
     let canvas;
     let flag = false;
     //0. Check Data Coherence
-    flag = checkDataCoherence(stageParamenters,simulationParameters);
+    flag = checkDataCoherence(stageParameters,simulationParameters);
     if (flag){
         //1.Initialize Canvas
         canvas = initCanvas(simulationParameters)
         //2.staticStage
-        staticStageAux = generateStaticStage(simulationParameters);
+        staticStageAux = generateStaticStage(stageParameters,simulationParameters);
         //3.Add dynamic Elements
         matrixAux = matrixGeneratorInit(staticStageAux,simulationParameters);
         //4. Draw canvas

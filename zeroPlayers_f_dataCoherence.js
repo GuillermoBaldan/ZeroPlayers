@@ -1,13 +1,13 @@
 import { multiple} from './zeroPlayers_f_math.js';
 
-function  checkDataCoherence(simulationParameters){
+function  checkDataCoherence(stageParameters,simulationParameters){
     let flagMultiple = true; //checkDataCoherence is true if there isn´t data coherence errors
     let flagCheckInside = true;
     let flag = true;
     //1. Comprobar que wideDimension es multiplo de squarSide
     flagMultiple = multiple(simulationParameters);
     //2. Comprobar que ningún elemento dinámico queda fuera del canvas
-    flagCheckInside = checkInsideCanvas(simulationParameters);
+    flagCheckInside = checkInsideCanvas(stageParameters,simulationParameters);
     if (flagMultiple&&flagCheckInside){
         flag = true
     }else {
@@ -16,10 +16,13 @@ function  checkDataCoherence(simulationParameters){
     return flag;
 }
 
-function checkInsideCanvas(simulationParameters){
+function checkInsideCanvas(stageParameters,simulationParameters){
     let flag = true;
-    simulationParameters.dynamicElementsArray.forEach(item => {
-        if ((item.x > simulationParamenters.wideDimension/simulationParameters.squareSide) && (item.y > simulationParameters.wideDimension/simulationParameters.squareSide)){
+    console.log("stageParameters:")
+    console.log(stageParameters)
+    console.log("simulationParameters.dynamicElementsArray: "+stageParameters.dynamicElementsArray)
+    stageParameters.dynamicElementsArray.forEach(item => {
+        if ((item.x > simulationParameters.wideDimension/simulationParameters.squareSide) && (item.y > simulationParameters.wideDimension/simulationParameters.squareSide)){
         flag = false;
         }
         if ((item.x < 0) && item.y <0 ){
