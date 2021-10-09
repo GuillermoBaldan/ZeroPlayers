@@ -62,7 +62,7 @@ let simulationParameters = {
 function loadGlobalSimulationIndex(index){
     simulationParameters.globalSimulationIndex = index;
 }
-
+//[staticStageAux, matrixAux ,canvas[0], canvas[1]]
 simulationParameters.init_output = init(stageParameters,simulationParameters);
 
 document.getElementById("playButton").addEventListener("click", function(){

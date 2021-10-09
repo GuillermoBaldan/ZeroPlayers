@@ -14,6 +14,9 @@ function  generateStaticStage(stageParameters,simulationParameters){
             }
             staticStageAux.push(row)
     }
+    console.log("f: generateStaticStage: staticStageAux");
+    console.log(staticStageAux)
+
 
     return staticStageAux;
 }
@@ -30,9 +33,13 @@ function matrixGeneratorInit(stageParameters, simulationParameters){
     let a;
     let b;
     let matrixAux = [];
+    console.log("f: matrixGeneratorInit: stageParameters")
+    console.log(stageParameters)
     matrixAux = cloneArray2D(stageParameters.staticStage);
     //Caso Inicial
-    simulationParameters.dynamicElementsArray.forEach( item =>{
+    console.log("f: matrixGeneratorInit: matrixAux")
+    console.log(matrixAux)
+    stageParameters.dynamicElementsArray.forEach( item =>{ //Se dibujan los elementos vivos o dinámicos
         matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
     })
    

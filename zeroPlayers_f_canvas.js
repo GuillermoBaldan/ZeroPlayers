@@ -17,7 +17,7 @@ function initCanvas(simulationParameters){
         let Ax = simulationParameters.squareSide
         let Ay = simulationParameters.squareSide
         //matrixAux = matrix;
-        matrixAux = cloneArray2D(simulationParameters.matrix);
+        matrixAux = cloneArray2D(stageParameters.staticStage);
         /* console.log(matrixAux)
         console.log(matrixAux[0][0]); */
         //Borramos todo el canva;

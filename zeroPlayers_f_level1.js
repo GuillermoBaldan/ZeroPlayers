@@ -17,9 +17,11 @@ function init(stageParameters,simulationParameters){
         //1.Initialize Canvas
         canvas = initCanvas(simulationParameters)
         //2.staticStage
-        staticStageAux = generateStaticStage(stageParameters,simulationParameters);
+        stageParameters.staticStage = generateStaticStage(stageParameters,simulationParameters);
+        console.log("f: Init: stageParameters.staticStage")
+        console.log(stageParameters.staticStage)
         //3.Add dynamic Elements
-        matrixAux = matrixGeneratorInit(staticStageAux,simulationParameters);
+        matrixAux = matrixGeneratorInit(stageParameters,simulationParameters);
         //4. Draw canvas
         drawingMatrix(matrixAux,canvas[1],simulationParameters);
         return [staticStageAux, matrixAux ,canvas[0], canvas[1]];//lienzo = canvas[0];ctx = canvas[1]
