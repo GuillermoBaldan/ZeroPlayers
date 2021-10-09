@@ -1,4 +1,4 @@
-import {cloneArray2D} from './zeroPlayers_f_arraysManipulation.js'
+import {cloneArray2D} from './ZeroPlayers_f_arraysManipulation.js'
 import { simulation } from './zeroPlayers_f_level1.js';
 
 function initCanvas(simulationParameters){

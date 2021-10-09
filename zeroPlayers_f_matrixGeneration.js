@@ -1,4 +1,4 @@
-import { cloneArray2D } from './zeroPlayers_f_arraysManipulation.js'
+import { cloneArray2D } from './ZeroPlayers_f_arraysManipulation.js'
 import {movement} from './zeroPlayers_f_movement.js'
 
 function  generateStaticStage(stageParameters,simulationParameters){
