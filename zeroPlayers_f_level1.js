@@ -1,7 +1,7 @@
-import {generateStaticStage, matrixGeneratorInit} from './zeroPlayers_f_matrixGeneration.js';
-import {initCanvas, drawingMatrix} from './zeroPlayers_f_canvas.js'
-import {checkDataCoherence} from './zeroPlayers_f_dataCoherence.js'
-import {oneSimulationStep} from './zeroPlayers_f_simulation.js'
+import {generateStaticStage, matrixGeneratorInit} from './ZeroPlayers_f_matrixGeneration.js';
+import {initCanvas, drawingMatrix} from './ZeroPlayers_f_canvas.js'
+import {checkDataCoherence} from './ZeroPlayers_f_dataCoherence.js'
+import {oneSimulationStep} from './ZeroPlayers_f_simulation.js'
 import {stopFlag} from './index.js'
 import {globalSimulationIndex} from './index.js'
 

@@ -1,6 +1,6 @@
-import {init, simulation} from './zeroPlayers_f_level1.js';
+import {init, simulation} from './ZeroPlayers_f_level1.js';
 import {down, left, right, totalFreedom, up} from './zeroPlayers_f_livingbeings.js';
-import {generateStaticStage} from './zeroPlayers_f_matrixGeneration.js';
+import {generateStaticStage} from './ZeroPlayers_f_matrixGeneration.js';
 //import simulation from 'functions_zeroPlayers';
 
 
