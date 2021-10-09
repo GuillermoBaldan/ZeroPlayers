@@ -1,13 +1,12 @@
-import { cloneArray2D } from './zeroPlayers_f_arraysManipulation.js'
-import {movement} from './zeroPlayers_f_movement.js'
+import { cloneArray2D } from './ZeroPlayers_f_arraysManipulation.js'
+import {movement} from './ZeroPlayers_f_movement.js'
 
-function  generateStaticStage(stageParameters, simulationParameters){
+function  generateStaticStage(stageParameters,simulationParameters){
     let a;
     let b;
     let row = [];
     let numberMaterials = materialGeneration(stageParameters.legend).length;
     let staticStageAux =[];
-    let heightDimension = wideDimension;
     for(b=0;b<Math.floor(simulationParameters.heightDimension/stageParameters.squareSide);b++){
         row = [];
         for(a = 0;a<Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide);a++){
@@ -15,6 +14,9 @@ function  generateStaticStage(stageParameters, simulationParameters){
             }
             staticStageAux.push(row)
     }
+    console.log("f: generateStaticStage: staticStageAux");
+    console.log(staticStageAux)
+
 
     return staticStageAux;
 }
@@ -31,9 +33,13 @@ function matrixGeneratorInit(stageParameters, simulationParameters){
     let a;
     let b;
     let matrixAux = [];
-    matrixAux = cloneArray2D(simulationParameters.staticStage);
+    console.log("f: matrixGeneratorInit: stageParameters")
+    console.log(stageParameters)
+    matrixAux = cloneArray2D(stageParameters.staticStage);
     //Caso Inicial
-    simulationParameters.dynamicElementsArray.forEach( item =>{
+    console.log("f: matrixGeneratorInit: matrixAux")
+    console.log(matrixAux)
+    stageParameters.dynamicElementsArray.forEach( item =>{ //Se dibujan los elementos vivos o dinámicos
         matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
     })
    
@@ -44,7 +50,9 @@ function matrixGenerator(stageParameters, simulationParameters){
     //let heightDimension = wideDimension;
     let matrixAux = [];
     let xy;
-    matrixAux = cloneArray2D(stageParameter.staticStage);
+    console.log("stageParameters.staticStage")
+    console.log(stageParameters.staticStage)
+    matrixAux = cloneArray2D(stageParameters.staticStage);
     simulationParameters.dynamicElementsArray.forEach( item =>{
         //Modo 'trajectory'
         if (item.walkmode == 'trajectory'){

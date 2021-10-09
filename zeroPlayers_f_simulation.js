@@ -1,20 +1,20 @@
-import {matrixGenerator} from './zeroPlayers_f_matrixGeneration.js';
-import {drawingMatrix} from './zeroPlayers_f_canvas.js'
+import {matrixGenerator} from './ZeroPlayers_f_matrixGeneration.js';
+import {drawingMatrix} from './ZeroPlayers_f_canvas.js'
 import {globalSimulationIndex, stopFlag, loadGlobalSimulationIndex} from './index.js'
 
-function oneSimulationStep(stageParameters,simulationParameters){
+function oneSimulationStep(universeRules,simulationSteps,simulationIndex,timePerStep, staticStage,dynamicElementsArray,ctx,squareSide,wideDimension){
     // oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
     console.log("----------------------------------")
-    console.log("simulationStep: "+simulationParameters.simulationIndex)
-    let matrixAux = matrixGenerator(stageParameters, simulationParameters);
+    console.log("simulationStep: "+simulationIndex)
+    let matrixAux = matrixGenerator(universeRules, staticStage,dynamicElementsArray,simulationIndex,wideDimension,squareSide);
     //matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension)
-    drawingMatrix(matrixAux,simulationParameters.squareSide,simulationParameters.ctx);
-    simulationParameters.simulationIndex +=1;
-    loadGlobalSimulationIndex(simulationParameters.simulationIndex);
-    if (simulationParameters.simulationSteps-simulationParameters.simulationIndex>0 && stopFlag == false){
+    drawingMatrix(matrixAux,squareSide,ctx);
+    simulationIndex +=1;
+    loadGlobalSimulationIndex(simulationIndex);
+    if (simulationSteps-simulationIndex>0 && stopFlag == false){
         setTimeout(function(){
-        oneSimulationStep(stageParameters, simulationParameters)
-        },simulationParameters.timePerStep)
+        oneSimulationStep(universeRules,simulationSteps,simulationIndex,timePerStep,staticStage,dynamicElementsArray,ctx,squareSide,wideDimension)
+        },timePerStep)
         
        
     } else {

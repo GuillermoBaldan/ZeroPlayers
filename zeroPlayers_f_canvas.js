@@ -1,10 +1,10 @@
 import {cloneArray2D} from './zeroPlayers_f_arraysManipulation.js'
-import { simulation } from './zeroPlayers_f_level1.js';
+import { simulation } from './ZeroPlayers_f_level1.js';
 
 function initCanvas(simulationParameters){
     simulationParameters.lienzo = document.getElementById("lienzo");
-    simulationParameters.lienzo.setAttribute("width", wideDimension);
-    simulationParameters.lienzo.setAttribute("height", wideDimension); 
+    simulationParameters.lienzo.setAttribute("width", simulationParameters.wideDimension);
+    simulationParameters.lienzo.setAttribute("height", simulationParameters.wideDimension); 
     simulationParameters.ctx = simulationParameters.lienzo.getContext('2d');
     return [simulationParameters.lienzo, simulationParameters.ctx]
     }
@@ -17,7 +17,7 @@ function initCanvas(simulationParameters){
         let Ax = simulationParameters.squareSide
         let Ay = simulationParameters.squareSide
         //matrixAux = matrix;
-        matrixAux = cloneArray2D(simulationParameters.matrix,matrixAux);
+        matrixAux = cloneArray2D(stageParameters.staticStage);
         /* console.log(matrixAux)
         console.log(matrixAux[0][0]); */
         //Borramos todo el canva;

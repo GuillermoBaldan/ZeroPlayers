@@ -1,6 +1,6 @@
-import {init, simulation} from './zeroPlayers_f_level1.js';
-import {down, left, right, totalFreedom, up} from './zeroPlayers_f_livingbeings.js';
-import {generateStaticStage} from './zeroPlayers_f_matrixGeneration.js';
+import {init, simulation} from './ZeroPlayers_f_level1.js';
+import {down, left, right, totalFreedom, up} from './ZeroPlayers_f_livingbeings.js';
+import {generateStaticStage} from './ZeroPlayers_f_matrixGeneration.js';
 //import simulation from 'functions_zeroPlayers';
 
 
@@ -40,7 +40,10 @@ let universeRules = {
 let stageParameters = {
     universeRules : universeRules,
     legend : legend,
-    livingBeingsCollectionTypes : [cell]
+    livingBeingsCollectionTypes : [cell],
+    dynamicElementsArray : [cell],
+    staticStage : []
+
 }
 
 let simulationParameters = {
@@ -49,21 +52,17 @@ let simulationParameters = {
     wideDimension : 600,
     heightDimension : 600,
     squareSide : 15,
-    dynamicElementsArray : [cell],
-    staticStage : staticStage,
-    matrix : matrix,
     lienzo : lienzo,
     ctx : ctx,
     init_output : init_output,
     stopFlag : false,
-    simulationIndex : 0,
     globalSimulationIndex : 0
 }
 
 function loadGlobalSimulationIndex(index){
     simulationParameters.globalSimulationIndex = index;
 }
-
+//[staticStageAux, matrixAux ,canvas[0], canvas[1]]
 simulationParameters.init_output = init(stageParameters,simulationParameters);
 
 document.getElementById("playButton").addEventListener("click", function(){

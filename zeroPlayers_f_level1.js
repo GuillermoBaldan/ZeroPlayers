@@ -1,25 +1,27 @@
-import {generateStaticStage, matrixGeneratorInit} from './zeroPlayers_f_matrixGeneration.js';
-import {initCanvas, drawingMatrix} from './zeroPlayers_f_canvas.js'
-import {checkDataCoherence} from './zeroPlayers_f_dataCoherence.js'
-import {oneSimulationStep} from './zeroPlayers_f_simulation.js'
+import {generateStaticStage, matrixGeneratorInit} from './ZeroPlayers_f_matrixGeneration.js';
+import {initCanvas, drawingMatrix} from './ZeroPlayers_f_canvas.js'
+import {checkDataCoherence} from './ZeroPlayers_f_dataCoherence.js'
+import {oneSimulationStep} from './ZeroPlayers_f_simulation.js'
 import {stopFlag} from './index.js'
 import {globalSimulationIndex} from './index.js'
 
 
-function init(stageParamenters,simulationParameters){
+function init(stageParameters,simulationParameters){
     let staticStageAux = [];
     let matrixAux = [];
     let canvas;
     let flag = false;
     //0. Check Data Coherence
-    flag = checkDataCoherence(stageParamenters,simulationParameters);
+    flag = checkDataCoherence(stageParameters,simulationParameters);
     if (flag){
         //1.Initialize Canvas
         canvas = initCanvas(simulationParameters)
         //2.staticStage
-        staticStageAux = generateStaticStage(simulationParameters);
+        stageParameters.staticStage = generateStaticStage(stageParameters,simulationParameters);
+        console.log("f: Init: stageParameters.staticStage")
+        console.log(stageParameters.staticStage)
         //3.Add dynamic Elements
-        matrixAux = matrixGeneratorInit(staticStageAux,simulationParameters);
+        matrixAux = matrixGeneratorInit(stageParameters,simulationParameters);
         //4. Draw canvas
         drawingMatrix(matrixAux,canvas[1],simulationParameters);
         return [staticStageAux, matrixAux ,canvas[0], canvas[1]];//lienzo = canvas[0];ctx = canvas[1]
