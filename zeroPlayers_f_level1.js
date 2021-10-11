@@ -17,6 +17,7 @@ function init(stageParameters,simulationParameters){
         //1.Initialize Canvas
         canvas = initCanvas(simulationParameters)
         //2.staticStage
+        console.log("generateStaticStage")
         stageParameters.staticStage = generateStaticStage(stageParameters,simulationParameters);
         console.log("f: Init: stageParameters.staticStage")
         console.log(stageParameters.staticStage)

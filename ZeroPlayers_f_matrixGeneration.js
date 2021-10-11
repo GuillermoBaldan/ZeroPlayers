@@ -7,11 +7,14 @@ function  generateStaticStage(stageParameters,simulationParameters){
     let row = [];
     let numberMaterials = materialGeneration(stageParameters.legend).length;
     let staticStageAux =[];
-    for(b=0;b<Math.floor(simulationParameters.heightDimension/stageParameters.squareSide);b++){
+    for(b=0;b<Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide);b++){
         row = [];
+        console.log("b: "+b)
         for(a = 0;a<Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide);a++){
             row.push(materialGeneration(stageParameters.legend)[Math.floor(Math.random()*numberMaterials)]);
             }
+            console.log("row");
+            console.log(row)
             staticStageAux.push(row)
     }
     console.log("f: generateStaticStage: staticStageAux");
