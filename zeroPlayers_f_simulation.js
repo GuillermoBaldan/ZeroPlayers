@@ -2,18 +2,18 @@ import {matrixGenerator} from './ZeroPlayers_f_matrixGeneration.js';
 import {drawingMatrix} from './ZeroPlayers_f_canvas.js'
 import {globalSimulationIndex, stopFlag, loadGlobalSimulationIndex} from './index.js'
 
-function oneSimulationStep(universeRules,simulationSteps,simulationIndex,timePerStep, staticStage,dynamicElementsArray,ctx,squareSide,wideDimension){
+function oneSimulationStep(stageParameters,simulationParameters){
     // oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
     console.log("----------------------------------")
-    console.log("simulationStep: "+simulationIndex)
-    let matrixAux = matrixGenerator(universeRules, staticStage,dynamicElementsArray,simulationIndex,wideDimension,squareSide);
+    console.log("simulationStep: "+simulationParameters.globalSimulationIndex)
+    let matrixAux = matrixGenerator(stageParameters,simulationParameters);
     //matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension)
-    drawingMatrix(matrixAux,squareSide,ctx);
+    drawingMatrix(matrixAux,simulationParameters.squareSide,ctx);
     simulationIndex +=1;
     loadGlobalSimulationIndex(simulationIndex);
     if (simulationSteps-simulationIndex>0 && stopFlag == false){
         setTimeout(function(){
-        oneSimulationStep(universeRules,simulationSteps,simulationIndex,timePerStep,staticStage,dynamicElementsArray,ctx,squareSide,wideDimension)
+        oneSimulationStep(stageParameters,simulationParameters)
         },timePerStep)
         
        
