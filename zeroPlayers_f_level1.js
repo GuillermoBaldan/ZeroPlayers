@@ -24,7 +24,7 @@ function init(stageParameters,simulationParameters){
         //3.Add dynamic Elements
         matrixAux = matrixGeneratorInit(stageParameters,simulationParameters);
         //4. Draw canvas
-        drawingMatrix(matrixAux,canvas[1],simulationParameters);
+        drawingMatrix(matrixAux,stageParameters, simulationParameters);
         return [staticStageAux, matrixAux ,canvas[0], canvas[1]];//lienzo = canvas[0];ctx = canvas[1]
     } else {
         console.log("Los datos no son coherentes")

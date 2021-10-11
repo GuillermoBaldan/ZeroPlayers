@@ -9,7 +9,7 @@ function initCanvas(simulationParameters){
     return [simulationParameters.lienzo, simulationParameters.ctx]
     }
 
-    function drawingMatrix(simulationParameters){
+    function drawingMatrix(matrix,stageParameters, simulationParameters){
         //1. Recorremos el array stage
         let matrixAux = [];
         let x = 0;
@@ -35,10 +35,10 @@ function initCanvas(simulationParameters){
     }
 
     function drawSquare(x,y, color, simulationParameters){
-        ctx.beginPath();
-        ctx.fillStyle = `${color}`;
-        ctx.fillRect(x, y, simulationParameters.wideDimension, simulationParameters.heightDimension);
-        ctx.stroke();
+        simulationParameters.ctx.beginPath();
+        simulationParameters.ctx.fillStyle = `${color}`;
+        simulationParameters.ctx.fillRect(x, y, simulationParameters.wideDimension, simulationParameters.heightDimension);
+        simulationParameters.ctx.stroke();
     }
 
     export {initCanvas,drawingMatrix}
