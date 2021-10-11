@@ -15,8 +15,8 @@ let legend = {
 let cell = {
     id     : "cell_1",
     color  : "yellow",
-    x      : 39,
-    y      : 0,
+    x      : 15,
+    y      : 15,
     walkmode : "autonomous",
     trajectory_x : [1,1,1,1,1,1,1],
     trajectory_y : [0,0,0,0,0,0,0],

@@ -41,6 +41,7 @@ function matrixGeneratorInit(stageParameters, simulationParameters){
     console.log(matrixAux)
     stageParameters.dynamicElementsArray.forEach( item =>{ //Se dibujan los elementos vivos o dinámicos
         matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
+        console.log("Se dibuja la célula")
     })
    
     return matrixAux;
