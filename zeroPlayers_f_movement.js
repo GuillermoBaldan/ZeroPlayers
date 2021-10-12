@@ -1,11 +1,11 @@
-function movement(dynamicItem_x, dynamicItem_y, f_movement, rulesObject){
+function movement(dynamicItem_x, dynamicItem_y, f_movement, stageParameters){
     let beforeAux = [dynamicItem_x,dynamicItem_y];
     let aux;
     let flag = false;
-    if(rulesObject.frontier == "close"){
+    if(stageParameters.universeRules.frontier == "close"){
       
             
-            if (rulesObject.movementType == "zigzag"){ //zigzag case
+            if (stageParameters.universeRules.movementType == "zigzag"){ //zigzag case
                 aux = zigzag(dynamicItem_x,dynamicItem_y,f_movement)
             } else{ //diagonal case
                 aux = diagonal(dynamicItem_x,dynamicItem_y,f_movement)
@@ -14,11 +14,15 @@ function movement(dynamicItem_x, dynamicItem_y, f_movement, rulesObject){
                 aux = beforeAux;
             }
 
-        }else{//Caso de extremos adyacentes 'adjacent ends'
-            if (rulesObject.movementType == "zigzag"){ //zigzag case
+    }else{//Caso de extremos adyacentes 'adjacent ends'
+            if (stageParameters.universeRules.movementType == "zigzag"){ //zigzag case
                 aux = zigzag(dynamicItem_x,dynamicItem_y,f_movement)
             } else{ //diagonal case
+                console.log("hacemos el diagonal case")
+                console.log(`dynamicItem_x: ${dynamicItem_x}`)
                 aux = diagonal(dynamicItem_x,dynamicItem_y,f_movement)
+                console.log("aux:");
+                console.log(aux);
             }
             aux =changeAdjacentEdges(aux) //Comprobamos si hay bordes       
     }
@@ -33,6 +37,7 @@ function zigzag(dynamicItem_x,dynamicItem_y,f_movement){
 function diagonal(dynamicItem_x,dynamicItem_y,f_movement){
     dynamicItem_x += f_movement();
     dynamicItem_y += f_movement();
+    console.log("dynamicItem_x: "+dynamicItem_x)
     return [dynamicItem_x,dynamicItem_y]
 }
 

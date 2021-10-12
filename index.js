@@ -15,8 +15,8 @@ let legend = {
 let cell = {
     id     : "cell_1",
     color  : "yellow",
-    x      : 15,
-    y      : 15,
+    x      : 0,
+    y      : 0,
     walkmode : "autonomous",
     trajectory_x : [1,1,1,1,1,1,1],
     trajectory_y : [0,0,0,0,0,0,0],
@@ -32,7 +32,7 @@ let stopFlag = false;
 let globalSimulationIndex = 0;
 
 let universeRules = {
-    movementType : "zigzag",
+    movementType : "diagonal",
     frontier : "adjacent ends"  //There are two options: 'close' and 'adjacent ends'
 }
 //We put into one object, stageParamenters, the next objects: legend, cell, universeRules

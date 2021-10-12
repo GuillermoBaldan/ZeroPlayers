@@ -45,6 +45,8 @@ function matrixGenerator(stageParameters, simulationParameters){
     let matrixAux = [];
     let xy;
     matrixAux = cloneArray2D(stageParameters.staticStage);
+    console.log("matrixAux")
+    console.log(matrixAux)
     stageParameters.dynamicElementsArray.forEach( item =>{
         //Modo 'trajectory'
         if (item.walkmode == 'trajectory'){
@@ -53,9 +55,10 @@ function matrixGenerator(stageParameters, simulationParameters){
         matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
         }else{
         //Modo 'autonomous'
-        xy = movement(item.x,item.y, item.walk, stageParameters.universeRules)
+        xy = movement(item.x,item.y, item.walk, stageParameters)
         item.x = xy[0]
         item.y = xy[1]
+        console.log(`item.x: ${item.x}, item.y: ${item.y}`)
         //console.log(`(${xy[0]},${xy[1]})`);
         matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][xy[0]] = item.color;
         }

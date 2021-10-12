@@ -6,9 +6,6 @@ function totalFreedom(dynamicItem_x,dynamicItem_y){
     } else{
         buffer = randomSteps()
         dynamicItem_y = dynamicItem_y + buffer
-        console.log("se hace el else ")
-        console.log("buffer: "+buffer)
-        console.log(`(${dynamicItem_x},${dynamicItem_y})`)
         return [dynamicItem_x,dynamicItem_y]
     }
 }

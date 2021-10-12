@@ -6,7 +6,7 @@ import { simulation } from './zeroPlayers_f_level1.js';
 function oneSimulationStep(stageParameters,simulationParameters){
     // oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
     console.log("----------------------------------")
-    console.log("simulationStep: "+simulationParameters.globalSimulationIndex)
+    console.log("simulationStep: "+(simulationParameters.globalSimulationIndex+1))
     let matrixAux = matrixGenerator(stageParameters,simulationParameters);
     //matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension)
     drawingMatrix(matrixAux,simulationParameters);
