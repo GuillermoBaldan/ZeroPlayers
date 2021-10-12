@@ -18,9 +18,6 @@ function  checkDataCoherence(stageParameters,simulationParameters){
 
 function checkInsideCanvas(stageParameters,simulationParameters){
     let flag = true;
-    console.log("stageParameters:")
-    console.log(stageParameters)
-    console.log("simulationParameters.dynamicElementsArray: "+stageParameters.dynamicElementsArray)
     stageParameters.dynamicElementsArray.forEach(item => {
         if ((item.x > simulationParameters.wideDimension/simulationParameters.squareSide) && (item.y > simulationParameters.wideDimension/simulationParameters.squareSide)){
         flag = false;

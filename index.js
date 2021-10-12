@@ -66,7 +66,7 @@ function loadGlobalSimulationIndex(index){
 simulationParameters.init_output = init(stageParameters,simulationParameters);
 
 document.getElementById("playButton").addEventListener("click", function(){
-    globalSimulationIndex = 0;
+    simulationParameters.globalSimulationIndex = 0;
     simulation(stageParameters,simulationParameters);
     document.getElementById("playButton").disabled = true;
 }, false);

@@ -9,8 +9,6 @@ function oneSimulationStep(stageParameters,simulationParameters){
     console.log("simulationStep: "+simulationParameters.globalSimulationIndex)
     let matrixAux = matrixGenerator(stageParameters,simulationParameters);
     //matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension)
-    console.log("f: oneSimulationStep: simulationParameters")
-    console.log(simulationParameters)
     drawingMatrix(matrixAux,simulationParameters);
     simulationParameters.globalSimulationIndex +=1;
     //loadGlobalSimulationIndex(simulationIndex);
