@@ -26,7 +26,7 @@ function init(stageParameters,simulationParameters){
         //4. Draw canvas
         console.log("matrixAux")
         console.log(matrixAux)
-        drawingMatrix(matrixAux,stageParameters, simulationParameters);
+        drawingMatrix(matrixAux, simulationParameters);
         return [staticStageAux, matrixAux ,canvas[0], canvas[1]];//lienzo = canvas[0];ctx = canvas[1]
     } else {
         console.log("Los datos no son coherentes")
@@ -35,10 +35,10 @@ function init(stageParameters,simulationParameters){
 }
 //simulation(init_output[0],dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
 function simulation(stageParameters,simulationParameters){
-    let simulationIndexAux = 0;
     //1. Hacemos la simulación paso a paso.
-   simulationIndexAux =  oneSimulationStep(stageParameters,simulationParameters)
-   return simulationIndexAux;
+   //simulationParameters.globalSimulationIndex =  oneSimulationStep(stageParameters,simulationParameters)
+   oneSimulationStep(stageParameters,simulationParameters)
+   //return simulationIndexAux;
    }
 
 export { init, simulation }
