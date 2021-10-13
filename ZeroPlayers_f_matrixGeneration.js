@@ -45,8 +45,6 @@ function matrixGenerator(stageParameters, simulationParameters){
     let matrixAux = [];
     let xy;
     matrixAux = cloneArray2D(stageParameters.staticStage);
-    console.log("matrixAux")
-    console.log(matrixAux)
     stageParameters.dynamicElementsArray.forEach( item =>{
         //Modo 'trajectory'
         if (item.walkmode == 'trajectory'){

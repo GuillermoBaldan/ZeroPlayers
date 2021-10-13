@@ -24,6 +24,7 @@ function movement(dynamicItem_x, dynamicItem_y, f_movement, stageParameters){
                 console.log("aux:");
                 console.log(aux);
             }
+            console.log("aux: "+aux)
             aux =changeAdjacentEdges(aux) //Comprobamos si hay bordes       
     }
     return aux;
@@ -35,10 +36,13 @@ function zigzag(dynamicItem_x,dynamicItem_y,f_movement){
 }
 
 function diagonal(dynamicItem_x,dynamicItem_y,f_movement){
-    dynamicItem_x += f_movement();
-    dynamicItem_y += f_movement();
+    let aux1;
+    let aux2;
+    console.log(`f: diagonal: ${dynamicItem_x},${dynamicItem_y}`)
+    aux1 = f_movement(dynamicItem_x,dynamicItem_y);
+    aux2 = f_movement(dynamicItem_x,dynamicItem_y);
     console.log("dynamicItem_x: "+dynamicItem_x)
-    return [dynamicItem_x,dynamicItem_y]
+    return [aux1[0] + aux2[0],aux1[1]+ aux2[1]]
 }
 
 function checkAdjacentEdges(aux){
