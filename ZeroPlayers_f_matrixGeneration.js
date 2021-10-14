@@ -57,7 +57,7 @@ function matrixGenerator(stageParameters, simulationParameters){
         item.x = xy[0]
         item.y = xy[1]
         console.log(`item.x: ${item.x}, item.y: ${item.y}`)
-        //console.log(`(${xy[0]},${xy[1]})`);
+        //Aquí se hace una inversión de coordenadas
         matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][xy[0]] = item.color;
         }
     })
