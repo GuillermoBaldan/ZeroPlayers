@@ -1,7 +1,7 @@
 import {matrixGenerator} from './ZeroPlayers_f_matrixGeneration.js';
 import {drawingMatrix} from './ZeroPlayers_f_canvas.js'
 import {globalSimulationIndex, stopFlag, loadGlobalSimulationIndex} from './index.js'
-import { simulation } from './zeroPlayers_f_level1.js';
+import { simulation } from './ZeroPlayers_f_level1.js';
 
 function oneSimulationStep(stageParameters,simulationParameters){
     // oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)

@@ -38,7 +38,6 @@ function zigzag(dynamicItem_x,dynamicItem_y,f_movement){
 function diagonal(dynamicItem_x,dynamicItem_y,f_movement){
     let aux1;
     let aux2;
-    //console.log(`f: diagonal: ${dynamicItem_x},${dynamicItem_y}`)
     aux1 = f_movement(dynamicItem_x,dynamicItem_y);
     aux2 = f_movement(dynamicItem_x,dynamicItem_y);
     return [aux1[0] - aux2[0],aux1[1] - aux2[1]] //Esto produce el movimiento exponencial
