@@ -1,0 +1,27 @@
+{
+  "name": "zeroplayers",
+  "version": "0.1.0",
+  "description": "An entertainment experiment done in my spare time to play for being like God",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuillermoBaldan/zeroPlayers.git"
+  },
+  "keywords": [
+    "game",
+    "simulator",
+    "zeroplayers"
+  ],
+  "author": "Guillermo Baldán López",
+  "license": "SEE LICENSE IN LICENSE filename file",
+  "bugs": {
+    "url": "https://github.com/GuillermoBaldan/zeroPlayers/issues"
+  },
+  "homepage": "https://github.com/GuillermoBaldan/zeroPlayers#readme",
+  "devDependencies": {
+    "jest": "^27.2.5"
+  }
+}
