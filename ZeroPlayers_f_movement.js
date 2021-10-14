@@ -2,7 +2,7 @@ function movement(dynamicItem_x, dynamicItem_y, f_movement, stageParameters){
     let beforeAux = [dynamicItem_x,dynamicItem_y];
     let aux;
     let flag = false;
-    if(stageParameters.universeRules.frontier == "close"){
+    if(stageParameters.universeRules.frontier == "close"){ //close borders case
       
             
             if (stageParameters.universeRules.movementType == "zigzag"){ //zigzag case
@@ -38,11 +38,10 @@ function zigzag(dynamicItem_x,dynamicItem_y,f_movement){
 function diagonal(dynamicItem_x,dynamicItem_y,f_movement){
     let aux1;
     let aux2;
-    console.log(`f: diagonal: ${dynamicItem_x},${dynamicItem_y}`)
+    //console.log(`f: diagonal: ${dynamicItem_x},${dynamicItem_y}`)
     aux1 = f_movement(dynamicItem_x,dynamicItem_y);
     aux2 = f_movement(dynamicItem_x,dynamicItem_y);
-    console.log("dynamicItem_x: "+dynamicItem_x)
-    return [aux1[0] + aux2[0],aux1[1]+ aux2[1]]
+    return [aux1[0] - aux2[0],aux1[1] - aux2[1]] //Esto produce el movimiento exponencial
 }
 
 function checkAdjacentEdges(aux){

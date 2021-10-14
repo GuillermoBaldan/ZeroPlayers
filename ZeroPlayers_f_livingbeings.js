@@ -1,4 +1,5 @@
 function totalFreedom(dynamicItem_x,dynamicItem_y){
+    console.log("Entramos en totalFreedom")
     let buffer = randomSteps();
     dynamicItem_x = dynamicItem_x + buffer
     if (buffer != 0){
