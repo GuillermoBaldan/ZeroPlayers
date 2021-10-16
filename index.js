@@ -87,4 +87,4 @@ document.getElementById("stopButton").addEventListener("click", function(){
  çThis parameter is only available in Gecko and is mainly useful for the code in add-ons and the browser itself. 
  See Interaction between privileged and non-privileged pages for an example.*/
 
- export {stopFlag, globalSimulationIndex, loadGlobalSimulationIndex}
+ export {stopFlag, globalSimulationIndex, loadGlobalSimulationIndex, simulationParameters}

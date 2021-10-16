@@ -4,7 +4,7 @@
   "description": "An entertainment experiment done in my spare time to play for being like God",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
