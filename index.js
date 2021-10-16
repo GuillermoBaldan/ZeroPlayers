@@ -19,8 +19,8 @@ let cellBehaviourRules = {
 let cell = {
     id     : "cell_1",
     color  : "yellow",
-    x      : 0,
-    y      : 0,
+    x      : 10,
+    y      : 10,
     walkmode : "autonomous",
     trajectory_x : [1,1,1,1,1,1,1],
     trajectory_y : [0,0,0,0,0,0,0],
@@ -52,9 +52,9 @@ let stageParameters = {
 
 let simulationParameters = {
     simulationSteps : 25,
-    timePerStep : 100,
-    wideDimension : 600,
-    heightDimension : 600,
+    timePerStep : 500,
+    wideDimension : 300,
+    heightDimension : 300,
     squareSide : 15,
     lienzo : lienzo,
     ctx : ctx,
