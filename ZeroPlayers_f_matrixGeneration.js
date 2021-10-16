@@ -1,6 +1,6 @@
 import { cloneArray2D } from './ZeroPlayers_f_arraysManipulation.js'
 import {movement} from './ZeroPlayers_f_movement.js'
-import {checkForbiddenPosition} from './ZeroPlayers_f_livingbeings'
+import {checkForbiddenPosition} from './ZeroPlayers_f_livingbeings.js'
 
 function  generateStaticStage(stageParameters,simulationParameters){
     let a;
@@ -63,9 +63,14 @@ function matrixGenerator(stageParameters, simulationParameters){
         item.y = xy[1]
         console.log(`item.x: ${item.x}, item.y: ${item.y}`)
         //Aquí se hace una inversión de coordenadas
-        item.behaviourRules.flagForbiddenPositions.forEach( positionType => {
+        console.log("item.behaviourRules");
+        console.log(item.behaviourRules)
+        console.log("item.behaviourRules.flagForbiddenPositions")
+        item.behaviourRules.forbiddenPositions.forEach( positionType => {
             if(checkForbiddenPosition(stageParameters,simulationParameters, matrixAux, xy, positionType)){
                 flagForbiddenPosition = true;
+            } else{
+                flagForbiddenPosition = false;
             }
             })
         } while (flagForbiddenPosition)
