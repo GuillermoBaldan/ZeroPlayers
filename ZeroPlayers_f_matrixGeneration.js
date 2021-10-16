@@ -1,5 +1,6 @@
 import { cloneArray2D } from './ZeroPlayers_f_arraysManipulation.js'
 import {movement} from './ZeroPlayers_f_movement.js'
+import {checkForbiddenPosition} from './ZeroPlayers_f_livingbeings.js'
 
 function  generateStaticStage(stageParameters,simulationParameters){
     let a;
@@ -42,8 +43,10 @@ function matrixGeneratorInit(stageParameters, simulationParameters){
 
 function matrixGenerator(stageParameters, simulationParameters){
     //let heightDimension = wideDimension;
+    let flagForbiddenPosition = false; //Por defecto no se ha activado la posición prohibida
     let matrixAux = [];
     let xy;
+    let xy_before;
     matrixAux = cloneArray2D(stageParameters.staticStage);
     stageParameters.dynamicElementsArray.forEach( item =>{
         //Modo 'trajectory'
@@ -53,11 +56,24 @@ function matrixGenerator(stageParameters, simulationParameters){
         matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
         }else{
         //Modo 'autonomous'
-        xy = movement(item.x,item.y, item.walk, stageParameters)
+        do {
+        xy_before = [item.x, item.y];
+        xy = movement(xy_before[0],xy_before[1], item.walk, stageParameters)
         item.x = xy[0]
         item.y = xy[1]
         console.log(`item.x: ${item.x}, item.y: ${item.y}`)
         //Aquí se hace una inversión de coordenadas
+        console.log("item.behaviourRules");
+        console.log(item.behaviourRules)
+        console.log("item.behaviourRules.flagForbiddenPositions")
+        item.behaviourRules.forbiddenPositions.forEach( positionType => {
+            if(checkForbiddenPosition(stageParameters,simulationParameters, matrixAux, xy, positionType)){
+                flagForbiddenPosition = true;
+            } else{
+                flagForbiddenPosition = false;
+            }
+            })
+        } while (flagForbiddenPosition)
         matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][xy[0]] = item.color;
         }
     })

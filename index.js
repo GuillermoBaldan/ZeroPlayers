@@ -12,16 +12,20 @@ let legend = {
 
 }
 
+let cellBehaviourRules = {
+    forbiddenPositions : ["water"]
+}
+
 let cell = {
     id     : "cell_1",
     color  : "yellow",
-    x      : 0,
-    y      : 0,
+    x      : 10,
+    y      : 10,
     walkmode : "autonomous",
     trajectory_x : [1,1,1,1,1,1,1],
     trajectory_y : [0,0,0,0,0,0,0],
     walk   : totalFreedom,
-    behaviourRules : []
+    behaviourRules : cellBehaviourRules
 }
 
 let staticStage;
@@ -32,7 +36,7 @@ let stopFlag = false;
 let globalSimulationIndex = 0;
 
 let universeRules = {
-    movementType : "diagonal",
+    movementType : "zigzag",
     frontier : "adjacent ends"  //There are two options: 'close' and 'adjacent ends'
 }
 //We put into one object, stageParamenters, the next objects: legend, cell, universeRules
@@ -48,9 +52,9 @@ let stageParameters = {
 
 let simulationParameters = {
     simulationSteps : 25,
-    timePerStep : 100,
-    wideDimension : 600,
-    heightDimension : 600,
+    timePerStep : 500,
+    wideDimension : 300,
+    heightDimension : 300,
     squareSide : 15,
     lienzo : lienzo,
     ctx : ctx,
