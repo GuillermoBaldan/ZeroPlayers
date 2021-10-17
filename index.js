@@ -28,6 +28,13 @@ let cell = {
     behaviourRules : cellBehaviourRules
 }
 
+class simpleCell {
+    constructor() {
+      this.color = "yellow"
+      this.x = Math.random()*()
+    }
+  }
+
 let staticStage;
 let lienzo;
 let ctx;
