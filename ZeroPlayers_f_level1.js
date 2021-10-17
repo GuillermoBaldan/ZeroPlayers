@@ -24,7 +24,7 @@ function init(stageParameters,simulationParameters){
         drawingMatrix(matrixAux, simulationParameters);
         return [staticStageAux, matrixAux ,canvas[0], canvas[1]];//lienzo = canvas[0];ctx = canvas[1]
     } else {
-        console.log("Los datos no son coherentes")
+        console.log("The data is not consistent")
     }
 
 }
