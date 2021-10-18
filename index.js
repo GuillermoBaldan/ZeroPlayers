@@ -31,7 +31,14 @@ let cell = {
 class simpleCell {
     constructor() {
       this.color = "yellow"
-      this.x = Math.random()*()
+      this.x = Math.floor(Math.random()*(simulationParameters.wideDimension/simulationParameters.squareSide)) //Math.random() * (max - min) + min;
+      this.y = Math.floor(Math.random()*(simulationParameters.heightDimension/simulationParameters.squareSide))
+      this.walkmode = "autonomous"
+      this.trajectory_x = [1,1,1,1,1,1,1]
+      this.trajectory_y = [0,0,0,0,0,0,0]
+      this.walk = totalFreedom
+      this.behaviourRules = cellBehaviourRules
+
     }
   }
 
@@ -52,7 +59,7 @@ let stageParameters = {
     universeRules : universeRules,
     legend : legend,
     livingBeingsCollectionTypes : [cell],
-    dynamicElementsArray : [cell],
+    dynamicElementsArray : [],
     staticStage : []
 
 }
@@ -98,4 +105,4 @@ document.getElementById("stopButton").addEventListener("click", function(){
  çThis parameter is only available in Gecko and is mainly useful for the code in add-ons and the browser itself. 
  See Interaction between privileged and non-privileged pages for an example.*/
 
- export {stopFlag, globalSimulationIndex, loadGlobalSimulationIndex}
+ export {stopFlag, globalSimulationIndex, loadGlobalSimulationIndex, simpleCell}
