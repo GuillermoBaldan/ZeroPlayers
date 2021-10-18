@@ -3,7 +3,8 @@ import {initCanvas, drawingMatrix} from './ZeroPlayers_f_canvas.js'
 import {checkDataCoherence} from './ZeroPlayers_f_dataCoherence.js'
 import {oneSimulationStep} from './ZeroPlayers_f_simulation.js'
 import {stopFlag} from './index.js'
-import {globalSimulationIndex} from './index.js'
+import {globalSimulationIndex, simpleCell} from './index.js'
+
 
 
 function init(stageParameters,simulationParameters){
@@ -19,6 +20,7 @@ function init(stageParameters,simulationParameters){
         //2.staticStage
         stageParameters.staticStage = generateStaticStage(stageParameters,simulationParameters);
         //3.Add dynamic Elements
+        stageParameters. dynamicElementsArray.push(new simpleCell);
         matrixAux = matrixGeneratorInit(stageParameters,simulationParameters);
         //4. Draw canvas
         drawingMatrix(matrixAux, simulationParameters);
