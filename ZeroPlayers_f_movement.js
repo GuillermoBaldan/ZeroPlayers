@@ -1,4 +1,4 @@
-function movement(dynamicItem_x, dynamicItem_y, f_movement, stageParameters){
+function movement(dynamicItem_x, dynamicItem_y, f_movement, stageParameters, simulationParameters){
     let beforeAux = [dynamicItem_x,dynamicItem_y];
     let aux;
     let flag = false;
@@ -10,7 +10,7 @@ function movement(dynamicItem_x, dynamicItem_y, f_movement, stageParameters){
             } else{ //diagonal case
                 aux = diagonal(dynamicItem_x,dynamicItem_y,f_movement)
             }
-            if (checkAdjacentEdges(aux)){ //Comprobamos si hay bordes
+            if (checkAdjacentEdges(aux,simulationParameters)){ //Comprobamos si hay bordes
                 aux = beforeAux;
             }
 
@@ -43,9 +43,11 @@ function diagonal(dynamicItem_x,dynamicItem_y,f_movement){
     return [aux1[0] - aux2[0],aux1[1] - aux2[1]] //Esto produce el movimiento exponencial
 }
 
-function checkAdjacentEdges(aux){
+function checkAdjacentEdges(aux,simulationParameters){
+    let extremeEdge_x = Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide);
+    let extremeEdge_y = Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide);
     //Comprobamos extremo derecho
-    if (aux[0] + 1 > 40){
+    if (aux[0] + 1 > extremeEdge_x) {
         return true;
     }
     //Comprobamos extremo izquierdo
@@ -53,7 +55,7 @@ function checkAdjacentEdges(aux){
         return true;
     }
     //comprobamos extremo superior
-    if (aux[1] + 1 > 40){
+    if (aux[1] + 1 > extremeEdge_y){
         return true;
     }
     //comprobamos extremo inferior
