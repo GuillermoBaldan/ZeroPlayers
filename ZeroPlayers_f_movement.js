@@ -1,3 +1,5 @@
+import { simulation } from "./ZeroPlayers_f_level1.js";
+
 function movement(dynamicItem_x, dynamicItem_y, f_movement, stageParameters, simulationParameters){
     let beforeAux = [dynamicItem_x,dynamicItem_y];
     let aux;
@@ -25,7 +27,7 @@ function movement(dynamicItem_x, dynamicItem_y, f_movement, stageParameters, sim
                 console.log(aux);
             }
             console.log("aux: "+aux)
-            aux =changeAdjacentEdges(aux) //Comprobamos si hay bordes       
+            aux =changeAdjacentEdges(aux, simulationParameters) //Comprobamos si hay bordes       
     }
     return aux;
 }
@@ -66,22 +68,24 @@ function checkAdjacentEdges(aux,simulationParameters){
 
 }
 
-function changeAdjacentEdges(aux){
+function changeAdjacentEdges(aux,simulationParameters){
+    let extremeEdge_x = Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide);
+    let extremeEdge_y = Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide);
     //Cambiamos extremo derecho por extremo izquierdo
-    if (aux[0] + 1 > 40){
+    if (aux[0] + 1 > extremeEdge_x){
         aux[0] = 0;
     }
     //Cambiamos extremo izquierdo por extremo derecho
     if (aux[0] - 1 < -1){
-        aux[0] = 39;
+        aux[0] = extremeEdge_x;
     }
     //comprobamos extremo superior
-    if (aux[1] + 1 > 40){
+    if (aux[1] + 1 > extremeEdge_y){
         aux[1] = 0;
     }
     //comprobamos extremo inferior
     if (aux[1] - 1 < -1){
-        aux[1] = 39;
+        aux[1] = extremeEdge_y;
     }
     return aux;
 }

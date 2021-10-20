@@ -51,7 +51,7 @@ let globalSimulationIndex = 0;
 
 let universeRules = {
     movementType : "zigzag",
-    frontier : "close"  //There are two options: 'close' and 'adjacent ends'
+    frontier : "adjacent ends"  //There are two options: 'close' and 'adjacent ends'
 }
 //We put into one object, stageParamenters, the next objects: legend, cell, universeRules
 
@@ -61,7 +61,6 @@ let stageParameters = {
     livingBeingsCollectionTypes : [cell],
     dynamicElementsArray : [],
     staticStage : []
-
 }
 
 let simulationParameters = {
