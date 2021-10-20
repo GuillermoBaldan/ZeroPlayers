@@ -69,8 +69,10 @@ function checkAdjacentEdges(aux,simulationParameters){
 }
 
 function changeAdjacentEdges(aux,simulationParameters){
-    let extremeEdge_x = Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide);
-    let extremeEdge_y = Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide);
+    let extremeEdge_x = Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide) - 1;
+    let extremeEdge_y = Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide) - 1;
+    console.log(`extremeEdge_x: ${extremeEdge_x}`)
+    console.log(`extremeEdge_y: ${extremeEdge_y}`)
     //Cambiamos extremo derecho por extremo izquierdo
     if (aux[0] + 1 > extremeEdge_x){
         aux[0] = 0;
