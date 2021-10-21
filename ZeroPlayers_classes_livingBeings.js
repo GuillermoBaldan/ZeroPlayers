@@ -18,6 +18,7 @@ class simpleCell {
   class grossCell {
     constructor() {
       this.color = "green"
+      this.walkmode = "static"
       this.x = Math.floor(Math.random()*(simulationParameters.wideDimension/simulationParameters.squareSide)) //Math.random() * (max - min) + min;
       this.y = Math.floor(Math.random()*(simulationParameters.heightDimension/simulationParameters.squareSide))
       this.behaviourRules = cellBehaviourRules

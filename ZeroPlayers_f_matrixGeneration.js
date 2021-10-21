@@ -49,29 +49,34 @@ function matrixGenerator(stageParameters, simulationParameters){
     let xy_before;
     matrixAux = cloneArray2D(stageParameters.staticStage);
     stageParameters.dynamicElementsArray.forEach( item =>{
-        //Modo 'trajectory'
-        if (item.walkmode == 'trajectory'){
-        item.y = item.y+item.trajectory_y[simulationIndex];
-        item.x = item.x+item.trajectory_x[simulationIndex];
-        matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
-        }else{
-        //Modo 'autonomous'
-            xy_before = [item.x, item.y];
-            do {
-            
-            xy = movement(xy_before[0],xy_before[1], item.walk, stageParameters, simulationParameters)
-                item.behaviourRules.forbiddenPositions.forEach( positionType => {
-                if(checkForbiddenPosition(stageParameters,simulationParameters, matrixAux, xy, positionType)){
-                    flagForbiddenPosition = true;
-                } else{
-                    flagForbiddenPosition = false;
+        if (item.walkmode == "static") {
+            matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
+        } else {
+            //Modo 'trajectory'
+            if (item.walkmode == 'trajectory'){
+                item.y = item.y+item.trajectory_y[simulationIndex];
+                item.x = item.x+item.trajectory_x[simulationIndex];
+                matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
+                }else{
+                //Modo 'autonomous'
+                    xy_before = [item.x, item.y];
+                    do {
+                    
+                    xy = movement(xy_before[0],xy_before[1], item.walk, stageParameters, simulationParameters)
+                        item.behaviourRules.forbiddenPositions.forEach( positionType => {
+                        if(checkForbiddenPosition(stageParameters,simulationParameters, matrixAux, xy, positionType)){
+                            flagForbiddenPosition = true;
+                        } else{
+                            flagForbiddenPosition = false;
+                        }
+                        })
+                    } while (flagForbiddenPosition)
+                    item.x = xy[0];
+                    item.y = xy[1];
+                    matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][xy[0]] = item.color;
                 }
-                })
-            } while (flagForbiddenPosition)
-            item.x = xy[0];
-            item.y = xy[1];
-            matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][xy[0]] = item.color;
-         }
+
+        }
     })
     
 

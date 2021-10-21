@@ -3,7 +3,7 @@ import {initCanvas, drawingMatrix} from './ZeroPlayers_f_canvas.js'
 import {checkDataCoherence} from './ZeroPlayers_f_dataCoherence.js'
 import {oneSimulationStep} from './ZeroPlayers_f_simulation.js'
 import {stopFlag} from './index.js'
-import {simpleCell} from './ZeroPlayers_classes_livingBeings.js'
+import {grossCell, simpleCell} from './ZeroPlayers_classes_livingBeings.js'
 
 
 
@@ -24,6 +24,11 @@ function init(stageParameters,simulationParameters){
         for(a=0;a<2;a++){
             stageParameters.dynamicElementsArray.push(new simpleCell);
         }
+
+        for(a=0;a<100;a++){
+            stageParameters.dynamicElementsArray.push(new grossCell);
+        }
+
        matrixAux = matrixGeneratorInit(stageParameters,simulationParameters);
         //4. Draw canvas
         drawingMatrix(matrixAux, simulationParameters);

@@ -7,26 +7,13 @@ import {simpleCell,grossCell} from './ZeroPlayers_classes_livingBeings.js';
 
 
 let legend = { 
-    ground : "brown",
-    water  :  "blue",
-    grass  :  "green"
+    ground : "brown"
+    //water : "blue"
 
 }
 
 let cellBehaviourRules = {
     forbiddenPositions : ["water"]
-}
-
-let cell = {
-    id     : "cell_1",
-    color  : "yellow",
-    x      : 10,
-    y      : 10,
-    walkmode : "autonomous",
-    trajectory_x : [1,1,1,1,1,1,1],
-    trajectory_y : [0,0,0,0,0,0,0],
-    walk   : totalFreedom,
-    behaviourRules : cellBehaviourRules
 }
 
 let staticStage;
@@ -45,7 +32,7 @@ let universeRules = {
 let stageParameters = {
     universeRules : universeRules,
     legend : legend,
-    livingBeingsCollectionTypes : [cell],
+    livingBeingsCollectionTypes : [simpleCell],
     dynamicElementsArray : [],
     staticStage : []
 }
