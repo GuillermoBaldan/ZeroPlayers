@@ -3,7 +3,7 @@ import {initCanvas, drawingMatrix} from './ZeroPlayers_f_canvas.js'
 import {checkDataCoherence} from './ZeroPlayers_f_dataCoherence.js'
 import {oneSimulationStep} from './ZeroPlayers_f_simulation.js'
 import {stopFlag} from './index.js'
-import {globalSimulationIndex, simpleCell} from './index.js'
+import {simpleCell} from './ZeroPlayers_classes_livingBeings.js'
 
 
 
