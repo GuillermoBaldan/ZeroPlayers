@@ -7,6 +7,7 @@ class simpleCell {
       this.color = "yellow"
       this.x = Math.floor(Math.random()*(simulationParameters.wideDimension/simulationParameters.squareSide)) //Math.random() * (max - min) + min;
       this.y = Math.floor(Math.random()*(simulationParameters.heightDimension/simulationParameters.squareSide))
+      this.life = 100
       this.walkmode = "autonomous"
       this.trajectory_x = [1,1,1,1,1,1,1]
       this.trajectory_y = [0,0,0,0,0,0,0]
@@ -21,6 +22,10 @@ class simpleCell {
       this.walkmode = "static"
       this.x = Math.floor(Math.random()*(simulationParameters.wideDimension/simulationParameters.squareSide)) //Math.random() * (max - min) + min;
       this.y = Math.floor(Math.random()*(simulationParameters.heightDimension/simulationParameters.squareSide))
+      this.life = 120
+      this.energy = 100
+      this.lifeConsumption = 5
+      this.energyConsumption = 3
       this.behaviourRules = cellBehaviourRules
     }
   }

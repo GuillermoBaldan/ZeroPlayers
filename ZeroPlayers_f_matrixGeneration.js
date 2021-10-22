@@ -48,6 +48,7 @@ function matrixGenerator(stageParameters, simulationParameters){
     let xy;
     let xy_before;
     matrixAux = cloneArray2D(stageParameters.staticStage);
+    //1. We give movement to dynamic elements
     stageParameters.dynamicElementsArray.forEach( item =>{
         if (item.walkmode == "static") {
             matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
@@ -77,6 +78,13 @@ function matrixGenerator(stageParameters, simulationParameters){
                 }
 
         }
+        //2.We calculate the life points at the end when all the cell processes have been done
+            //Calculamos la energía final de la célula al final del ciclo de simulación.
+            //Si la energía llega a 0, la célula muere aunque tenga muchos puntos de vida.
+            //2.1 Recorremos el array dinamicElementsArray y vamos restando una cantidad de puntos de vida
+            // que depende de cada clase de organismo
+            
+
     })
     
 
