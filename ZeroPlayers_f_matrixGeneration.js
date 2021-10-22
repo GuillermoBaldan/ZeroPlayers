@@ -47,6 +47,7 @@ function matrixGenerator(stageParameters, simulationParameters){
     let matrixAux = [];
     let xy;
     let xy_before;
+    let auxIndex = 0;
     matrixAux = cloneArray2D(stageParameters.staticStage);
     //1. We give movement to dynamic elements
     stageParameters.dynamicElementsArray.forEach( item =>{
@@ -78,15 +79,29 @@ function matrixGenerator(stageParameters, simulationParameters){
                 }
 
         }
-        //2.We calculate the life points at the end when all the cell processes have been done
-            //Calculamos la energía final de la célula al final del ciclo de simulación.
-            //Si la energía llega a 0, la célula muere aunque tenga muchos puntos de vida.
-            //2.1 Recorremos el array dinamicElementsArray y vamos restando una cantidad de puntos de vida
-            // que depende de cada clase de organismo
-            
-
     })
-    
+    //2.We calculate the life points at the end when all the cell processes have been done
+    /* stageParameters.dynamicElementsArray.forEach( item => {
+        item.energy -= item.energyConsumption;
+        
+        if (item.energy <= 0){ //Borramos la instancia que ha muerto de dynamicElementsArray
+            stageParameters.dynamicElementsArray.splice(auxIndex,1)
+            auxIndex -= 1;
+        }
+        auxIndex += 1;
+    })
+    auxIndex = 0; */
+    for(auxIndex = 0;auxIndex<stageParameters.dynamicElementsArray.length;auxIndex++){
+        stageParameters.dynamicElementsArray[auxIndex].energy -= Math.round(Math.random()*stageParameters.dynamicElementsArray[auxIndex].energyConsumption);
+        if (stageParameters.dynamicElementsArray[auxIndex].energy <= 0){ //Borramos la instancia que ha muerto de dynamicElementsArray
+            stageParameters.dynamicElementsArray.splice(auxIndex,1)
+            auxIndex -= 1;
+        }
+    }
+        //Calculamos la energía final de la célula al final del ciclo de simulación.
+        //Si la energía llega a 0, la célula muere aunque tenga muchos puntos de vida.
+        //2.1 Recorremos el array dinamicElementsArray y vamos restando una cantidad de puntos de vida
+        // que depende de cada clase de organismo    
 
     
     return matrixAux;

@@ -25,7 +25,7 @@ class simpleCell {
       this.life = 120
       this.energy = 100
       this.lifeConsumption = 5
-      this.energyConsumption = 3
+      this.energyConsumption = 25
       this.behaviourRules = cellBehaviourRules
     }
   }
