@@ -1,6 +1,6 @@
 import { cloneArray2D } from './ZeroPlayers_f_arraysManipulation.js'
 import {movement} from './ZeroPlayers_f_movement.js'
-import {checkForbiddenPosition} from './ZeroPlayers_f_livingbeings.js'
+import {checkForbiddenPosition, preyDetection} from './ZeroPlayers_f_livingbeings.js'
 
 function  generateStaticStage(stageParameters,simulationParameters){
     let a;
@@ -48,6 +48,7 @@ function matrixGenerator(stageParameters, simulationParameters){
     let xy;
     let xy_before;
     let auxIndex = 0;
+    let preyCoordinates;
     matrixAux = cloneArray2D(stageParameters.staticStage);
     //1. We give movement to dynamic elements
     stageParameters.dynamicElementsArray.forEach( item =>{
@@ -80,7 +81,20 @@ function matrixGenerator(stageParameters, simulationParameters){
 
         }
     })
-    //2.We calculate the life points at the end when all the cell processes have been done
+    //2 . Feed Function
+    //2.1 Se recorre el array
+    stageParameters.dynamicElementsArray.forEach(item => {
+    //2.1.1 se detecta la coordenada de la presa
+    preyCoordinates = preyDetection(item, stageParameters)
+    console.log(`preyCoordinates: ${preyCoordinates}`)
+    })
+    
+    
+    //2.1.2 Se produce la asignación de energía correspondiente de la presa al depredador
+    
+    //2.1.3 Se elimina la presa del array dinamicElementsArray
+    
+    //3 .We calculate the life points at the end when all the cell processes have been done
    //Calculamos la energía final de la célula al final del ciclo de simulación.
         //Si la energía llega a 0, la célula muere aunque tenga muchos puntos de vida.
     for(auxIndex = 0;auxIndex<stageParameters.dynamicElementsArray.length;auxIndex++){

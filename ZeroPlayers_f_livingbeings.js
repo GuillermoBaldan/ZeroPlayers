@@ -1,3 +1,5 @@
+
+
 function totalFreedom(dynamicItem_x,dynamicItem_y){
     console.log("Entramos en totalFreedom")
     let buffer = randomSteps();
@@ -56,4 +58,39 @@ if (matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationP
 
 }
 
-export {totalFreedom, left, right, up, down, checkForbiddenPosition}
+function preyDetection(item, stageParameters){
+    //Asignamos los valores de las celdas coolindates
+    let predator_x = item.x;
+    let predator_y = item.y;
+    let aux_1 = [predator_x, predator_y + 1] //En principio esto no funciona para el modo "adjacent ends"
+    let aux_2 = [predator_x + 1, predator_y + 1]
+    let aux_3 = [predator_x +1, predator_y]
+    let aux_4 = [predator_x + 1, predator_y - 1]
+    let aux_5 = [predator_x, predator_y - 1]
+    let aux_6 = [predator_x - 1, predator_y -1]
+    let aux_7 = [predator_x - 1, predator_y]
+    let aux_8 = [predator_x - 1, predator_y + 1]
+    let auxArray = [aux_1, aux_2, aux_3, aux_4, aux_5, aux_6, aux_7, aux_8];
+    let preyArray;
+    //Recogemos en un array todos los elementos presa
+    stageParameters.dynamicElementsArray.forEach( item2 => {
+        item.preyClasses.forEach( item3 => {
+            if (typeof(item2) == item3){
+                console.log("typeof(item2)")
+                console.log(typeof(item2))
+                preyArray.push(item2);
+            }
+        })
+    })
+    //comprobamos si las coordenadas de algún elemento presa coinciden con las coordenadas colindantes
+    auxArray.forEach( item4 => {
+        preyArray.forEach( item5 => {
+            if ((item4[0] == item5.x) && (item4[1] == item6.y)){
+                return [item5.x, item5.y]
+            }
+        })
+      
+    })
+}
+
+export {totalFreedom, left, right, up, down, checkForbiddenPosition, preyDetection}
