@@ -22,10 +22,10 @@ class simpleCell {
       this.walkmode = "static"
       this.x = Math.floor(Math.random()*(simulationParameters.wideDimension/simulationParameters.squareSide)) //Math.random() * (max - min) + min;
       this.y = Math.floor(Math.random()*(simulationParameters.heightDimension/simulationParameters.squareSide))
-      this.life = 120
+      this.life = 100
       this.energy = 100
       this.lifeConsumption = 5
-      this.energyConsumption = 25
+      this.energyConsumption = 10
       this.behaviourRules = cellBehaviourRules
     }
   }
