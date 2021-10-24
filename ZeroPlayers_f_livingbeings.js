@@ -49,7 +49,6 @@ forbiddenColor = stageParameters.legend[positionType];
 //2. Comprobamos si la posición xy corresponde con el color prohibido y si es así devolvemos true sino false
 console.log("f: checkForbiddenPosition")
 console.log(`xy: (${xy[0]},${xy[1]})`)
-console.log(`matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][xy[0]]: ${matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][xy[0]]}`)
 if (matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][xy[0]] == forbiddenColor){
     return true;
 }else{
@@ -71,15 +70,11 @@ function preyDetection(item, stageParameters){
     let aux_7 = [predator_x - 1, predator_y]
     let aux_8 = [predator_x - 1, predator_y + 1]
     let auxArray = [aux_1, aux_2, aux_3, aux_4, aux_5, aux_6, aux_7, aux_8];
-    let preyArray;
+    let preyArray = [];
     //Recogemos en un array todos los elementos presa
     stageParameters.dynamicElementsArray.forEach( item2 => {
-            console.log("item.preyClasses[0]")
-            console.log(item.preyClasses)
             item.preyClasses.forEach( item3 => {
-            if (item2.constructor.name == item3){
-                console.log("typeof(item2)")
-                console.log(typeof(item2))
+            if (item2.constructor.name == item3.name){
                 preyArray.push(item2);
             }
         })
@@ -87,7 +82,8 @@ function preyDetection(item, stageParameters){
     //comprobamos si las coordenadas de algún elemento presa coinciden con las coordenadas colindantes
     auxArray.forEach( item4 => {
         preyArray.forEach( item5 => {
-            if ((item4[0] == item5.x) && (item4[1] == item6.y)){
+            if ((item4[0] == item5.x) && (item4[1] == item5.y)){
+                console.log("Presa al lado")
                 return [item5.x, item5.y]
             }
         })
