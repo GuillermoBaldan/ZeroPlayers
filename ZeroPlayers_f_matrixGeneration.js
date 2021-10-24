@@ -85,8 +85,9 @@ function matrixGenerator(stageParameters, simulationParameters){
     //2.1 Se recorre el array
     stageParameters.dynamicElementsArray.forEach(item => {
     //2.1.1 se detecta la coordenada de la presa
-    preyCoordinates = preyDetection(item, stageParameters)
-    console.log(`preyCoordinates: ${preyCoordinates}`)
+       if (!(item.preyClasses.length == 0)){
+            preyCoordinates = preyDetection(item, stageParameters)
+        }    
     })
     
     

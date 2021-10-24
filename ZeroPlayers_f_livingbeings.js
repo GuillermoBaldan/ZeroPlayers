@@ -74,8 +74,10 @@ function preyDetection(item, stageParameters){
     let preyArray;
     //Recogemos en un array todos los elementos presa
     stageParameters.dynamicElementsArray.forEach( item2 => {
-        item.preyClasses.forEach( item3 => {
-            if (typeof(item2) == item3){
+            console.log("item.preyClasses[0]")
+            console.log(item.preyClasses)
+            item.preyClasses.forEach( item3 => {
+            if (item2.constructor.name == item3){
                 console.log("typeof(item2)")
                 console.log(typeof(item2))
                 preyArray.push(item2);
