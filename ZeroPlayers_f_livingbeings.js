@@ -47,7 +47,6 @@ let forbiddenColor;
 //1. Codificamos positionType en un color, porque a cada positionType le corresponde un color
 forbiddenColor = stageParameters.legend[positionType];
 //2. Comprobamos si la posición xy corresponde con el color prohibido y si es así devolvemos true sino false
-console.log("f: checkForbiddenPosition")
 console.log(`xy: (${xy[0]},${xy[1]})`)
 if (matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][xy[0]] == forbiddenColor){
     return true;
@@ -83,12 +82,28 @@ function preyDetection(item, stageParameters){
     auxArray.forEach( item4 => {
         preyArray.forEach( item5 => {
             if ((item4[0] == item5.x) && (item4[1] == item5.y)){
-                console.log("Presa al lado")
-                return [item5.x, item5.y]
+                return [item5.x, item5.y, item5.name]
             }
         })
       
     })
 }
 
-export {totalFreedom, left, right, up, down, checkForbiddenPosition, preyDetection}
+function preySelectionAndRemove(preyCoordinates, stageParameters){
+        let a;
+        console.log(stageParameters)
+        console.log("Se mete en preySelectionAndRemove")
+        console.log(stageParameters.dynamicElementsArray.lenght)
+        for(a=0;a<stageParameters.dynamicElementsArray.lenght;a++){
+            console.log("preyCoordinates[2]")
+            console.log(preyCoordinates[2])
+            if (preyCoordinates[2] == item.name){
+                console.log("Se mete en el if de preySelection...")
+                if (preyCoordinates[0] == item.x && preyCoordinates[1] == item.y){
+                    stageParameters.dynamicElementsArray.splice(a,1)
+                }
+            }
+        }
+     }
+
+export {totalFreedom, left, right, up, down, checkForbiddenPosition, preyDetection, preySelectionAndRemove}
