@@ -12,7 +12,7 @@ class simpleCell {
       this.trajectory_x = [1,1,1,1,1,1,1]
       this.trajectory_y = [0,0,0,0,0,0,0]
       this.walk = totalFreedom
-      this.life = 100
+      this.life = 5000
       this.energy = 100
       this.lifeConsumption = 5
       this.energyConsumption = 10

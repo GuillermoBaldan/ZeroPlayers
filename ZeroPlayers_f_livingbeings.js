@@ -73,7 +73,6 @@ function preyDetection(item, stageParameters){
     stageParameters.dynamicElementsArray.forEach( item2 => {
             item.preyClasses.forEach( item3 => {
             if (item2.constructor.name == item3.name){
-                console.log("preyArray.push(item2")
                 preyArray.push(item2);
             }
         })
@@ -82,9 +81,6 @@ function preyDetection(item, stageParameters){
     auxArray.forEach( item4 => {
         preyArray.forEach( item5 => {
             if ((item4[0] == item5.x) && (item4[1] == item5.y)){
-                console.log("Se mete en el if item4[0] == item5.x ...")
-                console.log(`item5.x: ${item5.x}`)
-                console.log([item5.x, item5.y])
                 preyCoordinates = [item5.x, item5.y];
             }
         })
@@ -93,37 +89,22 @@ function preyDetection(item, stageParameters){
     return preyCoordinates;
 }
 
-function preySelectionAndRemove(preyCoordinates, stageParameters){
+function preySelectionAndRemove(item, preyCoordinates, stageParameters){
     let a;
     let element;
-    console.log("Se mete en preySelectionAndRemove")
-    console.log(`preyCoordinates[0]: ${preyCoordinates[0]}, preyCoordinates[1]: ${preyCoordinates[1]}`)
-    console.log("dynamicElementsArray")
-    console.log(stageParameters.dynamicElementsArray.length)
     for(a=0;a<stageParameters.dynamicElementsArray.length;a++){
         element = stageParameters.dynamicElementsArray[a];
-        console.log(`element.x: ${element.x}`)
         if (element.x == preyCoordinates[0]){
-            console.log("Se mete en el primer if")
             if (element.y == preyCoordinates[1]){
+                //Procedemos a hacer la transferencia de energía
+                item.energy += element.energy
+                console.log(`item.energy: ${item.energy}`)
+                //Procedemos a eliminar la presa, que ha sido absorvida, de dynamicElementsArray
                 stageParameters.dynamicElementsArray.splice(a,1)
             }
         }
     }
-    /*     let a;
-        console.log(stageParameters)
-        console.log("Se mete en preySelectionAndRemove")
-        console.log(stageParameters.dynamicElementsArray.lenght)    
-        for(a=0;a<stageParameters.dynamicElementsArray.lenght;a++){
-            console.log("preyCoordinates[2]")
-            console.log(preyCoordinates[2])
-            if (preyCoordinates[2].name == item.name){ //?
-                console.log("Se mete en el if de preySelection...")
-                if (preyCoordinates[0] == item.x && preyCoordinates[1] == item.y){
-                    stageParameters.dynamicElementsArray.splice(a,1)
-                }
-            }
-        } */
+   
 }
 
 export {totalFreedom, left, right, up, down, checkForbiddenPosition, preyDetection, preySelectionAndRemove}

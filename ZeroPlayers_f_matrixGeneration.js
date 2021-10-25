@@ -88,11 +88,8 @@ function matrixGenerator(stageParameters, simulationParameters){
     //2.1.1 se detecta la coordenada de la presa
        if (!(item.preyClasses.length == 0)){
             preyCoordinates = preyDetection(item, stageParameters)
-            console.log("preyCoordinates")
-            console.log(preyCoordinates)
             if (preyCoordinates !== undefined){
-                console.log("preyCoordinates !== undefined")
-                preySelectionAndRemove(preyCoordinates, stageParameters)
+                preySelectionAndRemove(item, preyCoordinates, stageParameters)
             }
             
         }    
