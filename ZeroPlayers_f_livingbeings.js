@@ -93,12 +93,16 @@ function preyDetection(item, stageParameters){
     return preyCoordinates;
 }
 
-function preySelectionAndRemove(item, preyCoordinates, stageParameters){
+function preySelectionAndRemove(preyCoordinates, stageParameters){
     let a;
+    let element;
     console.log("Se mete en preySelectionAndRemove")
     console.log(`preyCoordinates[0]: ${preyCoordinates[0]}, preyCoordinates[1]: ${preyCoordinates[1]}`)
-    for(a=0;a<stageParameters.dynamicElementsArray.lenght;a++){
+    console.log("dynamicElementsArray")
+    console.log(stageParameters.dynamicElementsArray.length)
+    for(a=0;a<stageParameters.dynamicElementsArray.length;a++){
         element = stageParameters.dynamicElementsArray[a];
+        console.log(`element.x: ${element.x}`)
         if (element.x == preyCoordinates[0]){
             console.log("Se mete en el primer if")
             if (element.y == preyCoordinates[1]){

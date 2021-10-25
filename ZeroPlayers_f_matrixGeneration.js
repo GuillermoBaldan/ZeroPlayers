@@ -92,7 +92,7 @@ function matrixGenerator(stageParameters, simulationParameters){
             console.log(preyCoordinates)
             if (preyCoordinates !== undefined){
                 console.log("preyCoordinates !== undefined")
-                preySelectionAndRemove(item, preyCoordinates, stageParameters)
+                preySelectionAndRemove(preyCoordinates, stageParameters)
             }
             
         }    

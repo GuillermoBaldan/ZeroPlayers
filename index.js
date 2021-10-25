@@ -39,7 +39,7 @@ let stageParameters = {
 
 let simulationParameters = {
     simulationSteps : 15,
-    timePerStep : 700,
+    timePerStep : 350,
     wideDimension : 300,
     heightDimension : 300,
     squareSide : 15,
