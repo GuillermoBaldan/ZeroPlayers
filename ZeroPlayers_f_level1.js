@@ -21,7 +21,7 @@ function init(stageParameters,simulationParameters){
         //2.staticStage
         stageParameters.staticStage = generateStaticStage(stageParameters,simulationParameters);
         //3.Add dynamic Elements
-        for(a=0;a<7;a++){
+        for(a=0;a<20;a++){
             stageParameters.dynamicElementsArray.push(new grossCell);
         }
 

@@ -20,13 +20,11 @@ function movement(dynamicItem_x, dynamicItem_y, f_movement, stageParameters, sim
             if (stageParameters.universeRules.movementType == "zigzag"){ //zigzag case
                 aux = zigzag(dynamicItem_x,dynamicItem_y,f_movement)
             } else{ //diagonal case
-                console.log("hacemos el diagonal case")
-                console.log(`dynamicItem_x: ${dynamicItem_x}`)
+                
                 aux = diagonal(dynamicItem_x,dynamicItem_y,f_movement)
-                console.log("aux:");
-                console.log(aux);
+                
             }
-            console.log("aux: "+aux)
+           
             aux =changeAdjacentEdges(aux, simulationParameters) //Comprobamos si hay bordes       
     }
     return aux;
@@ -71,8 +69,6 @@ function checkAdjacentEdges(aux,simulationParameters){
 function changeAdjacentEdges(aux,simulationParameters){
     let extremeEdge_x = Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide) - 1;
     let extremeEdge_y = Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide) - 1;
-    console.log(`extremeEdge_x: ${extremeEdge_x}`)
-    console.log(`extremeEdge_y: ${extremeEdge_y}`)
     //Cambiamos extremo derecho por extremo izquierdo
     if (aux[0] + 1 > extremeEdge_x){
         aux[0] = 0;

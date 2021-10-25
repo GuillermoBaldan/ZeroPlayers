@@ -70,8 +70,7 @@ document.getElementById("stopButton").addEventListener("click", function(){
         stopFlag = false;
         document.getElementById("stopButton").innerHTML = "Stop Simulation";
         simulation(stageParameters, simulationParameters)
-        console.log("stopFlag: "+stopFlag)
-    }
+     }
 }, false);
 /*If true, the listener receives synthetic events dispatched by web content
  (the default is false for chrome and true for regular web pages). 
