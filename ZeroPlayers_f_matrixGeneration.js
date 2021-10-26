@@ -32,8 +32,8 @@ function matrixGeneratorInit(stageParameters, simulationParameters){
     let b;
     let matrixAux = [];
     matrixAux = cloneArray2D(stageParameters.staticStage);
-    //Caso Inicial
-     stageParameters.dynamicElementsArray.forEach( item =>{ //Se dibujan los elementos vivos o dinámicos
+    //Initial case
+     stageParameters.dynamicElementsArray.forEach( item =>{ //Live or dynamic elements are drawn
         matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
         
     })
@@ -56,13 +56,13 @@ function matrixGenerator(stageParameters, simulationParameters){
         if (item.walkmode == "static") {
             matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
         } else {
-            //Modo 'trajectory'
+            //Mode 'trajectory'
             if (item.walkmode == 'trajectory'){
                 item.y = item.y+item.trajectory_y[simulationIndex];
                 item.x = item.x+item.trajectory_x[simulationIndex];
                 matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
                 }else{
-                //Modo 'autonomous'
+                //Mode 'autonomous'
                     xy_before = [item.x, item.y];
                     do {
                     
@@ -83,9 +83,9 @@ function matrixGenerator(stageParameters, simulationParameters){
         }
     })
     //2 . Feed Function
-    //2.1 Se recorre el array
+    //2.1 The array is traversed
     stageParameters.dynamicElementsArray.forEach(item => {
-    //2.1.1 se detecta la coordenada de la presa
+    //2.1.1 the coordinate of the prey is detected
        if (!(item.preyClasses.length == 0)){
             preyCoordinates = preyDetection(item, stageParameters)
             if (preyCoordinates !== undefined){
@@ -94,26 +94,19 @@ function matrixGenerator(stageParameters, simulationParameters){
             
         }    
     })  
-    //Se selecciona la presa en dynamicElementArray dando las coordenadas
     
-    //2.1.2 Se produce la asignación de energía correspondiente de la presa al depredador
-    
-    //2.1.3 Se elimina la presa del array dinamicElementsArray
-    //3 .We calculate the life points at the end when all the cell processes have been done
-   //Calculamos la energía final de la célula al final del ciclo de simulación.
-        //Si la energía llega a 0, la célula muere aunque tenga muchos puntos de vida.
     for(auxIndex = 0;auxIndex<stageParameters.dynamicElementsArray.length;auxIndex++){
         stageParameters.dynamicElementsArray[auxIndex].energy -= Math.round(Math.random()*stageParameters.dynamicElementsArray[auxIndex].energyConsumption);
-        if (stageParameters.dynamicElementsArray[auxIndex].energy <= 0){ //Borramos la instancia que ha muerto de dynamicElementsArray
+        if (stageParameters.dynamicElementsArray[auxIndex].energy <= 0){ //The instance that has died of dynamicElementsArray is deleted
             stageParameters.dynamicElementsArray.splice(auxIndex,1)
             auxIndex -= 1;
         }
     }
-    //2.1 Recorremos el array dinamicElementsArray y vamos restando una cantidad de puntos de vida
-    // que depende de cada clase de organismo    
+    //2.1 The dinamicElementsArray array is traversed and we are subtracting a number of life points
+    // that depends on each kind of organism  
     for(auxIndex = 0;auxIndex<stageParameters.dynamicElementsArray.length;auxIndex++){
         stageParameters.dynamicElementsArray[auxIndex].life -= Math.round(Math.random()*stageParameters.dynamicElementsArray[auxIndex].lifeConsumption);
-        if (stageParameters.dynamicElementsArray[auxIndex].life <= 0){ //Borramos la instancia que ha muerto de dynamicElementsArray
+        if (stageParameters.dynamicElementsArray[auxIndex].life <= 0){ //The instance that has died of dynamicElementsArray is deleted
             stageParameters.dynamicElementsArray.splice(auxIndex,1)
             auxIndex -= 1;
         }
