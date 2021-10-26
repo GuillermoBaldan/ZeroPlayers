@@ -21,13 +21,19 @@ function init(stageParameters,simulationParameters){
         //2.staticStage
         stageParameters.staticStage = generateStaticStage(stageParameters,simulationParameters);
         //3.Add dynamic Elements
+        stageParameters.livingBeingsCollection.forEach( item => {
+            for(a=0;a<item.number;a++){
+                stageParameters.dynamicElementsArray.push(new item.type);   
+            }
+        });
+        /* 
         for(a=0;a<20;a++){
             stageParameters.dynamicElementsArray.push(new grossCell);
         }
 
         for(a=0;a<2;a++){
             stageParameters.dynamicElementsArray.push(new simpleCell);
-        }
+        } */
         matrixAux = matrixGeneratorInit(stageParameters,simulationParameters);
         //4. Draw canvas
         drawingMatrix(matrixAux, simulationParameters);

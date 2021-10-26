@@ -32,7 +32,11 @@ let universeRules = {
 let stageParameters = {
     universeRules : universeRules,
     legend : legend,
-    livingBeingsCollectionTypes : [grossCell, simpleCell],
+    livingBeingsCollection : [{ 
+        type : grossCell,
+         number : 100}, 
+         {type : simpleCell, 
+        number: 2}],
     dynamicElementsArray : [],
     staticStage : [],
     universeEnergy: 50000
