@@ -66,9 +66,14 @@ function preyDetection(item, stageParameters){
     let aux_6 = [predator_x - 1, predator_y -1]
     let aux_7 = [predator_x - 1, predator_y]
     let aux_8 = [predator_x - 1, predator_y + 1]
-    let auxArray = [aux_1, aux_2, aux_3, aux_4, aux_5, aux_6, aux_7, aux_8];
+    let auxArray;
     let preyArray = [];
     let preyCoordinates;
+    if (stageParameters.movementType == "diagonal"){
+        auxArray =  [aux_1, aux_2, aux_3, aux_4, aux_5, aux_6, aux_7, aux_8]
+    } else {
+        auxArray = [aux_1,aux_3,aux_5,aux_7]
+    }
     //Recogemos en un array todos los elementos presa
     stageParameters.dynamicElementsArray.forEach( item2 => {
             item.preyClasses.forEach( item3 => {
