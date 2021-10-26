@@ -13,6 +13,7 @@ class simpleCell {
       this.trajectory_y = [0,0,0,0,0,0,0]
       this.walk = totalFreedom
       this.life = 5000
+      this.maxEnergy = 100
       this.energy = 100
       this.lifeConsumption = 5
       this.energyConsumption = 10
@@ -28,6 +29,7 @@ class simpleCell {
       this.x = Math.floor(Math.random()*(simulationParameters.wideDimension/simulationParameters.squareSide)) //Math.random() * (max - min) + min;
       this.y = Math.floor(Math.random()*(simulationParameters.heightDimension/simulationParameters.squareSide))
       this.life = 100
+      this.maxEnergy = 100
       this.energy = 100
       this.lifeConsumption = 5
       this.energyConsumption = 10

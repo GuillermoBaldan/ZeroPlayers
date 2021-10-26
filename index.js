@@ -34,7 +34,8 @@ let stageParameters = {
     legend : legend,
     livingBeingsCollectionTypes : [grossCell, simpleCell],
     dynamicElementsArray : [],
-    staticStage : []
+    staticStage : [],
+    universeEnergy: 50000
 }
 
 let simulationParameters = {

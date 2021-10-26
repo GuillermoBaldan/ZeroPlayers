@@ -1,4 +1,4 @@
-
+import {energy2Universe} from './ZeroPlayers_f_universe.js';
 
 function totalFreedom(dynamicItem_x,dynamicItem_y){
     let buffer = randomSteps();
@@ -98,6 +98,10 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters){
             if (element.y == preyCoordinates[1]){
                 //Procedemos a hacer la transferencia de energía
                 item.energy += element.energy
+                if (item.energy > item.maxEnergy){
+                    energy2Universe(item.maxEnergy-item.energy,stageParameters)
+                    item.energy = item.maxEnergy
+                }
                 console.log(`item.energy: ${item.energy}`)
                 //Procedemos a eliminar la presa, que ha sido absorvida, de dynamicElementsArray
                 stageParameters.dynamicElementsArray.splice(a,1)
