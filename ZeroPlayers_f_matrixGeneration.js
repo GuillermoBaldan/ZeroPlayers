@@ -1,7 +1,7 @@
 import { cloneArray2D } from './ZeroPlayers_f_arraysManipulation.js'
 import {movement} from './ZeroPlayers_f_movement.js'
 import {checkForbiddenPosition, preyDetection, preySelectionAndRemove} from './ZeroPlayers_f_livingbeings.js'
-import { energy2Universe } from './ZeroPlayers_f_universe.js';
+import { energy2Universe, energy2dynamicElements } from './ZeroPlayers_f_universe.js';
 
 function  generateStaticStage(stageParameters,simulationParameters){
     let a;
@@ -100,7 +100,7 @@ function matrixGenerator(stageParameters, simulationParameters){
     for(auxIndex = 0;auxIndex<stageParameters.dynamicElementsArray.length;auxIndex++){
         energySustraction = Math.round(Math.random()*stageParameters.dynamicElementsArray[auxIndex].energyConsumption)
         stageParameters.dynamicElementsArray[auxIndex].energy -= energySustraction;
-        energy2Universe(energySustraction,stageParameters); //Physical principle of energy conservation, the energy it is returned to the universe
+        energy2Universe(energySustraction,stageParameters); //Physical principle of energy conservation, the energy it is returned to the 
         if (stageParameters.dynamicElementsArray[auxIndex].energy <= 0){ //The instance that has died of dynamicElementsArray is deleted
             stageParameters.dynamicElementsArray.splice(auxIndex,1)
             auxIndex -= 1;

@@ -2,8 +2,9 @@ import {generateStaticStage, matrixGeneratorInit} from './ZeroPlayers_f_matrixGe
 import {initCanvas, drawingMatrix} from './ZeroPlayers_f_canvas.js'
 import {checkDataCoherence} from './ZeroPlayers_f_dataCoherence.js'
 import {oneSimulationStep} from './ZeroPlayers_f_simulation.js'
-import {stopFlag} from './index.js'
+import {stopFlag} from './index.js' 
 import {grossCell, simpleCell} from './ZeroPlayers_classes_livingBeings.js'
+import {energy2dynamicElements} from './ZeroPlayers_f_universe.js'
 
 
 
@@ -23,17 +24,10 @@ function init(stageParameters,simulationParameters){
         //3.Add dynamic Elements
         stageParameters.livingBeingsCollection.forEach( item => {
             for(a=0;a<item.number;a++){
-                stageParameters.dynamicElementsArray.push(new item.type);   
+                stageParameters.dynamicElementsArray.push(new item.type);
+                energy2dynamicElements(stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length-1], stageParameters);   
             }
         });
-        /* 
-        for(a=0;a<20;a++){
-            stageParameters.dynamicElementsArray.push(new grossCell);
-        }
-
-        for(a=0;a<2;a++){
-            stageParameters.dynamicElementsArray.push(new simpleCell);
-        } */
         matrixAux = matrixGeneratorInit(stageParameters,simulationParameters);
         //4. Draw canvas
         drawingMatrix(matrixAux, simulationParameters);
