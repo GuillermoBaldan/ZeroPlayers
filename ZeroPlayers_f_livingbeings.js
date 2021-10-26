@@ -43,9 +43,9 @@ function randomSteps(){
 
 function checkForbiddenPosition(stageParameters, simulationParameters, matrixAux, xy, positionType){ //Position type is a forbiddenPosition like water
 let forbiddenColor;
-//1. Codificamos positionType en un color, porque a cada positionType le corresponde un color
+//1. We encode positionType in a color, because each positionType corresponds to a color
 forbiddenColor = stageParameters.legend[positionType];
-//2. Comprobamos si la posición xy corresponde con el color prohibido y si es así devolvemos true sino false
+//2. It is checked if the xy position corresponds to the prohibited color and if so, we return true otherwise, false
 if (matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][xy[0]] == forbiddenColor){
     return true;
 }else{
@@ -55,10 +55,10 @@ if (matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationP
 }
 
 function preyDetection(item, stageParameters){
-    //Asignamos los valores de las celdas coolindates
+    //We assign the values of the coolindates cells
     let predator_x = item.x;
     let predator_y = item.y;
-    let aux_1 = [predator_x, predator_y + 1] //En principio esto no funciona para el modo "adjacent ends"
+    let aux_1 = [predator_x, predator_y + 1] //In principle this does not work for "adjacent ends" mode
     let aux_2 = [predator_x + 1, predator_y + 1]
     let aux_3 = [predator_x +1, predator_y]
     let aux_4 = [predator_x + 1, predator_y - 1]
@@ -74,7 +74,7 @@ function preyDetection(item, stageParameters){
     } else {
         auxArray = [aux_1,aux_3,aux_5,aux_7]
     }
-    //Recogemos en un array todos los elementos presa
+    //We collect all the prey elements in an array
     stageParameters.dynamicElementsArray.forEach( item2 => {
             item.preyClasses.forEach( item3 => {
             if (item2.constructor.name == item3.name){
@@ -82,7 +82,7 @@ function preyDetection(item, stageParameters){
             }
         })
     })
-    //comprobamos si las coordenadas de algún elemento presa coinciden con las coordenadas colindantes
+    //It is checked if the coordinates of any prey element coincide with the neighboring coordinates
     auxArray.forEach( item4 => {
         preyArray.forEach( item5 => {
             if ((item4[0] == item5.x) && (item4[1] == item5.y)){
@@ -101,14 +101,14 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters){
         element = stageParameters.dynamicElementsArray[a];
         if (element.x == preyCoordinates[0]){
             if (element.y == preyCoordinates[1]){
-                //Procedemos a hacer la transferencia de energía
+                //It proceeds to make the transfer of energy to the universe
                 item.energy += element.energy
-                if (item.energy > item.maxEnergy){
+                if (item.energy > item.maxEnergy){ //The energy of a living being can´t be greather than its maximum level
                     energy2Universe(item.maxEnergy-item.energy,stageParameters)
                     item.energy = item.maxEnergy
                 }
                 console.log(`item.energy: ${item.energy}`)
-                //Procedemos a eliminar la presa, que ha sido absorvida, de dynamicElementsArray
+                //It proceeds to remove the prey, which has been absorbed, from dynamicElementsArray
                 stageParameters.dynamicElementsArray.splice(a,1)
             }
         }
