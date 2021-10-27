@@ -41,4 +41,11 @@ function initCanvas(simulationParameters){
         simulationParameters.ctx.stroke();
     }
 
+    function ordering4drawing(stageParameters){
+        let a;
+        for(a=0;a<stageParameters.dynamicElementsArray.length;a++){
+            
+        }
+    }
+
     export {initCanvas,drawingMatrix}

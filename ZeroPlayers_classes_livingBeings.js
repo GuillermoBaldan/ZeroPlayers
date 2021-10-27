@@ -16,7 +16,7 @@ class simpleCell {
       this.maxEnergy = 100
       this.energy = 100
       this.lifeConsumption = 5
-      this.energyConsumption = 10
+      this.energyConsumption = 0
       this.behaviourRules = cellBehaviourRules
       this.preyClasses = [grossCell]
     }
