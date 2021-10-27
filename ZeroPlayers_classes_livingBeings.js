@@ -35,6 +35,7 @@ class simpleCell {
       this.energyConsumption = 10
       this.behaviourRules = cellBehaviourRules
       this.preyClasses = []
+      this.reproductionRadio = 5;
     }
   }
 

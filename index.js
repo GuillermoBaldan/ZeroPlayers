@@ -34,7 +34,7 @@ let stageParameters = {
     legend : legend,
     livingBeingsCollection : [{ 
         type : grossCell,
-         number : 100}, 
+         number : 1}, 
          {type : simpleCell, 
         number: 2}],
     dynamicElementsArray : [],

@@ -52,6 +52,7 @@ function matrixGenerator(stageParameters, simulationParameters){
     let preyCoordinates;
     let prey;
     let energySustraction;
+    let son;
     matrixAux = cloneArray2D(stageParameters.staticStage);
     //1. We give movement to dynamic elements
     stageParameters.dynamicElementsArray.forEach( item =>{
@@ -95,7 +96,17 @@ function matrixGenerator(stageParameters, simulationParameters){
             }
             
         }    
-    })  
+    })
+
+    //Reproduction block
+    stageParameters.dynamicElementsArray.forEach(item => {
+        if (item.reproductionRadio != undefined){
+            son = new item.constructor.name;
+            son.x = Math.round(Math.random()*(son.reproductionRadio + son.reproductionRadio) - son.reproductionRadio)
+            son.y = Math.round(Math.random()*(son.reproductionRadio + son.reproductionRadio) - son.reproductionRadio)
+            dynamicElementsArray.push(son);
+        }
+    })
     
     for(auxIndex = 0;auxIndex<stageParameters.dynamicElementsArray.length;auxIndex++){
         energySustraction = Math.round(Math.random()*stageParameters.dynamicElementsArray[auxIndex].energyConsumption)
