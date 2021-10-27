@@ -57,7 +57,10 @@ function matrixGenerator(stageParameters, simulationParameters){
     //1. We give movement to dynamic elements
     stageParameters.dynamicElementsArray.forEach( item =>{
         if (item.walkmode == "static") {
-            matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][item.x] = item.color;
+            console.log(`item.x: ${item.x}`)
+            console.log(`item.y: ${item.y}`)
+            console.log(`y: ${-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)}`)
+            matrixAux[-item.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)- 1][item.x] = item.color;
         } else {
             //Mode 'trajectory'
             if (item.walkmode == 'trajectory'){
@@ -101,13 +104,12 @@ function matrixGenerator(stageParameters, simulationParameters){
     //Reproduction block
     stageParameters.dynamicElementsArray.forEach(item => {
         if (item.reproductionRadio != undefined){
-            console.log(item)
             son = new item.constructor;
             do{
             son.x = item.x + Math.round(Math.random()*(son.reproductionRadio + son.reproductionRadio) - son.reproductionRadio)
-            }while(!(son.x >= 0 && son.x <= Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide)))
+            }while(!(son.x >= 0 && son.x <= Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide) - 1))
             do{son.y = item.y + Math.round(Math.random()*(son.reproductionRadio + son.reproductionRadio) - son.reproductionRadio)
-            }while(!(son.y >= 0 && son.y <= Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)))
+            }while(!(son.y >= 0 && son.y <= Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide) -1))
             stageParameters.dynamicElementsArray.push(son);
         }
     })
