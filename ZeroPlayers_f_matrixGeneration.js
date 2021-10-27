@@ -101,10 +101,14 @@ function matrixGenerator(stageParameters, simulationParameters){
     //Reproduction block
     stageParameters.dynamicElementsArray.forEach(item => {
         if (item.reproductionRadio != undefined){
-            son = new item.constructor.name;
-            son.x = Math.round(Math.random()*(son.reproductionRadio + son.reproductionRadio) - son.reproductionRadio)
-            son.y = Math.round(Math.random()*(son.reproductionRadio + son.reproductionRadio) - son.reproductionRadio)
-            dynamicElementsArray.push(son);
+            console.log(item)
+            son = new item.constructor;
+            do{
+            son.x = item.x + Math.round(Math.random()*(son.reproductionRadio + son.reproductionRadio) - son.reproductionRadio)
+            }while(!(son.x >= 0 && son.x <= Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide)))
+            do{son.y = item.y + Math.round(Math.random()*(son.reproductionRadio + son.reproductionRadio) - son.reproductionRadio)
+            }while(!(son.y >= 0 && son.y <= Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)))
+            stageParameters.dynamicElementsArray.push(son);
         }
     })
     
