@@ -43,9 +43,20 @@ function initCanvas(simulationParameters){
 
     function ordering4drawing(stageParameters){
         let a;
+        let temp;
+        let tempArray = [];
+        let result;
         for(a=0;a<stageParameters.dynamicElementsArray.length;a++){
+            if ((stageParameters.dynamicElementsArray[a].walkmode == "autonomous" )){
+                temp = stageParameters.dynamicElementsArray[a]
+                stageParameters.dynamicElementsArray.splice(a,1)
+                tempArray.push(temp)
+                a -= 1;
+            }
             
         }
+        result = stageParameters.dynamicElementsArray.concat(tempArray)
+       return result
     }
 
-    export {initCanvas,drawingMatrix}
+    export {initCanvas,drawingMatrix,ordering4drawing}

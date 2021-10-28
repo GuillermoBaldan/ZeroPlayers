@@ -9,6 +9,14 @@ function cloneArray2D(original){
         row = [];
     })
     return clone;
+}   
+
+function cloneArray(original){
+    let clone = [];
+    original.forEach(item => {
+        clone.push(item)
+    })
+    return clone;
 }
 
-export {cloneArray2D}
+export {cloneArray2D,cloneArray}

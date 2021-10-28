@@ -1,7 +1,8 @@
-import { cloneArray2D } from './ZeroPlayers_f_arraysManipulation.js'
+import { cloneArray2D, cloneArray } from './ZeroPlayers_f_arraysManipulation.js'
 import {movement} from './ZeroPlayers_f_movement.js'
 import {checkForbiddenPosition, preyDetection, preySelectionAndRemove} from './ZeroPlayers_f_livingbeings.js'
 import { energy2Universe, energy2dynamicElements } from './ZeroPlayers_f_universe.js';
+import {ordering4drawing} from './ZeroPlayers_f_canvas.js';
 
 function  generateStaticStage(stageParameters,simulationParameters){
     let a;
@@ -115,7 +116,22 @@ function matrixGenerator(stageParameters, simulationParameters){
             stageParameters.dynamicElementsArray = [];
         }
     })
+
+    //Reordering for drawing code block
+   /*  stageParameters.dynamicElementsArray = cloneArray(ordering4drawing(stageParameters))
+    console.log("dynamicElementsArray")
+    console.log(stageParameters.dynamicElementsArray)
     console.log(`dynamicElementsArray: ${stageParameters.dynamicElementsArray.length}`)
+    -------------------------------------------- */
+   /*  console.log("previous to ordering4drawing")
+    console.log(ordering4drawing(stageParameters))
+    console.log("dynamicElementsArray")
+    console.log(stageParameters.dynamicElementsArray)
+    stageParameters.dynamicElementsArray = ordering4drawing(stageParameters)
+    
+    console.log("ordering4drawing")
+    console.log(ordering4drawing(stageParameters));
+    console.log(`dynamicElementsArray: ${stageParameters.dynamicElementsArray.length}`) */
     
     for(auxIndex = 0;auxIndex<stageParameters.dynamicElementsArray.length;auxIndex++){
         energySustraction = Math.round(Math.random()*stageParameters.dynamicElementsArray[auxIndex].energyConsumption)
