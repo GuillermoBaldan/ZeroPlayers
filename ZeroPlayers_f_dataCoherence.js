@@ -29,4 +29,17 @@ function checkInsideCanvas(stageParameters,simulationParameters){
     return flag;
 }
 
-export {checkDataCoherence}
+function checkExistenceInMatrix(x,y,stageParameters){
+    let a;
+    let flag = false;
+    for(a=0;a<stageParameters.dynamicElementsArray.length;a++){
+        if (stageParameters.dynamicElementsArray[a].x == x){
+            if (stageParameters.dynamicElementsArray[a].y == y){
+                flag = true
+            }
+        }
+    }
+    return flag;
+}
+
+export {checkDataCoherence, checkExistenceInMatrix}

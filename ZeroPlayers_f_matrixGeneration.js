@@ -3,6 +3,8 @@ import {movement} from './ZeroPlayers_f_movement.js'
 import {checkForbiddenPosition, preyDetection, preySelectionAndRemove} from './ZeroPlayers_f_livingbeings.js'
 import { energy2Universe, energy2dynamicElements } from './ZeroPlayers_f_universe.js';
 import {ordering4drawing} from './ZeroPlayers_f_canvas.js';
+import { checkSimpleCellsExistence} from './ZeroPlayers_f_checkValues.js'
+import {checkExistenceInMatrix} from './ZeroPlayers_f_dataCoherence.js'
 
 function  generateStaticStage(stageParameters,simulationParameters){
     let a;
@@ -98,7 +100,7 @@ function matrixGenerator(stageParameters, simulationParameters){
             
         }    
     })
-
+    checkSimpleCellsExistence("line102 - _f_matrixGeneration",stageParameters)
     //Reproduction block
     stageParameters.dynamicElementsArray.forEach(item => {
         if (item.reproductionRadio != undefined){
@@ -109,14 +111,18 @@ function matrixGenerator(stageParameters, simulationParameters){
                 }while(!(son.x >= 0 && son.x <= Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide) - 1))
                 do{son.y = item.y + Math.round(Math.random()*(son.reproductionRadio + son.reproductionRadio) - son.reproductionRadio)
                 }while(!(son.y >= 0 && son.y <= Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide) -1))
-                stageParameters.dynamicElementsArray.push(son);
+                if (!(checkExistenceInMatrix(son.x,son.y,stageParameters))){ //Si no hay ningún objeto de dynamicElements con esas coordenadas,
+                                                                     //Entonces se crea el objeto
+                    stageParameters.dynamicElementsArray.push(son);
+                }
+               
             //}while(!(matrixAux[-son.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][son.x] == "green"))
         }
-        if( stageParameters.dynamicElementsArray.length > 400){ //Sentencia de control para no sobrecargar el navegador por la generación descontralada de elementos dinámicos
+     /*    if( stageParameters.dynamicElementsArray.length > 10000){ //Sentencia de control para no sobrecargar el navegador por la generación descontralada de elementos dinámicos
             stageParameters.dynamicElementsArray = [];
-        }
+        } */
     })
-
+    checkSimpleCellsExistence("line120 - _f_matrixGeneration",stageParameters)
     //Reordering for drawing code block
    /*  stageParameters.dynamicElementsArray = cloneArray(ordering4drawing(stageParameters))
     console.log("dynamicElementsArray")

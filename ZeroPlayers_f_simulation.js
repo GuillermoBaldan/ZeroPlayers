@@ -10,13 +10,15 @@ function oneSimulationStep(stageParameters,simulationParameters){
     console.log("----------------------------------")
     console.log("simulationStep: "+(simulationParameters.globalSimulationIndex+1))
     //Reordering dynamicElementsArray block--
+    checkSimpleCellsExistence("line 13 - _f_simulation",stageParameters)
     stageParameters.dynamicElementsArray = cloneArray(ordering4drawing(stageParameters))
     console.log("dynamicElementsArray")
     console.log(stageParameters.dynamicElementsArray)
     console.log(`dynamicElementsArray: ${stageParameters.dynamicElementsArray.length}`)
-    checkSimpleCellsExistence(stageParameters)
+    checkSimpleCellsExistence("line18 - _f_simulation",stageParameters)
     //------
     let matrixAux = matrixGenerator(stageParameters,simulationParameters);
+    checkSimpleCellsExistence("line21 - _f_simulation",stageParameters)
     //matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension)
     drawingMatrix(matrixAux,simulationParameters);
     simulationParameters.globalSimulationIndex +=1;

@@ -1,4 +1,4 @@
-function checkSimpleCellsExistence(stageParameters){
+function checkSimpleCellsExistence(cadena,stageParameters){
     let a;
     let b = 0;
     for(a=0;a<stageParameters.dynamicElementsArray.length;a++){
@@ -6,7 +6,7 @@ function checkSimpleCellsExistence(stageParameters){
             b++
         }
     }
-    console.log(`simpleCell appears ${b} times`);
+    console.log(`simpleCell appears ${b} times at ${cadena}`);
 }
 
 export {checkSimpleCellsExistence}
