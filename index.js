@@ -36,7 +36,7 @@ let stageParameters = {
         type : grossCell,
          number : 1}, 
          {type : simpleCell, 
-        number: 2}],
+        number: 1}],
     dynamicElementsArray : [],
     staticStage : [],
     universeEnergy: 50000
