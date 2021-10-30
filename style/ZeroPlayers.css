@@ -9,9 +9,27 @@
 
 body {
     background-color: lightgreen;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+.board{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-board{
+    justify-content: center;
+    align-items: center;
+}
+
+
 .btn {
+    margin: 8%;
+    display: block;
     font-family: "Press Start 2P";
-    font-size: 10px;
+    font-size: 15px;
 } 
+
