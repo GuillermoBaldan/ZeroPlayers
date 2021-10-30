@@ -1,9 +1,17 @@
-html, body, pre, code, kbd, samp {
+/* html, body, pre, code, kbd, samp {
     font-family: "Press Start 2P";
-    color: blue;
+
+}
+*/
+@font-face {font-family:"Press Start 2P";
+    src: url(PressStart2P-Regular.ttf) format("opentype");}
+    
+
+body {
+    background-color: lightgreen;
 }
 
-btn {
+.btn {
     font-family: "Press Start 2P";
-    font-size: 64px;
-}
+    font-size: 10px;
+} 
