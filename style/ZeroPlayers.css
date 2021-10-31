@@ -8,7 +8,7 @@
     
 
 body {
-    background-color: white;
+    background-color: lightgreen;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,14 +32,17 @@ h1 {
 }
 
 .btn-board{
+    display: flexbox;
     justify-content: center;
+    text-align: center;
     align-items: center;
+    flex-direction: row;
 }
 
 
 .btn {
-    margin: 9%;
-    display: block;
+    margin-top: 5%;
+    margin-bottom: 0%;
     font-family: "Press Start 2P";
     font-size: 15px;
 } 
