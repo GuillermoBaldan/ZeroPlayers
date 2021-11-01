@@ -36,16 +36,18 @@ h1 {
     justify-content: center;
     text-align: center;
     align-items: center;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 
 .btn {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
     margin-top: 5%;
     margin-bottom: 0%;
     font-family: "Press Start 2P";
     font-size: 15px;
-    space: border-image-repeat;
    
 } 
 
