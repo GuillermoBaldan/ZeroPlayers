@@ -48,6 +48,7 @@ h1 {
     margin-bottom: 0%;
     font-family: "Press Start 2P";
     font-size: 15px;
+    filter: grayscale(50%);
    
 } 
 
