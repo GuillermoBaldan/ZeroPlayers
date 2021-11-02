@@ -6,11 +6,9 @@ import {simpleCell,grossCell} from './ZeroPlayers_classes_livingBeings.js';
 
 
 
-let legend = { 
+let legend = {  //Se toman estos valores para generar un terreno.
     ground : "brown",
-    simpleCell : "yellow"
     //water : "blue"
-
 }
 
 let staticStage;
@@ -79,4 +77,4 @@ document.getElementById("stopButton").addEventListener("click", function(){
  çThis parameter is only available in Gecko and is mainly useful for the code in add-ons and the browser itself. 
  See Interaction between privileged and non-privileged pages for an example.*/
 
- export {stopFlag, globalSimulationIndex, loadGlobalSimulationIndex, simulationParameters, cellBehaviourRules}
+ export {stopFlag, globalSimulationIndex, loadGlobalSimulationIndex, simulationParameters}

@@ -76,7 +76,7 @@ function matrixGenerator(stageParameters, simulationParameters){
                     
                     xy = movement(xy_before[0],xy_before[1], item.walk, stageParameters, simulationParameters)
                         //item.behaviourRules.forbiddenPositions.forEach( positionType => {
-                        if(checkForbiddenPosition(stageParameters,simulationParameters, matrixAux, xy, positionType)){
+                        if(checkForbiddenPosition(stageParameters,simulationParameters, matrixAux, xy, item)){
                             flagForbiddenPosition = true;
                         } else{
                             flagForbiddenPosition = false;

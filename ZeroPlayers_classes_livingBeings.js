@@ -1,4 +1,4 @@
-import {simulationParameters, cellBehaviourRules} from './index.js';
+import {simulationParameters} from './index.js';
 import {totalFreedom} from './ZeroPlayers_f_livingbeings.js'
 
 
