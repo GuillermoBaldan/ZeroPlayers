@@ -20,6 +20,7 @@ class simpleCell {
       this.behaviourRules = cellBehaviourRules
       this.preyClasses = [grossCell]
       this.reproductionRadio = 1;
+      this.cellBehaviourRules = {forbiddenPositions : ["water"]};
     }
   }
 
@@ -37,6 +38,7 @@ class simpleCell {
       this.behaviourRules = cellBehaviourRules
       this.preyClasses = []
       this.reproductionRadio = 5;
+      this.cellBehaviourRules = {forbiddenPositions : ["water"]};
     }
   }
 

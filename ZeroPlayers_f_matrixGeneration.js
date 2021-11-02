@@ -56,6 +56,7 @@ function matrixGenerator(stageParameters, simulationParameters){
     let prey;
     let energySustraction;
     let son;
+    let limit;
     matrixAux = cloneArray2D(stageParameters.staticStage);
     //1. We give movement to dynamic elements
     stageParameters.dynamicElementsArray.forEach( item =>{
@@ -70,6 +71,7 @@ function matrixGenerator(stageParameters, simulationParameters){
                 }else{
                 //Mode 'autonomous'
                     xy_before = [item.x, item.y];
+                    limit = 0;
                     do {
                     
                     xy = movement(xy_before[0],xy_before[1], item.walk, stageParameters, simulationParameters)
@@ -80,9 +82,17 @@ function matrixGenerator(stageParameters, simulationParameters){
                             flagForbiddenPosition = false;
                         }
                         })
-                    } while (flagForbiddenPosition)
-                    item.x = xy[0];
-                    item.y = xy[1];
+                       limit += 1;
+                    } while (flagForbiddenPosition || (limit>8))
+                    if (limit<8){
+                        item.x = xy[0];
+                        item.y = xy[1];
+                    } else{
+                        item.x = xy_before[0];
+                        item.y = xy_before[1]
+                    }
+
+                    
                     matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][xy[0]] = item.color;
                 }
 
