@@ -75,13 +75,13 @@ function matrixGenerator(stageParameters, simulationParameters){
                     do {
                     
                     xy = movement(xy_before[0],xy_before[1], item.walk, stageParameters, simulationParameters)
-                        item.behaviourRules.forbiddenPositions.forEach( positionType => {
+                        //item.behaviourRules.forbiddenPositions.forEach( positionType => {
                         if(checkForbiddenPosition(stageParameters,simulationParameters, matrixAux, xy, positionType)){
                             flagForbiddenPosition = true;
                         } else{
                             flagForbiddenPosition = false;
                         }
-                        })
+                        //})
                        limit += 1;
                     } while (flagForbiddenPosition || (limit>8))
                     if (limit<8){
@@ -89,7 +89,7 @@ function matrixGenerator(stageParameters, simulationParameters){
                         item.y = xy[1];
                     } else{
                         item.x = xy_before[0];
-                        item.y = xy_before[1]
+                        item.y = xy_before[1];
                     }
 
                     

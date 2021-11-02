@@ -7,13 +7,10 @@ import {simpleCell,grossCell} from './ZeroPlayers_classes_livingBeings.js';
 
 
 let legend = { 
-    ground : "brown"
+    ground : "brown",
+    simpleCell : "yellow"
     //water : "blue"
 
-}
-
-let cellBehaviourRules = {
-    forbiddenPositions : ["water"]
 }
 
 let staticStage;

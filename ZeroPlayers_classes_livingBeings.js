@@ -17,10 +17,9 @@ class simpleCell {
       this.energy = 100
       this.lifeConsumption = 5
       this.energyConsumption = 0
-      this.behaviourRules = cellBehaviourRules
+      this.behaviourRules = {forbiddenPositions : ["water","simpleCell"]};
       this.preyClasses = [grossCell]
       this.reproductionRadio = 1;
-      this.cellBehaviourRules = {forbiddenPositions : ["water"]};
     }
   }
 
@@ -35,11 +34,10 @@ class simpleCell {
       this.energy = 100
       this.lifeConsumption = 5
       this.energyConsumption = 10
-      this.behaviourRules = cellBehaviourRules
+      this.behaviourRules = {forbiddenPositions : ["water","simpleCell"]};
       this.preyClasses = []
       this.reproductionRadio = 5;
-      this.cellBehaviourRules = {forbiddenPositions : ["water"]};
-    }
+   }
   }
 
   export {simpleCell,grossCell}
