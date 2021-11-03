@@ -6,7 +6,6 @@ function checkSimpleCellsExistence(cadena,stageParameters){
             b++
         }
     }
-    console.log(`simpleCell appears ${b} times at ${cadena}`);
 }
 
 export {checkSimpleCellsExistence}

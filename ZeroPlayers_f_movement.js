@@ -60,7 +60,6 @@ function checkAdjacentEdges(aux,simulationParameters){
     }
     //comprobamos extremo inferior
     if (aux[1] - 1 < -1){
-        console.log("aux: "+aux)
         return true;
     }
 

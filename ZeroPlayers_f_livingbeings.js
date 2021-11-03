@@ -109,7 +109,6 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters){
                     energy2Universe(item.maxEnergy-item.energy,stageParameters)
                     item.energy = item.maxEnergy
                 }
-                console.log(`item.energy: ${item.energy}`)
                 //It proceeds to remove the prey, which has been absorbed, from dynamicElementsArray
                 stageParameters.dynamicElementsArray.splice(a,1)
             }
