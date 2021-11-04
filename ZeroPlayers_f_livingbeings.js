@@ -45,9 +45,13 @@ function checkForbiddenPosition(stageParameters, simulationParameters, matrixAux
 let forbiddenColorsArray = [];
 //1. We encode positionType in a color, because each positionType corresponds to a color
 item.behaviourRules.forbiddenPositions.forEach( positionType => {
+    console.log(`positionType: ${positionType}`)
+    console.log(`stageParameters.legend[positionType]: ${stageParameters.legend[positionType]}`)
     forbiddenColorsArray.push(stageParameters.legend[positionType])
 })
 //2. It is checked if the xy position corresponds to the prohibited color and if so, we return true otherwise, false
+console.log("forbiddenColorsArray")
+console.log(forbiddenColorsArray)
 if (forbiddenColorsArray.includes(matrixAux[-xy[1]+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][xy[0]])){
     return true;
 }else{

@@ -6,11 +6,6 @@ import {simpleCell,grossCell} from './ZeroPlayers_classes_livingBeings.js';
 
 
 
-let legend = {  //Se toman estos valores para generar un terreno.
-    ground : "brown",
-    //water : "blue"
-}
-
 let staticStage;
 let lienzo;
 let ctx;
@@ -26,7 +21,13 @@ let universeRules = {
 
 let stageParameters = {
     universeRules : universeRules,
-    legend : legend,
+    legendTerrain : {
+        "ground" : "brown"
+    },
+    legend : {
+        "water" : "blue",
+        "simpleCell" : "yellow"
+    },
     livingBeingsCollection : [{ 
         type : grossCell,
          number : 1}, 

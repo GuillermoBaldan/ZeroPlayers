@@ -10,12 +10,12 @@ function  generateStaticStage(stageParameters,simulationParameters){
     let a;
     let b;
     let row = [];
-    let numberMaterials = materialGeneration(stageParameters.legend).length;
+    let numberMaterials = materialGeneration(stageParameters.legendTerrain).length;
     let staticStageAux =[];
     for(b=0;b<Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide);b++){
         row = [];
         for(a = 0;a<Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide);a++){
-            row.push(materialGeneration(stageParameters.legend)[Math.floor(Math.random()*numberMaterials)]);
+            row.push(materialGeneration(stageParameters.legendTerrain)[Math.floor(Math.random()*numberMaterials)]);
             }
             staticStageAux.push(row)
     }
@@ -23,10 +23,10 @@ function  generateStaticStage(stageParameters,simulationParameters){
     return staticStageAux;
 }
 
-function materialGeneration(legend){
+function materialGeneration(legendTerrain){
     let materialArray = [];
-    for (const prop in legend){
-        materialArray.push(legend[prop]);
+    for (const prop in legendTerrain){
+        materialArray.push(legendTerrain[prop]);
     }
     return materialArray;
 }
@@ -83,7 +83,7 @@ function matrixGenerator(stageParameters, simulationParameters){
                         }
                         //})
                        limit += 1;
-                    } while (flagForbiddenPosition || (limit>8))
+                    } while (flagForbiddenPosition || (limit>8)) //Le doy 8 intentos para encontrar una celda libre                    if (limit<8){
                     if (limit<8){
                         item.x = xy[0];
                         item.y = xy[1];
@@ -119,36 +119,19 @@ function matrixGenerator(stageParameters, simulationParameters){
                 do{
                 son.x = item.x + Math.round(Math.random()*(son.reproductionRadio + son.reproductionRadio) - son.reproductionRadio)
                 }while(!(son.x >= 0 && son.x <= Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide) - 1))
-                do{son.y = item.y + Math.round(Math.random()*(son.reproductionRadio + son.reproductionRadio) - son.reproductionRadio)
+                do{
+                    son.y = item.y + Math.round(Math.random()*(son.reproductionRadio + son.reproductionRadio) - son.reproductionRadio)
                 }while(!(son.y >= 0 && son.y <= Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide) -1))
                 if (!(checkExistenceInMatrix(son.x,son.y,stageParameters))){ //Si no hay ningún objeto de dynamicElements con esas coordenadas,
                                                                      //Entonces se crea el objeto
                     stageParameters.dynamicElementsArray.push(son);
                 }
                
-            //}while(!(matrixAux[-son.y+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][son.x] == "green"))
         }
-     /*    if( stageParameters.dynamicElementsArray.length > 10000){ //Sentencia de control para no sobrecargar el navegador por la generación descontralada de elementos dinámicos
-            stageParameters.dynamicElementsArray = [];
-        } */
+   
     })
     checkSimpleCellsExistence("line120 - _f_matrixGeneration",stageParameters)
-    //Reordering for drawing code block
-   /*  stageParameters.dynamicElementsArray = cloneArray(ordering4drawing(stageParameters))
-    console.log("dynamicElementsArray")
-    console.log(stageParameters.dynamicElementsArray)
-    console.log(`dynamicElementsArray: ${stageParameters.dynamicElementsArray.length}`)
-    -------------------------------------------- */
-   /*  console.log("previous to ordering4drawing")
-    console.log(ordering4drawing(stageParameters))
-    console.log("dynamicElementsArray")
-    console.log(stageParameters.dynamicElementsArray)
-    stageParameters.dynamicElementsArray = ordering4drawing(stageParameters)
-    
-    console.log("ordering4drawing")
-    console.log(ordering4drawing(stageParameters));
-    console.log(`dynamicElementsArray: ${stageParameters.dynamicElementsArray.length}`) */
-    
+     
     for(auxIndex = 0;auxIndex<stageParameters.dynamicElementsArray.length;auxIndex++){
         energySustraction = Math.round(Math.random()*stageParameters.dynamicElementsArray[auxIndex].energyConsumption)
         stageParameters.dynamicElementsArray[auxIndex].energy -= energySustraction;
