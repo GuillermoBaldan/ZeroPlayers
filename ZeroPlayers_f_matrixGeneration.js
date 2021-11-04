@@ -83,7 +83,9 @@ function matrixGenerator(stageParameters, simulationParameters){
                         }
                         //})
                        limit += 1;
-                    } while (flagForbiddenPosition || (limit>8)) //Le doy 8 intentos para encontrar una celda libre                    if (limit<8){
+                       console.log(`limit: ${limit}`);
+                       console.log(`dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length}`)
+                    } while (flagForbiddenPosition && (limit<=8)) //Le doy 8 intentos para encontrar una celda libre                    if (limit<8){
                     if (limit<8){
                         item.x = xy[0];
                         item.y = xy[1];
