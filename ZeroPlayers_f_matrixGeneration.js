@@ -3,7 +3,7 @@ import {movement} from './ZeroPlayers_f_movement.js'
 import {checkForbiddenPosition, preyDetection, preySelectionAndRemove} from './ZeroPlayers_f_livingbeings.js'
 import { energy2Universe, energy2dynamicElements } from './ZeroPlayers_f_universe.js';
 import {ordering4drawing} from './ZeroPlayers_f_canvas.js';
-import { checkSimpleCellsExistence} from './ZeroPlayers_f_checkValues.js'
+import { checkSimpleCellsExistence, checkNumbersTypeCell} from './ZeroPlayers_f_checkValues.js'
 import {checkExistenceInMatrix} from './ZeroPlayers_f_dataCoherence.js'
 
 function  generateStaticStage(stageParameters,simulationParameters){
@@ -85,6 +85,7 @@ function matrixGenerator(stageParameters, simulationParameters){
                        limit += 1;
                        console.log(`limit: ${limit}`);
                        console.log(`dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length}`)
+                       console.log(`SimpleCells: ${checkNumbersTypeCell("simpleCell",stageParameters)} + grossCell: ${checkNumbersTypeCell("grossCell",stageParameters)} = ${checkNumbersTypeCell("grossCell",stageParameters)+checkNumbersTypeCell("simpleCell",stageParameters)}`)
                     } while (flagForbiddenPosition && (limit<=8)) //Le doy 8 intentos para encontrar una celda libre                    if (limit<8){
                     if (limit<8){
                         item.x = xy[0];
