@@ -1,3 +1,4 @@
+import { simulationParameters } from './index.js';
 import { multiple} from './ZeroPlayers_f_math.js';
 
 function  checkDataCoherence(stageParameters,simulationParameters){
@@ -42,4 +43,25 @@ function checkExistenceInMatrix(x,y,stageParameters){
     return flag;
 }
 
-export {checkDataCoherence, checkExistenceInMatrix}
+function coordinatesAssigment(simulationParameters,stageParameters){
+let x_index;
+let y_index;
+let coordinate = [];
+let freePlacesArray = [];
+//Construimos una matriz de posiciones libres
+for(x_index=0;x_index<Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide)-1;x_index++){
+    for(y_index=0;y_index<Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1;y_index){
+        //Se comprueba que la coordenada esta libre
+        if(!((includesAnyOf(stageParameters.matrix[x_index][y_index],stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length-1].forbiddenColors)))){
+           //Si la coordenada está libre se mete en freePlacesArray
+            freePlacesArray.push([x_index,y_index])
+        }
+    }
+}
+//Asignamos una posición libre al azar al elemento dinámico generado, que es el último
+coordinate = freePlacesArray[Math.round(Math.random()*(freePlacesArray.length-1))];
+stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length-1].x = coordinate[0];
+stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length-1].y = coordinate[1];
+}
+
+export {checkDataCoherence, checkExistenceInMatrix, coordinatesAssigment}

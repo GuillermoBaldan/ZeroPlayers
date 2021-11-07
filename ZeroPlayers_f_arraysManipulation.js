@@ -19,4 +19,8 @@ function cloneArray(original){
     return clone;
 }
 
-export {cloneArray2D,cloneArray}
+function includesAnyOf(container,reference){
+    const found = arr1.some(r=> arr2.indexOf(r) >= 0)
+}
+
+export {cloneArray2D,cloneArray, includesAnyOf}
