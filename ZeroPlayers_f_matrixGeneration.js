@@ -115,7 +115,7 @@ function matrixGenerator(stageParameters, simulationParameters){
     })
     checkSimpleCellsExistence("line102 - _f_matrixGeneration",stageParameters)
     //Reproduction block
-    stageParameters.dynamicElementsArray.forEach(item => {
+ /*    stageParameters.dynamicElementsArray.forEach(item => {
         if (item.reproductionRadio != undefined){
             son = new item.constructor;
            // do{
@@ -132,7 +132,7 @@ function matrixGenerator(stageParameters, simulationParameters){
                
         }
    
-    })
+    }) */
     checkSimpleCellsExistence("line120 - _f_matrixGeneration",stageParameters)
      
     for(auxIndex = 0;auxIndex<stageParameters.dynamicElementsArray.length;auxIndex++){

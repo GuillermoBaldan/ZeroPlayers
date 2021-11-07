@@ -17,7 +17,9 @@ class simpleCell {
       this.energy = 100
       this.lifeConsumption = 5
       this.energyConsumption = 0
-      this.behaviourRules = {forbiddenPositions : ["water","simpleCell"]};
+      this.behaviourRules = {forbiddenPositions : ["water","simpleCell"],
+                            forbiddenColors : ["blue", "yellow"]
+                            };
       this.preyClasses = [grossCell]
       this.reproductionRadio = 1;
     }

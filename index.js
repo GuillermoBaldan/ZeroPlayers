@@ -30,9 +30,9 @@ let stageParameters = {
     },
     livingBeingsCollection : [{ 
         type : grossCell,
-         number : 1}, 
+         number : 0}, 
          {type : simpleCell, 
-        number: 1}],
+        number: 25}],
     dynamicElementsArray : [],
     staticStage : [],
     universeEnergy: 50000
