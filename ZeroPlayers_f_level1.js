@@ -5,7 +5,7 @@ import {oneSimulationStep} from './ZeroPlayers_f_simulation.js'
 import {stopFlag} from './index.js' 
 import {grossCell, simpleCell} from './ZeroPlayers_classes_livingBeings.js'
 import {energy2dynamicElements} from './ZeroPlayers_f_universe.js'
-import {lastElement} from './ZeroPlayers_f_arraysManipulation.js'
+import {cloneArray2D, lastElement} from './ZeroPlayers_f_arraysManipulation.js'
 
 
 
@@ -22,7 +22,7 @@ function init(stageParameters,simulationParameters){
         canvas = initCanvas(simulationParameters)
         //2.staticStage
         stageParameters.staticStage = generateStaticStage(stageParameters,simulationParameters);
-        cloneArray2D(stageParameters.matrix,stageParameters.staticStage);
+        stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
         //3.Add dynamic Elements
         stageParameters.livingBeingsCollection.forEach( item => {
             for(a=0;a<item.number;a++){

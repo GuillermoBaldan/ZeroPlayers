@@ -1,4 +1,5 @@
 import { simulationParameters } from './index.js';
+import { cloneArray2D } from './zeroPlayers_f_arraysManipulation.js';
 import { multiple} from './ZeroPlayers_f_math.js';
 
 function  checkDataCoherence(stageParameters,simulationParameters){
@@ -48,15 +49,18 @@ let x_index;
 let y_index;
 let coordinate = [];
 let freePlacesArray = [];
+let counter = 0;
 //Construimos una matriz de posiciones libres
 for(x_index=0;x_index<Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide)-1;x_index++){
-    for(y_index=0;y_index<Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1;y_index){
+    for(y_index=0;y_index<Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1;y_index++){
         //Se comprueba que la coordenada esta libre
         /* if(!((includesAnyOf(stageParameters.matrix[x_index][y_index],stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length-1].forbiddenColors)))){
            //Si la coordenada está libre se mete en freePlacesArray */
            console.log(item);
            if (!(item.behaviourRules.forbiddenColors.includes(stageParameters.matrix[x_index][y_index]))){
             freePlacesArray.push([x_index,y_index])
+            console.log(`counter: ${counter}`);
+            counter++;
            }
            
         }
