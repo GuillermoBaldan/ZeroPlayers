@@ -19,8 +19,18 @@ function cloneArray(original){
     return clone;
 }
 
-function includesAnyOf(container,reference){
-    const found = arr1.some(r=> arr2.indexOf(r) >= 0)
+function lastElement(array){
+    return array[array.length - 1];
 }
 
-export {cloneArray2D,cloneArray, includesAnyOf}
+/*     function includesAnyOf(container,reference){ //Container is a 2D array; reference is a 1D array
+        let a;
+        let b;
+        for(a=0;a<;a++){
+            for(b=0;b<;b++){
+                if (reference.includes(container[]))
+            }
+        }
+    }
+ */
+export {cloneArray2D,cloneArray,lastElement}

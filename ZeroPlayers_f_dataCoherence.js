@@ -43,7 +43,7 @@ function checkExistenceInMatrix(x,y,stageParameters){
     return flag;
 }
 
-function coordinatesAssigment(simulationParameters,stageParameters){
+function coordinatesAssigment(simulationParameters,stageParameters,item){
 let x_index;
 let y_index;
 let coordinate = [];
@@ -52,12 +52,15 @@ let freePlacesArray = [];
 for(x_index=0;x_index<Math.floor(simulationParameters.wideDimension/simulationParameters.squareSide)-1;x_index++){
     for(y_index=0;y_index<Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1;y_index){
         //Se comprueba que la coordenada esta libre
-        if(!((includesAnyOf(stageParameters.matrix[x_index][y_index],stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length-1].forbiddenColors)))){
-           //Si la coordenada está libre se mete en freePlacesArray
+        /* if(!((includesAnyOf(stageParameters.matrix[x_index][y_index],stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length-1].forbiddenColors)))){
+           //Si la coordenada está libre se mete en freePlacesArray */
+           console.log(item);
+           if (!(item.behaviourRules.forbiddenColors.includes(stageParameters.matrix[x_index][y_index]))){
             freePlacesArray.push([x_index,y_index])
+           }
+           
         }
     }
-}
 //Asignamos una posición libre al azar al elemento dinámico generado, que es el último
 coordinate = freePlacesArray[Math.round(Math.random()*(freePlacesArray.length-1))];
 stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length-1].x = coordinate[0];
