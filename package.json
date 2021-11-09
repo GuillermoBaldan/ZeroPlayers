@@ -11,7 +11,14 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "Baldanjs-update" : "npm run Baldanjs-update-git-add && npm run Baldanjs-update-change-name-start && npm run Baldanjs-update-git-push-to-Baldanjs",
+    "Baldanjs-update-git-add": "git add .",
+    "Baldanjs-update-change-name-start" : "git mv ZeroPlayers_f_arraysManipulation.js f_arraysManipulation.js",
+    "Baldanjs-update-git-push-to-Baldanjs" : "git add . && git commit -m \"update\" && git push -u https://github.com/GuillermoBaldan/Baldanjs.git develop",
+    "echotest1" : "echo \"hello!\"",
+    "echotest2" : "echo \"Guillermo\"",
+    "echotests" : "npm run echotest1 && npm run echotest2"  
   },
   "repository": {
     "type": "git",
