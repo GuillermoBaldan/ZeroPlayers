@@ -72,6 +72,7 @@ for(x_index=0;x_index<Math.floor(simulationParameters.wideDimension/simulationPa
 randomIndex = Math.floor(Math.random()*freePlacesArray.length);
 coordinate = freePlacesArray[randomIndex];
 freePlacesArray.splice(randomIndex,1);
+//console.log(`stageParameters.dynamicElementArray.length-1: ${stageParameters.dynamicElementsArray.length-1}`)
 stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length-1].x = coordinate[0];
 stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length-1].y = coordinate[1];
 }

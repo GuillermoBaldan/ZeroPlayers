@@ -32,7 +32,7 @@ function init(stageParameters,simulationParameters){
                 coordinatesAssigment(simulationParameters,stageParameters,lastElement(stageParameters.dynamicElementsArray));
                 //Hay que generar la matrix aqui
                 stageParameters.matrix = matrixGenerator(stageParameters,simulationParameters);
-                //Le trasnferimos energía al elemento generado
+                console.log(stageParameters.matrix)                //Le trasnferimos energía al elemento generado
                 energy2dynamicElements(stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length-1], stageParameters);   
             }
         });
