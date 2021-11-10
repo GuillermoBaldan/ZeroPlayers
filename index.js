@@ -36,6 +36,7 @@ let stageParameters = {
     dynamicElementsArray : [],
     staticStage : [],
     matrix : [],
+    freePlacesArray : [],
     universeEnergy: 50000
 }
 

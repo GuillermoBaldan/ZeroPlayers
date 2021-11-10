@@ -1,4 +1,4 @@
-import {generateStaticStage, matrixGeneratorInit} from './ZeroPlayers_f_matrixGeneration.js';
+import {generateStaticStage, matrixGenerator, matrixGeneratorInit} from './ZeroPlayers_f_matrixGeneration.js';
 import {initCanvas, drawingMatrix} from './ZeroPlayers_f_canvas.js'
 import {checkDataCoherence, coordinatesAssigment} from './ZeroPlayers_f_dataCoherence.js'
 import {oneSimulationStep} from './ZeroPlayers_f_simulation.js'
@@ -30,7 +30,8 @@ function init(stageParameters,simulationParameters){
                 stageParameters.dynamicElementsArray.push(new item.type);
                 //Asignamos coordenadas, si no hay coordenadas libres, se borra el último elemento dinámico generado
                 coordinatesAssigment(simulationParameters,stageParameters,lastElement(stageParameters.dynamicElementsArray));
-           
+                //Hay que generar la matrix aqui
+                stageParameters.matrix = matrixGenerator(stageParameters,simulationParameters);
                 //Le trasnferimos energía al elemento generado
                 energy2dynamicElements(stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length-1], stageParameters);   
             }
