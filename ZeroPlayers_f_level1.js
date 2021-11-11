@@ -1,55 +1,81 @@
-import {generateStaticStage, matrixGenerator, matrixGeneratorInit} from './ZeroPlayers_f_matrixGeneration.js';
-import {initCanvas, drawingMatrix} from './ZeroPlayers_f_canvas.js'
-import {checkDataCoherence, coordinatesAssigment} from './ZeroPlayers_f_dataCoherence.js'
-import {oneSimulationStep} from './ZeroPlayers_f_simulation.js'
-import {stopFlag} from './index.js' 
-import {grossCell, simpleCell} from './ZeroPlayers_classes_livingBeings.js'
-import {energy2dynamicElements} from './ZeroPlayers_f_universe.js'
-import {cloneArray2D, lastElement} from './ZeroPlayers_f_arraysManipulation.js'
+import {
+  generateStaticStage,
+  matrixGenerator,
+  matrixGeneratorInit,
+} from "./ZeroPlayers_f_matrixGeneration.js";
+import { initCanvas, drawingMatrix } from "./ZeroPlayers_f_canvas.js";
+import {
+  checkDataCoherence,
+  coordinatesAssigment,
+} from "./ZeroPlayers_f_dataCoherence.js";
+import { oneSimulationStep } from "./ZeroPlayers_f_simulation.js";
+import { stopFlag } from "./index.js";
+import { grossCell, simpleCell } from "./ZeroPlayers_classes_livingBeings.js";
+import { energy2dynamicElements } from "./ZeroPlayers_f_universe.js";
+import {
+  cloneArray2D,
+  lastElement,
+} from "./ZeroPlayers_f_arraysManipulation.js";
 
+function init(stageParameters, simulationParameters) {
+  let staticStageAux = [];
+  let matrixAux = [];
+  let canvas;
+  let flag = false;
+  let a;
+  //0. Check Data Coherence
+  flag = checkDataCoherence(stageParameters, simulationParameters);
+  if (flag) {
+    //1.Initialize Canvas
+    canvas = initCanvas(simulationParameters);
+    //2.staticStage
+    stageParameters.staticStage = generateStaticStage(
+      stageParameters,
+      simulationParameters
+    );
+    stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
+    //3.Add dynamic Elements
+    stageParameters.livingBeingsCollection.forEach((item) => {
+      for (a = 0; a < item.number; a++) {
+        //Generamos el elemento dinámico
+        stageParameters.dynamicElementsArray.push(new item.type());
+        //Asignamos coordenadas, si no hay coordenadas libres, se borra el último elemento dinámico generado
+        coordinatesAssigment(
+          simulationParameters,
+          stageParameters,
+          lastElement(stageParameters.dynamicElementsArray)
+        );
+        //Hay que generar la matrix aqui
+        stageParameters.matrix = cloneArray2D(
+          matrixGenerator(stageParameters, simulationParameters)
+        );
+        //Le trasnferimos energía al elemento generado
+        energy2dynamicElements(
+          stageParameters.dynamicElementsArray[
+            stageParameters.dynamicElementsArray.length - 1
+          ],
+          stageParameters
+        );
+      }
+    });
+    matrixAux = cloneArray2D(
+      matrixGeneratorInit(stageParameters, simulationParameters)
+    );
+    stageParameters.matrix = cloneArray2D(matrixAux);
 
-
-function init(stageParameters,simulationParameters){
-    let staticStageAux = [];
-    let matrixAux = [];
-    let canvas;
-    let flag = false;
-    let a;
-    //0. Check Data Coherence
-    flag = checkDataCoherence(stageParameters,simulationParameters);
-    if (flag){
-        //1.Initialize Canvas
-        canvas = initCanvas(simulationParameters)
-        //2.staticStage
-        stageParameters.staticStage = generateStaticStage(stageParameters,simulationParameters);
-        stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
-        //3.Add dynamic Elements
-        stageParameters.livingBeingsCollection.forEach( item => {
-            for(a=0;a<item.number;a++){
-                //Generamos el elemento dinámico
-                stageParameters.dynamicElementsArray.push(new item.type);
-                //Asignamos coordenadas, si no hay coordenadas libres, se borra el último elemento dinámico generado
-                coordinatesAssigment(simulationParameters,stageParameters,lastElement(stageParameters.dynamicElementsArray));
-                //Hay que generar la matrix aqui
-                stageParameters.matrix = matrixGenerator(stageParameters,simulationParameters);
-                console.log(stageParameters.matrix)                //Le trasnferimos energía al elemento generado
-                energy2dynamicElements(stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length-1], stageParameters);   
-            }
-        });
-        matrixAux = matrixGeneratorInit(stageParameters,simulationParameters);
-        //4. Draw canvas
-        drawingMatrix(matrixAux, simulationParameters);
-        return [staticStageAux, matrixAux ,canvas[0], canvas[1]];//lienzo = canvas[0];ctx = canvas[1]
-    } else {
-        console.log("The data is not consistent")
-    }
+    //4. Draw canvas
+    drawingMatrix(matrixAux, simulationParameters);
+    return [staticStageAux, matrixAux, canvas[0], canvas[1]]; //lienzo = canvas[0];ctx = canvas[1]
+  } else {
+    console.log("The data is not consistent");
+  }
 }
 
 //simulation(init_output[0],dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
-function simulation(stageParameters,simulationParameters){
-    //1. Hacemos la simulación paso a paso.
-   //simulationParameters.globalSimulationIndex =  oneSimulationStep(stageParameters,simulationParameters)
-   oneSimulationStep(stageParameters,simulationParameters)
+function simulation(stageParameters, simulationParameters) {
+  //1. Hacemos la simulación paso a paso.
+  //simulationParameters.globalSimulationIndex =  oneSimulationStep(stageParameters,simulationParameters)
+  oneSimulationStep(stageParameters, simulationParameters);
 }
 
-export { init, simulation }
+export { init, simulation };

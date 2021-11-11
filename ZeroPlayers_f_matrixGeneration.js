@@ -69,9 +69,10 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
   let b;
   let matrixAux = [];
   matrixAux = cloneArray2D(stageParameters.staticStage);
+  stageParameters.matrix = cloneArray2D(matrixAux);
   //Initial case
   stageParameters.dynamicElementsArray.forEach((item) => {
-    //Live or dynamic elements are drawn
+    //Live or dynamic elements color are added to the matrix
     matrixAux[
       -item.y +
         Math.floor(
@@ -80,6 +81,7 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
         1
     ][item.x] = item.color;
   });
+  stageParameters.matrix = cloneArray2D(matrixAux);
 
   return matrixAux;
 }

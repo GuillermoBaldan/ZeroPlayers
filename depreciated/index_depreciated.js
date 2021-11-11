@@ -282,7 +282,6 @@ function movementFunction(index, dynamicElementsArray) {
     if (item.walkmode == "autonomous") {
       item.walk[0]();
     } else {
-      console.log(item);
       item.x = item.x + item.trajectory_x[index];
       item.y = item.y + item.trajectory_y[index];
     }
