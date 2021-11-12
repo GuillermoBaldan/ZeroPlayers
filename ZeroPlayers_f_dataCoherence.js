@@ -57,9 +57,9 @@ function coordinatesAssigment(simulationParameters, stageParameters, item) {
   let y_index;
   let coordinate = [];
   let freePlacesArray = [];
-  let counter = 0;
+  let counter = 0; //¿Para que sirve esta variable?
   let randomIndex;
-  //Construimos un array de posiciones libres
+  //1º Construimos un array de posiciones libres
   for (
     x_index = 0;
     x_index <
@@ -80,24 +80,25 @@ function coordinatesAssigment(simulationParameters, stageParameters, item) {
     ) {
       //Se comprueba que la coordenada esta libre
       //Si la coordenada está libre se mete en freePlacesArray y se aumenta el contador
-
-      if (
-        !item.behaviourRules.forbiddenColors.includes(
+      /*   console.log(
+        `matrix[x_index][y_index] = ${
           stageParameters.matrix[x_index][y_index]
-        )
-      ) {
-        freePlacesArray.push([x_index, y_index]);
-        counter++;
-      } else {
+        } includes: ${item.behaviourRules.forbiddenColors.includes(
+          stageParameters.matrix[x_index][y_index]
+        )}`
+      ); */
+      if (!(item.behaviourRules.forbiddenColors.includes(stageParameters.matrix[x_index][y_index]))) {
+         freePlacesArray.push([x_index, y_index]);
+          counter++;} 
+        //counter++; ¿Para que sirve esto?
+       /* else { //Si la coordenada no está libre se elimina el último item creado de stageParameters.dynamicElementsArray
         stageParameters.dynamicElementsArray.splice(
           stageParameters.dynamicElementsArray.length - 1,
           1
-        );
-      }
-      //Si la coordenada no está libre se elimina el último item creado de stageParameters.dynamicElementsArray
-      //falta código
+        ); */
     }
   }
+
   //compramos que la matriz de posiciones libres tiene NºTotal de posiciones - Número de elementos dinámicos = Nº Total de posiciones libres
 
   //Asignamos una posición libre al azar al elemento dinámico generado, que es el último
@@ -110,6 +111,25 @@ function coordinatesAssigment(simulationParameters, stageParameters, item) {
   stageParameters.dynamicElementsArray[
     stageParameters.dynamicElementsArray.length - 1
   ].y = coordinate[1];
+}
+
+function coordinatesAssigmentv2(simulationParameters, stageParameters){
+  let freePlacesArray = [];
+  let freeCoordinate;
+  let x_index;
+  let y_index;
+  //1º Construimos un array de posiciones libres
+ for(x_index = 0; x_index < Math.floor(simulationParameters.wideDimension / simulationParameters.squareSide) - 1; x_index++){
+   for(y_index = 0; y_index < Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide) - 1; y_index++){
+      //Se comprueba que la coordenada esta libre
+      if(!(stageParameters.legend.includes(stageParameters.matrix[y_index][x_index]))){
+        //Si la coordenada esta libre se mete en freePlacesArray
+        freePlacesArray.push([x_index, y_index]);
+      }
+
+  //2º Elegimos una posición libre del array y la devolvemos
+
+  return freeCoordinate;
 }
 
 export { checkDataCoherence, checkExistenceInMatrix, coordinatesAssigment };
