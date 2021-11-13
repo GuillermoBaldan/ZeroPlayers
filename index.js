@@ -31,12 +31,13 @@ let stageParameters = {
     water: "blue",
     simpleCell: "yellow",
   },
+  legendForbiddenColors : ["blue","yellow"],
   livingBeingsCollection: [
     {
       type: grossCell,
       number: 0,
     },
-    { type: simpleCell, number: 20 },
+    { type: simpleCell, number: 24 },
   ],
   dynamicElementsArray: [],
   staticStage: [],

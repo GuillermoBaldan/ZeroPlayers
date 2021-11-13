@@ -24,6 +24,7 @@ function init(stageParameters, simulationParameters) {
   let canvas;
   let flag = false;
   let a;
+  let freeCoordinate
   //0. Check Data Coherence
   flag = checkDataCoherence(stageParameters, simulationParameters);
   if (flag) {
@@ -38,13 +39,16 @@ function init(stageParameters, simulationParameters) {
     //3.Add dynamic Elements
     stageParameters.livingBeingsCollection.forEach((item) => {
       for (a = 0; a < item.number; a++) {
+        console.log(a)
        //Se busca una posición libre en la matriz
-        let freeCoordinate = coordinatesAssigmentv2(stageParameters, simulationParameters);
+        freeCoordinate = coordinatesAssigmentv2(simulationParameters, stageParameters);
        //Si existe una posición libre se crea un elemento dinámico
-       if(freeCoordinate){
+       if(freeCoordinate != undefined){
+         console.log("Se crea un elemento dinámico")
         stageParameters.dynamicElementsArray.push(new item.type());
         lastElement(stageParameters.dynamicElementsArray).x = freeCoordinate[0];
         lastElement(stageParameters.dynamicElementsArray).y = freeCoordinate[1];
+        stageParameters.matrix = cloneArray2D(matrixGeneratorInit(stageParameters, simulationParameters))
        }
 
 
@@ -55,11 +59,14 @@ function init(stageParameters, simulationParameters) {
           simulationParameters,
           stageParameters,
           lastElement(stageParameters.dynamicElementsArray) */
-        );
+        
         //Hay que generar la matrix aqui
-        stageParameters.matrix = cloneArray2D(
+       
+      /*   stageParameters.matrix = cloneArray2D(
           matrixGenerator(stageParameters, simulationParameters)
-        );
+        ); */
+      
+        
         //Le trasnferimos energía al elemento generado
         energy2dynamicElements(
           stageParameters.dynamicElementsArray[
@@ -69,11 +76,10 @@ function init(stageParameters, simulationParameters) {
         );
       }
     });
-    matrixAux = cloneArray2D(
-      matrixGeneratorInit(stageParameters, simulationParameters)
-    );
+    matrixAux = matrixGeneratorInit(stageParameters, simulationParameters)
     stageParameters.matrix = cloneArray2D(matrixAux);
-
+    //console.log(stageParameters.matrix);  
+    //console.log(matrixAux) - No aparece nada en matrixAux, no se están añadiendo los elementos dinámicos
     //4. Draw canvas
     drawingMatrix(matrixAux, simulationParameters);
     return [staticStageAux, matrixAux, canvas[0], canvas[1]]; //lienzo = canvas[0];ctx = canvas[1]

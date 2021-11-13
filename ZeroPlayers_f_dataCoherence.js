@@ -60,6 +60,9 @@ function coordinatesAssigment(simulationParameters, stageParameters, item) {
   let counter = 0; //¿Para que sirve esta variable?
   let randomIndex;
   //1º Construimos un array de posiciones libres
+  console.log( Math.floor(
+    simulationParameters.wideDimension / simulationParameters.squareSide
+  ))
   for (
     x_index = 0;
     x_index <
@@ -69,6 +72,7 @@ function coordinatesAssigment(simulationParameters, stageParameters, item) {
       1;
     x_index++
   ) {
+    console.log("Se mete en el primer for")
     for (
       y_index = 0;
       y_index <
@@ -87,7 +91,9 @@ function coordinatesAssigment(simulationParameters, stageParameters, item) {
           stageParameters.matrix[x_index][y_index]
         )}`
       ); */
-      if (!(item.behaviourRules.forbiddenColors.includes(stageParameters.matrix[x_index][y_index]))) {
+      console.log(`counter: ${counter}`);
+      counter++;
+      if (!(item.behaviourRules.forbiddenColors.includes(stageParameters.matrix[-y_index+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][x_index]))) {
          freePlacesArray.push([x_index, y_index]);
           counter++;} 
         //counter++; ¿Para que sirve esto?
@@ -118,18 +124,29 @@ function coordinatesAssigmentv2(simulationParameters, stageParameters){
   let freeCoordinate;
   let x_index;
   let y_index;
+  let counter;
+  //console.log("Se mete en coordinatesAssigmentv2")
   //1º Construimos un array de posiciones libres
- for(x_index = 0; x_index < Math.floor(simulationParameters.wideDimension / simulationParameters.squareSide) - 1; x_index++){
-   for(y_index = 0; y_index < Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide) - 1; y_index++){
+ console.log("Antes del for")
+  console.log( Math.floor(
+    simulationParameters.heightDimension / simulationParameters.squareSide
+  )) 
+  counter = 0;
+   for(x_index = 0; x_index < Math.floor(simulationParameters.wideDimension / simulationParameters.squareSide); x_index++){
+     for(y_index = 0; y_index < Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide); y_index++){
       //Se comprueba que la coordenada esta libre
-      if(!(stageParameters.legend.includes(stageParameters.matrix[y_index][x_index]))){
+      console.log(`counter: ${counter}`);
+      counter++;
+      if(!(stageParameters.legendForbiddenColors.includes(stageParameters.matrix[-y_index + Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][x_index]))){
         //Si la coordenada esta libre se mete en freePlacesArray
         freePlacesArray.push([x_index, y_index]);
       }
-
   //2º Elegimos una posición libre del array y la devolvemos
+  freeCoordinate = freePlacesArray[Math.floor(Math.random() * freePlacesArray.length)];
+   }
+  }
 
   return freeCoordinate;
 }
 
-export { checkDataCoherence, checkExistenceInMatrix, coordinatesAssigment };
+export { checkDataCoherence, checkExistenceInMatrix, coordinatesAssigment, coordinatesAssigmentv2 };
