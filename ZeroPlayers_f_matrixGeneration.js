@@ -1,6 +1,7 @@
 import {
   cloneArray2D,
   cloneArray,
+  arrayOf2DVectorsIncludeVector
 } from "./ZeroPlayers_f_arraysManipulation.js";
 import { movement } from "./ZeroPlayers_f_movement.js";
 import {
@@ -16,8 +17,8 @@ import { ordering4drawing } from "./ZeroPlayers_f_canvas.js";
 import {
   checkSimpleCellsExistence,
   checkNumbersTypeCell,
-} from "./ZeroPlayers_f_checkValues.js";
-import { checkExistenceInMatrix } from "./ZeroPlayers_f_dataCoherence.js";
+  freePositionsArrayGenerator } from "./ZeroPlayers_f_checkValues.js";
+import { checkExistenceInMatrix, coordinatesAssigment } from "./ZeroPlayers_f_dataCoherence.js";
 
 function generateStaticStage(stageParameters, simulationParameters) {
   let a;
@@ -154,8 +155,16 @@ function matrixGenerator(stageParameters, simulationParameters) {
           limit += 1;
         } while (flagForbiddenPosition && limit <= 8); //Le doy 8 intentos para encontrar una celda libre                    if (limit<8){
         if (limit < 8) {
-          item.x = xy[0];
-          item.y = xy[1];
+          //Se comprueba que la nueva coordenada no haya sido ocupada por otro elemento
+          let freePositionsArray = freePositionsArrayGenerator(simulationParameters, stageParameters);
+          console.log(freePositionsArray);
+          if(arrayOf2DVectorsIncludeVector(freePositionsArray,[xy[0],xy[1]])){
+            console.log("Se mete en el if")
+            item.x = xy[0];
+            item.y = xy[1];
+            stageParameters.matrix = matrixGenerator(stageParameters, simulationParameters);
+          }
+        
         } else {
           item.x = xy_before[0];
           item.y = xy_before[1];
@@ -226,21 +235,7 @@ function matrixGenerator(stageParameters, simulationParameters) {
 
   //2.1 The dinamicElementsArray array is traversed and we are subtracting a number of life points
   // that depends on each kind of organism
-  for (
-    auxIndex = 0;
-    auxIndex < stageParameters.dynamicElementsArray.length;
-    auxIndex++
-  ) {
-    stageParameters.dynamicElementsArray[auxIndex].life -= Math.round(
-      Math.random() *
-        stageParameters.dynamicElementsArray[auxIndex].lifeConsumption
-    );
-    if (stageParameters.dynamicElementsArray[auxIndex].life <= 0) {
-      //The instance that has died of dynamicElementsArray is deleted
-      stageParameters.dynamicElementsArray.splice(auxIndex, 1);
-      auxIndex -= 1;
-    }
-  }
+ /*  */
 
   return matrixAux;
 }

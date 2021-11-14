@@ -23,16 +23,15 @@ function lastElement(array){
     return array[array.length - 1];
 }
 
-/*     function includesAnyOf(container,reference){ //Container is a 2D array; reference is a 1D array
-        let a;
-        let b;
-        for(a=0;a<;a++){
-            for(b=0;b<;b++){
-                if (reference.includes(container[]))
-            }
+function arrayOf2DVectorsIncludeVector(array, vector){
+    let result = false;
+    array.forEach(item => {
+        if(item[0] === vector[0] && item[1] === vector[1]){
+            result = true;
         }
-    }
- */
 
+    })
+    return result;
+}
     //HOLA!!
-export {cloneArray2D,cloneArray,lastElement}
+export {cloneArray2D,cloneArray,lastElement,arrayOf2DVectorsIncludeVector}

@@ -21,4 +21,25 @@ function checkNumbersTypeCell(className, stageParameters){
     return counter;
 }
 
-export {checkSimpleCellsExistence, checkNumbersTypeCell}
+function freePositionsArrayGenerator(simulationParameters,stageParameters){
+    let freePositionsArray = [];
+    let x_index;
+    let y_index;
+    let counter = 0;
+    for(x_index = 0; x_index < Math.floor(simulationParameters.wideDimension / simulationParameters.squareSide); x_index++){
+        for(y_index = 0; y_index < Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide); y_index++){
+         //Se comprueba que la coordenada esta libre
+         console.log(`counter: ${counter}`)
+         counter++;
+          if(!(stageParameters.legendForbiddenColors.includes(stageParameters.matrix[-y_index + Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][x_index]))){
+           //Si la coordenada esta libre se mete en freePlacesArray
+            freePositionsArray.push([x_index, y_index]);
+           
+         }
+      }
+     }
+     console.log(freePositionsArray)
+    return freePositionsArray 
+}
+
+export {checkSimpleCellsExistence, checkNumbersTypeCell, freePositionsArrayGenerator}
