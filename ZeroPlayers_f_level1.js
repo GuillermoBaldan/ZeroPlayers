@@ -6,8 +6,7 @@ import {
 import { initCanvas, drawingMatrix } from "./ZeroPlayers_f_canvas.js";
 import {
   checkDataCoherence,
-  coordinatesAssigment,
-  coordinatesAssigmentv2,
+  coordinatesAssigment
 } from "./ZeroPlayers_f_dataCoherence.js";
 import { oneSimulationStep } from "./ZeroPlayers_f_simulation.js";
 import { stopFlag } from "./index.js";
@@ -40,7 +39,7 @@ function init(stageParameters, simulationParameters) {
     stageParameters.livingBeingsCollection.forEach((item) => {
       for (a = 0; a < item.number; a++) {
            //Se busca una posición libre en la matriz
-        freeCoordinate = coordinatesAssigmentv2(simulationParameters, stageParameters);
+        freeCoordinate = coordinatesAssigment(simulationParameters, stageParameters);
        //Si existe una posición libre se crea un elemento dinámico
        if(freeCoordinate != undefined){
         stageParameters.dynamicElementsArray.push(new item.type());

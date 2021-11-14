@@ -205,7 +205,8 @@ function matrixGenerator(stageParameters, simulationParameters) {
     }) */
   checkSimpleCellsExistence("line120 - _f_matrixGeneration", stageParameters);
 
-  for (
+  //3. Energy sustraction
+ /*  for (
     auxIndex = 0;
     auxIndex < stageParameters.dynamicElementsArray.length;
     auxIndex++
@@ -221,7 +222,8 @@ function matrixGenerator(stageParameters, simulationParameters) {
       stageParameters.dynamicElementsArray.splice(auxIndex, 1);
       auxIndex -= 1;
     }
-  }
+  } */
+
   //2.1 The dinamicElementsArray array is traversed and we are subtracting a number of life points
   // that depends on each kind of organism
   for (

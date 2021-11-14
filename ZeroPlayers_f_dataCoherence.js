@@ -21,7 +21,6 @@ function checkDataCoherence(stageParameters, simulationParameters) {
     //2.2 Comprobamos que el número de elementos dinámicos es igual o menor al número de celdas del escenario
     if (counter > numberOfSquareCells) {
       flag = false;
-      console.log(flag)
       return flag;
     }
   //3. Comprobar que ningún elemento dinámico queda fuera del canvas
@@ -65,74 +64,7 @@ function checkExistenceInMatrix(x, y, stageParameters) {
   return flag;
 }
 
-function coordinatesAssigment(simulationParameters, stageParameters, item) {
-  let x_index;
-  let y_index;
-  let coordinate = [];
-  let freePlacesArray = [];
-  let counter = 0; //¿Para que sirve esta variable?
-  let randomIndex;
-  //1º Construimos un array de posiciones libres
-  console.log( Math.floor(
-    simulationParameters.wideDimension / simulationParameters.squareSide
-  ))
-  for (
-    x_index = 0;
-    x_index <
-    Math.floor(
-      simulationParameters.wideDimension / simulationParameters.squareSide
-    ) -
-      1;
-    x_index++
-  ) {
-    console.log("Se mete en el primer for")
-    for (
-      y_index = 0;
-      y_index <
-      Math.floor(
-        simulationParameters.heightDimension / simulationParameters.squareSide
-      ) -
-        1;
-      y_index++
-    ) {
-      //Se comprueba que la coordenada esta libre
-      //Si la coordenada está libre se mete en freePlacesArray y se aumenta el contador
-      /*   console.log(
-        `matrix[x_index][y_index] = ${
-          stageParameters.matrix[x_index][y_index]
-        } includes: ${item.behaviourRules.forbiddenColors.includes(
-          stageParameters.matrix[x_index][y_index]
-        )}`
-      ); */
-      console.log(`counter: ${counter}`);
-      counter++;
-      if (!(item.behaviourRules.forbiddenColors.includes(stageParameters.matrix[-y_index+Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][x_index]))) {
-         freePlacesArray.push([x_index, y_index]);
-          counter++;} 
-        //counter++; ¿Para que sirve esto?
-       /* else { //Si la coordenada no está libre se elimina el último item creado de stageParameters.dynamicElementsArray
-        stageParameters.dynamicElementsArray.splice(
-          stageParameters.dynamicElementsArray.length - 1,
-          1
-        ); */
-    }
-  }
-
-  //compramos que la matriz de posiciones libres tiene NºTotal de posiciones - Número de elementos dinámicos = Nº Total de posiciones libres
-
-  //Asignamos una posición libre al azar al elemento dinámico generado, que es el último
-  randomIndex = Math.floor(Math.random() * freePlacesArray.length);
-  coordinate = freePlacesArray[randomIndex];
-  freePlacesArray.splice(randomIndex, 1);
-  stageParameters.dynamicElementsArray[
-    stageParameters.dynamicElementsArray.length - 1
-  ].x = coordinate[0];
-  stageParameters.dynamicElementsArray[
-    stageParameters.dynamicElementsArray.length - 1
-  ].y = coordinate[1];
-}
-
-function coordinatesAssigmentv2(simulationParameters, stageParameters){
+function coordinatesAssigment(simulationParameters, stageParameters){
   let freePlacesArray = [];
   let freeCoordinate;
   let x_index;
@@ -157,4 +89,4 @@ function coordinatesAssigmentv2(simulationParameters, stageParameters){
   return freeCoordinate;
 }
 
-export { checkDataCoherence, checkExistenceInMatrix, coordinatesAssigment, coordinatesAssigmentv2 };
+export { checkDataCoherence, checkExistenceInMatrix, coordinatesAssigment};
