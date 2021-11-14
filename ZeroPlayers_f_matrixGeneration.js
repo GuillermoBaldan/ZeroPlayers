@@ -71,6 +71,7 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
   matrixAux = cloneArray2D(stageParameters.staticStage);
   stageParameters.matrix = cloneArray2D(matrixAux);
   //Initial case
+
   stageParameters.dynamicElementsArray.forEach((item) => {
     //Live or dynamic elements color are added to the matrix
     matrixAux[

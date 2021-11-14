@@ -9,9 +9,22 @@ function checkDataCoherence(stageParameters, simulationParameters) {
   let flagMultiple = true; //checkDataCoherence is true if there isn´t data coherence errors
   let flagCheckInside = true;
   let flag = true;
+  let numberOfSquareCells = (simulationParameters.wideDimension / simulationParameters.squareSide) * (simulationParameters.heightDimension / simulationParameters.squareSide);
+  let counter = 0;
   //1. Comprobar que wideDimension es multiplo de squarSide
   flagMultiple = multiple(simulationParameters);
-  //2. Comprobar que ningún elemento dinámico queda fuera del canvas
+  //2. Comprobar que el número de los elementos dinámicos están caven dentro del escenario
+    //2.1 Contamos el número de elementos dinámicos.
+    stageParameters.livingBeingsCollection.forEach((item) => {
+      counter += item.number
+    });
+    //2.2 Comprobamos que el número de elementos dinámicos es igual o menor al número de celdas del escenario
+    if (counter > numberOfSquareCells) {
+      flag = false;
+      console.log(flag)
+      return flag;
+    }
+  //3. Comprobar que ningún elemento dinámico queda fuera del canvas
   flagCheckInside = checkInsideCanvas(stageParameters, simulationParameters);
   if (flagMultiple && flagCheckInside) {
     flag = true;
@@ -127,16 +140,11 @@ function coordinatesAssigmentv2(simulationParameters, stageParameters){
   let counter;
   //console.log("Se mete en coordinatesAssigmentv2")
   //1º Construimos un array de posiciones libres
- console.log("Antes del for")
-  console.log( Math.floor(
-    simulationParameters.heightDimension / simulationParameters.squareSide
-  )) 
-  counter = 0;
+   counter = 0;
    for(x_index = 0; x_index < Math.floor(simulationParameters.wideDimension / simulationParameters.squareSide); x_index++){
      for(y_index = 0; y_index < Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide); y_index++){
       //Se comprueba que la coordenada esta libre
-      console.log(`counter: ${counter}`);
-      counter++;
+       counter++;
       if(!(stageParameters.legendForbiddenColors.includes(stageParameters.matrix[-y_index + Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][x_index]))){
         //Si la coordenada esta libre se mete en freePlacesArray
         freePlacesArray.push([x_index, y_index]);
