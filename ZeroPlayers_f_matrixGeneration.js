@@ -130,13 +130,7 @@ function matrixGenerator(stageParameters, simulationParameters) {
         xy_before = [item.x, item.y];
         limit = 0;
         do {
-          xy = movement(
-            xy_before[0],
-            xy_before[1],
-            item.walk,
-            stageParameters,
-            simulationParameters
-          );
+          xy = movement(xy_before[0],xy_before[1],item.walk, stageParameters, simulationParameters);
           //item.behaviourRules.forbiddenPositions.forEach( positionType => {
           if (
             checkForbiddenPosition(
@@ -162,9 +156,19 @@ function matrixGenerator(stageParameters, simulationParameters) {
             console.log("Se mete en el if")
             item.x = xy[0];
             item.y = xy[1];
-            stageParameters.matrix = matrixGenerator(stageParameters, simulationParameters);
+           //Se actualizan los colores de la matriz
+            //Se pinta el color de la célula en la matriz
+           matrixAux[
+            -xy[1] +
+              Math.floor(
+                simulationParameters.heightDimension /
+                  simulationParameters.squareSide
+              ) -
+              1
+          ][xy[0]] = item.color;
           }
-        
+            //Se pinta el color que queda libre en la matriz
+            matrixAux[  -xy_before[1] + Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide) - 1][xy_before[0]] = stageParameters.staticStage[  -xy_before[1] + Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide) - 1][xy_before[0]]; 
         } else {
           item.x = xy_before[0];
           item.y = xy_before[1];
@@ -204,8 +208,8 @@ function matrixGenerator(stageParameters, simulationParameters) {
                 do{
                     son.y = item.y + Math.round(Math.random()*(son.reproductionRadio + son.reproductionRadio) - son.reproductionRadio)
                 }while(!(son.y >= 0 && son.y <= Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide) -1))
-                if (!(checkExistenceInMatrix(son.x,son.y,stageParameters))){ //Si no hay ningún objeto de dynamicElements con esas coordenadas,
-                                                                     //Entonces se crea el objeto
+                if (!(checkExistenceInMatrix(son.x,son.y,stageParameters))){ //If there isn´t any object of dynamicElementsArray with this coordinates, then an object is created
+                                                                    
                     stageParameters.dynamicElementsArray.push(son);
                 }
                
@@ -236,7 +240,7 @@ function matrixGenerator(stageParameters, simulationParameters) {
   //2.1 The dinamicElementsArray array is traversed and we are subtracting a number of life points
   // that depends on each kind of organism
  /*  */
-
+console.log(`number of dynamic elements: ${stageParameters.dynamicElementsArray.length}`)
   return matrixAux;
 }
 
