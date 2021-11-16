@@ -185,7 +185,7 @@ function matrixGenerator(stageParameters, simulationParameters) {
       }
     }
   });
-  //2 . Feed Function
+/*   //2 . Feed Function
   //2.1 The array is traversed
   stageParameters.dynamicElementsArray.forEach((item) => {
     //2.1.1 the coordinate of the prey is detected
@@ -196,7 +196,7 @@ function matrixGenerator(stageParameters, simulationParameters) {
       }
     }
   });
-  checkSimpleCellsExistence("line102 - _f_matrixGeneration", stageParameters);
+  checkSimpleCellsExistence("line102 - _f_matrixGeneration", stageParameters); */
   //Reproduction block
   /*    stageParameters.dynamicElementsArray.forEach(item => {
         if (item.reproductionRadio != undefined){
