@@ -77,6 +77,8 @@ function coordinatesAssigment(simulationParameters, stageParameters){
      for(y_index = 0; y_index < Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide); y_index++){
       //Se comprueba que la coordenada esta libre
        counter++;
+       console.log("f_coordinatesAssigment: stageParameters.matrix")
+       console.log(stageParameters.matrix)
       if(!(stageParameters.legendForbiddenColors.includes(stageParameters.matrix[-y_index + Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][x_index]))){
         //Si la coordenada esta libre se mete en freePlacesArray
         freePlacesArray.push([x_index, y_index]);

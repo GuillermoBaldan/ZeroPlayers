@@ -35,7 +35,7 @@ function init(stageParameters, simulationParameters) {
       stageParameters,
       simulationParameters
     );
-    stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
+    //stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
     //3.Add dynamic Elements
     stageParameters.livingBeingsCollection.forEach((item) => {
       for (a = 0; a < item.number; a++) {
@@ -74,12 +74,12 @@ function init(stageParameters, simulationParameters) {
         );
       }
     });
-    matrixAux = matrixGeneratorInit(stageParameters, simulationParameters)
-    stageParameters.matrix = cloneArray2D(matrixAux);
+    matrixGeneratorInit(stageParameters, simulationParameters)
+    ///stageParameters.matrix = cloneArray2D(matrixAux);
     //console.log(stageParameters.matrix);  
     //console.log(matrixAux) - No aparece nada en matrixAux, no se están añadiendo los elementos dinámicos
     //4. Draw canvas
-    drawingMatrix(matrixAux, simulationParameters);
+    drawingMatrix(stageParameters, simulationParameters);
     return [staticStageAux, matrixAux, canvas[0], canvas[1]]; //lienzo = canvas[0];ctx = canvas[1]
   } else {
     console.log("The data is not consistent");

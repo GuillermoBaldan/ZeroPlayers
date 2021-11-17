@@ -69,14 +69,14 @@ function materialGeneration(legendTerrain) {
 function matrixGeneratorInit(stageParameters, simulationParameters) {
   let a;
   let b;
-  let matrixAux = [];
-  matrixAux = cloneArray2D(stageParameters.staticStage);
-  stageParameters.matrix = cloneArray2D(matrixAux);
+   // let matrixAux = [];
+  //matrixAux = cloneArray2D(stageParameters.staticStage);
+  //stageParameters.matrix = cloneArray2D(matrixAux);
   //Initial case
 
   stageParameters.dynamicElementsArray.forEach((item) => {
     //Live or dynamic elements color are added to the matrix
-    matrixAux[
+    stageParameters.matrix[
       -item.y +
         Math.floor(
           simulationParameters.heightDimension / simulationParameters.squareSide
@@ -84,9 +84,9 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
         1
     ][item.x] = item.color;
   });
-  stageParameters.matrix = cloneArray2D(matrixAux);
+  //stageParameters.matrix = cloneArray2D(matrixAux);
 
-  return matrixAux;
+  //return matrixAux;
 }
 
 function matrixGenerator(stageParameters, simulationParameters) {
@@ -247,16 +247,15 @@ console.log(`number of dynamic elements: ${stageParameters.dynamicElementsArray.
 
 function matrixGeneratorv2(stageParameters, simulationParameters) {
   //let heightDimension = wideDimension;
-  let flagForbiddenPosition = false; //Por defecto no se ha activado la posición prohibida
+
   let matrixAux = [];
-  let xy;
-  let xy_before;
+ 
   let auxIndex = 0;
   let preyCoordinates;
   let prey;
   let energySustraction;
   let son;
-  let limit;
+  
   matrixAux = cloneArray2D(stageParameters.staticStage);
   //1. We give movement to dynamic elements
   stageParameters.dynamicElementsArray.forEach((item) => {

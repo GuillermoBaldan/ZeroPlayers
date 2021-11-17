@@ -15,17 +15,18 @@ function initCanvas(simulationParameters) {
   return [simulationParameters.lienzo, simulationParameters.ctx];
 }
 
-function drawingMatrix(matrix, simulationParameters) {
+function drawingMatrix(stageParameters, simulationParameters) {
   //1. Recorremos el array stage
-  let matrixAux = [];
+ ///let matrixAux = [];
   let x = 0;
   let y = 0;
   let Ax = simulationParameters.squareSide;
   let Ay = simulationParameters.squareSide;
   //matrixAux = matrix;
-  matrixAux = cloneArray2D(matrix);
-
-  matrixAux.forEach((row) => {
+  //matrixAux = cloneArray2D(matrix);
+console.log("stageParameters.matrix")
+console.log(stageParameters.matrix)
+ stageParameters.matrix.forEach((row) => {
     row.forEach((column) => {
       drawSquare(x, y, column, simulationParameters);
       x = x + Ax;
@@ -33,7 +34,7 @@ function drawingMatrix(matrix, simulationParameters) {
     x = 0;
     y = y + Ay;
   });
-  matrixAux = [];
+ // matrixAux = [];
 }
 
 function drawSquare(x, y, color, simulationParameters) {
