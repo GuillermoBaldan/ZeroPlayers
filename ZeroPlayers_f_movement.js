@@ -29,7 +29,30 @@ function movement(dynamicItem_x, dynamicItem_y, f_movement, stageParameters, sim
     }
     return aux;
 }
-  
+
+function staticMovement(item,stageParameters,simulationParameters){
+    stageParameters.matrix[
+        -item.y +
+          Math.floor(
+            simulationParameters.heightDimension /
+              simulationParameters.squareSide
+          ) -
+          1
+      ][item.x] = item.color;
+}
+
+function trajectoryMovement(item, stageParamenters, simulationParameters){
+    item.y = item.y + item.trajectory_y[simulationIndex];
+    item.x = item.x + item.trajectory_x[simulationIndex];
+    stageParamenters.matrix[
+      -item.y +
+        Math.floor(
+          simulationParameters.heightDimension /
+            simulationParameters.squareSide
+        ) -
+        1
+    ][item.x] = item.color;
+}
 
 function zigzag(dynamicItem_x,dynamicItem_y,f_movement){
     return f_movement(dynamicItem_x,dynamicItem_y)
@@ -87,5 +110,65 @@ function changeAdjacentEdges(aux,simulationParameters){
     return aux;
 }
 
+function autonomousMovement(item, stageParameters, simulationParameters){
+    let xy_before;
+    let limit;
+    xy_before = [item.x, item.y];
+    limit = 0;
+    do {
+      xy = movement(xy_before[0],xy_before[1],item.walk, stageParameters, simulationParameters);
+      //item.behaviourRules.forbiddenPositions.forEach( positionType => {
+      if (
+        checkForbiddenPosition(
+          stageParameters,
+          simulationParameters,
+          matrixAux,
+          xy,
+          item
+        )
+      ) {
+        flagForbiddenPosition = true;
+      } else {
+        flagForbiddenPosition = false;
+      }
+      //})
+      limit += 1;
+    } while (flagForbiddenPosition && limit <= 8); //Le doy 8 intentos para encontrar una celda libre                    if (limit<8){
+    if (limit < 8) {
+      //Se comprueba que la nueva coordenada no haya sido ocupada por otro elemento
+      let freePositionsArray = freePositionsArrayGenerator(simulationParameters, stageParameters);
+      console.log(freePositionsArray);
+      if(arrayOf2DVectorsIncludeVector(freePositionsArray,[xy[0],xy[1]])){
+        console.log("Se mete en el if")
+        item.x = xy[0];
+        item.y = xy[1];
+       //Se actualizan los colores de la matriz
+        //Se pinta el color de la célula en la matriz
+       matrixAux[
+        -xy[1] +
+          Math.floor(
+            simulationParameters.heightDimension /
+              simulationParameters.squareSide
+          ) -
+          1
+      ][xy[0]] = item.color;
+      }
+        //Se pinta el color que queda libre en la matriz
+        matrixAux[  -xy_before[1] + Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide) - 1][xy_before[0]] = stageParameters.staticStage[  -xy_before[1] + Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide) - 1][xy_before[0]]; 
+    } else {
+      item.x = xy_before[0];
+      item.y = xy_before[1];
+    }
 
-export {movement}
+    matrixAux[
+      -xy[1] +
+        Math.floor(
+          simulationParameters.heightDimension /
+            simulationParameters.squareSide
+        ) -
+        1
+    ][xy[0]] = item.color;
+}
+
+
+export {movement, staticMovement, trajectoryMovement, autonomousMovement}
