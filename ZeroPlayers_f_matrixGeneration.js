@@ -259,18 +259,18 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
   matrixAux = cloneArray2D(stageParameters.staticStage);
   //1. We give movement to dynamic elements
   stageParameters.dynamicElementsArray.forEach((item) => {
-    if (item.walkmode == "static") {
-      matrixAux[
-        -item.y +
-          Math.floor(
-            simulationParameters.heightDimension /
-              simulationParameters.squareSide
-          ) -
-          1
-      ][item.x] = item.color;
-    } else {
-      //Mode 'trajectory'
-      if (item.walkmode == "trajectory") {
+    switch (item.walkmode) {
+      case "static":
+        matrixAux[
+          -item.y +
+            Math.floor(
+              simulationParameters.heightDimension /
+                simulationParameters.squareSide
+            ) -
+            1
+        ][item.x] = item.color;
+        break;
+      case "trajectory":
         item.y = item.y + item.trajectory_y[simulationIndex];
         item.x = item.x + item.trajectory_x[simulationIndex];
         matrixAux[
@@ -281,8 +281,8 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
             ) -
             1
         ][item.x] = item.color;
-      } else {
-        //Mode 'autonomous'
+        break;
+      case "autonomous":
         xy_before = [item.x, item.y];
         limit = 0;
         do {
@@ -338,7 +338,6 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
             ) -
             1
         ][xy[0]] = item.color;
-      }
     }
   });
  
