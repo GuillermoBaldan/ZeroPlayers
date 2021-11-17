@@ -41,13 +41,7 @@ function randomSteps() {
   return aux;
 }
 
-function checkForbiddenPosition(
-  stageParameters,
-  simulationParameters,
-  matrixAux,
-  xy,
-  item
-) {
+function checkForbiddenPosition(stageParameters, simulationParameters, xy, item) {
   //Position type is a forbiddenPosition like water
   let forbiddenColorsArray = [];
   //1. We encode positionType in a color, because each positionType corresponds to a color
@@ -58,7 +52,7 @@ function checkForbiddenPosition(
 
   if (
     forbiddenColorsArray.includes(
-      matrixAux[
+      stageParameters.matrix[
         -xy[1] +
           Math.floor(
             simulationParameters.heightDimension /

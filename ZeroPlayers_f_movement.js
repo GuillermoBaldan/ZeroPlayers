@@ -1,4 +1,7 @@
 import { simulation } from "./ZeroPlayers_f_level1.js";
+import {checkForbiddenPosition} from "./ZeroPlayers_f_livingbeings.js";
+import {freePositionsArrayGenerator} from "./ZeroPlayers_f_checkValues.js";
+import {arrayOf2DVectorsIncludeVector} from "./ZeroPlayers_f_arraysManipulation.js";
 
 function movement(dynamicItem_x, dynamicItem_y, f_movement, stageParameters, simulationParameters){
     let beforeAux = [dynamicItem_x,dynamicItem_y];
@@ -115,18 +118,12 @@ function autonomousMovement(item, stageParameters, simulationParameters){
     let limit;
     xy_before = [item.x, item.y];
     limit = 0;
+    let xy;
+    let flagForbiddenPosition = false; //Por defecto no se ha activado la posición prohibida
     do {
       xy = movement(xy_before[0],xy_before[1],item.walk, stageParameters, simulationParameters);
       //item.behaviourRules.forbiddenPositions.forEach( positionType => {
-      if (
-        checkForbiddenPosition(
-          stageParameters,
-          simulationParameters,
-          matrixAux,
-          xy,
-          item
-        )
-      ) {
+      if (checkForbiddenPosition(stageParameters, simulationParameters,xy,item)){
         flagForbiddenPosition = true;
       } else {
         flagForbiddenPosition = false;
@@ -144,7 +141,7 @@ function autonomousMovement(item, stageParameters, simulationParameters){
         item.y = xy[1];
        //Se actualizan los colores de la matriz
         //Se pinta el color de la célula en la matriz
-       matrixAux[
+       stageParameters.matrix[
         -xy[1] +
           Math.floor(
             simulationParameters.heightDimension /
@@ -154,13 +151,13 @@ function autonomousMovement(item, stageParameters, simulationParameters){
       ][xy[0]] = item.color;
       }
         //Se pinta el color que queda libre en la matriz
-        matrixAux[  -xy_before[1] + Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide) - 1][xy_before[0]] = stageParameters.staticStage[  -xy_before[1] + Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide) - 1][xy_before[0]]; 
+        stageParameters.matrix[  -xy_before[1] + Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide) - 1][xy_before[0]] = stageParameters.staticStage[  -xy_before[1] + Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide) - 1][xy_before[0]]; 
     } else {
       item.x = xy_before[0];
       item.y = xy_before[1];
     }
 
-    matrixAux[
+    stageParameters.matrix[
       -xy[1] +
         Math.floor(
           simulationParameters.heightDimension /
