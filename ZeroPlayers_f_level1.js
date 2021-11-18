@@ -40,13 +40,15 @@ function init(stageParameters, simulationParameters) {
     stageParameters.livingBeingsCollection.forEach((item) => {
       for (a = 0; a < item.number; a++) {
            //Se busca una posición libre en la matriz
+        console.log(stageParameters.matrix)
         freeCoordinate = coordinatesAssigment(simulationParameters, stageParameters);
        //Si existe una posición libre se crea un elemento dinámico
        if(freeCoordinate != undefined){
         stageParameters.dynamicElementsArray.push(new item.type());
         lastElement(stageParameters.dynamicElementsArray).x = freeCoordinate[0];
         lastElement(stageParameters.dynamicElementsArray).y = freeCoordinate[1];
-        stageParameters.matrix = cloneArray2D(matrixGeneratorInit(stageParameters, simulationParameters))
+        stageParameters.matrix = matrixGeneratorInit(stageParameters, simulationParameters)
+        
        }
 
 

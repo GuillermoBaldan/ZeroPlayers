@@ -53,7 +53,8 @@ function generateStaticStage(stageParameters, simulationParameters) {
       );
     }
     staticStageAux.push(row);
-  }
+    stageParameters.matrix = staticStageAux;
+   }
 
   return staticStageAux;
 }
