@@ -1,4 +1,7 @@
-import { matrixGenerator, matrixGeneratorv2 } from "./ZeroPlayers_f_matrixGeneration.js";
+import {
+  matrixGenerator,
+  matrixGeneratorv2,
+} from "./ZeroPlayers_f_matrixGeneration.js";
 import { drawingMatrix, ordering4drawing } from "./ZeroPlayers_f_canvas.js";
 import {
   globalSimulationIndex,
@@ -23,10 +26,13 @@ function oneSimulationStep(stageParameters, simulationParameters) {
 
   checkSimpleCellsExistence("line18 - _f_simulation", stageParameters);
   //------
-  let matrixAux = matrixGeneratorv2(stageParameters, simulationParameters);
+  stageParameters.matrix = matrixGeneratorv2(
+    stageParameters,
+    simulationParameters
+  );
   checkSimpleCellsExistence("line21 - _f_simulation", stageParameters);
   //matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension)
-  drawingMatrix(matrixAux, simulationParameters);
+  drawingMatrix(stageParameters, simulationParameters);
   simulationParameters.globalSimulationIndex += 1;
   //loadGlobalSimulationIndex(simulationIndex);
   if (

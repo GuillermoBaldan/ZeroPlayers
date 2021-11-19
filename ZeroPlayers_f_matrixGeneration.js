@@ -311,6 +311,7 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
         );
     }
   });
+  return stageParameters.matrix;
 }
 
 export {
