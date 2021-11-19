@@ -9,20 +9,22 @@ function checkDataCoherence(stageParameters, simulationParameters) {
   let flagMultiple = true; //checkDataCoherence is true if there isn´t data coherence errors
   let flagCheckInside = true;
   let flag = true;
-  let numberOfSquareCells = (simulationParameters.wideDimension / simulationParameters.squareSide) * (simulationParameters.heightDimension / simulationParameters.squareSide);
+  let numberOfSquareCells =
+    (simulationParameters.wideDimension / simulationParameters.squareSide) *
+    (simulationParameters.heightDimension / simulationParameters.squareSide);
   let counter = 0;
   //1. Comprobar que wideDimension es multiplo de squarSide
   flagMultiple = multiple(simulationParameters);
   //2. Comprobar que el número de los elementos dinámicos están caven dentro del escenario
-    //2.1 Contamos el número de elementos dinámicos.
-    stageParameters.livingBeingsCollection.forEach((item) => {
-      counter += item.number
-    });
-    //2.2 Comprobamos que el número de elementos dinámicos es igual o menor al número de celdas del escenario
-    if (counter > numberOfSquareCells) {
-      flag = false;
-      return flag;
-    }
+  //2.1 Contamos el número de elementos dinámicos.
+  stageParameters.livingBeingsCollection.forEach((item) => {
+    counter += item.number;
+  });
+  //2.2 Comprobamos que el número de elementos dinámicos es igual o menor al número de celdas del escenario
+  if (counter > numberOfSquareCells) {
+    flag = false;
+    return flag;
+  }
   //3. Comprobar que ningún elemento dinámico queda fuera del canvas
   flagCheckInside = checkInsideCanvas(stageParameters, simulationParameters);
   if (flagMultiple && flagCheckInside) {
@@ -64,29 +66,66 @@ function checkExistenceInMatrix(x, y, stageParameters) {
   return flag;
 }
 
-function coordinatesAssigment(simulationParameters, stageParameters){
+function coordinatesAssigment(simulationParameters, stageParameters) {
   let freePlacesArray = [];
   let freeCoordinate;
   let x_index;
   let y_index;
   let counter;
   //console.log("Se mete en coordinatesAssigmentv2")
-  //1º Construimos un array de posiciones libres
-   counter = 0;
-   for(x_index = 0; x_index < Math.floor(simulationParameters.wideDimension / simulationParameters.squareSide); x_index++){
-     for(y_index = 0; y_index < Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide); y_index++){
+  //1º Construimos un array de posiciones libresco
+  console.log(
+    "stageParameters.matrix - f: coordinatesAssigment - Before for - ZeroPlayers_f_dataCoherence"
+  );
+  console.log(stageParameters.matrix);
+
+  counter = 0;
+  for (
+    x_index = 0;
+    x_index <
+    Math.floor(
+      simulationParameters.wideDimension / simulationParameters.squareSide
+    );
+    x_index++
+  ) {
+    for (
+      y_index = 0;
+      y_index <
+      Math.floor(
+        simulationParameters.heightDimension / simulationParameters.squareSide
+      );
+      y_index++
+    ) {
       //Se comprueba que la coordenada esta libre
-       counter++;
-       if(!(stageParameters.legendForbiddenColors.includes(stageParameters.matrix[-y_index + Math.floor(simulationParameters.heightDimension/simulationParameters.squareSide)-1][x_index]))){
+      counter++;
+      console.log("counter");
+      console.log(counter);
+      console.log(
+        "stageParameters.matrix - f: coordinatesAssigment - After for - ZeroPlayers_f_dataCoherence"
+      );
+      console.log(stageParameters.matrix);
+      if (
+        !stageParameters.legendForbiddenColors.includes(
+          stageParameters.matrix[
+            -y_index +
+              Math.floor(
+                simulationParameters.heightDimension /
+                  simulationParameters.squareSide
+              ) -
+              1
+          ][x_index]
+        )
+      ) {
         //Si la coordenada esta libre se mete en freePlacesArray
         freePlacesArray.push([x_index, y_index]);
       }
-  //2º Elegimos una posición libre del array y la devolvemos
-  freeCoordinate = freePlacesArray[Math.floor(Math.random() * freePlacesArray.length)];
-   }
+      //2º Elegimos una posición libre del array y la devolvemos
+      freeCoordinate =
+        freePlacesArray[Math.floor(Math.random() * freePlacesArray.length)];
+    }
   }
 
   return freeCoordinate;
 }
 
-export { checkDataCoherence, checkExistenceInMatrix, coordinatesAssigment};
+export { checkDataCoherence, checkExistenceInMatrix, coordinatesAssigment };

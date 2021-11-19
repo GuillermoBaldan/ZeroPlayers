@@ -7,7 +7,7 @@ import {
 import { initCanvas, drawingMatrix } from "./ZeroPlayers_f_canvas.js";
 import {
   checkDataCoherence,
-  coordinatesAssigment
+  coordinatesAssigment,
 } from "./ZeroPlayers_f_dataCoherence.js";
 import { oneSimulationStep } from "./ZeroPlayers_f_simulation.js";
 import { stopFlag } from "./index.js";
@@ -24,7 +24,7 @@ function init(stageParameters, simulationParameters) {
   let canvas;
   let flag = false;
   let a;
-  let freeCoordinate
+  let freeCoordinate;
   //0. Check Data Coherence
   flag = checkDataCoherence(stageParameters, simulationParameters);
   if (flag) {
@@ -39,34 +39,48 @@ function init(stageParameters, simulationParameters) {
     //3.Add dynamic Elements
     stageParameters.livingBeingsCollection.forEach((item) => {
       for (a = 0; a < item.number; a++) {
-           //Se busca una posición libre en la matriz
-        console.log(stageParameters.matrix)
-        freeCoordinate = coordinatesAssigment(simulationParameters, stageParameters);
-       //Si existe una posición libre se crea un elemento dinámico
-       if(freeCoordinate != undefined){
-        stageParameters.dynamicElementsArray.push(new item.type());
-        lastElement(stageParameters.dynamicElementsArray).x = freeCoordinate[0];
-        lastElement(stageParameters.dynamicElementsArray).y = freeCoordinate[1];
-        stageParameters.matrix = matrixGeneratorInit(stageParameters, simulationParameters)
-        
-       }
+        console.log("item.number");
+        console.log(item.number);
+        //Se busca una posición libre en la matriz
+        console.log(
+          "stageParameters.matrix - Before reach coordinatesAssigment function"
+        );
+        console.log(stageParameters.matrix);
+        freeCoordinate = coordinatesAssigment(
+          simulationParameters,
+          stageParameters
+        );
+        console.log(
+          "stageParameters.matrix - After coordiantesAssigment function - ZeroPlayers_f_level1.js"
+        );
+        console.log(stageParameters.matrix);
+        //Si existe una posición libre se crea un elemento dinámico
+        if (freeCoordinate != undefined) {
+          stageParameters.dynamicElementsArray.push(new item.type());
+          lastElement(stageParameters.dynamicElementsArray).x =
+            freeCoordinate[0];
+          lastElement(stageParameters.dynamicElementsArray).y =
+            freeCoordinate[1];
+          stageParameters.matrix = matrixGeneratorInit(
+            stageParameters,
+            simulationParameters
+          );
+        }
 
-
-       /*  //Generamos el elemento dinámico
+        /*  //Generamos el elemento dinámico
         stageParameters.dynamicElementsArray.push(new item.type());
         //Asignamos coordenadas, si no hay coordenadas libres, se borra el último elemento dinámico generado
         coordinatesAssigment(
           simulationParameters,
           stageParameters,
           lastElement(stageParameters.dynamicElementsArray) */
-        
+
         //Hay que generar la matrix aqui
-       
-      /*   stageParameters.matrix = cloneArray2D(
+
+        /*   stageParameters.matrix = cloneArray2D(
           matrixGenerator(stageParameters, simulationParameters)
         ); */
-      
-        
+
         //Le trasnferimos energía al elemento generado
         energy2dynamicElements(
           stageParameters.dynamicElementsArray[
@@ -76,9 +90,9 @@ function init(stageParameters, simulationParameters) {
         );
       }
     });
-    matrixGeneratorInit(stageParameters, simulationParameters)
+    matrixGeneratorInit(stageParameters, simulationParameters);
     ///stageParameters.matrix = cloneArray2D(matrixAux);
-    //console.log(stageParameters.matrix);  
+    //console.log(stageParameters.matrix);
     //console.log(matrixAux) - No aparece nada en matrixAux, no se están añadiendo los elementos dinámicos
     //4. Draw canvas
     drawingMatrix(stageParameters, simulationParameters);
