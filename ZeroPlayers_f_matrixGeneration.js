@@ -1,7 +1,7 @@
 import {
   cloneArray2D,
   cloneArray,
-  arrayOf2DVectorsIncludeVector
+  arrayOf2DVectorsIncludeVector,
 } from "./ZeroPlayers_f_arraysManipulation.js";
 import { movement } from "./ZeroPlayers_f_movement.js";
 import {
@@ -17,9 +17,17 @@ import { ordering4drawing } from "./ZeroPlayers_f_canvas.js";
 import {
   checkSimpleCellsExistence,
   checkNumbersTypeCell,
-  freePositionsArrayGenerator } from "./ZeroPlayers_f_checkValues.js";
-import { checkExistenceInMatrix, coordinatesAssigment } from "./ZeroPlayers_f_dataCoherence.js";
-import {staticMovement, trajectoryMovement, autonomousMovement} from "./ZeroPlayers_f_movement.js";
+  freePositionsArrayGenerator,
+} from "./ZeroPlayers_f_checkValues.js";
+import {
+  checkExistenceInMatrix,
+  coordinatesAssigment,
+} from "./ZeroPlayers_f_dataCoherence.js";
+import {
+  staticMovement,
+  trajectoryMovement,
+  autonomousMovement,
+} from "./ZeroPlayers_f_movement.js";
 
 function generateStaticStage(stageParameters, simulationParameters) {
   let a;
@@ -54,7 +62,7 @@ function generateStaticStage(stageParameters, simulationParameters) {
     }
     staticStageAux.push(row);
     stageParameters.matrix = staticStageAux;
-   }
+  }
 
   return staticStageAux;
 }
@@ -70,7 +78,7 @@ function materialGeneration(legendTerrain) {
 function matrixGeneratorInit(stageParameters, simulationParameters) {
   let a;
   let b;
-   // let matrixAux = [];
+  // let matrixAux = [];
   //matrixAux = cloneArray2D(stageParameters.staticStage);
   //stageParameters.matrix = cloneArray2D(matrixAux);
   //Initial case
@@ -87,7 +95,7 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
   });
   //stageParameters.matrix = cloneArray2D(matrixAux);
 
-  //return matrixAux;
+  return stageParameters.matrix;
 }
 
 function matrixGenerator(stageParameters, simulationParameters) {
@@ -132,7 +140,13 @@ function matrixGenerator(stageParameters, simulationParameters) {
         xy_before = [item.x, item.y];
         limit = 0;
         do {
-          xy = movement(xy_before[0],xy_before[1],item.walk, stageParameters, simulationParameters);
+          xy = movement(
+            xy_before[0],
+            xy_before[1],
+            item.walk,
+            stageParameters,
+            simulationParameters
+          );
           //item.behaviourRules.forbiddenPositions.forEach( positionType => {
           if (
             checkForbiddenPosition(
@@ -152,25 +166,45 @@ function matrixGenerator(stageParameters, simulationParameters) {
         } while (flagForbiddenPosition && limit <= 8); //Le doy 8 intentos para encontrar una celda libre                    if (limit<8){
         if (limit < 8) {
           //Se comprueba que la nueva coordenada no haya sido ocupada por otro elemento
-          let freePositionsArray = freePositionsArrayGenerator(simulationParameters, stageParameters);
+          let freePositionsArray = freePositionsArrayGenerator(
+            simulationParameters,
+            stageParameters
+          );
           console.log(freePositionsArray);
-          if(arrayOf2DVectorsIncludeVector(freePositionsArray,[xy[0],xy[1]])){
-            console.log("Se mete en el if")
+          if (
+            arrayOf2DVectorsIncludeVector(freePositionsArray, [xy[0], xy[1]])
+          ) {
+            console.log("Se mete en el if");
             item.x = xy[0];
             item.y = xy[1];
-           //Se actualizan los colores de la matriz
+            //Se actualizan los colores de la matriz
             //Se pinta el color de la célula en la matriz
-           matrixAux[
-            -xy[1] +
+            matrixAux[
+              -xy[1] +
+                Math.floor(
+                  simulationParameters.heightDimension /
+                    simulationParameters.squareSide
+                ) -
+                1
+            ][xy[0]] = item.color;
+          }
+          //Se pinta el color que queda libre en la matriz
+          matrixAux[
+            -xy_before[1] +
               Math.floor(
                 simulationParameters.heightDimension /
                   simulationParameters.squareSide
               ) -
               1
-          ][xy[0]] = item.color;
-          }
-            //Se pinta el color que queda libre en la matriz
-            matrixAux[  -xy_before[1] + Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide) - 1][xy_before[0]] = stageParameters.staticStage[  -xy_before[1] + Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide) - 1][xy_before[0]]; 
+          ][xy_before[0]] =
+            stageParameters.staticStage[
+              -xy_before[1] +
+                Math.floor(
+                  simulationParameters.heightDimension /
+                    simulationParameters.squareSide
+                ) -
+                1
+            ][xy_before[0]];
         } else {
           item.x = xy_before[0];
           item.y = xy_before[1];
@@ -187,7 +221,7 @@ function matrixGenerator(stageParameters, simulationParameters) {
       }
     }
   });
-/*   //2 . Feed Function
+  /*   //2 . Feed Function
   //2.1 The array is traversed
   stageParameters.dynamicElementsArray.forEach((item) => {
     //2.1.1 the coordinate of the prey is detected
@@ -221,7 +255,7 @@ function matrixGenerator(stageParameters, simulationParameters) {
   checkSimpleCellsExistence("line120 - _f_matrixGeneration", stageParameters);
 
   //3. Energy sustraction
- /*  for (
+  /*  for (
     auxIndex = 0;
     auxIndex < stageParameters.dynamicElementsArray.length;
     auxIndex++
@@ -241,8 +275,10 @@ function matrixGenerator(stageParameters, simulationParameters) {
 
   //2.1 The dinamicElementsArray array is traversed and we are subtracting a number of life points
   // that depends on each kind of organism
- /*  */
-console.log(`number of dynamic elements: ${stageParameters.dynamicElementsArray.length}`)
+  /*  */
+  console.log(
+    `number of dynamic elements: ${stageParameters.dynamicElementsArray.length}`
+  );
   return matrixAux;
 }
 
@@ -250,13 +286,13 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
   //let heightDimension = wideDimension;
 
   let matrixAux = [];
- 
+
   let auxIndex = 0;
   let preyCoordinates;
   let prey;
   let energySustraction;
   let son;
-  
+
   matrixAux = cloneArray2D(stageParameters.staticStage);
   //1. We give movement to dynamic elements
   stageParameters.dynamicElementsArray.forEach((item) => {
@@ -266,18 +302,20 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
         break;
       case "trajectory":
         trajectoryMovement(item, stageParameters, simulationParameters);
-       break;
+        break;
       case "autonomous":
         autonomousMovement(item, stageParameters, simulationParameters);
-       break;
-       console.log(`number of dynamic elements: ${stageParameters.dynamicElementsArray.length}`)
-      }
+        break;
+        console.log(
+          `number of dynamic elements: ${stageParameters.dynamicElementsArray.length}`
+        );
+    }
   });
 }
- 
 
-  
-
-
-
-export { generateStaticStage, matrixGeneratorInit, matrixGenerator, matrixGeneratorv2 };
+export {
+  generateStaticStage,
+  matrixGeneratorInit,
+  matrixGenerator,
+  matrixGeneratorv2,
+};

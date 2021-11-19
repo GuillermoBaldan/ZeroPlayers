@@ -98,8 +98,7 @@ function coordinatesAssigment(simulationParameters, stageParameters) {
     ) {
       //Se comprueba que la coordenada esta libre
       counter++;
-      console.log("counter");
-      console.log(counter);
+      console.log(`counter: ${counter}`);
       console.log(
         "stageParameters.matrix - f: coordinatesAssigment - After for - ZeroPlayers_f_dataCoherence"
       );
