@@ -19,18 +19,15 @@ function oneSimulationStep(stageParameters, simulationParameters) {
     "simulationStep: " + (simulationParameters.globalSimulationIndex + 1)
   );
   //Reordering dynamicElementsArray block--
-  checkSimpleCellsExistence("line 13 - _f_simulation", stageParameters);
   stageParameters.dynamicElementsArray = cloneArray(
     ordering4drawing(stageParameters)
   );
 
-  checkSimpleCellsExistence("line18 - _f_simulation", stageParameters);
   //------
   stageParameters.matrix = matrixGeneratorv2(
     stageParameters,
     simulationParameters
   );
-  checkSimpleCellsExistence("line21 - _f_simulation", stageParameters);
   //matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension)
   drawingMatrix(stageParameters, simulationParameters);
   simulationParameters.globalSimulationIndex += 1;

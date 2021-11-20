@@ -74,10 +74,6 @@ function coordinatesAssigment(simulationParameters, stageParameters) {
   let counter;
   //console.log("Se mete en coordinatesAssigmentv2")
   //1º Construimos un array de posiciones libresco
-  console.log(
-    "stageParameters.matrix - f: coordinatesAssigment - Before for - ZeroPlayers_f_dataCoherence"
-  );
-  console.log(stageParameters.matrix);
 
   counter = 0;
   for (
@@ -98,11 +94,7 @@ function coordinatesAssigment(simulationParameters, stageParameters) {
     ) {
       //Se comprueba que la coordenada esta libre
       counter++;
-      console.log(`counter: ${counter}`);
-      console.log(
-        "stageParameters.matrix - f: coordinatesAssigment - After for - ZeroPlayers_f_dataCoherence"
-      );
-      console.log(stageParameters.matrix);
+
       if (
         !stageParameters.legendForbiddenColors.includes(
           stageParameters.matrix[

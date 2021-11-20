@@ -39,22 +39,12 @@ function init(stageParameters, simulationParameters) {
     //3.Add dynamic Elements
     stageParameters.livingBeingsCollection.forEach((item) => {
       for (a = 0; a < item.number; a++) {
-        console.log(`a: ${a}`);
-        console.log(`item.type.name: ${item.type.name}`);
-        console.log(`item.number: ${item.number}`);
         //Se busca una posición libre en la matriz
-        console.log(
-          "stageParameters.matrix - Before reach coordinatesAssigment function"
-        );
-        console.log(stageParameters.matrix);
         freeCoordinate = coordinatesAssigment(
           simulationParameters,
           stageParameters
         );
-        console.log(
-          "stageParameters.matrix - After coordiantesAssigment function - ZeroPlayers_f_level1.js"
-        );
-        console.log(stageParameters.matrix);
+
         //Si existe una posición libre se crea un elemento dinámico
         if (freeCoordinate != undefined) {
           stageParameters.dynamicElementsArray.push(new item.type());
@@ -62,14 +52,10 @@ function init(stageParameters, simulationParameters) {
             freeCoordinate[0];
           lastElement(stageParameters.dynamicElementsArray).y =
             freeCoordinate[1];
-          console.log(`stageParameters.matrix Before matrixGeneratorInit`);
-          console.log(stageParameters.matrix);
           stageParameters.matrix = matrixGeneratorInit(
             stageParameters,
             simulationParameters
           );
-          console.log(`stageParameters.matrix After matrixGeneratorInit`);
-          console.log(stageParameters.matrix);
         }
 
         /*  //Generamos el elemento dinámico

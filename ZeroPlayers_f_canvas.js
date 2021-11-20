@@ -24,10 +24,7 @@ function drawingMatrix(stageParameters, simulationParameters) {
   let Ay = simulationParameters.squareSide;
   //matrixAux = matrix;
   //matrixAux = cloneArray2D(matrix);
-  console.log(
-    "stageParameters.matrix - f: drawingMatrix - ZeroPlayers_f_canvas"
-  );
-  console.log(stageParameters.matrix);
+
   stageParameters.matrix.forEach((row) => {
     row.forEach((column) => {
       drawSquare(x, y, column, simulationParameters);
