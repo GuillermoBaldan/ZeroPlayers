@@ -61,7 +61,7 @@ function generateStaticStage(stageParameters, simulationParameters) {
       );
     }
     staticStageAux.push(row);
-    stageParameters.matrix = staticStageAux;
+    stageParameters.staticStage = staticStageAux;
   }
 
   return staticStageAux;
@@ -82,7 +82,11 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
   //matrixAux = cloneArray2D(stageParameters.staticStage);
   //stageParameters.matrix = cloneArray2D(matrixAux);
   //Initial case
-
+  console.log(
+    "stageParameters.matrix - Before forEach at ZeroPlayers_f_matrixGeneration.js"
+  );
+  console.log(stageParameters.matrix);
+  stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
   stageParameters.dynamicElementsArray.forEach((item) => {
     //Live or dynamic elements color are added to the matrix
     stageParameters.matrix[

@@ -94,21 +94,38 @@ function coordinatesAssigment(simulationParameters, stageParameters) {
     ) {
       //Se comprueba que la coordenada esta libre
       counter++;
-
-      if (
-        !stageParameters.legendForbiddenColors.includes(
-          stageParameters.matrix[
-            -y_index +
-              Math.floor(
-                simulationParameters.heightDimension /
-                  simulationParameters.squareSide
-              ) -
-              1
-          ][x_index]
-        )
-      ) {
-        //Si la coordenada esta libre se mete en freePlacesArray
-        freePlacesArray.push([x_index, y_index]);
+      if (stageParameters.matrix.length > 0) {
+        if (
+          !stageParameters.legendForbiddenColors.includes(
+            stageParameters.matrix[
+              -y_index +
+                Math.floor(
+                  simulationParameters.heightDimension /
+                    simulationParameters.squareSide
+                ) -
+                1
+            ][x_index]
+          )
+        ) {
+          //Si la coordenada esta libre se mete en freePlacesArray
+          freePlacesArray.push([x_index, y_index]);
+        }
+      } else {
+        if (
+          !stageParameters.legendForbiddenColors.includes(
+            stageParameters.staticStage[
+              -y_index +
+                Math.floor(
+                  simulationParameters.heightDimension /
+                    simulationParameters.squareSide
+                ) -
+                1
+            ][x_index]
+          )
+        ) {
+          //Si la coordenada esta libre se mete en freePlacesArray
+          freePlacesArray.push([x_index, y_index]);
+        }
       }
       //2º Elegimos una posición libre del array y la devolvemos
       freeCoordinate =
