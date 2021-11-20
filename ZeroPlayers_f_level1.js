@@ -25,10 +25,6 @@ function init(stageParameters, simulationParameters) {
   let flag = false;
   let a;
   let freeCoordinate;
-  console.log(
-    "stageParameters.stageStatic - f: init - At start in ZeroPlayers_f_level1.js"
-  );
-  console.log(stageParameters.staticStage);
   //0. Check Data Coherence
   flag = checkDataCoherence(stageParameters, simulationParameters);
   if (flag) {
@@ -39,19 +35,12 @@ function init(stageParameters, simulationParameters) {
       stageParameters,
       simulationParameters
     );
-    console.log(
-      "stageParameters.stageStatic - f: init - Just After generateStaticStage f. in ZeroPlayers_f_level1.js"
-    );
-    console.log(stageParameters.matrix);
+
     //stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
     //3.Add dynamic Elements
     stageParameters.livingBeingsCollection.forEach((item) => {
       for (a = 0; a < item.number; a++) {
         //Se busca una posición libre en la matriz
-        console.log(
-          "stageParameters.matrix Just Before enter in coordiantesAssigment function at ZeroPlayers_f_level1.js"
-        );
-        console.log(stageParameters.matrix);
         freeCoordinate = coordinatesAssigment(
           simulationParameters,
           stageParameters
