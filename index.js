@@ -8,7 +8,10 @@ import {
 } from "./ZeroPlayers_f_livingbeings.js";
 import { generateStaticStage } from "./ZeroPlayers_f_matrixGeneration.js";
 import { simpleCell, grossCell } from "./ZeroPlayers_classes_livingBeings.js";
-import { continuosSimulationStep } from "./ZeroPlayers_f_simulation.js";
+import {
+  continuosSimulationStep,
+  oneSimulationStep,
+} from "./ZeroPlayers_f_simulation.js";
 
 let staticStage;
 let lienzo;
@@ -69,7 +72,7 @@ simulationParameters.init_output = init(stageParameters, simulationParameters);
 document.getElementById("oneSimulationStep").addEventListener(
   "click",
   function () {
-    continuosSimulationStep(stageParameters, simulationParameters);
+    oneSimulationStep(stageParameters, simulationParameters);
     document.getElementById("playButton").disabled = true;
   },
   false

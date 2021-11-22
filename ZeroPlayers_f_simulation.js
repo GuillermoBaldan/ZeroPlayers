@@ -67,4 +67,26 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
   }
 }
 
-export { continuosSimulationStep };
+function oneSimulationStep(stageParameters, simulationParameters) {
+  // oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
+  console.log("----------------------------------");
+  console.log(
+    "simulationStep: " + (simulationParameters.globalSimulationIndex + 1)
+  );
+  //Reordering dynamicElementsArray block--
+  stageParameters.dynamicElementsArray = cloneArray(
+    ordering4drawing(stageParameters)
+  );
+
+  //------
+  stageParameters.matrix = matrixGeneratorv2(
+    stageParameters,
+    simulationParameters
+  );
+  //matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension)
+  drawingMatrix(stageParameters, simulationParameters);
+  simulationParameters.globalSimulationIndex += 1;
+  //loadGlobalSimulationIndex(simulationIndex);
+}
+
+export { continuosSimulationStep, oneSimulationStep };
