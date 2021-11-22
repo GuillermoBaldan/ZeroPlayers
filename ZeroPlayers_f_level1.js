@@ -9,7 +9,7 @@ import {
   checkDataCoherence,
   coordinatesAssigment,
 } from "./ZeroPlayers_f_dataCoherence.js";
-import { oneSimulationStep } from "./ZeroPlayers_f_simulation.js";
+import { continuosSimulationStep } from "./ZeroPlayers_f_simulation.js";
 import { stopFlag } from "./index.js";
 import { grossCell, simpleCell } from "./ZeroPlayers_classes_livingBeings.js";
 import { energy2dynamicElements } from "./ZeroPlayers_f_universe.js";
@@ -98,7 +98,7 @@ function init(stageParameters, simulationParameters) {
 function simulation(stageParameters, simulationParameters) {
   //1. Hacemos la simulación paso a paso.
   //simulationParameters.globalSimulationIndex =  oneSimulationStep(stageParameters,simulationParameters)
-  oneSimulationStep(stageParameters, simulationParameters);
+  continuosSimulationStep(stageParameters, simulationParameters);
 }
 
 export { init, simulation };
