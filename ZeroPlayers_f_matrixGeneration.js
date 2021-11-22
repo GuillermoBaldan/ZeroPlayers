@@ -174,7 +174,6 @@ function matrixGenerator(stageParameters, simulationParameters) {
           if (
             arrayOf2DVectorsIncludeVector(freePositionsArray, [xy[0], xy[1]])
           ) {
-            console.log("Se mete en el if");
             item.x = xy[0];
             item.y = xy[1];
             //Se actualizan los colores de la matriz
@@ -276,9 +275,6 @@ function matrixGenerator(stageParameters, simulationParameters) {
   //2.1 The dinamicElementsArray array is traversed and we are subtracting a number of life points
   // that depends on each kind of organism
   /*  */
-  console.log(
-    `number of dynamic elements: ${stageParameters.dynamicElementsArray.length}`
-  );
   return matrixAux;
 }
 
@@ -306,9 +302,6 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
       case "autonomous":
         autonomousMovement(item, stageParameters, simulationParameters);
         break;
-        console.log(
-          `number of dynamic elements: ${stageParameters.dynamicElementsArray.length}`
-        );
     }
   });
   return stageParameters.matrix;

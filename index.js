@@ -41,7 +41,7 @@ let stageParameters = {
       type: grossCell,
       number: 0,
     },
-    { type: simpleCell, number: 2 },
+    { type: simpleCell, number: 8 },
   ],
   dynamicElementsArray: [],
   staticStage: [],
@@ -51,8 +51,8 @@ let stageParameters = {
 };
 
 let simulationParameters = {
-  simulationSteps: 15,
-  timePerStep: 350,
+  simulationSteps: 100,
+  timePerStep: 100,
   wideDimension: 60,
   heightDimension: 60,
   squareSide: 20,

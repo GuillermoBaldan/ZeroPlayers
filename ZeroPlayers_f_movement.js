@@ -2,6 +2,7 @@ import { simulation } from "./ZeroPlayers_f_level1.js";
 import { checkForbiddenPosition } from "./ZeroPlayers_f_livingbeings.js";
 import { freePositionsArrayGenerator } from "./ZeroPlayers_f_checkValues.js";
 import { arrayOf2DVectorsIncludeVector } from "./ZeroPlayers_f_arraysManipulation.js";
+import { cloneArray2D } from "./ZeroPlayers_f_arraysManipulation.js";
 
 function movement(
   dynamicItem_x,
@@ -138,6 +139,7 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
   limit = 0;
   let xy;
   let flagForbiddenPosition = false; //Por defecto no se ha activado la posición prohibida
+
   do {
     xy = movement(
       xy_before[0],
@@ -199,13 +201,13 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
     item.y = xy_before[1];
   }
 
-  stageParameters.matrix[
+  /* stageParameters.matrix[
     -xy[1] +
       Math.floor(
         simulationParameters.heightDimension / simulationParameters.squareSide
       ) -
       1
-  ][xy[0]] = item.color;
+  ][xy[0]] = item.color; */
 }
 
 export { movement, staticMovement, trajectoryMovement, autonomousMovement };
