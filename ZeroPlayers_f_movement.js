@@ -200,14 +200,6 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
     item.x = xy_before[0];
     item.y = xy_before[1];
   }
-
-  /* stageParameters.matrix[
-    -xy[1] +
-      Math.floor(
-        simulationParameters.heightDimension / simulationParameters.squareSide
-      ) -
-      1
-  ][xy[0]] = item.color; */
 }
 
 export { movement, staticMovement, trajectoryMovement, autonomousMovement };
