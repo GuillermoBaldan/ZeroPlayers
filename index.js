@@ -73,7 +73,6 @@ document.getElementById("oneSimulationStep").addEventListener(
   "click",
   function () {
     oneSimulationStep(stageParameters, simulationParameters);
-    document.getElementById("playButton").disabled = true;
   },
   false
 );
