@@ -70,7 +70,7 @@ function checkExistenceInMatrix(x, y, stageParameters) {
       ) {
         flag = true;
         console.log(
-          `###### dynamicElementsArray[${a}]: (${stageParameters.dynamicElementsArray[a].x},${stageParameters.dynamicElementsArray[a].y}) - son: (${x},${y})`
+          `### dynamicElementsArray[${a}]: (${stageParameters.dynamicElementsArray[a].x},${stageParameters.dynamicElementsArray[a].y}) - son: (${x},${y})`
         );
       }
     }

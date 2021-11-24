@@ -197,6 +197,8 @@ function reproductionFunction(item, stageParameters, simulationParameters) {
       );
     }
   });
+  stageParameters.dynamicElementsArray =
+    stageParameters.dynamicElementsArray.concat(sonsArray);
 }
 
 export {
