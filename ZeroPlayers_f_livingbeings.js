@@ -1,4 +1,5 @@
 import { energy2Universe } from "./ZeroPlayers_f_universe.js";
+import { checkExistenceInMatrix } from "./ZeroPlayers_f_dataCoherence.js";
 
 function totalFreedom(dynamicItem_x, dynamicItem_y) {
   let buffer = randomSteps();
@@ -41,7 +42,12 @@ function randomSteps() {
   return aux;
 }
 
-function checkForbiddenPosition(stageParameters, simulationParameters, xy, item) {
+function checkForbiddenPosition(
+  stageParameters,
+  simulationParameters,
+  xy,
+  item
+) {
   //Position type is a forbiddenPosition like water
   let forbiddenColorsArray = [];
   //1. We encode positionType in a color, because each positionType corresponds to a color
@@ -128,6 +134,71 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters) {
   }
 }
 
+function reproductionFunction(item, stageParameters, simulationParameters) {
+  let sonsArray = [];
+  let son;
+  stageParameters.dynamicElementsArray.forEach((item) => {
+    if (item.reproductionRadio != undefined) {
+      son = new item.constructor();
+      // do{
+      do {
+        son.x =
+          item.x +
+          Math.round(
+            Math.random() * (son.reproductionRadio + son.reproductionRadio) -
+              son.reproductionRadio
+          );
+      } while (
+        !(
+          son.x >= 0 &&
+          son.x <=
+            Math.floor(
+              simulationParameters.wideDimension /
+                simulationParameters.squareSide
+            ) -
+              1
+        )
+      );
+      do {
+        son.y =
+          item.y +
+          Math.round(
+            Math.random() * (son.reproductionRadio + son.reproductionRadio) -
+              son.reproductionRadio
+          );
+      } while (
+        !(
+          son.y >= 0 &&
+          son.y <=
+            Math.floor(
+              simulationParameters.heightDimension /
+                simulationParameters.squareSide
+            ) -
+              1
+        )
+      );
+      console.log(
+        `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just Before if - CheckExistenceInMatrix`
+      );
+      if (!checkExistenceInMatrix(son.x, son.y, stageParameters)) {
+        //If there isn´t any object of dynamicElementsArray with this coordinates, then an object is created
+        sonsArray.push(son);
+        console.log(`sonsArray: ${sonsArray.length}`);
+        console.log(
+          `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} If - CheckExistenceInMatrix`
+        );
+        simulationParameters.globalCounter++;
+        console.log(`counter: ${simulationParameters.globalCounter}`);
+        console.log(`item (${item.x},${item.y}) - son: (${son.x},${son.y})`);
+      }
+
+      console.log(
+        `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just After if - CheckExistenceInMatrix`
+      );
+    }
+  });
+}
+
 export {
   totalFreedom,
   left,
@@ -137,4 +208,5 @@ export {
   checkForbiddenPosition,
   preyDetection,
   preySelectionAndRemove,
+  reproductionFunction,
 };

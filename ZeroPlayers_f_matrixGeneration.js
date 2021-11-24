@@ -8,6 +8,7 @@ import {
   checkForbiddenPosition,
   preyDetection,
   preySelectionAndRemove,
+  reproductionFunction,
 } from "./ZeroPlayers_f_livingbeings.js";
 import {
   energy2Universe,
@@ -288,6 +289,7 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
   let prey;
   let energySustraction;
   let son;
+  let sonsArray = [];
 
   matrixAux = cloneArray2D(stageParameters.staticStage);
   //1. We give movement to dynamic elements
@@ -307,68 +309,16 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
           `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just Before f: autonomousMovement`
         );
         autonomousMovement(item, stageParameters, simulationParameters);
-        stageParameters.dynamicElementsArray.forEach((item) => {
-          if (item.reproductionRadio != undefined) {
-            son = new item.constructor();
-            // do{
-            do {
-              son.x =
-                item.x +
-                Math.round(
-                  Math.random() *
-                    (son.reproductionRadio + son.reproductionRadio) -
-                    son.reproductionRadio
-                );
-            } while (
-              !(
-                son.x >= 0 &&
-                son.x <=
-                  Math.floor(
-                    simulationParameters.wideDimension /
-                      simulationParameters.squareSide
-                  ) -
-                    1
-              )
-            );
-            do {
-              son.y =
-                item.y +
-                Math.round(
-                  Math.random() *
-                    (son.reproductionRadio + son.reproductionRadio) -
-                    son.reproductionRadio
-                );
-            } while (
-              !(
-                son.y >= 0 &&
-                son.y <=
-                  Math.floor(
-                    simulationParameters.heightDimension /
-                      simulationParameters.squareSide
-                  ) -
-                    1
-              )
-            );
-            console.log(
-              `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just Before if - CheckExistenceInMatrix`
-            );
-            if (!checkExistenceInMatrix(son.x, son.y, stageParameters)) {
-              //If there isn´t any object of dynamicElementsArray with this coordinates, then an object is created
-              stageParameters.dynamicElementsArray.push(son);
-              console.log(
-                `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} If - CheckExistenceInMatrix`
-              );
-              simulationParameters.globalCounter++;
-              console.log(`counter: ${simulationParameters.globalCounter}`);
-            }
-            console.log(
-              `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just After if - CheckExistenceInMatrix`
-            );
-          }
-        });
+        reproductionFunction(item, stageParameters, simulationParameters);
         break;
     }
   });
+  stageParameters.dynamicElementsArray =
+    stageParameters.dynamicElementsArray.concat(sonsArray);
+  console.log(`sonsArray: ${sonsArray.length}`);
+  console.log(
+    `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just Before return of matrixgeneratorv2`
+  );
 
   return stageParameters.matrix;
 }
