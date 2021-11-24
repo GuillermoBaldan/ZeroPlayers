@@ -292,6 +292,9 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
   matrixAux = cloneArray2D(stageParameters.staticStage);
   //1. We give movement to dynamic elements
   stageParameters.dynamicElementsArray.forEach((item) => {
+    console.log(
+      `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just Before The Switch`
+    );
     switch (item.walkmode) {
       case "static":
         staticMovement(item, stageParameters, simulationParameters);
@@ -300,6 +303,9 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
         trajectoryMovement(item, stageParameters, simulationParameters);
         break;
       case "autonomous":
+        console.log(
+          `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just Before f: autonomousMovement`
+        );
         autonomousMovement(item, stageParameters, simulationParameters);
         stageParameters.dynamicElementsArray.forEach((item) => {
           if (item.reproductionRadio != undefined) {
@@ -343,16 +349,21 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
                     1
               )
             );
+            console.log(
+              `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just Before if - CheckExistenceInMatrix`
+            );
             if (!checkExistenceInMatrix(son.x, son.y, stageParameters)) {
               //If there isn´t any object of dynamicElementsArray with this coordinates, then an object is created
-              console.log(
-                `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length}`
-              );
-
               stageParameters.dynamicElementsArray.push(son);
+              console.log(
+                `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} If - CheckExistenceInMatrix`
+              );
               simulationParameters.globalCounter++;
               console.log(`counter: ${simulationParameters.globalCounter}`);
             }
+            console.log(
+              `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just After if - CheckExistenceInMatrix`
+            );
           }
         });
         break;

@@ -58,7 +58,15 @@ function checkExistenceInMatrix(x, y, stageParameters) {
   let flag = false;
   for (a = 0; a < stageParameters.dynamicElementsArray.length; a++) {
     if (stageParameters.dynamicElementsArray[a].x == x) {
-      if (stageParameters.dynamicElementsArray[a].y == y) {
+      if (
+        -stageParameters.dynamicElementsArray[a].y +
+          Math.floor(
+            simulationParameters.heightDimension /
+              simulationParameters.squareSide
+          ) -
+          1 ==
+        y
+      ) {
         flag = true;
       }
     }
