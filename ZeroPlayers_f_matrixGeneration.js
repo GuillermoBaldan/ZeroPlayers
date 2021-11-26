@@ -252,8 +252,6 @@ function matrixGenerator(stageParameters, simulationParameters) {
         }
    
     }) */
-  checkSimpleCellsExistence("line120 - _f_matrixGeneration", stageParameters);
-
   //3. Energy sustraction
   /*  for (
     auxIndex = 0;
@@ -294,9 +292,6 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
   matrixAux = cloneArray2D(stageParameters.staticStage);
   //1. We give movement to dynamic elements
   stageParameters.dynamicElementsArray.forEach((item) => {
-    console.log(
-      `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just Before The Switch`
-    );
     switch (item.walkmode) {
       case "static":
         staticMovement(item, stageParameters, simulationParameters);
@@ -305,20 +300,11 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
         trajectoryMovement(item, stageParameters, simulationParameters);
         break;
       case "autonomous":
-        console.log(
-          `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just Before f: autonomousMovement`
-        );
         autonomousMovement(item, stageParameters, simulationParameters);
         reproductionFunction(item, stageParameters, simulationParameters);
         break;
     }
   });
-  stageParameters.dynamicElementsArray =
-    stageParameters.dynamicElementsArray.concat(sonsArray);
-  console.log(`sonsArray: ${sonsArray.length}`);
-  console.log(
-    `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just Before return of matrixgeneratorv2`
-  );
 
   return stageParameters.matrix;
 }

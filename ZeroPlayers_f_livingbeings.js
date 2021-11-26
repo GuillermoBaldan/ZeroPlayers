@@ -177,24 +177,13 @@ function reproductionFunction(item, stageParameters, simulationParameters) {
               1
         )
       );
-      console.log(
-        `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just Before if - CheckExistenceInMatrix`
-      );
+
       if (!checkExistenceInMatrix(son.x, son.y, stageParameters)) {
         //If there isn´t any object of dynamicElementsArray with this coordinates, then an object is created
         sonsArray.push(son);
-        console.log(`sonsArray: ${sonsArray.length}`);
-        console.log(
-          `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} If - CheckExistenceInMatrix`
-        );
-        simulationParameters.globalCounter++;
-        console.log(`counter: ${simulationParameters.globalCounter}`);
-        console.log(`item (${item.x},${item.y}) - son: (${son.x},${son.y})`);
-      }
 
-      console.log(
-        `dynamicElementsArray.length: ${stageParameters.dynamicElementsArray.length} Just After if - CheckExistenceInMatrix`
-      );
+        simulationParameters.globalCounter++;
+      }
     }
   });
   stageParameters.dynamicElementsArray =
