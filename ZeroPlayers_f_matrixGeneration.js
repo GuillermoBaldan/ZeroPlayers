@@ -30,6 +30,8 @@ import {
   autonomousMovement,
 } from "./ZeroPlayers_f_movement.js";
 
+import { debug_PrintDynamicsElementsCoordinates } from "./ZeroPlayers_f_debugging.js";
+
 function generateStaticStage(stageParameters, simulationParameters) {
   let a;
   let b;
@@ -309,6 +311,7 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
     "dynamicElementsArray - Just Before Return: ",
     stageParameters.dynamicElementsArray.length
   );
+  debug_PrintDynamicsElementsCoordinates(stageParameters.dynamicElementsArray);
   return stageParameters.matrix;
 }
 
