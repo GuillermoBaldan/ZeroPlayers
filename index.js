@@ -63,6 +63,7 @@ let simulationParameters = {
   stopFlag: false,
   globalSimulationIndex: 0,
   globalCounter: 0,
+  auxCounter: 0,
 };
 
 function loadGlobalSimulationIndex(index) {

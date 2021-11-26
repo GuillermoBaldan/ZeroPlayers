@@ -305,7 +305,10 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
         break;
     }
   });
-
+  console.log(
+    "dynamicElementsArray - Just Before Return: ",
+    stageParameters.dynamicElementsArray.length
+  );
   return stageParameters.matrix;
 }
 

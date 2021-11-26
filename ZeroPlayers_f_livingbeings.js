@@ -137,57 +137,61 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters) {
 function reproductionFunction(item, stageParameters, simulationParameters) {
   let sonsArray = [];
   let son;
-  stageParameters.dynamicElementsArray.forEach((item) => {
-    if (item.reproductionRadio != undefined) {
-      son = new item.constructor();
-      // do{
-      do {
-        son.x =
-          item.x +
-          Math.round(
-            Math.random() * (son.reproductionRadio + son.reproductionRadio) -
-              son.reproductionRadio
-          );
-      } while (
-        !(
-          son.x >= 0 &&
-          son.x <=
-            Math.floor(
-              simulationParameters.wideDimension /
-                simulationParameters.squareSide
-            ) -
-              1
-        )
-      );
-      do {
-        son.y =
-          item.y +
-          Math.round(
-            Math.random() * (son.reproductionRadio + son.reproductionRadio) -
-              son.reproductionRadio
-          );
-      } while (
-        !(
-          son.y >= 0 &&
-          son.y <=
-            Math.floor(
-              simulationParameters.heightDimension /
-                simulationParameters.squareSide
-            ) -
-              1
-        )
-      );
+  if (item.reproductionRadio != undefined) {
+    son = new item.constructor();
+    // do{
+    do {
+      son.x =
+        item.x +
+        Math.round(
+          Math.random() * (son.reproductionRadio + son.reproductionRadio) -
+            son.reproductionRadio
+        );
+    } while (
+      !(
+        son.x >= 0 &&
+        son.x <=
+          Math.floor(
+            simulationParameters.wideDimension / simulationParameters.squareSide
+          ) -
+            1
+      )
+    );
+    do {
+      son.y =
+        item.y +
+        Math.round(
+          Math.random() * (son.reproductionRadio + son.reproductionRadio) -
+            son.reproductionRadio
+        );
+    } while (
+      !(
+        son.y >= 0 &&
+        son.y <=
+          Math.floor(
+            simulationParameters.heightDimension /
+              simulationParameters.squareSide
+          ) -
+            1
+      )
+    );
 
-      if (!checkExistenceInMatrix(son.x, son.y, stageParameters)) {
+    /*       if (!checkExistenceInMatrix(son.x, son.y, stageParameters)) {
         //If there isn´t any object of dynamicElementsArray with this coordinates, then an object is created
         sonsArray.push(son);
 
         simulationParameters.globalCounter++;
-      }
-    }
-  });
+      } */
+    sonsArray.push(son);
+
+    simulationParameters.globalCounter++;
+  }
+
   stageParameters.dynamicElementsArray =
     stageParameters.dynamicElementsArray.concat(sonsArray);
+  sonsArray = [];
+  simulationParameters.auxCounter++;
+  console.log("AuxCounter", simulationParameters.auxCounter);
 }
 
 export {
