@@ -4,4 +4,26 @@ function debug_PrintDynamicsElementsCoordinates(Array) {
   });
 }
 
-export { debug_PrintDynamicsElementsCoordinates };
+function debug_DetectCoordinatesRepeated(Array) {
+  let repeatedElements = [];
+  let a;
+  let b;
+  for (a = 0; a < Array.length; a++) {
+    for (b = 0; b < Array.length; b++) {
+      if (Array[a].x === Array[b].x && Array[a].y === Array[b].y && a !== b) {
+        //show repeated elements using console.log and put the representation in red color
+        console.log(
+          `%c (${Array[a].x},${Array[a].y})`,
+          "background: #FFFF00; color: #ff0000"
+        );
+
+        repeatedElements.push(Array[a]);
+      }
+    }
+  }
+}
+
+export {
+  debug_PrintDynamicsElementsCoordinates,
+  debug_DetectCoordinatesRepeated,
+};
