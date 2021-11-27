@@ -302,8 +302,8 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
         trajectoryMovement(item, stageParameters, simulationParameters);
         break;
       case "autonomous":
-        autonomousMovement(item, stageParameters, simulationParameters);
         reproductionFunction(item, stageParameters, simulationParameters);
+        autonomousMovement(item, stageParameters, simulationParameters);
         break;
     }
   });
@@ -311,7 +311,20 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
     "dynamicElementsArray - Just Before Return: ",
     stageParameters.dynamicElementsArray.length
   );
+  stageParameters.dynamicElementsArray.forEach((item) => {
+    setColor(
+      item.x,
+      item.y,
+      item.color,
+      stageParameters.matrix,
+      simulationParameters
+    );
+  });
   debug_PrintDynamicsElementsCoordinates(stageParameters.dynamicElementsArray);
+  console.log(
+    "dynamicElementsArray - Just Before Return: ",
+    stageParameters.dynamicElementsArray.length
+  );
   return stageParameters.matrix;
 }
 

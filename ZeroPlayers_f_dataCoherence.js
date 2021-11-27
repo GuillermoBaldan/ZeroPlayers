@@ -56,18 +56,12 @@ function checkInsideCanvas(stageParameters, simulationParameters) {
 function checkExistenceInMatrix(x, y, stageParameters) {
   let a;
   let flag = false;
+  console.log("Se mete en checkExistenceInMatrix");
   for (a = 0; a < stageParameters.dynamicElementsArray.length; a++) {
     if (stageParameters.dynamicElementsArray[a].x == x) {
-      if (
-        -stageParameters.dynamicElementsArray[a].y +
-          Math.floor(
-            simulationParameters.heightDimension /
-              simulationParameters.squareSide
-          ) -
-          1 ==
-        y
-      ) {
+      if (stageParameters.dynamicElementsArray[a].y == y) {
         flag = true;
+        console.log(`flag: ${flag}`);
       }
     }
   }

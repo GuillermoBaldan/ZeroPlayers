@@ -173,8 +173,8 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
       //Se actualizan los colores de la matriz
       //Se pinta el color de la célula en la matriz
       setColor(
-        xy[0],
-        xy[1],
+        item.x,
+        item.y,
         item.color,
         stageParameters.matrix,
         simulationParameters
@@ -199,6 +199,13 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
   } else {
     item.x = xy_before[0];
     item.y = xy_before[1];
+    setColor(
+      item.x,
+      item.y,
+      item.color,
+      stageParameters.matrix,
+      simulationParameters
+    );
   }
 }
 

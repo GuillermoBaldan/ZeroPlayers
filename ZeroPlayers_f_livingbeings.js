@@ -176,15 +176,12 @@ function reproductionFunction(item, stageParameters, simulationParameters) {
       )
     );
 
-    /*       if (!checkExistenceInMatrix(son.x, son.y, stageParameters)) {
-        //If there isn´t any object of dynamicElementsArray with this coordinates, then an object is created
-        sonsArray.push(son);
+    if (!checkExistenceInMatrix(son.x, son.y, stageParameters)) {
+      //If there isn´t any object of dynamicElementsArray with this coordinates, then an object is created
+      sonsArray.push(son);
 
-        simulationParameters.globalCounter++;
-      } */
-    sonsArray.push(son);
-
-    simulationParameters.globalCounter++;
+      simulationParameters.globalCounter++;
+    }
   }
 
   stageParameters.dynamicElementsArray =
