@@ -3,6 +3,7 @@ import { checkForbiddenPosition } from "./ZeroPlayers_f_livingbeings.js";
 import { freePositionsArrayGenerator } from "./ZeroPlayers_f_checkValues.js";
 import { arrayOf2DVectorsIncludeVector } from "./ZeroPlayers_f_arraysManipulation.js";
 import { cloneArray2D } from "./ZeroPlayers_f_arraysManipulation.js";
+import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
 
 function movement(
   dynamicItem_x,
@@ -171,14 +172,13 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
       item.y = xy[1];
       //Se actualizan los colores de la matriz
       //Se pinta el color de la célula en la matriz
-      stageParameters.matrix[
-        -xy[1] +
-          Math.floor(
-            simulationParameters.heightDimension /
-              simulationParameters.squareSide
-          ) -
-          1
-      ][xy[0]] = item.color;
+      setColor(
+        xy[0],
+        xy[1],
+        item.color,
+        stageParameters.matrix,
+        simulationParameters
+      );
     }
     //Se pinta el color que queda libre en la matriz
     stageParameters.matrix[

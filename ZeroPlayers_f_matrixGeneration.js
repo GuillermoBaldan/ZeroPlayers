@@ -315,9 +315,20 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
   return stageParameters.matrix;
 }
 
+function setColor(element_x, element_y, color, matrix, simulationParameters) {
+  matrix[
+    -element_y +
+      Math.floor(
+        simulationParameters.heightDimension / simulationParameters.squareSide
+      ) -
+      1
+  ][element_x] = color;
+}
+
 export {
   generateStaticStage,
   matrixGeneratorInit,
   matrixGenerator,
   matrixGeneratorv2,
+  setColor,
 };
