@@ -305,8 +305,8 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
         trajectoryMovement(item, stageParameters, simulationParameters);
         break;
       case "autonomous":
-        reproductionFunction(item, stageParameters, simulationParameters);
         autonomousMovement(item, stageParameters, simulationParameters);
+        reproductionFunction(item, stageParameters, simulationParameters);
         break;
     }
   });

@@ -1,5 +1,6 @@
 import { energy2Universe } from "./ZeroPlayers_f_universe.js";
 import { checkExistenceInMatrix } from "./ZeroPlayers_f_dataCoherence.js";
+import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
 
 function totalFreedom(dynamicItem_x, dynamicItem_y) {
   let buffer = randomSteps();
@@ -183,7 +184,15 @@ function reproductionFunction(item, stageParameters, simulationParameters) {
       simulationParameters.globalCounter++;
     }
   }
-
+  sonsArray.forEach((item2) => {
+    setColor(
+      item2.x,
+      item2.y,
+      item2.color,
+      stageParameters.matrix,
+      simulationParameters
+    );
+  });
   stageParameters.dynamicElementsArray =
     stageParameters.dynamicElementsArray.concat(sonsArray);
   sonsArray = [];
