@@ -310,10 +310,6 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
         break;
     }
   });
-  console.log(
-    "dynamicElementsArray - Just Before Return: ",
-    stageParameters.dynamicElementsArray.length
-  );
   stageParameters.dynamicElementsArray.forEach((item) => {
     setColor(
       item.x,
@@ -323,12 +319,7 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
       simulationParameters
     );
   });
-  debug_PrintDynamicsElementsCoordinates(stageParameters.dynamicElementsArray);
-  console.log(
-    "dynamicElementsArray - Just Before Return: ",
-    stageParameters.dynamicElementsArray.length
-  );
-  debug_DetectCoordinatesRepeated(stageParameters.dynamicElementsArray);
+
   return stageParameters.matrix;
 }
 

@@ -197,7 +197,6 @@ function reproductionFunction(item, stageParameters, simulationParameters) {
     stageParameters.dynamicElementsArray.concat(sonsArray);
   sonsArray = [];
   simulationParameters.auxCounter++;
-  console.log("AuxCounter", simulationParameters.auxCounter);
 }
 
 export {

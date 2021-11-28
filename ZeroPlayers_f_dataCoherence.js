@@ -56,12 +56,10 @@ function checkInsideCanvas(stageParameters, simulationParameters) {
 function checkExistenceInMatrix(x, y, stageParameters) {
   let a;
   let flag = false;
-  console.log("Se mete en checkExistenceInMatrix");
   for (a = 0; a < stageParameters.dynamicElementsArray.length; a++) {
     if (stageParameters.dynamicElementsArray[a].x == x) {
       if (stageParameters.dynamicElementsArray[a].y == y) {
         flag = true;
-        console.log(`flag: ${flag}`);
       }
     }
   }
@@ -74,7 +72,6 @@ function coordinatesAssigment(simulationParameters, stageParameters) {
   let x_index;
   let y_index;
   let counter;
-  //console.log("Se mete en coordinatesAssigmentv2")
   //1º Construimos un array de posiciones libresco
 
   counter = 0;

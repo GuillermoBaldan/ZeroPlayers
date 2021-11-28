@@ -17,7 +17,6 @@ function checkNumbersTypeCell(className, stageParameters) {
     if (stageParameters.dynamicElementsArray[a].constructor.name == className) {
       counter += 1;
     }
-    //console.log(`constructor.name ${stageParameters.dynamicElementsArray[a].constructor.name}`)
   }
   return counter;
 }
