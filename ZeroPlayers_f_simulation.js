@@ -14,6 +14,7 @@ import {
   cloneArray2D,
 } from "./ZeroPlayers_f_arraysManipulation.js";
 import { checkSimpleCellsExistence } from "./ZeroPlayers_f_checkValues.js";
+import { debug_ } from "./ZeroPlayers_f_debugging.js";
 
 function continuosSimulationStep(stageParameters, simulationParameters) {
   // oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
@@ -60,7 +61,7 @@ function oneSimulationStep(stageParameters, simulationParameters) {
   // oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
   console.log("----------------------------------");
   console.log(
-    "simulationStep: " + (simulationParameters.globalSimulationIndex + 1)
+    "simulation Step: " + (simulationParameters.globalSimulationIndex + 1)
   );
   //Reordering dynamicElementsArray block--
   stageParameters.dynamicElementsArray = cloneArray(
@@ -75,6 +76,12 @@ function oneSimulationStep(stageParameters, simulationParameters) {
   //matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension)
   drawingMatrix(stageParameters, simulationParameters);
   simulationParameters.globalSimulationIndex += 1;
+  debug_([
+    {
+      string: "Energy of Universe",
+      variable: stageParameters.universeEnergy,
+    },
+  ]);
   //loadGlobalSimulationIndex(simulationIndex);
 }
 

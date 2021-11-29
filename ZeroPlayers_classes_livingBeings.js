@@ -20,6 +20,7 @@ class simpleCell {
     this.life = 500;
     this.maxEnergy = 100;
     this.energy = 100;
+    this.energyBorn = this.maxEnergy / 2;
     this.lifeConsumption = 5;
     this.energyConsumption = 0;
     this.behaviourRules = {

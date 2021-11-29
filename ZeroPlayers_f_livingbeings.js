@@ -1,6 +1,10 @@
-import { energy2Universe } from "./ZeroPlayers_f_universe.js";
+import {
+  energy2dynamicElements,
+  energy2Universe,
+} from "./ZeroPlayers_f_universe.js";
 import { checkExistenceInMatrix } from "./ZeroPlayers_f_dataCoherence.js";
 import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
+import { debug_, debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
 
 function totalFreedom(dynamicItem_x, dynamicItem_y) {
   let buffer = randomSteps();
@@ -140,6 +144,14 @@ function reproductionFunction(item, stageParameters, simulationParameters) {
   let son;
   if (item.reproductionRadio != undefined) {
     son = new item.constructor();
+    son.energy = energy2dynamicElements(son.energyBorn, stageParameters);
+    debug_([
+      {
+        string: "Energy of Universe",
+        variable: stageParameters.universeEnergy,
+      },
+    ]);
+    8;
     // do{
     do {
       son.x =

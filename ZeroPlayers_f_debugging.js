@@ -4,6 +4,16 @@ function debug_PrintDynamicsElementsCoordinates(Array) {
   });
 }
 
+function debug_(ObjectArray) {
+  ObjectArray.forEach((element) => {
+    console.log(`${element.string}: ${element.variable}`);
+  });
+}
+
+function debug_energyOfUniverse() {
+  console.log(`Energy of the universe: ${stageParameters.universeEnergy}`);
+}
+
 function debug_DetectCoordinatesRepeated(Array) {
   let repeatedElements = [];
   let a;
@@ -26,4 +36,6 @@ function debug_DetectCoordinatesRepeated(Array) {
 export {
   debug_PrintDynamicsElementsCoordinates,
   debug_DetectCoordinatesRepeated,
+  debug_,
+  debug_energyOfUniverse,
 };
