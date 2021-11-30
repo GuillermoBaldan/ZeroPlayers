@@ -12,6 +12,7 @@ import {
   continuosSimulationStep,
   oneSimulationStep,
 } from "./ZeroPlayers_f_simulation.js";
+import { debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
 
 let staticStage;
 let lienzo;
@@ -70,6 +71,7 @@ function loadGlobalSimulationIndex(index) {
   simulationParameters.globalSimulationIndex = index;
 }
 //[staticStageAux, matrixAux ,canvas[0], canvas[1]]
+debug_energyOfUniverse();
 simulationParameters.init_output = init(stageParameters, simulationParameters);
 
 document.getElementById("oneSimulationStep").addEventListener(
@@ -114,4 +116,5 @@ export {
   globalSimulationIndex,
   loadGlobalSimulationIndex,
   simulationParameters,
+  stageParameters,
 };

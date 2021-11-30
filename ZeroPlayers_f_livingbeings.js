@@ -144,7 +144,7 @@ function reproductionFunction(item, stageParameters, simulationParameters) {
   let son;
   if (item.reproductionRadio != undefined) {
     son = new item.constructor();
-    son.energy = energy2dynamicElements(son.energyBorn, stageParameters);
+    debug_energyOfUniverse();
     debug_([
       {
         string: "Energy of Universe",
@@ -191,6 +191,7 @@ function reproductionFunction(item, stageParameters, simulationParameters) {
 
     if (!checkExistenceInMatrix(son.x, son.y, stageParameters)) {
       //If there isn´t any object of dynamicElementsArray with this coordinates, then an object is created
+      son.energy = energy2dynamicElements(son.energyBorn, stageParameters);
       sonsArray.push(son);
 
       simulationParameters.globalCounter++;

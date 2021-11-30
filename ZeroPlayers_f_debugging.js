@@ -1,3 +1,5 @@
+import { stageParameters } from "./index.js";
+
 function debug_PrintDynamicsElementsCoordinates(Array) {
   Array.forEach((element) => {
     console.log(`(${element.x},${element.y})`);

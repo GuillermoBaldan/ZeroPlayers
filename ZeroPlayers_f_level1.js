@@ -13,6 +13,7 @@ import { continuosSimulationStep } from "./ZeroPlayers_f_simulation.js";
 import { stopFlag } from "./index.js";
 import { grossCell, simpleCell } from "./ZeroPlayers_classes_livingBeings.js";
 import { energy2dynamicElements } from "./ZeroPlayers_f_universe.js";
+import { debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
 import {
   cloneArray2D,
   lastElement,
@@ -74,12 +75,12 @@ function init(stageParameters, simulationParameters) {
         ); */
 
         //Le trasnferimos energía al elemento generado
-        energy2dynamicElements(
+        /*    energy2dynamicElements(
           stageParameters.dynamicElementsArray[
             stageParameters.dynamicElementsArray.length - 1
           ],
           stageParameters
-        );
+        ); */
       }
     });
     matrixGeneratorInit(stageParameters, simulationParameters);
@@ -88,6 +89,7 @@ function init(stageParameters, simulationParameters) {
     //console.log(matrixAux) - No aparece nada en matrixAux, no se están añadiendo los elementos dinámicos
     //4. Draw canvas
     drawingMatrix(stageParameters, simulationParameters);
+    debug_energyOfUniverse();
     return [staticStageAux, matrixAux, canvas[0], canvas[1]]; //lienzo = canvas[0];ctx = canvas[1]
   } else {
     console.log("The data is not consistent");
