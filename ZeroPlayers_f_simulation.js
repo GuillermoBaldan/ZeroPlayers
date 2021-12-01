@@ -46,15 +46,13 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
     setTimeout(function () {
       continuosSimulationStep(stageParameters, simulationParameters);
     }, simulationParameters.timePerStep);
+  } else if (stopFlag == true) {
+    console.log("Simulación parada");
   } else {
-    if (stopFlag == true) {
-      console.log("Simulación parada");
-    } else {
-      console.log("Fin de la simulation");
-      document.getElementById("playButton").innerHTML = "New Simulation";
-      document.getElementById("playButton").disabled = false;
-      //return simulationIndex;
-    }
+    console.log("Fin de la simulation");
+    document.getElementById("playButton").innerHTML = "New Simulation";
+    document.getElementById("playButton").disabled = false;
+    //return simulationIndex;
   }
 }
 
