@@ -12,6 +12,7 @@ import { simulation } from "./ZeroPlayers_f_level1.js";
 import {
   cloneArray,
   cloneArray2D,
+  readVariable,
 } from "./ZeroPlayers_f_arraysManipulation.js";
 import { checkSimpleCellsExistence } from "./ZeroPlayers_f_checkValues.js";
 import { debug_ } from "./ZeroPlayers_f_debugging.js";
@@ -57,6 +58,11 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
   }
 }
 
+function killSimulation(simulationParameters) {
+  let aux = readVariable(simulationParameters.globalSimulationIndex);
+  simulationParameters.simulationSteps = aux;
+}
+
 function oneSimulationStep(stageParameters, simulationParameters) {
   // oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
   console.log("----------------------------------");
@@ -85,4 +91,4 @@ function oneSimulationStep(stageParameters, simulationParameters) {
   //loadGlobalSimulationIndex(simulationIndex);
 }
 
-export { continuosSimulationStep, oneSimulationStep };
+export { continuosSimulationStep, oneSimulationStep, killSimulation };

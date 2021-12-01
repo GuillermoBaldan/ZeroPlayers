@@ -10,6 +10,7 @@ import { generateStaticStage } from "./ZeroPlayers_f_matrixGeneration.js";
 import { simpleCell, grossCell } from "./ZeroPlayers_classes_livingBeings.js";
 import {
   continuosSimulationStep,
+  killSimulation,
   oneSimulationStep,
 } from "./ZeroPlayers_f_simulation.js";
 import { debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
@@ -103,6 +104,14 @@ document.getElementById("stopButton").addEventListener(
       document.getElementById("stopButton").innerHTML = "Stop Simulation";
       simulation(stageParameters, simulationParameters);
     }
+  },
+  false
+);
+
+document.getElementById("killButton").addEventListener(
+  "click",
+  function () {
+    killSimulation(simulationParameters);
   },
   false
 );
