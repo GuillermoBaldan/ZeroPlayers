@@ -96,10 +96,10 @@ function init(stageParameters, simulationParameters) {
   }
 }
 
-//simulation(init_output[0],dynamicElementsArray,simulationSteps,timePerStep, wideDimension, squareSide,init_output[3])
+//simulation(init_output[0],dynamicElementsArray,simulationStepsNumber,timePerStep, wideDimension, squareSide,init_output[3])
 function simulation(stageParameters, simulationParameters) {
   //1. Hacemos la simulación paso a paso.
-  //simulationParameters.globalSimulationIndex =  oneSimulationStep(stageParameters,simulationParameters)
+  //simulationParameters.singularSimulationStep =  oneSimulationStep(stageParameters,simulationParameters)
   continuosSimulationStep(stageParameters, simulationParameters);
 }
 

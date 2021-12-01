@@ -1,4 +1,4 @@
-let simulationSteps = 7;
+let simulationStepsNumber = 7;
 let timePerStep = 100; //In milliseconds
 
 let legend = {
@@ -46,7 +46,7 @@ function Init() {
   canvasInit();
   drawingStage(matrixStage[1], squareSide);
   //drawingDinamicStage(stage,dynamicElementsArray,squareSide);
-  runSimulation(simulationSteps, matrixStage[0], dynamicElementsArray);
+  runSimulation(simulationStepsNumber, matrixStage[0], dynamicElementsArray);
   //canvasInit();
 }
 
@@ -107,14 +107,18 @@ function matrixGeneration(
   return completeStageAux;
 }
 
-function runSimulation(simulationSteps, staticStage, dynamicElementsArray) {
+function runSimulation(
+  simulationStepsNumber,
+  staticStage,
+  dynamicElementsArray
+) {
   let index = 0;
-  if (simulationSteps > 0) {
+  if (simulationStepsNumber > 0) {
     oneStepSimulation(
       index,
       staticStage,
       dynamicElementsArray,
-      simulationSteps
+      simulationStepsNumber
     );
   }
 }
@@ -123,7 +127,7 @@ function oneStepSimulation(
   index,
   staticStage,
   dynamicElementsArray,
-  simulationSteps
+  simulationStepsNumber
 ) {
   setTimeout(function () {
     console.log("simulation number: " + index);
@@ -143,12 +147,12 @@ function oneStepSimulation(
     drawingStage(matrixStage[1], squareSide);
     completeStageAux = []; //Borramos este array2D
     index = index + 1;
-    if (index < simulationSteps) {
+    if (index < simulationStepsNumber) {
       oneStepSimulation(
         index,
         staticStage,
         dynamicElementsArray,
-        simulationSteps
+        simulationStepsNumber
       );
     }
   }, timePerStep);

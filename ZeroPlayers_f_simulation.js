@@ -4,9 +4,9 @@ import {
 } from "./ZeroPlayers_f_matrixGeneration.js";
 import { drawingMatrix, ordering4drawing } from "./ZeroPlayers_f_canvas.js";
 import {
-  globalSimulationIndex,
+  singularSimulationStep,
   stopFlag,
-  loadGlobalSimulationIndex,
+  loadsingularSimulationStep,
 } from "./index.js";
 import { simulation } from "./ZeroPlayers_f_level1.js";
 import {
@@ -18,10 +18,10 @@ import { checkSimpleCellsExistence } from "./ZeroPlayers_f_checkValues.js";
 import { debug_ } from "./ZeroPlayers_f_debugging.js";
 
 function continuosSimulationStep(stageParameters, simulationParameters) {
-  // oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
+  // oneSimulationStep(simulationStepsNumber,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
   console.log("----------------------------------");
   console.log(
-    "simulationStep: " + (simulationParameters.globalSimulationIndex + 1)
+    "simulationStep: " + (simulationParameters.singularSimulationStep + 1)
   );
   //Reordering dynamicElementsArray block--
   stageParameters.dynamicElementsArray = cloneArray(
@@ -35,11 +35,11 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
   );
   //matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension)
   drawingMatrix(stageParameters, simulationParameters);
-  simulationParameters.globalSimulationIndex += 1;
-  //loadGlobalSimulationIndex(simulationIndex);
+  simulationParameters.singularSimulationStep += 1;
+  //loadsingularSimulationStep(simulationIndex);
   if (
-    simulationParameters.simulationSteps -
-      simulationParameters.globalSimulationIndex >
+    simulationParameters.simulationStepsNumber -
+      simulationParameters.singularSimulationStep >
       0 &&
     stopFlag == false
   ) {
@@ -59,15 +59,15 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
 }
 
 function killSimulation(simulationParameters) {
-  let aux = readVariable(simulationParameters.globalSimulationIndex);
-  simulationParameters.simulationSteps = aux;
+  let aux = readVariable(simulationParameters.simulationStepsNumber);
+  simulationParameters.singularSimulationStep = aux;
 }
 
 function oneSimulationStep(stageParameters, simulationParameters) {
-  // oneSimulationStep(simulationSteps,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
+  // oneSimulationStep(simulationStepsNumber,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
   console.log("----------------------------------");
   console.log(
-    "simulation Step: " + (simulationParameters.globalSimulationIndex + 1)
+    "simulation Step: " + (simulationParameters.singularSimulationStep + 1)
   );
   //Reordering dynamicElementsArray block--
   stageParameters.dynamicElementsArray = cloneArray(
@@ -81,14 +81,14 @@ function oneSimulationStep(stageParameters, simulationParameters) {
 
   //matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension)
   drawingMatrix(stageParameters, simulationParameters);
-  simulationParameters.globalSimulationIndex += 1;
+  simulationParameters.singularSimulationStep += 1;
   debug_([
     {
       string: "Energy of Universe",
       variable: stageParameters.universeEnergy,
     },
   ]);
-  //loadGlobalSimulationIndex(simulationIndex);
+  //loadsingularSimulationStep(simulationIndex);
 }
 
 export { continuosSimulationStep, oneSimulationStep, killSimulation };

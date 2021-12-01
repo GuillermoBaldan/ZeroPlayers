@@ -20,7 +20,7 @@ let lienzo;
 let ctx;
 let init_output;
 let stopFlag = false;
-let globalSimulationIndex = 0;
+let singularSimulationStep = 0;
 
 let universeRules = {
   movementType: "zigzag", //There are two options: 'zigzag' and 'diagonal'
@@ -54,7 +54,7 @@ let stageParameters = {
 };
 
 let simulationParameters = {
-  simulationSteps: 100,
+  simulationStepsNumber: 100,
   timePerStep: 100,
   wideDimension: 90,
   heightDimension: 90,
@@ -63,13 +63,13 @@ let simulationParameters = {
   ctx: ctx,
   init_output: init_output,
   stopFlag: false,
-  globalSimulationIndex: 0,
+  singularSimulationStep: 0,
   globalCounter: 0,
   auxCounter: 0,
 };
 
-function loadGlobalSimulationIndex(index) {
-  simulationParameters.globalSimulationIndex = index;
+function loadsingularSimulationStep(index) {
+  simulationParameters.singularSimulationStep = index;
 }
 //[staticStageAux, matrixAux ,canvas[0], canvas[1]]
 debug_energyOfUniverse();
@@ -86,7 +86,7 @@ document.getElementById("oneSimulationStep").addEventListener(
 document.getElementById("playButton").addEventListener(
   "click",
   function () {
-    simulationParameters.globalSimulationIndex = 0;
+    simulationParameters.singularSimulationStep = 0;
     simulation(stageParameters, simulationParameters);
     document.getElementById("playButton").disabled = true;
   },
@@ -122,8 +122,8 @@ document.getElementById("killButton").addEventListener(
 
 export {
   stopFlag,
-  globalSimulationIndex,
-  loadGlobalSimulationIndex,
+  singularSimulationStep,
+  loadsingularSimulationStep,
   simulationParameters,
   stageParameters,
 };
