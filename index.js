@@ -66,6 +66,7 @@ let simulationParameters = {
   singularSimulationStep: 0,
   globalCounter: 0,
   auxCounter: 0,
+  auxStep: 0,
 };
 
 function loadsingularSimulationStep(index) {
@@ -78,6 +79,7 @@ simulationParameters.init_output = init(stageParameters, simulationParameters);
 document.getElementById("oneSimulationStep").addEventListener(
   "click",
   function () {
+    simulationParameters.auxStep = 0;
     oneSimulationStep(stageParameters, simulationParameters);
   },
   false
@@ -86,6 +88,7 @@ document.getElementById("oneSimulationStep").addEventListener(
 document.getElementById("playButton").addEventListener(
   "click",
   function () {
+    simulationParameters.auxStep = 0;
     simulationParameters.singularSimulationStep = 0;
     simulation(stageParameters, simulationParameters);
     document.getElementById("playButton").disabled = true;

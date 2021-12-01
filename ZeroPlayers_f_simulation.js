@@ -39,7 +39,8 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
   //loadsingularSimulationStep(simulationIndex);
   if (
     simulationParameters.simulationStepsNumber -
-      simulationParameters.singularSimulationStep >
+      simulationParameters.singularSimulationStep -
+      simulationParameters.auxStep >
       0 &&
     stopFlag == false
   ) {
@@ -57,8 +58,7 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
 }
 
 function killSimulation(simulationParameters) {
-  let aux = readVariable(simulationParameters.simulationStepsNumber);
-  simulationParameters.singularSimulationStep = aux;
+  simulationParameters.auxStep = simulationParameters.simulationStepsNumber;
 }
 
 function oneSimulationStep(stageParameters, simulationParameters) {
