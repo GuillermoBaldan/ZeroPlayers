@@ -144,14 +144,6 @@ function reproductionFunction(item, stageParameters, simulationParameters) {
   let son;
   if (item.reproductionRadio != undefined) {
     son = new item.constructor();
-    debug_energyOfUniverse();
-    debug_([
-      {
-        string: "Energy of Universe",
-        variable: stageParameters.universeEnergy,
-      },
-    ]);
-    8;
     // do{
     do {
       son.x =

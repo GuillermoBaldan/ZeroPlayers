@@ -50,14 +50,14 @@ let stageParameters = {
   staticStage: [],
   matrix: [],
   freePlacesArray: [],
-  universeEnergy: 50000,
+  universeEnergy: 5000,
 };
 
 let simulationParameters = {
   simulationStepsNumber: 100,
   timePerStep: 100,
-  wideDimension: 90,
-  heightDimension: 90,
+  wideDimension: 420,
+  heightDimension: 420,
   squareSide: 30,
   lienzo: lienzo,
   ctx: ctx,

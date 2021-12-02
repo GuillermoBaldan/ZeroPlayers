@@ -48,9 +48,9 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
       continuosSimulationStep(stageParameters, simulationParameters);
     }, simulationParameters.timePerStep);
   } else if (stopFlag == true) {
-    console.log("Simulación parada");
+    console.log("Simulation Stopped");
   } else {
-    console.log("Fin de la simulation");
+    console.log("End of the simulation");
     document.getElementById("playButton").innerHTML = "New Simulation";
     document.getElementById("playButton").disabled = false;
     //return simulationIndex;
