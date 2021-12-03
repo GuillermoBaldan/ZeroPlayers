@@ -1,0 +1,24 @@
+{
+  "name": "app-registro-de-usuarios",
+  "version": "1.0.0",
+  "description": "parte de registro de usuarios de la tienda electrónica que estaba haciendo el profesor del curso de MEAN",
+  "main": "main.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "resgistro",
+    "de",
+    "usuarios;",
+    "Login"
+  ],
+  "author": "Guillermo Baldán López",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.2.1",
+    "validatorjs": "^3.22.1"
+  }
+}
