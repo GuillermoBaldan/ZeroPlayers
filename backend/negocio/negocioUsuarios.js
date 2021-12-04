@@ -128,6 +128,8 @@ exports.modificarUsuario = function (usuario, autoridad) {
             telefono: usuario.telefono,
             direccion: usuario.direccion,
             idioma: usuario.idioma,
+            profesion: usuario.profesion,
+            zeroplayers: usuario.zeroplayers,
           },
         }
       )

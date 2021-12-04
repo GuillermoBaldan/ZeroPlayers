@@ -283,7 +283,7 @@ function matrixGenerator(stageParameters, simulationParameters) {
 }
 
 function matrixGeneratorv2(stageParameters, simulationParameters) {
-  //let heightDimension = wideDimension;
+
 
   let matrixAux = [];
 
