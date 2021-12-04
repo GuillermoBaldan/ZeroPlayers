@@ -6,6 +6,7 @@ let router = express.Router();
 router.post("/usuarios", altaUsuario);
 router.patch("/usuarios/:id", modificarUsuario);
 router.delete("/usuarios/:id", bajaUsuario);
+router.get("/usuarios/:id", traerDatosUsuario);
 
 exports.router = router;
 
@@ -30,6 +31,7 @@ exports.router = router;
 //POST /usuarios
 //CT: app/json
 //--------------
+
 //{ usuario }
 function altaUsuario(request, response) {
   let usuario = request.body;
@@ -46,6 +48,23 @@ function altaUsuario(request, response) {
       //-los datos son invalidos
       //-ya existe un usuario con ese login
       //-fallo catastrófico
+      response.statusCode = error.codigo;
+      response.json(error);
+    });
+}
+
+//GET /usuarios/usuario:id
+function traerDatosUsuario(request, response) {
+  console.log("Se mete en traerDatosUsuario");
+  let idUsuario = request.params.id;
+  //get user data
+  negocioUsuarios
+    .getUserData(idUsuario)
+    .then(function (usuario) {
+      response.statusCode = 200;
+      response.json(usuario);
+    })
+    .catch(function (error) {
       response.statusCode = error.codigo;
       response.json(error);
     });

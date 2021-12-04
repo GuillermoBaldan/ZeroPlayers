@@ -16,6 +16,29 @@ let reglasUsrModificacion = {
   direccion: "required|min:3|max:50",
 };
 
+exports.getUserData = function (idUsuario) {
+  return new Promise(function (resolve, reject) {
+    let coleccionUsuarios = process.esquema.collection("usuarios");
+    coleccionUsuarios
+      .findOne({ _id: idUsuario }, { projection: { password: 0 } })
+      .then((usuarioEncontrado) => {
+        if (!usuarioEncontrado) {
+          reject({
+            codigo: 404,
+            mensaje: `id: ${idUsuario} no existe`,
+          });
+          return;
+        }
+        //delete usuarioEncontrado.password
+        resolve(usuarioEncontrado);
+      })
+      .catch((err) => {
+        console.log(err);
+        reject({ codigo: 500, mensaje: "Error con la base de datos!!!" });
+      });
+  });
+};
+
 exports.buscarPorLoginYPw = function (login, password) {
   return new Promise(function (resolve, reject) {
     let coleccionUsuarios = process.esquema.collection("usuarios");
