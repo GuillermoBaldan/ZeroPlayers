@@ -20,7 +20,7 @@ exports.getUserData = function (idUsuario) {
   return new Promise(function (resolve, reject) {
     let coleccionUsuarios = process.esquema.collection("usuarios");
     coleccionUsuarios
-      .findOne({ _id: idUsuario }, { projection: { password: 0 } })
+      .findOne({ _id: ObjectId(idUsuario) }, { projection: { password: 0 } })
       .then((usuarioEncontrado) => {
         if (!usuarioEncontrado) {
           reject({
