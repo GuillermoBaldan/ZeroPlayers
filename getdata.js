@@ -27,6 +27,12 @@ function sendData() {
   xhr.setRequestHeader("Content-Type", "application/json");
 
   xhr.send(data);
+  sendHttpRequest(
+    "GET",
+    "localhost:6001/usuarios/619420df977695930002adb6"
+  ).then((responseData) => {
+    console.log(responseData);
+  });
 }
 
 const getData = () => {
@@ -43,4 +49,4 @@ document.addEventListener("DOMContentLoaded", function () {
     getData();
   });
 });
-getData();
+sendData();
