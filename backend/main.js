@@ -10,7 +10,8 @@ const interceptorJWT = require("./autenticacion/interceptorJWT").interceptorJWT;
 const usuariosRouter = require("./rest/usuariosREST").router;
 const autenticacionRouter =
   require("./autenticacion/autenticacionRouter").router;
-
+const cors = require("cors");
+whitelist = ["http://localhost:5500"];
 //Primer paso: leer el fichero de configuracion
 require("./util/configUtil");
 
@@ -41,7 +42,7 @@ function arrancarServidor() {
       limit: "5mb", //Tamaño máximo del body que estamos dispuestos a leer. IMPRESCINDIBLE
     })
   );
-
+  // app.use(cors({ origin: whitelist }));
   app.use(interceptorLog);
   app.use(interceptorCORS);
   app.use(interceptorJWT);

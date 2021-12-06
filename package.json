@@ -5,17 +5,20 @@
   "main": "index.js",
   "dependencies": {
     "canvas": "^2.8.0",
-    "jest": "^27.2.5",
-    "jsdom": "^18.0.0",
-    "nes.css": "^2.3.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "http": "0.0.1-security",
+    "jest": "^27.2.5",
+    "jsdom": "^18.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^4.2.1",
+    "nes.css": "^2.3.0",
+    "nodemon": "^2.0.15",
     "validatorjs": "^3.22.1"
   },
   "devDependencies": {},
   "scripts": {
+    "start": "nodemon ./backend/main.js",
     "test": "test",
     "Baldanjs-update": "npm run Baldanjs-update-git-add && npm run Baldanjs-update-change-name-start && npm run Baldanjs-update-git-pull &&  npm run Baldanjs-update-git-push-to-Baldanjs",
     "Baldanjs-update-git-add": "git add .",

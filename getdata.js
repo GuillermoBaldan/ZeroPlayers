@@ -4,7 +4,7 @@ let data = JSON.stringify({
   password: "Hero",
 });
 
-function getData() {
+function sendData() {
   let xhr = new XMLHttpRequest();
   xhr.withCredentials = true;
 
@@ -19,6 +19,7 @@ function getData() {
     "token",
     "bearer - eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk0MjBkZjk3NzY5NTkzMDAwMmFkYjYiLCJsb2dpbiI6IkJhbGRhbiIsInJvbCI6IkNMSUVOVEUiLCJtb3ZpZGEiOiJBQkNERUYiLCJpYXQiOjE2Mzg2NTg3NDd9.9ebMdHDgH45DjA1G5D4KZVqaOTU0GFcu47alVjms2KgkzSdXFTN0DxjCSBzOYl9G1KxkmWNEJHDUhFsdid-SQQ"
   );
+
   xhr.setRequestHeader(
     "Authorization",
     "Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MTk0MjBkZjk3NzY5NTkzMDAwMmFkYjYiLCJsb2dpbiI6IkJhbGRhbiIsInJvbCI6IkNMSUVOVEUiLCJtb3ZpZGEiOiJBQkNERUYiLCJpYXQiOjE2Mzg3NjA4Nzh9.mlNCmTbEyliwcRJOiru-9WIdOSTIBTKQrk2O3gr6w5GhlzFtfuQSTqIwMSCvfVNoa756SbKh19a0yIGSxcInxA"
@@ -28,10 +29,18 @@ function getData() {
   xhr.send(data);
 }
 
+const getData = () => {
+  sendData().then((responseData) => {
+    console.log(responseData);
+  });
+};
+
 /* postBtn.addEventListener("click", sendData); */
 
 document.addEventListener("DOMContentLoaded", function () {
   getBtn.addEventListener("click", function () {
+    console.log("Hello");
     getData();
   });
 });
+getData();
