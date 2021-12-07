@@ -42,7 +42,7 @@ function arrancarServidor() {
       limit: "5mb", //Tamaño máximo del body que estamos dispuestos a leer. IMPRESCINDIBLE
     })
   );
-  app.use(cors({ origin: whitelist }));
+  app.use(cors({ origin: true, credentials: true }));
   app.use(interceptorLog);
   app.use(interceptorCORS);
   app.use(interceptorJWT);
