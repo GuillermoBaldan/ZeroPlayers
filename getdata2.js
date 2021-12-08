@@ -48,17 +48,16 @@ let data = JSON.stringify({
   password: "Hero",
 });
 
-let getData = new AsyncFunction(data,  
-  
+async function getData(data) {
   let xhr = new XMLHttpRequest();
-  //xhr.withCredentials = true;
+  withCredentials = true;
 
   xhr.addEventListener("readystatechange", function () {
     if (this.readyState === 4) {
       //console.log(xhr.responseText);
-      return xhr.responseText;
+      showData(this.responseText);
     }
-  
+  });
 
   xhr.open("GET", "http://localhost:6001/usuarios/619420df977695930002adb6");
   xhr.setRequestHeader(
@@ -72,8 +71,10 @@ let getData = new AsyncFunction(data,
   xhr.setRequestHeader("Content-Type", "application/json");
 
   xhr.send(data);
-})
+}
 
-getData(data).then(response => {
-  console.log(response);
-})
+function showData(userData) {
+  console.log(userData);
+}
+
+getData(data);
