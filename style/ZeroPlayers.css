@@ -3,61 +3,59 @@
 
 }
 */
-@font-face {font-family:"Press Start 2P";
-    src: url(PressStart2P-Regular.ttf) format("opentype");}
-    
+@font-face {
+  font-family: "Press Start 2P";
+  src: url(PressStart2P-Regular.ttf) format("opentype");
+}
 
 body {
-    background-color: lightgreen;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  background-color: lightgreen;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 h1 {
-   margin-bottom: 5%;
-    font-size: 25px;
+  margin-bottom: 5%;
+  font-size: 25px;
 }
 
-.board{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.btn-board{
-    display: flexbox;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    flex-direction: column;
+.btn-board {
+  margin: 10%;
+  display: flexbox;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
 }
-
 
 .btn {
-    margin-right: auto;
-    margin-left: auto;
-    display: block;
-    margin-top: 5%;
-    margin-bottom: 0%;
-    font-family: "Press Start 2P";
-    font-size: 15px;
-    filter: grayscale(50%);
-   
-} 
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  margin-top: 5%;
+  margin-bottom: 10%;
+  font-family: "Press Start 2P";
+  font-size: 15px;
+  filter: grayscale(50%);
+}
 
 .container {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-   }
-
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
