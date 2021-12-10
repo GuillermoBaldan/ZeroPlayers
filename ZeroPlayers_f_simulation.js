@@ -23,10 +23,13 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
   console.log(
     "simulation cicle: " + (simulationParameters.singularSimulationStep + 1)
   );
+  simulationParameters.historicalSimulationSteps += 1;
   console.log(`globalCounter: ${simulationParameters.globalCounter}`);
   console.log(
     `singularSimulationStep: ${simulationParameters.singularSimulationStep}`
   );
+  document.getElementById("simulationCicles").innerHTML =
+    simulationParameters.historicalSimulationSteps;
   //Reordering dynamicElementsArray block--
   stageParameters.dynamicElementsArray = cloneArray(
     ordering4drawing(stageParameters)
