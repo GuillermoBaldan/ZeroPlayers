@@ -89,6 +89,7 @@ document.getElementById("oneSimulationStep").addEventListener(
 document.getElementById("playButton").addEventListener(
   "click",
   function () {
+    document.getElementById("progressBar").style.display = "block";
     simulationParameters.auxStep = 0;
     simulationParameters.singularSimulationStep = 0;
     simulation(stageParameters, simulationParameters);

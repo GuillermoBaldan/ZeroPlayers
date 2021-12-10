@@ -30,6 +30,10 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
   );
   document.getElementById("simulationCicles").innerHTML =
     simulationParameters.historicalSimulationSteps;
+  document.getElementById("progressBar").value =
+    simulationParameters.singularSimulationStep;
+  document.getElementById("progressBar").max =
+    simulationParameters.simulationStepsNumber;
   //Reordering dynamicElementsArray block--
   stageParameters.dynamicElementsArray = cloneArray(
     ordering4drawing(stageParameters)
@@ -66,6 +70,7 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
 
 function killSimulation(simulationParameters) {
   simulationParameters.auxStep = simulationParameters.simulationStepsNumber;
+  document.getElementById("progressBar").style.display = "none";
 }
 
 function oneSimulationStep(stageParameters, simulationParameters) {

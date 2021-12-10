@@ -26,6 +26,7 @@ function init(stageParameters, simulationParameters) {
   let flag = false;
   let a;
   let freeCoordinate;
+  document.getElementById("progressBar").style.display = "none";
   //0. Check Data Coherence
   flag = checkDataCoherence(stageParameters, simulationParameters);
   if (flag) {
