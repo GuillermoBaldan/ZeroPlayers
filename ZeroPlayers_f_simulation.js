@@ -21,7 +21,11 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
   // oneSimulationStep(simulationStepsNumber,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
   console.log("----------------------------------");
   console.log(
-    "simulationStep: " + (simulationParameters.singularSimulationStep + 1)
+    "simulation cicle: " + (simulationParameters.singularSimulationStep + 1)
+  );
+  console.log(`globalCounter: ${simulationParameters.globalCounter}`);
+  console.log(
+    `singularSimulationStep: ${simulationParameters.singularSimulationStep}`
   );
   //Reordering dynamicElementsArray block--
   stageParameters.dynamicElementsArray = cloneArray(

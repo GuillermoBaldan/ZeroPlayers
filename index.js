@@ -64,6 +64,7 @@ let simulationParameters = {
   init_output: init_output,
   stopFlag: false,
   singularSimulationStep: 0,
+  historicalSimulationSteps: 0,
   globalCounter: 0,
   auxCounter: 0,
   auxStep: 0,
