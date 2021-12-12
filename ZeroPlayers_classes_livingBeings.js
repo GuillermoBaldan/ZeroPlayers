@@ -22,7 +22,7 @@ class simpleCell {
     this.energy = 100;
     this.energyBorn = this.maxEnergy / 2;
     this.lifeConsumption = 5;
-    this.energyConsumption = 0;
+    this.energyConsumption = 5;
     this.behaviourRules = {
       forbiddenPositions: ["water", "simpleCell"],
       forbiddenColors: ["blue", "yellow"],

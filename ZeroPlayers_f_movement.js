@@ -4,6 +4,7 @@ import { freePositionsArrayGenerator } from "./ZeroPlayers_f_checkValues.js";
 import { arrayOf2DVectorsIncludeVector } from "./ZeroPlayers_f_arraysManipulation.js";
 import { cloneArray2D } from "./ZeroPlayers_f_arraysManipulation.js";
 import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
+import { energy2Universe } from "./ZeroPlayers_f_universe.js";
 
 function movement(
   dynamicItem_x,
@@ -207,6 +208,9 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
       simulationParameters
     );
   }
+  //Energy consumption when cell movement occurs
+  item.energy = item.energy - simulationParameters.energyConsumption;
+  energy2Universe(item.energyConsumption, stageParameters);
 }
 
 export { movement, staticMovement, trajectoryMovement, autonomousMovement };
