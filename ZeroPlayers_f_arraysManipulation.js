@@ -38,6 +38,14 @@ function readVariable(variable) {
   temp = variable;
   return temp;
 }
+
+function sum(array) {
+  let sum = 0;
+  array.forEach((item) => {
+    sum += item;
+  });
+  return sum;
+}
 //HOLA!!
 export {
   cloneArray2D,
@@ -45,4 +53,5 @@ export {
   lastElement,
   arrayOf2DVectorsIncludeVector,
   readVariable,
+  sum,
 };
