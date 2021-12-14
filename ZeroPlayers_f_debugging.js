@@ -1,5 +1,5 @@
 import { stageParameters } from "./index.js";
-import { sum } from "./ZeroPlayers_f_debugging.js";
+import { sum } from "./ZeroPlayers_f_arraysManipulation.js";
 
 function debug_PrintDynamicsElementsCoordinates(Array) {
   Array.forEach((element) => {
@@ -18,13 +18,14 @@ function debug_energyOfUniverse() {
 }
 
 function debug_totalEnergy() {
-  console.log(
-    `Universe Energy: ${
-      stageParameters.universeEnergy + sum(stageParameters.dynamicElementsArray)
-    } = Energy of Stage:${
-      stageParameters.universeEnergy
-    } + Energy of Cells: ${sum(stageParameters.dynamicElementsArray)}`
-  );
+  let totalEnergy =
+    stageParameters.universeEnergy + sum(stageParameters.dynamicElementsArray);
+  let stageEnergy = stageParameters.universeEnergy;
+  let cellsEnergy = sum(stageParameters.dynamicElementsArray);
+  /* console.log(
+    `Universe Energy: ${totalEnergy} = Energy of Stage:${stageEnergy} + Energy of Cells: ${cellsEnergy}`
+  ); */
+  console.log(cellsEnergy);
 }
 
 function debug_DetectCoordinatesRepeated(Array) {

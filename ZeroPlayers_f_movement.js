@@ -209,7 +209,7 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
     );
   }
   //Energy consumption when cell movement occurs
-  item.energy = item.energy - simulationParameters.energyConsumption;
+  item.energy = item.energy - item.energyConsumption;
   energy2Universe(item.energyConsumption, stageParameters);
 }
 

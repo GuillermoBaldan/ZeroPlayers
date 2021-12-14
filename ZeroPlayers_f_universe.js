@@ -2,7 +2,7 @@ import { simulationParameters, stageParameters } from "./index.js";
 import { killSimulation } from "./ZeroPlayers_f_simulation.js";
 
 function energy2Universe(energy, stageParamenters) {
-  stageParamenters.universeEnergy = energy;
+  stageParamenters.universeEnergy += energy;
 }
 
 function energy2dynamicElements(energy, stageParamenters) {

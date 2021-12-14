@@ -33,6 +33,7 @@ import {
 import {
   debug_PrintDynamicsElementsCoordinates,
   debug_DetectCoordinatesRepeated,
+  debug_totalEnergy,
 } from "./ZeroPlayers_f_debugging.js";
 
 function generateStaticStage(stageParameters, simulationParameters) {
@@ -283,8 +284,6 @@ function matrixGenerator(stageParameters, simulationParameters) {
 }
 
 function matrixGeneratorv2(stageParameters, simulationParameters) {
-
-
   let matrixAux = [];
 
   let auxIndex = 0;
@@ -319,7 +318,7 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
       simulationParameters
     );
   });
-
+  debug_totalEnergy();
   return stageParameters.matrix;
 }
 
@@ -331,7 +330,7 @@ function setColor(element_x, element_y, color, matrix, simulationParameters) {
       ) -
       1
   ][element_x] = color;
-}
+ }
 
 export {
   generateStaticStage,

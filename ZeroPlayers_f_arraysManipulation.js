@@ -40,11 +40,17 @@ function readVariable(variable) {
 }
 
 function sum(array) {
-  let sum = 0;
+  let total = 0;
+  console.log("total init", total);
   array.forEach((item) => {
-    sum += item;
+    console.log("item");
+    console.log(item);
+    console.log("energy", item.energy);
+    total = total + item.energy;
+    console.log("total", total);
   });
-  return sum;
+
+  return total;
 }
 //HOLA!!
 export {
