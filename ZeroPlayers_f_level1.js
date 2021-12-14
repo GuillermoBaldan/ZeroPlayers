@@ -1,7 +1,6 @@
 import {
   generateStaticStage,
   matrixGenerator,
-  matrixGeneratorv2,
   matrixGeneratorInit,
 } from "./ZeroPlayers_f_matrixGeneration.js";
 import { initCanvas, drawingMatrix } from "./ZeroPlayers_f_canvas.js";

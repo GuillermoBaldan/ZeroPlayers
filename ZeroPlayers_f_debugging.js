@@ -7,6 +7,10 @@ function debug_PrintDynamicsElementsCoordinates(Array) {
   });
 }
 
+function debug_numberOfCells() {
+  console.log(stageParameters.dynamicElementsArray.length);
+}
+
 function debug_(ObjectArray) {
   ObjectArray.forEach((element) => {
     console.log(`${element.string}: ${element.variable}`);
@@ -52,4 +56,5 @@ export {
   debug_,
   debug_energyOfUniverse,
   debug_totalEnergy,
+  debug_numberOfCells,
 };

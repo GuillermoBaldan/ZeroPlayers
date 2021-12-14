@@ -1,7 +1,4 @@
-import {
-  matrixGenerator,
-  matrixGeneratorv2,
-} from "./ZeroPlayers_f_matrixGeneration.js";
+import { matrixGenerator } from "./ZeroPlayers_f_matrixGeneration.js";
 import { drawingMatrix, ordering4drawing } from "./ZeroPlayers_f_canvas.js";
 import {
   singularSimulationStep,
@@ -40,7 +37,7 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
   );
 
   //------
-  stageParameters.matrix = matrixGeneratorv2(
+  stageParameters.matrix = matrixGenerator(
     stageParameters,
     simulationParameters
   );
@@ -84,7 +81,7 @@ function oneSimulationStep(stageParameters, simulationParameters) {
     ordering4drawing(stageParameters)
   );
 
-  stageParameters.matrix = matrixGeneratorv2(
+  stageParameters.matrix = matrixGenerator(
     stageParameters,
     simulationParameters
   );
