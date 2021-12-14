@@ -22,10 +22,9 @@ function debug_totalEnergy() {
     stageParameters.universeEnergy + sum(stageParameters.dynamicElementsArray);
   let stageEnergy = stageParameters.universeEnergy;
   let cellsEnergy = sum(stageParameters.dynamicElementsArray);
-  /* console.log(
+  console.log(
     `Universe Energy: ${totalEnergy} = Energy of Stage:${stageEnergy} + Energy of Cells: ${cellsEnergy}`
-  ); */
-  console.log(cellsEnergy);
+  );
 }
 
 function debug_DetectCoordinatesRepeated(Array) {

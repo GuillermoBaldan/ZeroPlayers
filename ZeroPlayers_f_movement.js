@@ -2,7 +2,10 @@ import { simulation } from "./ZeroPlayers_f_level1.js";
 import { checkForbiddenPosition } from "./ZeroPlayers_f_livingbeings.js";
 import { freePositionsArrayGenerator } from "./ZeroPlayers_f_checkValues.js";
 import { arrayOf2DVectorsIncludeVector } from "./ZeroPlayers_f_arraysManipulation.js";
-import { cloneArray2D } from "./ZeroPlayers_f_arraysManipulation.js";
+import {
+  cloneArray2D,
+  removeItem,
+} from "./ZeroPlayers_f_arraysManipulation.js";
 import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
 import { energy2Universe } from "./ZeroPlayers_f_universe.js";
 

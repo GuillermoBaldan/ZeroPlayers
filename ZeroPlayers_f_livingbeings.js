@@ -5,6 +5,7 @@ import {
 import { checkExistenceInMatrix } from "./ZeroPlayers_f_dataCoherence.js";
 import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
 import { debug_, debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
+import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 
 function totalFreedom(dynamicItem_x, dynamicItem_y) {
   let buffer = randomSteps();
@@ -142,66 +143,76 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters) {
 function reproductionFunction(item, stageParameters, simulationParameters) {
   let sonsArray = [];
   let son;
-  if (item.reproductionRadio != undefined) {
-    son = new item.constructor();
-    // do{
-    do {
-      son.x =
-        item.x +
-        Math.round(
-          Math.random() * (son.reproductionRadio + son.reproductionRadio) -
-            son.reproductionRadio
-        );
-    } while (
-      !(
-        son.x >= 0 &&
-        son.x <=
-          Math.floor(
-            simulationParameters.wideDimension / simulationParameters.squareSide
-          ) -
-            1
-      )
-    );
-    do {
-      son.y =
-        item.y +
-        Math.round(
-          Math.random() * (son.reproductionRadio + son.reproductionRadio) -
-            son.reproductionRadio
-        );
-    } while (
-      !(
-        son.y >= 0 &&
-        son.y <=
-          Math.floor(
-            simulationParameters.heightDimension /
-              simulationParameters.squareSide
-          ) -
-            1
-      )
-    );
+  if (stageParameters.dynamicElementsArray.indexOf(item) != -1) {
+    if (item.reproductionRadio != undefined) {
+      son = new item.constructor();
+      // do{
+      do {
+        son.x =
+          item.x +
+          Math.round(
+            Math.random() * (son.reproductionRadio + son.reproductionRadio) -
+              son.reproductionRadio
+          );
+      } while (
+        !(
+          son.x >= 0 &&
+          son.x <=
+            Math.floor(
+              simulationParameters.wideDimension /
+                simulationParameters.squareSide
+            ) -
+              1
+        )
+      );
+      do {
+        son.y =
+          item.y +
+          Math.round(
+            Math.random() * (son.reproductionRadio + son.reproductionRadio) -
+              son.reproductionRadio
+          );
+      } while (
+        !(
+          son.y >= 0 &&
+          son.y <=
+            Math.floor(
+              simulationParameters.heightDimension /
+                simulationParameters.squareSide
+            ) -
+              1
+        )
+      );
 
-    if (!checkExistenceInMatrix(son.x, son.y, stageParameters)) {
-      //If there isn´t any object of dynamicElementsArray with this coordinates, then an object is created
-      son.energy = energy2dynamicElements(son.energyBorn, stageParameters);
-      sonsArray.push(son);
+      if (!checkExistenceInMatrix(son.x, son.y, stageParameters)) {
+        //If there isn´t any object of dynamicElementsArray with this coordinates, then an object is created
+        son.energy = energy2dynamicElements(son.energyBorn, stageParameters);
+        sonsArray.push(son);
 
-      simulationParameters.globalCounter++;
+        simulationParameters.globalCounter++;
+      }
     }
+    sonsArray.forEach((item2) => {
+      setColor(
+        item2.x,
+        item2.y,
+        item2.color,
+        stageParameters.matrix,
+        simulationParameters
+      );
+    });
+    stageParameters.dynamicElementsArray =
+      stageParameters.dynamicElementsArray.concat(sonsArray);
+    sonsArray = [];
+    simulationParameters.auxCounter++;
   }
-  sonsArray.forEach((item2) => {
-    setColor(
-      item2.x,
-      item2.y,
-      item2.color,
-      stageParameters.matrix,
-      simulationParameters
-    );
-  });
-  stageParameters.dynamicElementsArray =
-    stageParameters.dynamicElementsArray.concat(sonsArray);
-  sonsArray = [];
-  simulationParameters.auxCounter++;
+}
+
+function cellHeatDeath(item, dynamicElementsArray) {
+  //Implement cell death
+  if (item.energy <= 0) {
+    removeItem(item, dynamicElementsArray);
+  }
 }
 
 export {
@@ -214,4 +225,5 @@ export {
   preyDetection,
   preySelectionAndRemove,
   reproductionFunction,
+  cellHeatDeath,
 };

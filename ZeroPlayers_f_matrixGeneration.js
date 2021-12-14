@@ -9,6 +9,7 @@ import {
   preyDetection,
   preySelectionAndRemove,
   reproductionFunction,
+  cellHeatDeath,
 } from "./ZeroPlayers_f_livingbeings.js";
 import {
   energy2Universe,
@@ -305,6 +306,7 @@ function matrixGeneratorv2(stageParameters, simulationParameters) {
         break;
       case "autonomous":
         autonomousMovement(item, stageParameters, simulationParameters);
+        cellHeatDeath(item, stageParameters.dynamicElementsArray);
         reproductionFunction(item, stageParameters, simulationParameters);
         break;
     }
@@ -330,7 +332,7 @@ function setColor(element_x, element_y, color, matrix, simulationParameters) {
       ) -
       1
   ][element_x] = color;
- }
+}
 
 export {
   generateStaticStage,

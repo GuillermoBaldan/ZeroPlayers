@@ -50,7 +50,7 @@ let stageParameters = {
   staticStage: [],
   matrix: [],
   freePlacesArray: [],
-  universeEnergy: 500000,
+  universeEnergy: 50000,
 };
 
 let simulationParameters = {

@@ -41,18 +41,21 @@ function readVariable(variable) {
 
 function sum(array) {
   let total = 0;
-  console.log("total init", total);
+
   array.forEach((item) => {
-    console.log("item");
-    console.log(item);
-    console.log("energy", item.energy);
     total = total + item.energy;
-    console.log("total", total);
   });
 
   return total;
 }
-//HOLA!!
+
+function removeItem(item, array) {
+  let index = array.indexOf(item);
+  if (index > -1) {
+    array.splice(index, 1);
+  }
+}
+
 export {
   cloneArray2D,
   cloneArray,
@@ -60,4 +63,5 @@ export {
   arrayOf2DVectorsIncludeVector,
   readVariable,
   sum,
+  removeItem,
 };
