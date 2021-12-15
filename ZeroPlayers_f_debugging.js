@@ -8,7 +8,9 @@ function debug_PrintDynamicsElementsCoordinates(Array) {
 }
 
 function debug_numberOfCells() {
-  console.log(stageParameters.dynamicElementsArray.length);
+  console.log(
+    `Number of cells: ${stageParameters.dynamicElementsArray.length}`
+  );
 }
 
 function debug_(ObjectArray) {

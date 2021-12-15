@@ -59,34 +59,9 @@ function init(stageParameters, simulationParameters) {
             simulationParameters
           );
         }
-
-        /*  //Generamos el elemento dinámico
-        stageParameters.dynamicElementsArray.push(new item.type());
-        //Asignamos coordenadas, si no hay coordenadas libres, se borra el último elemento dinámico generado
-        coordinatesAssigment(
-          simulationParameters,
-          stageParameters,
-          lastElement(stageParameters.dynamicElementsArray) */
-
-        //Hay que generar la matrix aqui
-
-        /*   stageParameters.matrix = cloneArray2D(
-          matrixGenerator(stageParameters, simulationParameters)
-        ); */
-
-        //Le trasnferimos energía al elemento generado
-        /*    energy2dynamicElements(
-          stageParameters.dynamicElementsArray[
-            stageParameters.dynamicElementsArray.length - 1
-          ],
-          stageParameters
-        ); */
       }
     });
     matrixGeneratorInit(stageParameters, simulationParameters);
-    ///stageParameters.matrix = cloneArray2D(matrixAux);
-    //console.log(stageParameters.matrix);
-    //console.log(matrixAux) - No aparece nada en matrixAux, no se están añadiendo los elementos dinámicos
     //4. Draw canvas
     drawingMatrix(stageParameters, simulationParameters);
     debug_energyOfUniverse();

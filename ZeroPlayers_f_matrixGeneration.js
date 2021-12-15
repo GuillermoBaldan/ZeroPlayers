@@ -35,6 +35,7 @@ import {
   debug_PrintDynamicsElementsCoordinates,
   debug_DetectCoordinatesRepeated,
   debug_totalEnergy,
+  debug_numberOfCells,
 } from "./ZeroPlayers_f_debugging.js";
 
 function generateStaticStage(stageParameters, simulationParameters) {
@@ -132,28 +133,24 @@ function matrixGenerator(stageParameters, simulationParameters) {
         reproductionFunction(item, stageParameters, simulationParameters);
         break;
     }
+    if (stageParameters.dynamicElementsArray.indexOf(item) !== -1) {
+      setColor(item, item.color, stageParameters.matrix, simulationParameters);
+    }
   });
-  stageParameters.dynamicElementsArray.forEach((item) => {
-    setColor(
-      item.x,
-      item.y,
-      item.color,
-      stageParameters.matrix,
-      simulationParameters
-    );
-  });
+
   debug_totalEnergy();
+  debug_numberOfCells();
   return stageParameters.matrix;
 }
 
-function setColor(element_x, element_y, color, matrix, simulationParameters) {
+function setColor(item, color, matrix, simulationParameters) {
   matrix[
-    -element_y +
+    -item.y +
       Math.floor(
         simulationParameters.heightDimension / simulationParameters.squareSide
       ) -
       1
-  ][element_x] = color;
+  ][item.x] = color;
 }
 
 export { generateStaticStage, matrixGeneratorInit, matrixGenerator, setColor };

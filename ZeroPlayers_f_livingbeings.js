@@ -193,13 +193,7 @@ function reproductionFunction(item, stageParameters, simulationParameters) {
       }
     }
     sonsArray.forEach((item2) => {
-      setColor(
-        item2.x,
-        item2.y,
-        item2.color,
-        stageParameters.matrix,
-        simulationParameters
-      );
+      setColor(item, item2.color, stageParameters.matrix, simulationParameters);
     });
     stageParameters.dynamicElementsArray =
       stageParameters.dynamicElementsArray.concat(sonsArray);
