@@ -134,7 +134,7 @@ function matrixGenerator(stageParameters, simulationParameters) {
         break;
     }
     if (stageParameters.dynamicElementsArray.indexOf(item) !== -1) {
-      setColor(item, item.color, stageParameters.matrix, simulationParameters);
+      //  setColor(item, item.color, stageParameters.matrix, simulationParameters);
     }
   });
 

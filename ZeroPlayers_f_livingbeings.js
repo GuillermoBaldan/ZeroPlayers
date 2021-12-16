@@ -6,6 +6,7 @@ import { checkExistenceInMatrix } from "./ZeroPlayers_f_dataCoherence.js";
 import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
 import { debug_, debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
 import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
+import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
 
 function totalFreedom(dynamicItem_x, dynamicItem_y) {
   let buffer = randomSteps();
@@ -193,7 +194,8 @@ function reproductionFunction(item, stageParameters, simulationParameters) {
       }
     }
     sonsArray.forEach((item2) => {
-      setColor(item, item2.color, stageParameters.matrix, simulationParameters);
+      //setColor(item, item2.color, stageParameters.matrix, simulationParameters);
+      drawingMatrix(stageParameters, simulationParameters);
     });
     stageParameters.dynamicElementsArray =
       stageParameters.dynamicElementsArray.concat(sonsArray);

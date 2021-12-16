@@ -78,4 +78,4 @@ function simulation(stageParameters, simulationParameters) {
   continuosSimulationStep(stageParameters, simulationParameters);
 }
 
-export { init, simulation };
+export { init, simulation, drawingMatrix };
