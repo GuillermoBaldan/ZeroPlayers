@@ -177,10 +177,10 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
       //Se actualizan los colores de la matriz
       //Se pinta el color de la célula en la matriz
       //setColor(item, item.color, stageParameters.matrix, simulationParameters);
-      drawingMatrix(stageParameters, simulationParameters);
+      //drawingMatrix(stageParameters, simulationParameters);
     }
     //Se pinta el color que queda libre en la matriz
-    stageParameters.matrix[
+    /*   stageParameters.matrix[
       -xy_before[1] +
         Math.floor(
           simulationParameters.heightDimension / simulationParameters.squareSide
@@ -194,11 +194,11 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
               simulationParameters.squareSide
           ) -
           1
-      ][xy_before[0]];
+      ][xy_before[0]]; */
   } else {
     item.x = xy_before[0];
     item.y = xy_before[1];
-    setColor(item, item.color, stageParameters.matrix, simulationParameters);
+    // setColor(item, item.color, stageParameters.matrix, simulationParameters);
   }
   //Energy consumption when cell movement occurs
   item.energy = item.energy - item.energyConsumption;

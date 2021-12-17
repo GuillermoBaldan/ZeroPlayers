@@ -12,7 +12,8 @@ import {
   readVariable,
 } from "./ZeroPlayers_f_arraysManipulation.js";
 import { checkSimpleCellsExistence } from "./ZeroPlayers_f_checkValues.js";
-import { debug_ } from "./ZeroPlayers_f_debugging.js";
+import { debug_, debug_numberOfCells } from "./ZeroPlayers_f_debugging.js";
+import { refreshGUI } from "./ZeroPlayers_f_GUI.js";
 
 function continuosSimulationStep(stageParameters, simulationParameters) {
   // oneSimulationStep(simulationStepsNumber,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
@@ -20,17 +21,13 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
   console.log(
     "simulation cicle: " + (simulationParameters.singularSimulationStep + 1)
   );
+  debug_numberOfCells();
   simulationParameters.historicalSimulationSteps += 1;
   console.log(`globalCounter: ${simulationParameters.globalCounter}`);
   console.log(
     `singularSimulationStep: ${simulationParameters.singularSimulationStep}`
   );
-  document.getElementById("simulationCicles").innerHTML =
-    simulationParameters.historicalSimulationSteps;
-  document.getElementById("progressBar").value =
-    simulationParameters.singularSimulationStep;
-  document.getElementById("progressBar").max =
-    simulationParameters.simulationStepsNumber;
+  refreshGUI();
   //Reordering dynamicElementsArray block--
   stageParameters.dynamicElementsArray = cloneArray(
     ordering4drawing(stageParameters)
@@ -41,10 +38,10 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
     stageParameters,
     simulationParameters
   );
-  //matrixGenerator(staticStage,dynamicElementsArray,squareSide,wideDimension)
+
   drawingMatrix(stageParameters, simulationParameters);
   simulationParameters.singularSimulationStep += 1;
-  //loadsingularSimulationStep(simulationIndex);
+
   if (
     simulationParameters.simulationStepsNumber -
       simulationParameters.singularSimulationStep -
