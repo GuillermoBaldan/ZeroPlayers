@@ -1,4 +1,4 @@
-import { stageParameters } from "./index.js";
+import { stageParameters, simulationParameters } from "./index.js";
 import { sum } from "./ZeroPlayers_f_arraysManipulation.js";
 
 function debug_PrintDynamicsElementsCoordinates(Array) {
@@ -52,6 +52,13 @@ function debug_DetectCoordinatesRepeated(Array) {
   }
 }
 
+function debug_simulationCicle() {
+  console.log("----------------------------------");
+  console.log(
+    "simulation cicle: " + (simulationParameters.singularSimulationStep + 1)
+  );
+}
+
 export {
   debug_PrintDynamicsElementsCoordinates,
   debug_DetectCoordinatesRepeated,
@@ -59,4 +66,5 @@ export {
   debug_energyOfUniverse,
   debug_totalEnergy,
   debug_numberOfCells,
+  debug_simulationCicle,
 };

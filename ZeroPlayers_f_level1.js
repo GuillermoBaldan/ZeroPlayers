@@ -71,7 +71,7 @@ function init(stageParameters, simulationParameters) {
   }
 }
 
-//simulation(init_output[0],dynamicElementsArray,simulationStepsNumber,timePerStep, wideDimension, squareSide,init_output[3])
+
 function simulation(stageParameters, simulationParameters) {
   //1. Hacemos la simulación paso a paso.
   continuosSimulationStep(stageParameters, simulationParameters);

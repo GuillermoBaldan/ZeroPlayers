@@ -12,21 +12,20 @@ import {
   readVariable,
 } from "./ZeroPlayers_f_arraysManipulation.js";
 import { checkSimpleCellsExistence } from "./ZeroPlayers_f_checkValues.js";
-import { debug_, debug_numberOfCells } from "./ZeroPlayers_f_debugging.js";
+import {
+  debug_,
+  debug_numberOfCells,
+  debug_simulationCicle,
+} from "./ZeroPlayers_f_debugging.js";
 import { refreshGUI } from "./ZeroPlayers_f_GUI.js";
 
 function continuosSimulationStep(stageParameters, simulationParameters) {
   // oneSimulationStep(simulationStepsNumber,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
-  console.log("----------------------------------");
-  console.log(
-    "simulation cicle: " + (simulationParameters.singularSimulationStep + 1)
-  );
+
+  debug_simulationCicle();
   debug_numberOfCells();
   simulationParameters.historicalSimulationSteps += 1;
-  console.log(`globalCounter: ${simulationParameters.globalCounter}`);
-  console.log(
-    `singularSimulationStep: ${simulationParameters.singularSimulationStep}`
-  );
+
   refreshGUI();
   //Reordering dynamicElementsArray block--
   stageParameters.dynamicElementsArray = cloneArray(

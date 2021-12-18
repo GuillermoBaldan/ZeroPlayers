@@ -153,7 +153,7 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
       stageParameters,
       simulationParameters
     );
-    //item.behaviourRules.forbiddenPositions.forEach( positionType => {
+  
     if (
       checkForbiddenPosition(stageParameters, simulationParameters, xy, item)
     ) {
