@@ -17,7 +17,7 @@ import {
   debug_numberOfCells,
   debug_simulationCicle,
 } from "./ZeroPlayers_f_debugging.js";
-import { refreshGUI } from "./ZeroPlayers_f_GUI.js";
+import { refreshGUI, simulationStopAndEnd } from "./ZeroPlayers_f_GUI.js";
 
 function continuosSimulationStep(stageParameters, simulationParameters) {
   // oneSimulationStep(simulationStepsNumber,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
@@ -25,12 +25,7 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
   debug_simulationCicle();
   debug_numberOfCells();
   simulationParameters.historicalSimulationSteps += 1;
-
   refreshGUI();
-  //Reordering dynamicElementsArray block--
-  stageParameters.dynamicElementsArray = cloneArray(
-    ordering4drawing(stageParameters)
-  );
 
   //------
   stageParameters.matrix = matrixGenerator(
@@ -41,23 +36,10 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
   drawingMatrix(stageParameters, simulationParameters);
   simulationParameters.singularSimulationStep += 1;
 
-  if (
-    simulationParameters.simulationStepsNumber -
-      simulationParameters.singularSimulationStep -
-      simulationParameters.auxStep >
-      0 &&
-    stopFlag == false
-  ) {
+  if (!simulationStopAndEnd()) {
     setTimeout(function () {
       continuosSimulationStep(stageParameters, simulationParameters);
     }, simulationParameters.timePerStep);
-  } else if (stopFlag == true) {
-    console.log("Simulation Stopped");
-  } else {
-    console.log("End of the simulation");
-    document.getElementById("playButton").innerHTML = "New Simulation";
-    document.getElementById("playButton").disabled = false;
-    //return simulationIndex;
   }
 }
 

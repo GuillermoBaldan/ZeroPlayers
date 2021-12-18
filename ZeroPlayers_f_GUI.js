@@ -1,4 +1,9 @@
-import { simulationParameters } from "./index.js";
+import {
+  simulationParameters,
+  singularSimulationStep,
+  stopFlag,
+  loadsingularSimulationStep,
+} from "./index.js";
 
 function refreshGUI() {
   document.getElementById("simulationCicles").innerHTML =
@@ -9,4 +14,24 @@ function refreshGUI() {
     simulationParameters.simulationStepsNumber;
 }
 
-export { refreshGUI };
+function simulationStopAndEnd() {
+  let flag = true;
+  if (
+    simulationParameters.simulationStepsNumber -
+      simulationParameters.singularSimulationStep -
+      simulationParameters.auxStep >
+      0 &&
+    stopFlag == false
+  ) {
+    flag = false;
+  } else if (stopFlag == true) {
+    console.log("Simulation Stopped");
+  } else {
+    console.log("End of the simulation");
+    document.getElementById("playButton").innerHTML = "New Simulation";
+    document.getElementById("playButton").disabled = false;
+    //return simulationIndex;
+  }
+}
+
+export { refreshGUI, simulationStopAndEnd };
