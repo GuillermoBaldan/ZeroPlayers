@@ -4,6 +4,7 @@ import {
   stopFlag,
   loadsingularSimulationStep,
   stageParameters,
+  modifyStopFlag,
 } from "./index.js";
 
 import {
@@ -46,11 +47,11 @@ function clickButtonsDetection() {
   document.getElementById("stopButton").addEventListener(
     "click",
     function () {
-      if (stopFlag == false) {
-        stopFlag = true;
+      if (stopFlag === false) {
+        modifyStopFlag(true);
         document.getElementById("stopButton").innerHTML = "Continue Simulation";
       } else {
-        stopFlag = false;
+        modifyStopFlag(false);
         document.getElementById("stopButton").innerHTML = "Stop Simulation";
         simulation(stageParameters, simulationParameters);
       }

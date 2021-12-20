@@ -71,6 +71,11 @@ let simulationParameters = {
   auxStep: 0,
 };
 
+
+function modifyStopFlag(value){
+  stopFlag = value;
+}
+
 function loadsingularSimulationStep(index) {
   simulationParameters.singularSimulationStep = index;
 }
@@ -84,10 +89,13 @@ clickButtonsDetection();
  çThis parameter is only available in Gecko and is mainly useful for the code in add-ons and the browser itself. 
  See Interaction between privileged and non-privileged pages for an example.*/
 
+
+
 export {
   stopFlag,
   singularSimulationStep,
   loadsingularSimulationStep,
   simulationParameters,
   stageParameters,
+  modifyStopFlag,
 };
