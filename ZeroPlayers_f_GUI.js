@@ -76,7 +76,8 @@ function simulationStopAndEnd() {
   );
   if (
     simulationParameters.simulationStepsNumber -
-      simulationParameters.singularSimulationStep >
+      simulationParameters.singularSimulationStep -
+      simulationParameters.auxStep >
     0
   ) {
     flag = false;
@@ -87,7 +88,8 @@ function simulationStopAndEnd() {
   }
   if (
     simulationParameters.simulationStepsNumber -
-      simulationParameters.singularSimulationStep <=
+      simulationParameters.singularSimulationStep -
+      simulationParameters.auxStep <=
     0
   ) {
     flag = true;
