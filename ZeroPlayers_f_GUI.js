@@ -70,33 +70,31 @@ function clickButtonsDetection() {
 
 function simulationStopAndEnd() {
   let flag = false;
-  /*  console.log(
-    "simulationStepsNumber: " + simulationParameters.simulationStepsNumber
-  );
+
   console.log(
     "singularSimulationStep: " + simulationParameters.singularSimulationStep
   );
-  console.log("auxStep: " + simulationParameters.auxStep);
   if (
     simulationParameters.simulationStepsNumber -
-      simulationParameters.singularSimulationStep -
-      simulationParameters.auxStep >
-      0 &&
-    stopFlag == true
+      simulationParameters.singularSimulationStep >
+    0
   ) {
     flag = false;
-  } else if (stopFlag == true) {
-    console.log("Simulation Stopped");
-    simulationParameters.auxStep = simulationParameters.simulationStepsNumber;
-  } else {
-    console.log("End of the simulation");
-    document.getElementById("playButton").innerHTML = "New Simulation";
-    document.getElementById("playButton").disabled = false;
-    //return simulationIndex;
-  } */
+  }
+
   if (stopFlag == true) {
     flag = true;
   }
+  if (
+    simulationParameters.simulationStepsNumber -
+      simulationParameters.singularSimulationStep <=
+    0
+  ) {
+    flag = true;
+    document.getElementById("playButton").innerHTML = "New Simulation";
+    document.getElementById("playButton").disabled = false;
+  }
+
   return flag;
 }
 
