@@ -69,8 +69,8 @@ function clickButtonsDetection() {
 }
 
 function simulationStopAndEnd() {
-  let flag = true;
-  console.log(
+  let flag = false;
+  /*  console.log(
     "simulationStepsNumber: " + simulationParameters.simulationStepsNumber
   );
   console.log(
@@ -81,18 +81,23 @@ function simulationStopAndEnd() {
     simulationParameters.simulationStepsNumber -
       simulationParameters.singularSimulationStep -
       simulationParameters.auxStep >
-      0 ||
+      0 &&
     stopFlag == true
   ) {
     flag = false;
   } else if (stopFlag == true) {
     console.log("Simulation Stopped");
+    simulationParameters.auxStep = simulationParameters.simulationStepsNumber;
   } else {
     console.log("End of the simulation");
     document.getElementById("playButton").innerHTML = "New Simulation";
     document.getElementById("playButton").disabled = false;
     //return simulationIndex;
+  } */
+  if (stopFlag == true) {
+    flag = true;
   }
+  return flag;
 }
 
 export { refreshGUI, simulationStopAndEnd, clickButtonsDetection };

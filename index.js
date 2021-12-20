@@ -71,8 +71,8 @@ let simulationParameters = {
   auxStep: 0,
 };
 
-
-function modifyStopFlag(value){
+function modifyStopFlag(value) {
+  //To avoid modifing an imported 'variable' causes 'Assignment to constant variable' even it is not a constant
   stopFlag = value;
 }
 
@@ -88,8 +88,6 @@ clickButtonsDetection();
  (the default is false for chrome and true for regular web pages). 
  çThis parameter is only available in Gecko and is mainly useful for the code in add-ons and the browser itself. 
  See Interaction between privileged and non-privileged pages for an example.*/
-
-
 
 export {
   stopFlag,
