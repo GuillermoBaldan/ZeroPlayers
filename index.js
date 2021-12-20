@@ -14,6 +14,7 @@ import {
   oneSimulationStep,
 } from "./ZeroPlayers_f_simulation.js";
 import { debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
+import { clickButtonsDetection } from "./ZeroPlayers_f_GUI.js";
 
 let staticStage;
 let lienzo;
@@ -76,50 +77,8 @@ function loadsingularSimulationStep(index) {
 //[staticStageAux, matrixAux ,canvas[0], canvas[1]]
 debug_energyOfUniverse();
 simulationParameters.init_output = init(stageParameters, simulationParameters);
+clickButtonsDetection();
 
-document.getElementById("oneSimulationStep").addEventListener(
-  "click",
-  function () {
-    simulationParameters.auxStep = 0;
-    oneSimulationStep(stageParameters, simulationParameters);
-  },
-  false
-);
-
-document.getElementById("playButton").addEventListener(
-  "click",
-  function () {
-    document.getElementById("progressBar").style.display = "block";
-    simulationParameters.auxStep = 0;
-    simulationParameters.singularSimulationStep = 0;
-    simulation(stageParameters, simulationParameters);
-    document.getElementById("playButton").disabled = true;
-  },
-  false
-);
-
-document.getElementById("stopButton").addEventListener(
-  "click",
-  function () {
-    if (stopFlag == false) {
-      stopFlag = true;
-      document.getElementById("stopButton").innerHTML = "Continue Simulation";
-    } else {
-      stopFlag = false;
-      document.getElementById("stopButton").innerHTML = "Stop Simulation";
-      simulation(stageParameters, simulationParameters);
-    }
-  },
-  false
-);
-
-document.getElementById("killButton").addEventListener(
-  "click",
-  function () {
-    killSimulation(simulationParameters);
-  },
-  false
-);
 /*If true, the listener receives synthetic events dispatched by web content
  (the default is false for chrome and true for regular web pages). 
  çThis parameter is only available in Gecko and is mainly useful for the code in add-ons and the browser itself. 

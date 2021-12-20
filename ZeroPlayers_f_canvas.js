@@ -48,7 +48,7 @@ function drawSquare(x, y, color, simulationParameters) {
   );
   simulationParameters.ctx.stroke();
 }
-
+// ¿Para que sirve esta función
 function ordering4drawing(stageParameters) {
   let a;
   let temp;
