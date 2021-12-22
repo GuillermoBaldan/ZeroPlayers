@@ -72,6 +72,7 @@ function trajectoryMovement(item, stageParamenters, simulationParameters) {
 }
 
 function zigzag(dynamicItem_x, dynamicItem_y, f_movement) {
+  console.log("se mete en zigzag para frontier: close");
   return f_movement(dynamicItem_x, dynamicItem_y);
 }
 
@@ -144,63 +145,17 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
   limit = 0;
   let xy;
   let flagForbiddenPosition = false; //Por defecto no se ha activado la posición prohibida
+  xy = movement(
+    xy_before[0],
+    xy_before[1],
+    item.walk,
+    stageParameters,
+    simulationParameters
+  );
+  item.x = xy[0];
+  item.y = xy[1];
+  console.log(`item.x: ${item.x} item.y: ${item.y}`);
 
-  do {
-    xy = movement(
-      xy_before[0],
-      xy_before[1],
-      item.walk,
-      stageParameters,
-      simulationParameters
-    );
-  
-    if (
-      checkForbiddenPosition(stageParameters, simulationParameters, xy, item)
-    ) {
-      flagForbiddenPosition = true;
-    } else {
-      flagForbiddenPosition = false;
-    }
-    //})
-    limit += 1;
-  } while (flagForbiddenPosition && limit <= 8); //Le doy 8 intentos para encontrar una celda libre                    if (limit<8){
-  if (limit < 8) {
-    //Se comprueba que la nueva coordenada no haya sido ocupada por otro elemento
-    let freePositionsArray = freePositionsArrayGenerator(
-      simulationParameters,
-      stageParameters
-    );
-
-    if (arrayOf2DVectorsIncludeVector(freePositionsArray, [xy[0], xy[1]])) {
-      item.x = xy[0];
-      item.y = xy[1];
-      //Se actualizan los colores de la matriz
-      //Se pinta el color de la célula en la matriz
-      //setColor(item, item.color, stageParameters.matrix, simulationParameters);
-      //drawingMatrix(stageParameters, simulationParameters);
-    }
-    //Se pinta el color que queda libre en la matriz
-    /*   stageParameters.matrix[
-      -xy_before[1] +
-        Math.floor(
-          simulationParameters.heightDimension / simulationParameters.squareSide
-        ) -
-        1
-    ][xy_before[0]] =
-      stageParameters.staticStage[
-        -xy_before[1] +
-          Math.floor(
-            simulationParameters.heightDimension /
-              simulationParameters.squareSide
-          ) -
-          1
-      ][xy_before[0]]; */
-  } else {
-    item.x = xy_before[0];
-    item.y = xy_before[1];
-    // setColor(item, item.color, stageParameters.matrix, simulationParameters);
-  }
-  //Energy consumption when cell movement occurs
   item.energy = item.energy - item.energyConsumption;
   energy2Universe(item.energyConsumption, stageParameters);
 }

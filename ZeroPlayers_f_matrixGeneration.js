@@ -119,6 +119,8 @@ function matrixGenerator(stageParameters, simulationParameters) {
 
   matrixAux = cloneArray2D(stageParameters.staticStage);
   //1. We give movement to dynamic elements
+  //1.1 Inicializamos matrix cargando la parte statica de la matrix, el escenario
+  stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
   stageParameters.dynamicElementsArray.forEach((item) => {
     switch (item.walkmode) {
       case "static":
@@ -128,14 +130,14 @@ function matrixGenerator(stageParameters, simulationParameters) {
         trajectoryMovement(item, stageParameters, simulationParameters);
         break;
       case "autonomous":
-        console.log("Se mete en autonomous")
+        console.log("Se mete en autonomous");
         autonomousMovement(item, stageParameters, simulationParameters);
         // cellHeatDeath(item, stageParameters.dynamicElementsArray);
         // reproductionFunction(item, stageParameters, simulationParameters);
         break;
     }
     if (stageParameters.dynamicElementsArray.indexOf(item) !== -1) {
-      // setColor(item, item.color, stageParameters.matrix, simulationParameters);
+      setColor(item, item.color, stageParameters.matrix, simulationParameters);
     }
   });
 
