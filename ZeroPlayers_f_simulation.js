@@ -16,6 +16,7 @@ import {
   debug_,
   debug_numberOfCells,
   debug_simulationCicle,
+  debug_matrix,
 } from "./ZeroPlayers_f_debugging.js";
 import { refreshGUI, simulationStopAndEnd } from "./ZeroPlayers_f_GUI.js";
 
@@ -32,6 +33,7 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
     stageParameters,
     simulationParameters
   );
+  debug_matrix();
 
   drawingMatrix(stageParameters, simulationParameters);
   simulationParameters.singularSimulationStep += 1;

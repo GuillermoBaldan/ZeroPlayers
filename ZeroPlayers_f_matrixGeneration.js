@@ -128,6 +128,7 @@ function matrixGenerator(stageParameters, simulationParameters) {
         trajectoryMovement(item, stageParameters, simulationParameters);
         break;
       case "autonomous":
+        console.log("Se mete en autonomous")
         autonomousMovement(item, stageParameters, simulationParameters);
         // cellHeatDeath(item, stageParameters.dynamicElementsArray);
         // reproductionFunction(item, stageParameters, simulationParameters);

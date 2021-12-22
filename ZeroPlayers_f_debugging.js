@@ -59,6 +59,14 @@ function debug_simulationCicle() {
   );
 }
 
+function debug_matrix() {
+  let cadena;
+  stageParameters.matrix.forEach((row) => {
+    cadena = row.toString();
+    console.log(cadena);
+  });
+}
+
 export {
   debug_PrintDynamicsElementsCoordinates,
   debug_DetectCoordinatesRepeated,
@@ -67,4 +75,5 @@ export {
   debug_totalEnergy,
   debug_numberOfCells,
   debug_simulationCicle,
+  debug_matrix,
 };
