@@ -87,9 +87,7 @@ function materialGeneration(legendTerrain) {
 function matrixGeneratorInit(stageParameters, simulationParameters) {
   let a;
   let b;
-  // let matrixAux = [];
-  //matrixAux = cloneArray2D(stageParameters.staticStage);
-  //stageParameters.matrix = cloneArray2D(matrixAux);
+
   //Initial case
   stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
   stageParameters.dynamicElementsArray.forEach((item) => {
@@ -116,6 +114,7 @@ function matrixGenerator(stageParameters, simulationParameters) {
   let energySustraction;
   let son;
   let sonsArray = [];
+  let coordinates;
 
   matrixAux = cloneArray2D(stageParameters.staticStage);
   //1. We give movement to dynamic elements
@@ -130,12 +129,17 @@ function matrixGenerator(stageParameters, simulationParameters) {
         trajectoryMovement(item, stageParameters, simulationParameters);
         break;
       case "autonomous":
-        console.log("Se mete en autonomous");
-        autonomousMovement(item, stageParameters, simulationParameters);
+        coordinates = autonomousMovement(
+          item,
+          stageParameters,
+          simulationParameters
+        );
         // cellHeatDeath(item, stageParameters.dynamicElementsArray);
         // reproductionFunction(item, stageParameters, simulationParameters);
         break;
     }
+    item.x = coordinates[0];
+    item.y = coordinates[1];
     if (stageParameters.dynamicElementsArray.indexOf(item) !== -1) {
       setColor(item, item.color, stageParameters.matrix, simulationParameters);
     }

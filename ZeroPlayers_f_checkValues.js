@@ -65,8 +65,37 @@ function freePositionsArrayGenerator(simulationParameters, stageParameters) {
   return freePositionsArray;
 }
 
+function occupyPosition(coordinates, stageParameters, simulationParameters) {
+  let flag = false;
+  console.log(
+    `coordinates_x: ${coordinates[0]} coordinates_y: ${coordinates[1]}`
+  );
+  stageParameters.legendForbiddenColors.forEach((item) => {
+    /* if (
+      stageParameters.matrix[
+        -coordinates[1] +
+          Math.floor(
+            simulationParameters.heightDimension /
+              simulationParameters.squareSide
+          ) -
+          1
+      ][coordinates[0]] == item
+    ) {
+      flag = true;
+    } */
+    if (stageParameters.matrix[coordinates[1]][coordinates[0]] == item) {
+      flag = true;
+    }
+  });
+  if (flag) {
+    console.log("La posición está ocupada");
+  }
+  return flag;
+}
+
 export {
   checkSimpleCellsExistence,
   checkNumbersTypeCell,
   freePositionsArrayGenerator,
+  occupyPosition,
 };

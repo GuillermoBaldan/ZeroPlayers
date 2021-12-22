@@ -1,6 +1,9 @@
 import { simulation, drawingMatrix } from "./ZeroPlayers_f_level1.js";
 import { checkForbiddenPosition } from "./ZeroPlayers_f_livingbeings.js";
-import { freePositionsArrayGenerator } from "./ZeroPlayers_f_checkValues.js";
+import {
+  freePositionsArrayGenerator,
+  occupyPosition,
+} from "./ZeroPlayers_f_checkValues.js";
 import { arrayOf2DVectorsIncludeVector } from "./ZeroPlayers_f_arraysManipulation.js";
 import {
   cloneArray2D,
@@ -72,7 +75,6 @@ function trajectoryMovement(item, stageParamenters, simulationParameters) {
 }
 
 function zigzag(dynamicItem_x, dynamicItem_y, f_movement) {
-  console.log("se mete en zigzag para frontier: close");
   return f_movement(dynamicItem_x, dynamicItem_y);
 }
 
@@ -152,12 +154,20 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
     stageParameters,
     simulationParameters
   );
-  item.x = xy[0];
-  item.y = xy[1];
-  console.log(`item.x: ${item.x} item.y: ${item.y}`);
+  //aqui se comprueba si la posicion esta ocupada
+
+  if (occupyPosition(xy, stageParameters, simulationParameters)) {
+    //Si está ocupada se regresa a la posición anterior
+    xy[0] = xy_before[0];
+    xy[1] = xy_before[1];
+  } else {
+    //Si no está ocupada se elimina el color prohibido (el de la célula) de la posición anterior
+    stageParameters.matrix[xy_before[1]][xy_before[0]] = "brown";
+  }
 
   item.energy = item.energy - item.energyConsumption;
   energy2Universe(item.energyConsumption, stageParameters);
+  return xy;
 }
 
 export { movement, staticMovement, trajectoryMovement, autonomousMovement };
