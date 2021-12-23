@@ -3,6 +3,7 @@ import { checkForbiddenPosition } from "./ZeroPlayers_f_livingbeings.js";
 import {
   freePositionsArrayGenerator,
   occupyPosition,
+  occupyPositionv2,
 } from "./ZeroPlayers_f_checkValues.js";
 import { arrayOf2DVectorsIncludeVector } from "./ZeroPlayers_f_arraysManipulation.js";
 import {
@@ -156,12 +157,18 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
   );
   //aqui se comprueba si la posicion esta ocupada
 
-  if (occupyPosition(xy, stageParameters, simulationParameters)) {
+  /* if (occupyPosition(xy, stageParameters, simulationParameters)) {
     //Si está ocupada se regresa a la posición anterior
     xy[0] = xy_before[0];
     xy[1] = xy_before[1];
   } else {
     //Si no está ocupada se elimina el color prohibido (el de la célula) de la posición anterior
+    stageParameters.matrix[xy_before[1]][xy_before[0]] = "brown";
+   } */
+  if (occupyPositionv2(xy[0], xy[1], stageParameters)) {
+    xy[0] = xy_before[0];
+    xy[1] = xy_before[1];
+  } else {
     stageParameters.matrix[xy_before[1]][xy_before[0]] = "brown";
   }
 

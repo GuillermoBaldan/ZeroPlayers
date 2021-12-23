@@ -141,7 +141,12 @@ function matrixGenerator(stageParameters, simulationParameters) {
     item.x = coordinates[0];
     item.y = coordinates[1];
     if (stageParameters.dynamicElementsArray.indexOf(item) !== -1) {
-      setColor(item, item.color, stageParameters.matrix, simulationParameters);
+      stageParameters.matrix = setColor(
+        item,
+        item.color,
+        stageParameters.matrix,
+        simulationParameters
+      );
     }
   });
 
@@ -159,6 +164,7 @@ function setColor(item, color, matrix, simulationParameters) {
       ) -
       1
   ][item.x] = color; */
+  return matrix;
 }
 
 export { generateStaticStage, matrixGeneratorInit, matrixGenerator, setColor };
