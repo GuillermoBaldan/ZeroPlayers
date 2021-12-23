@@ -151,13 +151,14 @@ function matrixGenerator(stageParameters, simulationParameters) {
 }
 
 function setColor(item, color, matrix, simulationParameters) {
-  matrix[
+  matrix[item.y][item.x] = color;
+  /* matrix[
     -item.y +
       Math.floor(
         simulationParameters.heightDimension / simulationParameters.squareSide
       ) -
       1
-  ][item.x] = color;
+  ][item.x] = color; */
 }
 
 export { generateStaticStage, matrixGeneratorInit, matrixGenerator, setColor };
