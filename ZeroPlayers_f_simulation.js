@@ -9,7 +9,7 @@ import { simulation } from "./ZeroPlayers_f_level1.js";
 import {
   cloneArray,
   cloneArray2D,
-  readVariable,
+  copyVariable,
 } from "./ZeroPlayers_f_arraysManipulation.js";
 import { checkSimpleCellsExistence } from "./ZeroPlayers_f_checkValues.js";
 import {

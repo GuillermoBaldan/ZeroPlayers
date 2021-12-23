@@ -2,7 +2,7 @@ import {
   cloneArray2D,
   cloneArray,
   arrayOf2DVectorsIncludeVector,
-  readVariable,
+  copyVariable,
 } from "./ZeroPlayers_f_arraysManipulation.js";
 import { movement } from "./ZeroPlayers_f_movement.js";
 import {
@@ -107,6 +107,14 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
 }
 
 function matrixGenerator(stageParameters, simulationParameters) {
+  let xy_before = [];
+
+  xy_before[0] = copyVariable(stageParameters.dynamicElementsArray[0].x);
+  xy_before[1] = copyVariable(stageParameters.dynamicElementsArray[1].y);
+  //1 Calculamos nueva posición
+
+  //2. Generamos la matriz
+
   return stageParameters.matrix;
 }
 

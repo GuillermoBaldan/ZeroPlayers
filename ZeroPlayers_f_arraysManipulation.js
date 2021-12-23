@@ -33,7 +33,7 @@ function arrayOf2DVectorsIncludeVector(array, vector) {
   return result;
 }
 
-function readVariable(variable) {
+function copyVariable(variable) {
   let temp;
   temp = variable;
   return temp;
@@ -61,7 +61,7 @@ export {
   cloneArray,
   lastElement,
   arrayOf2DVectorsIncludeVector,
-  readVariable,
+  copyVariable,
   sum,
   removeItem,
 };
