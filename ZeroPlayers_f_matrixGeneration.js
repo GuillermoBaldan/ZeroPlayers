@@ -2,6 +2,7 @@ import {
   cloneArray2D,
   cloneArray,
   arrayOf2DVectorsIncludeVector,
+  readVariable,
 } from "./ZeroPlayers_f_arraysManipulation.js";
 import { movement } from "./ZeroPlayers_f_movement.js";
 import {
@@ -106,57 +107,11 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
 }
 
 function matrixGenerator(stageParameters, simulationParameters) {
-  let matrixAux = [];
-
-  let auxIndex = 0;
-  let preyCoordinates;
-  let prey;
-  let energySustraction;
-  let son;
-  let sonsArray = [];
-  let coordinates;
-
-  matrixAux = cloneArray2D(stageParameters.staticStage);
-  //1. We give movement to dynamic elements
-  //1.1 Inicializamos matrix cargando la parte statica de la matrix, el escenario
-  stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
-  stageParameters.dynamicElementsArray.forEach((item) => {
-    switch (item.walkmode) {
-      case "static":
-        staticMovement(item, stageParameters, simulationParameters);
-        break;
-      case "trajectory":
-        trajectoryMovement(item, stageParameters, simulationParameters);
-        break;
-      case "autonomous":
-        coordinates = autonomousMovement(
-          item,
-          stageParameters,
-          simulationParameters
-        );
-        // cellHeatDeath(item, stageParameters.dynamicElementsArray);
-        // reproductionFunction(item, stageParameters, simulationParameters);
-        break;
-    }
-    item.x = coordinates[0];
-    item.y = coordinates[1];
-    if (stageParameters.dynamicElementsArray.indexOf(item) !== -1) {
-      stageParameters.matrix = setColor(
-        item,
-        item.color,
-        stageParameters.matrix,
-        simulationParameters
-      );
-    }
-  });
-
-  debug_totalEnergy();
-  debug_numberOfCells();
   return stageParameters.matrix;
 }
 
-function setColor(item, color, matrix, simulationParameters) {
-  matrix[item.y][item.x] = color;
+function setColor(x, y, color, matrix, simulationParameters) {
+  matrix[y][x] = color;
   /* matrix[
     -item.y +
       Math.floor(

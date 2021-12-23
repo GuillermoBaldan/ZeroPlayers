@@ -173,10 +173,12 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
   } */
 
   if (occupyPositionv2(xy[0], xy[1], stageParameters)) {
+    console.log(
+      `%c (Se mete en occupyPosition)`,
+      "background: #76B900; color: #000000"
+    );
     xy[0] = xy_before[0];
     xy[1] = xy_before[1];
-  } else {
-    stageParameters.matrix[xy[1]][xy[0]] = "brown";
   }
 
   item.energy = item.energy - item.energyConsumption;
