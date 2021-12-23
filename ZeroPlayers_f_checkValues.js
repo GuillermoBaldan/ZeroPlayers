@@ -1,5 +1,4 @@
-import { stageParameters } from ".";
-
+import { stageParameters } from "./index.js";
 function checkSimpleCellsExistence(cadena, stageParameters) {
   let a;
   let b = 0;
