@@ -108,14 +108,37 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
 
 function matrixGenerator(stageParameters, simulationParameters) {
   let xy_before = [];
-
+  let newPosition = [];
+  let matrixAux = [];
+  // Inicializamos las variables
   xy_before[0] = copyVariable(stageParameters.dynamicElementsArray[0].x);
-  xy_before[1] = copyVariable(stageParameters.dynamicElementsArray[1].y);
-  //1 Calculamos nueva posición
-
-  //2. Generamos la matriz
-
-  return stageParameters.matrix;
+  xy_before[1] = copyVariable(stageParameters.dynamicElementsArray[0].y);
+  matrixAux = cloneArray2D(stageParameters.staticStage);
+  //1 Calculamos nueva posicióndo
+  do {
+    newPosition[0] = xy_before[0] + Math.floor(Math.random() * (1 + 1) - 1);
+    newPosition[1] = xy_before[1] + Math.floor(Math.random() * (1 + 1) - 1);
+  } while (
+    !(
+      newPosition[0] >= 0 &&
+      newPosition[0] < 3 &&
+      newPosition[1] >= 0 &&
+      newPosition[1] < 3
+    )
+  );
+  //1.2 Comprobamos que no hay agua en la nueva posición
+  if (
+    !(stageParameters.staticStage[newPosition[1]][newPosition[0]] == "blue")
+  ) {
+    //Si no hay agua es una posición permitida y por tanto generamos la matrix
+    //2. Generamos la matriz
+    matrixAux[newPosition[1]][newPosition[0]] = "yellow";
+    stageParameters.dynamicElementsArray[0].x = newPosition[0];
+    stageParameters.dynamicElementsArray[0].y = newPosition[1];
+  } else {
+    matrixAux[xy_before[1]][xy_before[0]] = "yellow";
+  }
+  return matrixAux;
 }
 
 function setColor(x, y, color, matrix, simulationParameters) {
