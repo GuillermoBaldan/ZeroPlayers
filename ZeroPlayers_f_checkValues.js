@@ -1,3 +1,5 @@
+import { stageParameters } from ".";
+
 function checkSimpleCellsExistence(cadena, stageParameters) {
   let a;
   let b = 0;
@@ -93,9 +95,18 @@ function occupyPosition(coordinates, stageParameters, simulationParameters) {
   return flag;
 }
 
+function occupyPositionv2(x, y, stageParamenters) {
+  let flag = false;
+  if (stageParameters.matrix[y][x] == "yellow") {
+    flag = true;
+  }
+  return flag;
+}
+
 export {
   checkSimpleCellsExistence,
   checkNumbersTypeCell,
   freePositionsArrayGenerator,
   occupyPosition,
+  occupyPositionv2,
 };

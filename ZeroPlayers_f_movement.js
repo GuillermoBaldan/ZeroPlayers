@@ -165,11 +165,18 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
     //Si no está ocupada se elimina el color prohibido (el de la célula) de la posición anterior
     stageParameters.matrix[xy_before[1]][xy_before[0]] = "brown";
    } */
-  if (occupyPositionv2(xy[0], xy[1], stageParameters)) {
+  /*  if (occupyPositionv2(xy[0], xy[1], stageParameters)) {
     xy[0] = xy_before[0];
     xy[1] = xy_before[1];
   } else {
     stageParameters.matrix[xy_before[1]][xy_before[0]] = "brown";
+  } */
+
+  if (occupyPositionv2(xy[0], xy[1], stageParameters)) {
+    xy[0] = xy_before[0];
+    xy[1] = xy_before[1];
+  } else {
+    stageParameters.matrix[xy[1]][xy[0]] = "brown";
   }
 
   item.energy = item.energy - item.energyConsumption;
