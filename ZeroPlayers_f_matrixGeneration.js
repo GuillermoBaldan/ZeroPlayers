@@ -21,6 +21,7 @@ import {
   checkSimpleCellsExistence,
   checkNumbersTypeCell,
   freePositionsArrayGenerator,
+  forbiddenPosition,
 } from "./ZeroPlayers_f_checkValues.js";
 import {
   checkExistenceInMatrix,
@@ -127,7 +128,14 @@ function matrixGenerator(stageParameters, simulationParameters) {
     )
   );
   //1.2 Comprobamos que no hay agua en la nueva posición
-  if (!(matrixAux[newPosition[1]][newPosition[0]] == "blue")) {
+  if (
+    !forbiddenPosition(
+      newPosition[0],
+      newPosition[1],
+      stageParameters,
+      matrixAux
+    )
+  ) {
     matrixAux[newPosition[1]][newPosition[0]] = "yellow";
     stageParameters.dynamicElementsArray[0].x = newPosition[0];
     stageParameters.dynamicElementsArray[0].y = newPosition[1];

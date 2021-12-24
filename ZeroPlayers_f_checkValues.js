@@ -94,11 +94,24 @@ function occupyPosition(coordinates, stageParameters, simulationParameters) {
   return flag;
 }
 
-function occupyPositionv2(x, y, stageParamenters) {
+function occupyPositionv2(x, y, stageParamenters, matrix) {
   let flag = false;
   if (stageParameters.matrix[y][x] == "yellow") {
     flag = true;
   }
+  return flag;
+}
+
+function forbiddenPosition(x, y, stageParameters, matrix) {
+  let flag = false;
+  stageParameters.legendForbiddenColors.forEach((item) => {
+    console.log(`x: ${x} y: ${y} item: ${item}`);
+    console.log("matrix");
+    console.log(matrix);
+    if (matrix[y][x] == item) {
+      flag = true;
+    }
+  });
   return flag;
 }
 
@@ -108,4 +121,5 @@ export {
   freePositionsArrayGenerator,
   occupyPosition,
   occupyPositionv2,
+  forbiddenPosition,
 };
