@@ -39,6 +39,7 @@ import {
   debug_totalEnergy,
   debug_numberOfCells,
 } from "./ZeroPlayers_f_debugging.js";
+import { simulation } from "./ZeroPlayers_f_level1.js";
 
 function generateStaticStage(stageParameters, simulationParameters) {
   let a;
@@ -94,14 +95,9 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
   stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
   stageParameters.dynamicElementsArray.forEach((item) => {
     //Live or dynamic elements color are added to the matrix
-    stageParameters.matrix[
-      -item.y +
-        Math.floor(
-          simulationParameters.heightDimension / simulationParameters.squareSide
-        ) -
-        1
-    ][item.x] = item.color;
+    stageParameters.matrix[item.y][item.x] = item.color;
   });
+
   //stageParameters.matrix = cloneArray2D(matrixAux);
 
   return stageParameters.matrix;
@@ -111,9 +107,15 @@ function matrixGenerator(stageParameters, simulationParameters) {
   let xy_before = [];
   let newPosition = [];
   let matrixAux = [];
+  let list = [];
+  let item1 = stageParameters.dynamicElementsArray[0];
+  let item2 = stageParameters.dynamicElementsArray[1];
   // Inicializamos las variables
-  xy_before[0] = copyVariable(stageParameters.dynamicElementsArray[0].x);
-  xy_before[1] = copyVariable(stageParameters.dynamicElementsArray[0].y);
+  list.push(stageParameters.dynamicElementsArray[0]);
+  list.push(stageParameters.dynamicElementsArray[1]);
+
+  xy_before[0] = copyVariable(item1.x);
+  xy_before[1] = copyVariable(item1.y);
   matrixAux = cloneArray2D(stageParameters.staticStage);
   //1 Calculamos nueva posicióndo
   do {
@@ -122,9 +124,11 @@ function matrixGenerator(stageParameters, simulationParameters) {
   } while (
     !(
       newPosition[0] >= 0 &&
-      newPosition[0] < 3 &&
+      newPosition[0] <
+        simulationParameters.wideDimension / simulationParameters.squareSide &&
       newPosition[1] >= 0 &&
-      newPosition[1] < 3
+      newPosition[1] <
+        simulationParameters.heightDimension / simulationParameters.squareSide
     )
   );
   //1.2 Comprobamos que no hay agua en la nueva posición
@@ -137,15 +141,58 @@ function matrixGenerator(stageParameters, simulationParameters) {
     )
   ) {
     matrixAux[newPosition[1]][newPosition[0]] = "yellow";
-    stageParameters.dynamicElementsArray[0].x = newPosition[0];
-    stageParameters.dynamicElementsArray[0].y = newPosition[1];
+    item1.x = newPosition[0];
+    item1.y = newPosition[1];
   } else {
     newPosition[0] = xy_before[0];
     newPosition[1] = xy_before[1];
-    stageParameters.dynamicElementsArray[0].x = xy_before[0];
-    stageParameters.dynamicElementsArray[0].y = xy_before[1];
+    item1.x = xy_before[0];
+    item1.y = xy_before[1];
     matrixAux[xy_before[1]][xy_before[0]] = "yellow";
   }
+
+  xy_before[0] = copyVariable(item2.x);
+  xy_before[1] = copyVariable(item2.y);
+  matrixAux = cloneArray2D(stageParameters.staticStage);
+  //1 Calculamos nueva posicióndo
+  do {
+    newPosition[0] = xy_before[0] + Math.round(Math.random() * (1 + 1) - 1);
+    newPosition[1] = xy_before[1] + Math.round(Math.random() * (1 + 1) - 1);
+  } while (
+    !(
+      newPosition[0] >= 0 &&
+      newPosition[0] <
+        simulationParameters.wideDimension / simulationParameters.squareSide &&
+      newPosition[1] >= 0 &&
+      newPosition[1] <
+        simulationParameters.heightDimension / simulationParameters.squareSide
+    )
+  );
+  //1.2 Comprobamos que no hay agua en la nueva posición
+  if (
+    !forbiddenPosition(
+      newPosition[0],
+      newPosition[1],
+      stageParameters,
+      matrixAux
+    )
+  ) {
+    matrixAux[newPosition[1]][newPosition[0]] = "yellow";
+    item2.x = newPosition[0];
+    item2.y = newPosition[1];
+  } else {
+    newPosition[0] = xy_before[0];
+    newPosition[1] = xy_before[1];
+    item2.x = xy_before[0];
+    item2.y = xy_before[1];
+    matrixAux[xy_before[1]][xy_before[0]] = "yellow";
+  }
+
+  console.log(
+    `Number of dinamic elements: ${stageParameters.dynamicElementsArray.length}`
+  );
+  console.log(`item1; (${item1.x},${item1.y})`);
+  console.log(`item2; (${item2.x},${item2.y})`);
   return matrixAux;
 }
 
