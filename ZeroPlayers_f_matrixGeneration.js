@@ -127,9 +127,17 @@ function matrixGenerator(stageParameters, simulationParameters) {
     )
   );
   //1.2 Comprobamos que no hay agua en la nueva posición
-  matrixAux[newPosition[1]][newPosition[0]] = "yellow";
-  stageParameters.dynamicElementsArray[0].x = newPosition[0];
-  stageParameters.dynamicElementsArray[0].y = newPosition[1];
+  if (!(matrixAux[newPosition[1]][newPosition[0]] == "blue")) {
+    matrixAux[newPosition[1]][newPosition[0]] = "yellow";
+    stageParameters.dynamicElementsArray[0].x = newPosition[0];
+    stageParameters.dynamicElementsArray[0].y = newPosition[1];
+  } else {
+    newPosition[0] = xy_before[0];
+    newPosition[1] = xy_before[1];
+    stageParameters.dynamicElementsArray[0].x = xy_before[0];
+    stageParameters.dynamicElementsArray[0].y = xy_before[1];
+    matrixAux[xy_before[1]][xy_before[0]] = "yellow";
+  }
   return matrixAux;
 }
 
