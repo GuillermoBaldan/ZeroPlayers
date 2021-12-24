@@ -116,8 +116,8 @@ function matrixGenerator(stageParameters, simulationParameters) {
   matrixAux = cloneArray2D(stageParameters.staticStage);
   //1 Calculamos nueva posicióndo
   do {
-    newPosition[0] = xy_before[0] + Math.floor(Math.random() * (1 + 1) - 1);
-    newPosition[1] = xy_before[1] + Math.floor(Math.random() * (1 + 1) - 1);
+    newPosition[0] = xy_before[0] + Math.round(Math.random() * (1 + 1) - 1);
+    newPosition[1] = xy_before[1] + Math.round(Math.random() * (1 + 1) - 1);
   } while (
     !(
       newPosition[0] >= 0 &&
@@ -127,17 +127,9 @@ function matrixGenerator(stageParameters, simulationParameters) {
     )
   );
   //1.2 Comprobamos que no hay agua en la nueva posición
-  if (
-    !(stageParameters.staticStage[newPosition[1]][newPosition[0]] == "blue")
-  ) {
-    //Si no hay agua es una posición permitida y por tanto generamos la matrix
-    //2. Generamos la matriz
-    matrixAux[newPosition[1]][newPosition[0]] = "yellow";
-    stageParameters.dynamicElementsArray[0].x = newPosition[0];
-    stageParameters.dynamicElementsArray[0].y = newPosition[1];
-  } else {
-    matrixAux[xy_before[1]][xy_before[0]] = "yellow";
-  }
+  matrixAux[newPosition[1]][newPosition[0]] = "yellow";
+  stageParameters.dynamicElementsArray[0].x = newPosition[0];
+  stageParameters.dynamicElementsArray[0].y = newPosition[1];
   return matrixAux;
 }
 
