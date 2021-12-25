@@ -3,6 +3,7 @@ import {
   cloneArray,
   arrayOf2DVectorsIncludeVector,
   copyVariable,
+  lastElement,
 } from "./ZeroPlayers_f_arraysManipulation.js";
 import { movement } from "./ZeroPlayers_f_movement.js";
 import {
@@ -22,6 +23,7 @@ import {
   checkNumbersTypeCell,
   freePositionsArrayGenerator,
   forbiddenPosition,
+  setInFreePosition
 } from "./ZeroPlayers_f_checkValues.js";
 import {
   checkExistenceInMatrix,
@@ -90,17 +92,16 @@ function materialGeneration(legendTerrain) {
 function matrixGeneratorInit(stageParameters, simulationParameters) {
   let a;
   let b;
+  let freeCoordinate;
+ //Initial case
+ stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
+ //Add dinamic Elements
+ stageParameters.dynamicElementsArray.forEach((item) => {
+   //Live or dynamic elements color are added to the matrix
+   setInFreePosition(item,stageParameters);
+   });
 
-  //Initial case
-  stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
-  stageParameters.dynamicElementsArray.forEach((item) => {
-    //Live or dynamic elements color are added to the matrix
-    stageParameters.matrix[item.y][item.x] = item.color;
-  });
-
-  //stageParameters.matrix = cloneArray2D(matrixAux);
-
-  return stageParameters.matrix;
+   return stageParameters.matrix;
 }
 
 function matrixGenerator(stageParameters, simulationParameters) {

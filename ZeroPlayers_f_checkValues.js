@@ -105,14 +105,19 @@ function occupyPositionv2(x, y, stageParamenters, matrix) {
 function forbiddenPosition(x, y, stageParameters, matrix) {
   let flag = false;
   stageParameters.legendForbiddenColors.forEach((item) => {
-    console.log(`x: ${x} y: ${y} item: ${item}`);
-    console.log("matrix");
-    console.log(matrix);
-    if (matrix[y][x] == item) {
+     if (matrix[y][x] == item) {
       flag = true;
     }
   });
   return flag;
+}
+
+function setInFreePosition(item,stageParameters){//This function is used to initialize the stage
+  while(forbiddenPosition(item.x,item.y,stageParameters,stageParameters.matrix)){
+    item.x = Math.floor(Math.random() * stageParameters.matrix[0].length);
+    item.y = Math.floor(Math.random() * stageParameters.matrix.length);
+  }
+  stageParameters.matrix[item.y][item.x] = item.color;
 }
 
 export {
@@ -122,4 +127,5 @@ export {
   occupyPosition,
   occupyPositionv2,
   forbiddenPosition,
+  setInFreePosition
 };
