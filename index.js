@@ -33,7 +33,6 @@ let stageParameters = {
   universeRules: universeRules,
   legendTerrain: {
     ground: "brown",
-    water: "blue",
   },
   legend: {
     water: "blue",
@@ -45,7 +44,7 @@ let stageParameters = {
       type: grossCell,
       number: 0,
     },
-    { type: simpleCell, number: 1 },
+    { type: simpleCell, number: 2 },
   ],
   dynamicElementsArray: [],
   staticStage: [],
@@ -57,8 +56,8 @@ let stageParameters = {
 let simulationParameters = {
   simulationStepsNumber: 25,
   timePerStep: 300,
-  wideDimension: 150,
-  heightDimension: 150,
+  wideDimension: 100,
+  heightDimension: 100,
   squareSide: 50,
   lienzo: lienzo,
   ctx: ctx,

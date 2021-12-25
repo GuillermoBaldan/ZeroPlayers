@@ -153,7 +153,6 @@ function matrixGenerator(stageParameters, simulationParameters) {
 
   xy_before[0] = copyVariable(item2.x);
   xy_before[1] = copyVariable(item2.y);
-  matrixAux = cloneArray2D(stageParameters.staticStage);
   //1 Calculamos nueva posicióndo
   do {
     newPosition[0] = xy_before[0] + Math.round(Math.random() * (1 + 1) - 1);
