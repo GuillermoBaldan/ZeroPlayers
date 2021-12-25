@@ -89,10 +89,9 @@ function materialGeneration(legendTerrain) {
   return materialArray;
 }
 
+
+
 function matrixGeneratorInit(stageParameters, simulationParameters) {
-  let a;
-  let b;
-  let freeCoordinate;
  //Initial case
  stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
  //Add dinamic Elements
@@ -100,69 +99,65 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
    //Live or dynamic elements color are added to the matrix
    setInFreePosition(item,stageParameters);
    });
-
    return stageParameters.matrix;
 }
 
+
+
 function matrixGenerator(stageParameters, simulationParameters) {
-  let xy_before = [];
-  let newPosition = [];
   let matrixAux = [];
-  let list = [];
- 
   // Inicializamos las variables
   matrixAux = cloneArray2D(stageParameters.staticStage);
-stageParameters.dynamicElementsArray.forEach((item) => {
-  xy_before[0] = copyVariable(item.x);
-  xy_before[1] = copyVariable(item.y);
-  //1 Calculamos nueva posicióndo
-  do {
-    newPosition[0] = xy_before[0] + Math.round(Math.random() * (1 + 1) - 1);
-    newPosition[1] = xy_before[1] + Math.round(Math.random() * (1 + 1) - 1);
-  } while (
-    !(
-      newPosition[0] >= 0 &&
-      newPosition[0] <
-        simulationParameters.wideDimension / simulationParameters.squareSide &&
-      newPosition[1] >= 0 &&
-      newPosition[1] <
-        simulationParameters.heightDimension / simulationParameters.squareSide
-    )
-  );
-  //1.2 Comprobamos que no hay agua en la nueva posición
-  if (
-    !forbiddenPosition(
-      newPosition[0],
-      newPosition[1],
-      stageParameters,
-      matrixAux
-    )
-  ) {
-    matrixAux[newPosition[1]][newPosition[0]] = "yellow";
-    item.x = newPosition[0];
-    item.y = newPosition[1];
-  } else {
-    newPosition[0] = xy_before[0];
-    newPosition[1] = xy_before[1];
-    item.x = xy_before[0];
-    item.y = xy_before[1];
-    matrixAux[xy_before[1]][xy_before[0]] = "yellow";
-  }
-});
-
-  
+  matrixAux = giveMovementToDynamicElements(matrixAux, stageParameters, simulationParameters);
   return matrixAux;
 }
 
 function setColor(x, y, color, matrix, simulationParameters) {
   matrix[y][x] = color;
-  /* matrix[
-    -item.y +
-      Math.floor(
-        simulationParameters.heightDimension / simulationParameters.squareSide
-      ) -
-      1
-  ][item.x] = color; */
+  return matrix;
+}
+
+function giveMovementToDynamicElements(matrix, stageParameters, simulationParameters) {
+  let xy_before = [];
+  let newPosition = [];
+  stageParameters.dynamicElementsArray.forEach((item) => {
+    xy_before[0] = copyVariable(item.x);
+    xy_before[1] = copyVariable(item.y);
+    //1 Calculamos nueva posicióndo
+    do {
+      newPosition[0] = xy_before[0] + Math.round(Math.random() * (1 + 1) - 1);
+      newPosition[1] = xy_before[1] + Math.round(Math.random() * (1 + 1) - 1);
+    } while (
+      !(
+        newPosition[0] >= 0 &&
+        newPosition[0] <
+          simulationParameters.wideDimension / simulationParameters.squareSide &&
+        newPosition[1] >= 0 &&
+        newPosition[1] <
+          simulationParameters.heightDimension / simulationParameters.squareSide
+      )
+    );
+    //1.2 Comprobamos que no hay agua u otra célula en la nueva posición
+    if (
+      !forbiddenPosition(
+        newPosition[0],
+        newPosition[1],
+        stageParameters,
+        matrix
+      )
+    ) {
+      matrix[newPosition[1]][newPosition[0]] = "yellow";
+      item.x = newPosition[0];
+      item.y = newPosition[1];
+    } else {
+      newPosition[0] = xy_before[0];
+      newPosition[1] = xy_before[1];
+      item.x = xy_before[0];
+      item.y = xy_before[1];
+      matrix[xy_before[1]][xy_before[0]] = "yellow";
+    }
+  });
+
   return matrix;
 }
 
