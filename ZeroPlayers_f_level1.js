@@ -24,7 +24,7 @@ function init(stageParameters, simulationParameters) {
   let canvas;
   let flag = false;
   let a;
-  let freeCoordinate;
+ 
   document.getElementById("progressBar").style.display = "none";
   //0. Check Data Coherence
   flag = checkDataCoherence(stageParameters, simulationParameters);
@@ -37,34 +37,12 @@ function init(stageParameters, simulationParameters) {
       simulationParameters
     );
 
-    //stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
-    //3.Add dynamic Elements
-    stageParameters.livingBeingsCollection.forEach((item) => {
-      for (a = 0; a < item.number; a++) {
-        //Se busca una posición libre en la matriz
-        freeCoordinate = coordinatesAssigment(
-          simulationParameters,
-          stageParameters
-        );
-
-        //Si existe una posición libre se crea un elemento dinámico
-        if (freeCoordinate != undefined) {
-          stageParameters.dynamicElementsArray.push(new item.type());
-          lastElement(stageParameters.dynamicElementsArray).x =
-            freeCoordinate[0];
-          lastElement(stageParameters.dynamicElementsArray).y =
-            freeCoordinate[1];
-          stageParameters.matrix = matrixGeneratorInit(
-            stageParameters,
-            simulationParameters
-          );
-        }
-      }
-    });
+    
+    
     matrixGeneratorInit(stageParameters, simulationParameters);
     //4. Draw canvas
     drawingMatrix(stageParameters, simulationParameters);
-    debug_energyOfUniverse();
+    //debug_energyOfUniverse();
     return [staticStageAux, matrixAux, canvas[0], canvas[1]]; //lienzo = canvas[0];ctx = canvas[1]
   } else {
     console.log("The data is not consistent");

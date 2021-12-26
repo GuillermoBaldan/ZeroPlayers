@@ -78,8 +78,8 @@ function modifyStopFlag(value) {
 function loadsingularSimulationStep(index) {
   simulationParameters.singularSimulationStep = index;
 }
-//[staticStageAux, matrixAux ,canvas[0], canvas[1]]
-debug_energyOfUniverse();
+
+//debug_energyOfUniverse();
 simulationParameters.init_output = init(stageParameters, simulationParameters);
 clickButtonsDetection();
 

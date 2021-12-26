@@ -71,10 +71,7 @@ function clickButtonsDetection() {
 function simulationStopAndEnd() {
   let flag = false;
 
-  console.log(
-    "singularSimulationStep: " + simulationParameters.singularSimulationStep
-  );
-  if (
+ if (
     simulationParameters.simulationStepsNumber -
       simulationParameters.singularSimulationStep -
       simulationParameters.auxStep >

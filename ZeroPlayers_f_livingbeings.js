@@ -7,6 +7,7 @@ import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
 import { debug_, debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
 import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
+import {setInFreePosition} from "./ZeroPlayers_f_checkValues.js"
 
 function totalFreedom(dynamicItem_x, dynamicItem_y) {
   let buffer = randomSteps();
@@ -211,6 +212,18 @@ function cellHeatDeath(item, dynamicElementsArray) {
   }
 }
 
+function dynamicElementsGenerator(stageParameters) {
+  stageParameters.livingBeingsCollection.forEach((element) => {
+    for(let i = 0; i < element.number; i++){
+    stageParameters.dynamicElementsArray.push(new element.type)
+    }});
+   stageParameters.dynamicElementsArray.forEach((item) => {
+     //Live or dynamic elements color are added to the matrix
+     setInFreePosition(item,stageParameters);
+   });
+}
+
+
 export {
   totalFreedom,
   left,
@@ -222,4 +235,5 @@ export {
   preySelectionAndRemove,
   reproductionFunction,
   cellHeatDeath,
+  dynamicElementsGenerator
 };

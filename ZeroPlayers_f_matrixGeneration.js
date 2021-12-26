@@ -12,6 +12,7 @@ import {
   preySelectionAndRemove,
   reproductionFunction,
   cellHeatDeath,
+  dynamicElementsGenerator,
 } from "./ZeroPlayers_f_livingbeings.js";
 import {
   energy2Universe,
@@ -95,11 +96,8 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
  //Initial case
  stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
  //Add dinamic Elements
- stageParameters.dynamicElementsArray.forEach((item) => {
-   //Live or dynamic elements color are added to the matrix
-   setInFreePosition(item,stageParameters);
-   });
-   return stageParameters.matrix;
+ dynamicElementsGenerator(stageParameters)
+  return stageParameters.matrix;
 }
 
 
@@ -146,6 +144,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
         matrix
       )
     ) {
+      console.log("Se mete en el if")
       matrix[newPosition[1]][newPosition[0]] = "yellow";
       item.x = newPosition[0];
       item.y = newPosition[1];
