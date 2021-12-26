@@ -103,11 +103,10 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
 
 
 function matrixGenerator(stageParameters, simulationParameters) {
-  let matrixAux = [];
   // Inicializamos las variables
-  matrixAux = cloneArray2D(stageParameters.staticStage);
-  matrixAux = giveMovementToDynamicElements(matrixAux, stageParameters, simulationParameters);
-  return matrixAux;
+  //matrixAux = cloneArray2D(stageParameters.staticStage);
+ stageParameters.matrix = giveMovementToDynamicElements(stageParameters.matrix, stageParameters, simulationParameters);
+  return stageParameters.matrix;
 }
 
 function setColor(x, y, color, matrix, simulationParameters) {
@@ -119,10 +118,11 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
   let xy_before = [];
   let newPosition = [];
   stageParameters.dynamicElementsArray.forEach((item) => {
-    xy_before[0] = copyVariable(item.x);
-    xy_before[1] = copyVariable(item.y);
+    xy_before[0] = item.x
+    xy_before[1] = item.y
     //1 Calculamos nueva posicióndo
     do {
+      console.log("Se mete en el do")
       newPosition[0] = xy_before[0] + Math.round(Math.random() * (1 + 1) - 1);
       newPosition[1] = xy_before[1] + Math.round(Math.random() * (1 + 1) - 1);
     } while (
@@ -135,7 +135,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
           simulationParameters.heightDimension / simulationParameters.squareSide
       )
     );
-    //1.2 Comprobamos que no hay agua u otra célula en la nueva posición
+     //1.2 Comprobamos que no hay agua u otra célula en la nueva posición
     if (
       !forbiddenPosition(
         newPosition[0],
@@ -143,17 +143,16 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
         stageParameters,
         matrix
       )
-    ) {
-      console.log("Se mete en el if")
-      matrix[newPosition[1]][newPosition[0]] = "yellow";
+    ) {//Actualizamos nueva posición
+      console.log("new position")
       item.x = newPosition[0];
       item.y = newPosition[1];
-    } else {
-      newPosition[0] = xy_before[0];
-      newPosition[1] = xy_before[1];
-      item.x = xy_before[0];
-      item.y = xy_before[1];
-      matrix[xy_before[1]][xy_before[0]] = "yellow";
+      matrix[item.y][item.x] = item.color;
+      matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
+     
+    } else {//Volvemos a colorear la posición anterior
+      console.log('%c "old position" ', 'background: #222; color: #bada55');
+     // matrix[item.y][item.x] = item.color;
     }
   });
 
