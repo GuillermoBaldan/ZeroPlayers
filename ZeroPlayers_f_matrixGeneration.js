@@ -122,7 +122,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
     xy_before[1] = item.y
     //1 Calculamos nueva posicióndo
     do {
-      console.log("Se mete en el do")
+     
       newPosition[0] = xy_before[0] + Math.round(Math.random() * (1 + 1) - 1);
       newPosition[1] = xy_before[1] + Math.round(Math.random() * (1 + 1) - 1);
     } while (
@@ -144,14 +144,13 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
         matrix
       )
     ) {//Actualizamos nueva posición
-      console.log("new position")
+  
       item.x = newPosition[0];
       item.y = newPosition[1];
       matrix[item.y][item.x] = item.color;
       matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
      
     } else {//Volvemos a colorear la posición anterior
-      console.log('%c "old position" ', 'background: #222; color: #bada55');
      // matrix[item.y][item.x] = item.color;
     }
   });
