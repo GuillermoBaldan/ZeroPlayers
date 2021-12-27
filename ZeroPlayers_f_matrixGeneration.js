@@ -106,6 +106,8 @@ function matrixGenerator(stageParameters, simulationParameters) {
   // Inicializamos las variables
   //matrixAux = cloneArray2D(stageParameters.staticStage);
  stageParameters.matrix = giveMovementToDynamicElements(stageParameters.matrix, stageParameters, simulationParameters);
+ //Reproduction of cells
+ reproductionFunction(stageParameters, simulationParameters);
   return stageParameters.matrix;
 }
 

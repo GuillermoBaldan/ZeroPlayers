@@ -142,9 +142,10 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters) {
   }
 }
 
-function reproductionFunction(item, stageParameters, simulationParameters) {
+function reproductionFunction(stageParameters, simulationParameters) {
   let sonsArray = [];
   let son;
+  stageParameters.dynamicElementsArray.forEach((item) => {
   if (stageParameters.dynamicElementsArray.indexOf(item) != -1) {
     if (item.reproductionRadio != undefined) {
       son = new item.constructor();
@@ -196,14 +197,18 @@ function reproductionFunction(item, stageParameters, simulationParameters) {
     }
     sonsArray.forEach((item2) => {
       // setColor(item, item2.color, stageParameters.matrix, simulationParameters);
-      drawingMatrix(stageParameters, simulationParameters);
+      stageParameters.matrix[item2.y][item2.x] = item2.color;
+      //drawingMatrix(stageParameters, simulationParameters);
     });
     stageParameters.dynamicElementsArray =
       stageParameters.dynamicElementsArray.concat(sonsArray);
     sonsArray = [];
     simulationParameters.auxCounter++;
   }
+})
 }
+
+
 
 function cellHeatDeath(item, dynamicElementsArray) {
   //Implement cell death
