@@ -32,7 +32,7 @@ let universeRules = {
 let stageParameters = {
   universeRules: universeRules,
   legendTerrain: {
-    ground: "brown",
+    ground: "brown"
   },
   legend: {
     water: "blue",
@@ -56,8 +56,8 @@ let stageParameters = {
 let simulationParameters = {
   simulationStepsNumber: 25,
   timePerStep: 300,
-  wideDimension: 100,
-  heightDimension: 100,
+  wideDimension: 200,
+  heightDimension: 200,
   squareSide: 50,
   lienzo: lienzo,
   ctx: ctx,

@@ -123,8 +123,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
     //1 Calculamos nueva posicióndo
     do {
      
-      newPosition[0] = xy_before[0] + Math.round(Math.random() * (1 + 1) - 1);
-      newPosition[1] = xy_before[1] + Math.round(Math.random() * (1 + 1) - 1);
+      newPosition = movement(item.x, item.y, item.walk,stageParameters,simulationParameters);
     } while (
       !(
         newPosition[0] >= 0 &&
