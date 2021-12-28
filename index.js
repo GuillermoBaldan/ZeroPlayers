@@ -42,9 +42,9 @@ let stageParameters = {
   livingBeingsCollection: [
     {
       type: grossCell,
-      number: 10,
+      number: 399,
     },
-    { type: simpleCell, number: 6 },
+    { type: simpleCell, number: 1 },
   ],
   dynamicElementsArray: [],
   staticStage: [],
@@ -58,7 +58,7 @@ let simulationParameters = {
   timePerStep: 100,
   wideDimension: 200,
   heightDimension: 200,
-  squareSide: 50,
+  squareSide: 10,
   lienzo: lienzo,
   ctx: ctx,
   init_output: init_output,

@@ -29,6 +29,12 @@ class simpleCell {
     };
     this.preyClasses = [grossCell];
     this.reproductionRadio = 1;
+    this.vitalFunctions = {
+      death: false,
+      reproduction: false,
+      prey: true,
+  }
+    
   }
 }
 
@@ -52,7 +58,12 @@ class grossCell {
     this.behaviourRules = { forbiddenPositions: ["water"] };
     this.preyClasses = [];
     this.reproductionRadio = 5;
+    this.vitalFunctions = {
+      death: false,
+      reproduction: false,
+      prey: false,
   }
+}
 }
 
 export { simpleCell, grossCell };

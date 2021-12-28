@@ -147,6 +147,7 @@ function reproductionFunction(stageParameters, simulationParameters) {
   let sonsArray = [];
   let son;
   stageParameters.dynamicElementsArray.forEach((item) => {
+  if(item.vitalFunctions.reproduction){
   if (stageParameters.dynamicElementsArray.indexOf(item) != -1) {
     if (item.reproductionRadio != undefined) {
       son = new item.constructor();
@@ -206,6 +207,7 @@ function reproductionFunction(stageParameters, simulationParameters) {
     sonsArray = [];
     simulationParameters.auxCounter++;
   }
+}
 })
 }
 
@@ -213,6 +215,7 @@ function reproductionFunction(stageParameters, simulationParameters) {
 
 function cellDeath(stageParameters) {
   stageParameters.dynamicElementsArray.forEach((item) => {
+    if(item.vitalFunctions.death){
   //Implement cell death
     if (item.energy <= 0) {
       removeItem(item, stageParameters.dynamicElementsArray);
@@ -224,6 +227,7 @@ function cellDeath(stageParameters) {
       stageParameters.matrix[item.y][item.x] = stageParameters.staticStage[item.y][item.x];
 
     }
+  }
   })
 }
 
