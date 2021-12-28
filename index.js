@@ -44,7 +44,7 @@ let stageParameters = {
       type: grossCell,
       number: 0,
     },
-    { type: simpleCell, number: 2 },
+    { type: simpleCell, number: 16 },
   ],
   dynamicElementsArray: [],
   staticStage: [],

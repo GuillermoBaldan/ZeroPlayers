@@ -13,7 +13,8 @@ import {
   reproductionFunction,
   cellHeatDeath,
   dynamicElementsGenerator,
-  cellsEnergyConsumption
+  cellsEnergyConsumption,
+  cellsLifeConsumption
 } from "./ZeroPlayers_f_livingbeings.js";
 import {
   energy2Universe,
@@ -111,6 +112,8 @@ function matrixGenerator(stageParameters, simulationParameters) {
  reproductionFunction(stageParameters, simulationParameters);
  //Consumption of energy
 cellsEnergyConsumption(stageParameters);
+//Consumption of life
+cellsLifeConsumption(stageParameters);
  //Death of cells
  cellHeatDeath(stageParameters);
   return stageParameters.matrix;

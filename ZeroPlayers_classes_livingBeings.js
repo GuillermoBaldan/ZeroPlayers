@@ -19,9 +19,9 @@ class simpleCell {
     this.walk = totalFreedom;
     this.life = 500;
     this.maxEnergy = 100;
-    this.energy = 100;
+    this.energy = 10000;
     this.energyBorn = this.maxEnergy / 2;
-    this.lifeConsumption = 10;
+    this.lifeConsumption = 50;
     this.energyConsumption = 25;
     this.behaviourRules = {
       forbiddenPositions: ["water", "simpleCell"],

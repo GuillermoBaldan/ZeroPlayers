@@ -213,11 +213,17 @@ function reproductionFunction(stageParameters, simulationParameters) {
 function cellHeatDeath(stageParameters) {
   stageParameters.dynamicElementsArray.forEach((item) => {
   //Implement cell death
-  if (item.energy <= 0) {
-    removeItem(item, stageParameters.dynamicElementsArray);
-    stageParameters.matrix[item.y][item.x] = stageParameters.staticStage[item.y][item.x];
-  }
-})
+    if (item.energy <= 0) {
+      removeItem(item, stageParameters.dynamicElementsArray);
+      stageParameters.matrix[item.y][item.x] = stageParameters.staticStage[item.y][item.x];
+    }
+    //Implement cell death for life comsumption
+    if (item.life>= 0){
+      removeItem(item, stageParameters.dynamicElementsArray);
+      stageParameters.matrix[item.y][item.x] = stageParameters.staticStage[item.y][item.x];
+
+    }
+  })
 }
 
 function dynamicElementsGenerator(stageParameters) {
@@ -237,6 +243,12 @@ function cellsEnergyConsumption(stageParameters){
   });
 }
 
+function cellsLifeConsumption(stageParameters){
+  stageParameters.dynamicElementsArray.forEach((item) => {
+    item.life -= item.lifeConsumption;
+  }); 
+}
+
 export {
   totalFreedom,
   left,
@@ -249,5 +261,6 @@ export {
   reproductionFunction,
   cellHeatDeath,
   dynamicElementsGenerator,
-  cellsEnergyConsumption
+  cellsEnergyConsumption,
+  cellsLifeConsumption
 };
