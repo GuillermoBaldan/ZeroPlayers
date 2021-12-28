@@ -14,7 +14,8 @@ import {
   cellHeatDeath,
   dynamicElementsGenerator,
   cellsEnergyConsumption,
-  cellsLifeConsumption
+  cellsLifeConsumption,
+  preyAction
 } from "./ZeroPlayers_f_livingbeings.js";
 import {
   energy2Universe,
@@ -108,8 +109,10 @@ function matrixGenerator(stageParameters, simulationParameters) {
   // Inicializamos las variables
   //Giving Movement to Dynamic Elements
  stageParameters.matrix = giveMovementToDynamicElements(stageParameters.matrix, stageParameters, simulationParameters);
+ //Prey function of predator cells
+ preyAction(stageParameters)
  //Reproduction of cells
- reproductionFunction(stageParameters, simulationParameters);
+reproductionFunction(stageParameters, simulationParameters);
  //Consumption of energy
 cellsEnergyConsumption(stageParameters);
 //Consumption of life
@@ -129,8 +132,9 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
   let newPosition = [];
   stageParameters.dynamicElementsArray.forEach((item) => {
     xy_before[0] = item.x
-    xy_before[1] = item.y
+    xy_before[1] = item.y 
     //1 Calculamos nueva posicióndo
+    if (!(item.walkmode == "static")) { //If dynamic Elements are not static they can recive movement
     do {
      
       newPosition = movement(item.x, item.y, item.walk,stageParameters,simulationParameters);
@@ -141,7 +145,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
           simulationParameters.wideDimension / simulationParameters.squareSide &&
         newPosition[1] >= 0 &&
         newPosition[1] <
-          simulationParameters.heightDimension / simulationParameters.squareSide
+          simulationParameters.heightDimension / simulationParameters.squareSide 
       )
     );
      //1.2 Comprobamos que no hay agua u otra célula en la nueva posición
@@ -159,9 +163,11 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
       matrix[item.y][item.x] = item.color;
       matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
      
-    } else {//Volvemos a colorear la posición anterior
-     // matrix[item.y][item.x] = item.color;
     }
+  } else{
+    console.log(`item.color: ${item.color} se mete en el else`)
+  }
+
   });
 
   return matrix;

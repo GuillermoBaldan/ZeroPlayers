@@ -249,6 +249,15 @@ function cellsLifeConsumption(stageParameters){
   }); 
 }
 
+function preyAction(stageParameters){
+  stageParameters.dynamicElementsArray.forEach((item) => {
+    let preyCoordinates = preyDetection(item, stageParameters);
+    if (preyCoordinates != undefined) {
+      preySelectionAndRemove(item, preyCoordinates, stageParameters);
+    }
+  }); 
+}
+
 export {
   totalFreedom,
   left,
@@ -262,5 +271,6 @@ export {
   cellHeatDeath,
   dynamicElementsGenerator,
   cellsEnergyConsumption,
-  cellsLifeConsumption
+  cellsLifeConsumption,
+  preyAction
 };
