@@ -183,8 +183,8 @@ function autonomousMovement(item, stageParameters, simulationParameters) {
     xy[1] = xy_before[1];
   }
 
-  item.energy = item.energy - item.energyConsumption;
-  energy2Universe(item.energyConsumption, stageParameters);
+ /*  item.energy = item.energy - item.energyConsumption;
+  energy2Universe(item.energyConsumption, stageParameters); */
   return xy;
 }
 

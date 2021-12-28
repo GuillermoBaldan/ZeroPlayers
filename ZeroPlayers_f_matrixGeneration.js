@@ -13,6 +13,7 @@ import {
   reproductionFunction,
   cellHeatDeath,
   dynamicElementsGenerator,
+  cellsEnergyConsumption
 } from "./ZeroPlayers_f_livingbeings.js";
 import {
   energy2Universe,
@@ -104,10 +105,14 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
 
 function matrixGenerator(stageParameters, simulationParameters) {
   // Inicializamos las variables
-  //matrixAux = cloneArray2D(stageParameters.staticStage);
+  //Giving Movement to Dynamic Elements
  stageParameters.matrix = giveMovementToDynamicElements(stageParameters.matrix, stageParameters, simulationParameters);
  //Reproduction of cells
  reproductionFunction(stageParameters, simulationParameters);
+ //Consumption of energy
+cellsEnergyConsumption(stageParameters);
+ //Death of cells
+ cellHeatDeath(stageParameters);
   return stageParameters.matrix;
 }
 
