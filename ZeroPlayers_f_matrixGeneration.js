@@ -11,7 +11,7 @@ import {
   preyDetection,
   preySelectionAndRemove,
   reproductionFunction,
-  cellHeatDeath,
+  cellDeath,
   dynamicElementsGenerator,
   cellsEnergyConsumption,
   cellsLifeConsumption,
@@ -110,7 +110,7 @@ function matrixGenerator(stageParameters, simulationParameters) {
   //Giving Movement to Dynamic Elements
  stageParameters.matrix = giveMovementToDynamicElements(stageParameters.matrix, stageParameters, simulationParameters);
  //Prey function of predator cells
- preyAction(stageParameters)
+preyAction(stageParameters)
  //Reproduction of cells
 reproductionFunction(stageParameters, simulationParameters);
  //Consumption of energy
@@ -118,7 +118,7 @@ cellsEnergyConsumption(stageParameters);
 //Consumption of life
 cellsLifeConsumption(stageParameters);
  //Death of cells
- cellHeatDeath(stageParameters);
+ cellDeath(stageParameters);
   return stageParameters.matrix;
 }
 

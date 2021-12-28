@@ -137,6 +137,7 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters) {
         }
         //It proceeds to remove the prey, which has been absorbed, from dynamicElementsArray
         stageParameters.dynamicElementsArray.splice(a, 1);
+        stageParameters.matrix[element.y][element.x] = stageParameters.staticStage[element.y][element.x];
       }
     }
   }
@@ -210,7 +211,7 @@ function reproductionFunction(stageParameters, simulationParameters) {
 
 
 
-function cellHeatDeath(stageParameters) {
+function cellDeath(stageParameters) {
   stageParameters.dynamicElementsArray.forEach((item) => {
   //Implement cell death
     if (item.energy <= 0) {
@@ -268,7 +269,7 @@ export {
   preyDetection,
   preySelectionAndRemove,
   reproductionFunction,
-  cellHeatDeath,
+  cellDeath,
   dynamicElementsGenerator,
   cellsEnergyConsumption,
   cellsLifeConsumption,
