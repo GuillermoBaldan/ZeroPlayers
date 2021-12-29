@@ -99,7 +99,9 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
  //Initial case
  stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
  //Add dinamic Elements
+ debug_totalEnergy();
  dynamicElementsGenerator(stageParameters)
+ debug_totalEnergy();
   return stageParameters.matrix;
 }
 

@@ -54,6 +54,7 @@ class grossCell {
     this.maxEnergy = 100;
     this.energy = 100;
     this.lifeConsumption = 5;
+    this.energyBorn = this.maxEnergy / 2;
     this.energyConsumption = 10;
     this.behaviourRules = { forbiddenPositions: ["water"] };
     this.preyClasses = [];

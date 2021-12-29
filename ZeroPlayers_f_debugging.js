@@ -7,6 +7,12 @@ function debug_PrintDynamicsElementsCoordinates(Array) {
   });
 }
 
+function debug_energyOfCells(){
+  stageParameters.dynamicElementsArray.forEach(item => {
+    console.log(`(${item.color} tiene ${item.energy} de energia)`);
+  })
+}
+
 function debug_numberOfCells() {
   console.log(
     `Number of cells: ${stageParameters.dynamicElementsArray.length}`
@@ -31,6 +37,9 @@ function debug_totalEnergy() {
   console.log(
     `Universe Energy: ${totalEnergy} = Energy of Stage:${stageEnergy} + Energy of Cells: ${cellsEnergy}`
   );
+  if (totalEnergy == stageEnergy + cellsEnergy){
+    console.log("There is an energy balance");
+  }
 }
 
 function debug_DetectCoordinatesRepeated(Array) {
@@ -76,4 +85,5 @@ export {
   debug_numberOfCells,
   debug_simulationCicle,
   debug_matrix,
+  debug_energyOfCells
 };

@@ -17,12 +17,14 @@ import {
   debug_numberOfCells,
   debug_simulationCicle,
   debug_matrix,
+  debug_totalEnergy,
+  debug_energyOfUniverse,
 } from "./ZeroPlayers_f_debugging.js";
 import { refreshGUI, simulationStopAndEnd } from "./ZeroPlayers_f_GUI.js";
 
 function continuosSimulationStep(stageParameters, simulationParameters) {
   // oneSimulationStep(simulationStepsNumber,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
-
+  debug_energyOfUniverse();
   debug_simulationCicle();
   debug_numberOfCells();
   simulationParameters.historicalSimulationSteps += 1;
@@ -33,7 +35,7 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
     stageParameters,
     simulationParameters
   );
- 
+ debug_totalEnergy();
 
   drawingMatrix(stageParameters, simulationParameters);
   simulationParameters.singularSimulationStep += 1;
