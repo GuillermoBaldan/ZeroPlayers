@@ -247,6 +247,8 @@ function dynamicElementsGenerator(stageParameters) {
 function cellsEnergyConsumption(stageParameters){
   stageParameters.dynamicElementsArray.forEach((item) => {
     item.energy -= item.energyConsumption;
+    //The energy is transfer from cells to universe
+    energy2Universe(item.energyConsumption, stageParameters);
   });
 }
 

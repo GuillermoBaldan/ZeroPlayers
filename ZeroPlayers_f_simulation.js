@@ -33,7 +33,7 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
     stageParameters,
     simulationParameters
   );
-  debug_matrix();
+ 
 
   drawingMatrix(stageParameters, simulationParameters);
   simulationParameters.singularSimulationStep += 1;

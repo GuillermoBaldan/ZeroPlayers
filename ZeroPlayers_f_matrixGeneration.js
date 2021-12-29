@@ -165,7 +165,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
      
     }
   } else{
-    console.log(`item.color: ${item.color} se mete en el else`)
+    
   }
 
   });
