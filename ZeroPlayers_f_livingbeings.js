@@ -222,11 +222,15 @@ function cellDeath(stageParameters) {
     if (item.energy <= 0) {
       removeItem(item, stageParameters.dynamicElementsArray);
       stageParameters.matrix[item.y][item.x] = stageParameters.staticStage[item.y][item.x];
+      //There isn´t transfer of energy to universe because the energy of a dead cell for heat death is 0
+
     }
     //Implement cell death for life comsumption
     if (item.life>= 0){
       removeItem(item, stageParameters.dynamicElementsArray);
       stageParameters.matrix[item.y][item.x] = stageParameters.staticStage[item.y][item.x];
+      //Transfer of energy to universe
+      energy2Universe(item.energy, stageParameters);
 
     }
   }
