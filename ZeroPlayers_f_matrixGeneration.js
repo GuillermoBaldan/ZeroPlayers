@@ -44,6 +44,8 @@ import {
   debug_DetectCoordinatesRepeated,
   debug_totalEnergy,
   debug_numberOfCells,
+  debug_energyOfUniverse,
+  debug_energyOfCells
 } from "./ZeroPlayers_f_debugging.js";
 import { simulation } from "./ZeroPlayers_f_level1.js";
 
@@ -102,6 +104,7 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
  debug_totalEnergy();
  dynamicElementsGenerator(stageParameters)
  debug_totalEnergy();
+ debug_energyOfCells();
   return stageParameters.matrix;
 }
 

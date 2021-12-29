@@ -18,9 +18,9 @@ class simpleCell {
     this.trajectory_y = [0, 0, 0, 0, 0, 0, 0];
     this.walk = totalFreedom;
     this.life = 500;
-    this.maxEnergy = 100;
-    this.energy = 10000;
+    this.maxEnergy = 1000;
     this.energyBorn = this.maxEnergy / 2;
+    this.energy = this.energyBorn;
     this.lifeConsumption = 50;
     this.energyConsumption = 25;
     this.behaviourRules = {
@@ -30,7 +30,7 @@ class simpleCell {
     this.preyClasses = [grossCell];
     this.reproductionRadio = 1;
     this.vitalFunctions = {
-      death: false,
+      death: true,
       reproduction: false,
       prey: true,
   }
@@ -52,15 +52,15 @@ class grossCell {
     );
     this.life = 100;
     this.maxEnergy = 100;
-    this.energy = 100;
-    this.lifeConsumption = 5;
     this.energyBorn = this.maxEnergy / 2;
+    this.energy = this.energyBorn;
+    this.lifeConsumption = 5;
     this.energyConsumption = 10;
     this.behaviourRules = { forbiddenPositions: ["water"] };
     this.preyClasses = [];
     this.reproductionRadio = 5;
     this.vitalFunctions = {
-      death: false,
+      death: true,
       reproduction: false,
       prey: false,
   }

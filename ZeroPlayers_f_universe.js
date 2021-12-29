@@ -14,6 +14,7 @@ function energy2dynamicElements(energy, stageParamenters) {
     return 0;
   } else {
     stageParameters.universeEnergy -= energy;
+    console.log(stageParamenters.universeEnergy);
     return energy;
   }
 }
