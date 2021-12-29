@@ -125,14 +125,16 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters) {
   let a;
   let element;
   for (a = 0; a < stageParameters.dynamicElementsArray.length; a++) {
+    //element is the prey
     element = stageParameters.dynamicElementsArray[a];
     if (element.x == preyCoordinates[0]) {
       if (element.y == preyCoordinates[1]) {
-        //It proceeds to make the transfer of energy to the universe
+        //It proceeds to make the transfer of energy to the prey to the predator
         item.energy += element.energy;
         if (item.energy > item.maxEnergy) {
           //The energy of a living being can´t be greather than its maximum level
-          energy2Universe(item.maxEnergy - item.energy, stageParameters);
+          //The energy that rebase is transfer to the universe
+          energy2Universe(item.energy - item.maxEnergy, stageParameters);
           item.energy = item.maxEnergy;
         }
         //It proceeds to remove the prey, which has been absorbed, from dynamicElementsArray
