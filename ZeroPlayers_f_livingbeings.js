@@ -239,6 +239,8 @@ function dynamicElementsGenerator(stageParameters) {
    stageParameters.dynamicElementsArray.forEach((item) => {
      //Live or dynamic elements color are added to the matrix
      setInFreePosition(item,stageParameters);
+     //Transfer of energy from universe to cells
+     energy2dynamicElements(item.energyBorn, stageParameters);
    });
 }
 
