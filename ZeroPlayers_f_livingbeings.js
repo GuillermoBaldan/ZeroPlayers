@@ -191,11 +191,11 @@ function reproductionFunction(stageParameters, simulationParameters) {
         )
       );
 
-      if (!checkExistenceInMatrix(son.x, son.y, stageParameters)) {
+      if ((!checkExistenceInMatrix(son.x, son.y, stageParameters)) &&(item.energy > item.energyBorn)) {
         //If there isn´t any object of dynamicElementsArray with this coordinates, then an object is created
-        son.energy = energy2dynamicElements(son.energyBorn, stageParameters);
         sonsArray.push(son);
-
+        //Transfer of energy from Father to Son
+        item.energy -= item.energyBorn;
         simulationParameters.globalCounter++;
       }
     }
