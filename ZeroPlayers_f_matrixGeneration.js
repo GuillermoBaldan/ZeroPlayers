@@ -45,7 +45,8 @@ import {
   debug_totalEnergy,
   debug_numberOfCells,
   debug_energyOfUniverse,
-  debug_energyOfCells
+  debug_energyOfCells,
+  debug_EnergyBalance
 } from "./ZeroPlayers_f_debugging.js";
 import { simulation } from "./ZeroPlayers_f_level1.js";
 
@@ -101,10 +102,8 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
  //Initial case
  stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
  //Add dinamic Elements
- debug_totalEnergy();
  dynamicElementsGenerator(stageParameters)
- debug_totalEnergy();
- debug_energyOfCells();
+ debug_EnergyBalance();
   return stageParameters.matrix;
 }
 

@@ -29,6 +29,12 @@ function debug_energyOfUniverse() {
   console.log(`Energy of the universe: ${stageParameters.universeEnergy}`);
 }
 
+function debug_EnergyBalance(){
+  debug_numberOfCells();
+  debug_totalEnergy();
+  debug_energyOfUniverse();
+}
+
 function debug_totalEnergy() {
   let totalEnergy =
     stageParameters.universeEnergy + sum(stageParameters.dynamicElementsArray);
@@ -85,5 +91,6 @@ export {
   debug_numberOfCells,
   debug_simulationCicle,
   debug_matrix,
-  debug_energyOfCells
+  debug_energyOfCells,
+  debug_EnergyBalance
 };
