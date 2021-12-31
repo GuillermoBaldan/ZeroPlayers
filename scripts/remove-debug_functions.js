@@ -18,7 +18,7 @@ let fs = require("fs");
 files2clean.forEach(function (item) {
   file = fs.readFileSync(`./${item}`, "utf8");
   //2. Remove the debug functions, using a regex, the expressions start with 'debug_' and ends with ')'
-  file = file.replace(/(debug_[(][[][{][a-zA-Z: ",.}\])]+)/g, "");
+  file = file.replace(/debug_[A-Za-z]+\(\);/g, "");
   //3. Write the file
   fs.writeFileSync(`${item}`, file);
 });
