@@ -26,17 +26,19 @@ import { refreshGUI, simulationStopAndEnd } from "./ZeroPlayers_f_GUI.js";
 function continuosSimulationStep(stageParameters, simulationParameters) {
   // oneSimulationStep(simulationStepsNumber,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
   simulationParameters.historicalSimulationSteps += 1;
-  refreshGUI();
+ 
 
   //------
   stageParameters.matrix = matrixGenerator(
     stageParameters,
     simulationParameters
   );
+  debug_simulationCicle();
+  debug_EnergyBalance();
+  refreshGUI();
   drawingMatrix(stageParameters, simulationParameters);
   simulationParameters.singularSimulationStep += 1;
-  debug_simulationCicle();
-debug_EnergyBalance();
+ 
   if (!simulationStopAndEnd()) {
     setTimeout(function () {
       continuosSimulationStep(stageParameters, simulationParameters);

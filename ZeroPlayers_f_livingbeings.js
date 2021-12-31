@@ -4,7 +4,7 @@ import {
 } from "./ZeroPlayers_f_universe.js";
 import { checkExistenceInMatrix } from "./ZeroPlayers_f_dataCoherence.js";
 import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
-import { debug_, debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
+import { debug_, debug_energyOfCells, debug_energyOfUniverse, debug_numberOfCells } from "./ZeroPlayers_f_debugging.js";
 import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
 import {setInFreePosition} from "./ZeroPlayers_f_checkValues.js"
@@ -216,25 +216,23 @@ function reproductionFunction(stageParameters, simulationParameters) {
 
 
 function cellDeath(stageParameters) {
-  stageParameters.dynamicElementsArray.forEach((item) => {
-    if(item.vitalFunctions.death){
-  //Implement cell death
-    if (item.energy <= 0) {
-      removeItem(item, stageParameters.dynamicElementsArray);
-      stageParameters.matrix[item.y][item.x] = stageParameters.staticStage[item.y][item.x];
-      //There isn´t transfer of energy to universe because the energy of a dead cell for heat death is 0
-
-    }
-    //Implement cell death for life comsumption
-    if (item.life>= 0){
-      removeItem(item, stageParameters.dynamicElementsArray);
-      stageParameters.matrix[item.y][item.x] = stageParameters.staticStage[item.y][item.x];
-      //Transfer of energy to universe
-      energy2Universe(item.energy, stageParameters);
-
-    }
+  for(let i = 0; i < stageParameters.dynamicElementsArray.length; i++){
+if (stageParameters.dynamicElementsArray[i].vitalFunctions.death){
+  if(stageParameters.dynamicElementsArray[i].energy <= 0){
+    stageParameters.matrix[stageParameters.dynamicElementsArray[i].y][stageParameters.dynamicElementsArray[i].x] = stageParameters.staticStage[stageParameters.dynamicElementsArray[i].y][stageParameters.dynamicElementsArray[i].x];
+    stageParameters.dynamicElementsArray.splice(i, 1);
+  i =0;
   }
-  })
+if(stageParameters.dynamicElementsArray[i].life<=0){
+  stageParameters.matrix[stageParameters.dynamicElementsArray[i].y][stageParameters.dynamicElementsArray[i].x] = stageParameters.staticStage[stageParameters.dynamicElementsArray[i].y][stageParameters.dynamicElementsArray[i].x];
+  energy2Universe(stageParameters.dynamicElementsArray[i].energy, stageParameters);
+  stageParameters.dynamicElementsArray.splice(i, 1);
+    i = 0;
+  }
+  }
+}
+  debug_energyOfCells();
+
 }
 
 function dynamicElementsGenerator(stageParameters) {

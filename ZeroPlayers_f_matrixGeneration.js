@@ -122,7 +122,7 @@ cellsEnergyConsumption(stageParameters);
 //Consumption of life
 cellsLifeConsumption(stageParameters);
  //Death of cells
- cellDeath(stageParameters);
+  cellDeath(stageParameters);
   return stageParameters.matrix;
 }
 

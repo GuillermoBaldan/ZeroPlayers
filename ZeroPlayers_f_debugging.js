@@ -9,7 +9,7 @@ function debug_PrintDynamicsElementsCoordinates(Array) {
 
 function debug_energyOfCells(){
   stageParameters.dynamicElementsArray.forEach(item => {
-    console.log(`(${item.color} tiene ${item.energy} de energia)`);
+    console.log(`${item.color} tiene ${item.energy} de energia`);
   })
 }
 
