@@ -1,7 +1,7 @@
 import { simulationParameters } from "./index.js";
 import { totalFreedom } from "./ZeroPlayers_f_livingbeings.js";
 
-class simpleCell {
+class grossPredator {
   constructor() {
     this.color = "yellow";
     this.x = Math.floor(
@@ -21,7 +21,7 @@ class simpleCell {
     this.maxEnergy = 1000;
     this.energyBorn = this.maxEnergy / 2;
     this.energy = this.energyBorn;
-    this.lifeConsumption = 50;
+    this.lifeConsumption = 1;
     this.energyConsumption = 25;
     this.behaviourRules = {
       forbiddenPositions: ["water", "simpleCell"],
@@ -54,8 +54,8 @@ class grossCell {
     this.maxEnergy = 100;
     this.energyBorn = this.maxEnergy / 2;
     this.energy = this.energyBorn;
-    this.lifeConsumption = 5;
-    this.energyConsumption = 10;
+    this.lifeConsumption = 1;
+    this.energyConsumption = 1;
     this.behaviourRules = { forbiddenPositions: ["water"] };
     this.preyClasses = [];
     this.reproductionRadio = 5;
@@ -67,4 +67,4 @@ class grossCell {
 }
 }
 
-export { simpleCell, grossCell };
+export { grossPredator, grossCell };

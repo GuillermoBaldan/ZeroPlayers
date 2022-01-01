@@ -7,7 +7,7 @@ import {
   up,
 } from "./ZeroPlayers_f_livingbeings.js";
 import { generateStaticStage } from "./ZeroPlayers_f_matrixGeneration.js";
-import { simpleCell, grossCell } from "./ZeroPlayers_classes_livingBeings.js";
+import { grossCell, grossPredator } from "./ZeroPlayers_classes_livingBeings.js";
 import {
   continuosSimulationStep,
   killSimulation,
@@ -44,7 +44,7 @@ let stageParameters = {
       type: grossCell,
       number: 399,
     },
-    { type: simpleCell, number: 1 },
+    { type: grossPredator, number: 1 },
   ],
   dynamicElementsArray: [],
   staticStage: [],

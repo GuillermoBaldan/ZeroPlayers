@@ -10,7 +10,7 @@ import {
 } from "./ZeroPlayers_f_dataCoherence.js";
 import { continuosSimulationStep } from "./ZeroPlayers_f_simulation.js";
 import { stopFlag } from "./index.js";
-import { grossCell, simpleCell } from "./ZeroPlayers_classes_livingBeings.js";
+import { grossCell, grossPredator } from "./ZeroPlayers_classes_livingBeings.js";
 import { energy2dynamicElements } from "./ZeroPlayers_f_universe.js";
 import { debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
 import {
