@@ -38,7 +38,7 @@ let stageParameters = {
     water: "blue",
     simpleCell: "yellow",
   },
-  legendForbiddenColors: ["blue", "yellow","green"],
+  legendForbiddenColors: ["blue", "yellow","green", "purple"],
   livingBeingsCollection: [
     {
       type: grossCell,
