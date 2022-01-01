@@ -38,6 +38,43 @@ class grossPredator {
   }
 }
 
+class yellowPredator {
+  constructor() {
+    this.color = "purple";
+    this.x = Math.floor(
+      Math.random() *
+        (simulationParameters.wideDimension / simulationParameters.squareSide)
+    ); //Math.random() * (max - min) + min;
+    this.y = Math.floor(
+      Math.random() *
+        (simulationParameters.heightDimension / simulationParameters.squareSide)
+    );
+    this.life = 100;
+    this.walkmode = "autonomous";
+    this.trajectory_x = [1, 1, 1, 1, 1, 1, 1];
+    this.trajectory_y = [0, 0, 0, 0, 0, 0, 0];
+    this.walk = totalFreedom;
+    this.life = 1000;
+    this.maxEnergy = 5000;
+    this.energyBorn = this.maxEnergy / 2;
+    this.energy = this.energyBorn;
+    this.lifeConsumption = 1;
+    this.energyConsumption = 1;
+    this.behaviourRules = {
+      forbiddenPositions: ["water", "simpleCell"],
+      forbiddenColors: ["blue", "yellow", "purple"],
+    };
+    this.preyClasses = [grossPredator];
+    this.reproductionRadio = 1;
+    this.vitalFunctions = {
+      death: true,
+      reproduction: false,
+      prey: true,
+  }
+    
+  }
+}
+
 class grossCell {
   constructor() {
     this.color = "green";
@@ -50,13 +87,13 @@ class grossCell {
       Math.random() *
         (simulationParameters.heightDimension / simulationParameters.squareSide)
     );
-    this.life = 100;
-    this.maxEnergy = 100;
+    this.life =  400;
+    this.maxEnergy = 800;
     this.energyBorn = this.maxEnergy / 2;
     this.energy = this.energyBorn;
     this.lifeConsumption = 1;
     this.energyConsumption = 1;
-    this.behaviourRules = { forbiddenPositions: ["water"] };
+    this.behaviourRules = { forbiddenPositions: ["water","gross","yellow"] };
     this.preyClasses = [];
     this.reproductionRadio = 5;
     this.vitalFunctions = {
@@ -67,4 +104,4 @@ class grossCell {
 }
 }
 
-export { grossPredator, grossCell };
+export { grossPredator, grossCell, yellowPredator };
