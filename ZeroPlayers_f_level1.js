@@ -17,7 +17,7 @@ import {
   cloneArray2D,
   lastElement,
 } from "./ZeroPlayers_f_arraysManipulation.js";
-import {staticStageGeneration} from "./ZeroPlayers_f_staticStageGenertion.js";
+import {staticStageGeneration} from "./ZeroPlayers_f_staticStageGeneration.js";
 
 function init(stageParameters, simulationParameters) {
   let staticStageAux = [];

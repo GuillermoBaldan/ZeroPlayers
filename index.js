@@ -15,7 +15,7 @@ import {
 } from "./ZeroPlayers_f_simulation.js";
 import { debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
 import { clickButtonsDetection } from "./ZeroPlayers_f_GUI.js";
-import {random} from "./ZeroPlayers_f_staticStageGenertion.js"
+import {random} from "./ZeroPlayers_f_staticStageGeneration.js"
 
 let staticStage;
 let lienzo;

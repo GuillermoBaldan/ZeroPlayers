@@ -1,3 +1,5 @@
+import {materialGeneration} from './ZeroPlayers_f_matrixGeneration.js';
+
 function random(stageParameters, simulationParameters){
     let a;
     let b;

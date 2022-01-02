@@ -177,4 +177,4 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
   return matrix;
 }
 
-export { generateStaticStage, matrixGeneratorInit, matrixGenerator, setColor };
+export { generateStaticStage, matrixGeneratorInit, matrixGenerator, setColor, materialGeneration };
