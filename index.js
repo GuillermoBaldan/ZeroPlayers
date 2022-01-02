@@ -15,6 +15,7 @@ import {
 } from "./ZeroPlayers_f_simulation.js";
 import { debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
 import { clickButtonsDetection } from "./ZeroPlayers_f_GUI.js";
+import {random} from "./ZeroPlayers_f_staticStageGenertion.js"
 
 let staticStage;
 let lienzo;
@@ -53,6 +54,7 @@ let stageParameters = {
   matrix: [],
   freePlacesArray: [],
   universeEnergy: 50000,
+  generationStageAlgorithm: random
 };
 
 let simulationParameters = {
