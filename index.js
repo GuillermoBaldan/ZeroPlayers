@@ -32,7 +32,8 @@ let universeRules = {
 let stageParameters = {
   universeRules: universeRules,
   legendTerrain: {
-    ground: "brown"
+    ground: "brown",
+    water: "blue"
   },
   legend: {
     water: "blue",
@@ -42,10 +43,10 @@ let stageParameters = {
   livingBeingsCollection: [
     {
       type: grossCell,
-      number: 394,
+      number: 150,
     },
-    { type: grossPredator, number: 1 },
-    { type: yellowPredator, number: 5 }
+    { type: grossPredator, number: 10 },
+    { type: yellowPredator, number: 10 }
   ],
   dynamicElementsArray: [],
   staticStage: [],

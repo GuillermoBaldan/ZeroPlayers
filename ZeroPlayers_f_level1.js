@@ -26,16 +26,18 @@ function init(stageParameters, simulationParameters) {
   let a;
  
   document.getElementById("progressBar").style.display = "none";
+  //staticStage Generation
+  stageParameters.staticStage = generateStaticStage(
+    stageParameters,
+    simulationParameters
+  );
   //0. Check Data Coherence
   flag = checkDataCoherence(stageParameters, simulationParameters);
   if (flag) {
     //1.Initialize Canvas
     canvas = initCanvas(simulationParameters);
     //2.staticStage
-    stageParameters.staticStage = generateStaticStage(
-      stageParameters,
-      simulationParameters
-    );
+   
 
     
     

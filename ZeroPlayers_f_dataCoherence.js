@@ -9,9 +9,7 @@ function checkDataCoherence(stageParameters, simulationParameters) {
   let flagMultiple = true; //checkDataCoherence is true if there isn´t data coherence errors
   let flagCheckInside = true;
   let flag = true;
-  let numberOfSquareCells =
-    (simulationParameters.wideDimension / simulationParameters.squareSide) *
-    (simulationParameters.heightDimension / simulationParameters.squareSide);
+  let numberOfTerrainUnits = countingUnitTypes("ground",stageParameters)
   let counter = 0;
   //1. Comprobar que wideDimension es multiplo de squarSide
   flagMultiple = multiple(simulationParameters);
@@ -20,8 +18,8 @@ function checkDataCoherence(stageParameters, simulationParameters) {
   stageParameters.livingBeingsCollection.forEach((item) => {
     counter += item.number;
   });
-  //2.2 Comprobamos que el número de elementos dinámicos es igual o menor al número de celdas del escenario
-  if (counter > numberOfSquareCells) {
+  //2.2 Comprobamos que el número de elementos dinámicos es igual o menor al número de celdas de terrreno del escenario
+  if (counter > numberOfTerrainUnits) {
     flag = false;
     return flag;
   }
@@ -134,5 +132,19 @@ function coordinatesAssigment(simulationParameters, stageParameters) {
 
   return freeCoordinate;
 }
+
+function countingUnitTypes(unitType, stageParameters) {
+  let counter = 0;
+  let typeColor = stageParameters.legendTerrain[unitType];
+  stageParameters.staticStage.forEach((row) => {
+    row.forEach((item) => {
+      if (item == typeColor) {
+        counter++;
+      }
+    });
+  });
+  return counter;
+}
+
 
 export { checkDataCoherence, checkExistenceInMatrix, coordinatesAssigment };
