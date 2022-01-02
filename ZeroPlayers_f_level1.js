@@ -17,6 +17,7 @@ import {
   cloneArray2D,
   lastElement,
 } from "./ZeroPlayers_f_arraysManipulation.js";
+import {staticStageGeneration} from "./ZeroPlayers_f_staticStageGenertion.js";
 
 function init(stageParameters, simulationParameters) {
   let staticStageAux = [];
@@ -27,10 +28,7 @@ function init(stageParameters, simulationParameters) {
  
   document.getElementById("progressBar").style.display = "none";
   //staticStage Generation
-  stageParameters.staticStage = generateStaticStage(
-    stageParameters,
-    simulationParameters
-  );
+  stageParameters.staticStage = staticStageGeneration(stageParameters.generationStageAlgorithm,stageParameters, simulationParameters);
   //0. Check Data Coherence
   flag = checkDataCoherence(stageParameters, simulationParameters);
   if (flag) {
