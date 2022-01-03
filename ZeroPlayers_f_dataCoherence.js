@@ -136,7 +136,6 @@ function coordinatesAssigment(simulationParameters, stageParameters) {
 function countingUnitTypes(unitType, stageParameters) {
   let counter = 0;
   let typeColor = stageParameters.legendTerrain[unitType];
-  console.log("stageParameters.staticStage");
      stageParameters.staticStage.forEach((row) => {
     row.forEach((item) => {
       if (item == typeColor) {

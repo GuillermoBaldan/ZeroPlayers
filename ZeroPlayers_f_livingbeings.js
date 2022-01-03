@@ -231,7 +231,7 @@ if(stageParameters.dynamicElementsArray[i].life<=0){
   }
   }
 }
-  debug_energyOfCells();
+  
 
 }
 

@@ -42,7 +42,7 @@ function init(stageParameters, simulationParameters) {
     matrixGeneratorInit(stageParameters, simulationParameters);
     //4. Draw canvas
     drawingMatrix(stageParameters, simulationParameters);
-    //debug_energyOfUniverse();
+    //
     return [staticStageAux, matrixAux, canvas[0], canvas[1]]; //lienzo = canvas[0];ctx = canvas[1]
   } else {
     console.log("The data is not consistent");

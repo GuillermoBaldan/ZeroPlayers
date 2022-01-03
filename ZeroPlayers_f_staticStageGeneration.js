@@ -45,8 +45,9 @@ function random(stageParameters, simulationParameters){
     let row = [];
     let staticStageAux = [];
     let counter = 0;
-    let vuelta = 1;
-    let numberUnits = 4;
+    let vuelta = 8;
+    let subvuelta = vuelta -1;
+    let numberUnits = 24;
     let safe = 0;
     //Primero pintamos todo de azul
     for (
@@ -73,28 +74,56 @@ function random(stageParameters, simulationParameters){
       staticStageAux.push(row);
       
     }
-   //2 Generamos la isla
+   //2 Generamos el cuadrado central
     staticStageAux[origin[1]][origin[0]] = "red";
    do {
-           if(staticStageAux[origin[1] + vuelta][origin[0]] == "blue"){
-        staticStageAux[origin[1] + vuelta][origin[0]] = "brown";
-        counter++;
-        console.log("Se mete en el primer if")
-      } else if (staticStageAux[origin[1]][origin[0] - vuelta] == "blue"){
-        staticStageAux[origin[1]][origin[0] - vuelta] = "brown";
-        counter++;
-        console.log("Se mete en el segundo if")
-        console.log(staticStageAux[origin[1] - vuelta][origin[0]])
-      } else if (staticStageAux[origin[1] - vuelta][origin[0]] == "blue"){
-        staticStageAux[origin[1] - vuelta][origin[0]] = "brown";
-        counter++;
-        console.log("Se mete en el tercer if")
-
-      } else if(staticStageAux[origin[1]][origin[0] + vuelta] == "blue"){
-        staticStageAux[origin[1]][origin[0] + vuelta] = "brown";
-        counter++;
-        console.log("Se mete en el cuarto if")
-      } 
+        //Cuadrante 1
+        for(a=vuelta;a>0;a--){
+          for(b=a;b>0;b--){
+            console.log("se mete en el for b")
+            if(staticStageAux[origin[1] - a + vuelta + 1][origin[0] +b -1  ] == "blue"){
+              staticStageAux[origin[1] - a + vuelta + 1 ][origin[0] + b -1 ] = "brown";
+              counter++;
+        }
+          
+      }
+    }
+      
+        //Cuadrante 2
+        for(a=0;a<vuelta+1;a++){
+          for(b=a;b>0;b--){
+            console.log("se mete en el for b")
+            if(staticStageAux[origin[1] - a + vuelta ][origin[0] -b ] == "blue"){
+              staticStageAux[origin[1] - a + vuelta ][origin[0] - b] = "brown";
+              counter++;
+        }
+      }
+      }
+    
+        //Cuadrante 3
+        for(a=0;a<vuelta;a++){
+          for(b=0;b<a+1;b++){
+            console.log("se mete en el for b")
+            if(staticStageAux[origin[1] + a - vuelta ][origin[0]-b] == "blue"){
+              staticStageAux[origin[1] + a - vuelta  ][origin[0]-b] = "brown";
+              counter++;
+        }
+          
+      }
+    }    
+      
+        //Cuadrante 4
+        for(a=vuelta;a>0;a--){
+          for(b=0;b<a;b++){
+            console.log("se mete en el for b")
+            if(staticStageAux[origin[1] + a - vuelta ][origin[0]+b + 1] == "blue"){
+              staticStageAux[origin[1] + a - vuelta  ][origin[0]+b + 1] = "brown";
+              counter++;
+        }
+          
+      }
+    }
+     
       safe++;
     } while(counter<numberUnits && safe<100)
     
