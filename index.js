@@ -15,7 +15,7 @@ import {
 } from "./ZeroPlayers_f_simulation.js";
 import { debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
 import { clickButtonsDetection } from "./ZeroPlayers_f_GUI.js";
-import {random} from "./ZeroPlayers_f_staticStageGeneration.js"
+import {random, islandGeneration} from "./ZeroPlayers_f_staticStageGeneration.js"
 
 let staticStage;
 let lienzo;
@@ -44,17 +44,17 @@ let stageParameters = {
   livingBeingsCollection: [
     {
       type: grossCell,
-      number: 150,
+      number: 0,
     },
-    { type: grossPredator, number: 10 },
-    { type: yellowPredator, number: 10 }
+    { type: grossPredator, number: 0 },
+    { type: yellowPredator, number: 0 }
   ],
   dynamicElementsArray: [],
   staticStage: [],
   matrix: [],
   freePlacesArray: [],
   universeEnergy: 50000,
-  generationStageAlgorithm: random
+  generationStageAlgorithm: islandGeneration
 };
 
 let simulationParameters = {
