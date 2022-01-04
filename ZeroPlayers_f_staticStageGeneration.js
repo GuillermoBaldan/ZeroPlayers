@@ -1,4 +1,5 @@
 import {materialGeneration} from './ZeroPlayers_f_matrixGeneration.js';
+import { setInsideStage} from './ZeroPlayers_f_checkValues.js';
 
 function random(stageParameters, simulationParameters){
     let a;
@@ -39,7 +40,7 @@ function random(stageParameters, simulationParameters){
   }
 
   function islandGeneration(stageParameters,simulationParameters){
-    let origin = [9,10];
+    let origin = [19,19];
     let a;
     let b;
     let row = [];
@@ -75,16 +76,18 @@ function random(stageParameters, simulationParameters){
       
     }
    //2 Generamos el cuadrado central
-    staticStageAux[origin[1]][origin[0]] = "red";
+
+    staticStageAux[origin[1]][origin[0]] = "brown";
    do {
         //Cuadrante 1
         for(a=vuelta;a>0;a--){
           for(b=a;b>0;b--){
-            console.log("se mete en el for b")
-            if(staticStageAux[origin[1] - a + vuelta + 1][origin[0] +b -1  ] == "blue"){
+            if(setInsideStage(origin[0]+b-1,origin[1]-a+vuelta+1,stageParameters,simulationParameters)){
+              if((staticStageAux[origin[1] - a + vuelta + 1][origin[0] +b -1  ] == "blue") && (staticStageAux[origin[1] - a + vuelta + 1][origin[0] +b -1  ] != undefined)){
               staticStageAux[origin[1] - a + vuelta + 1 ][origin[0] + b -1 ] = "brown";
               counter++;
         }
+      }
           
       }
     }
@@ -92,35 +95,36 @@ function random(stageParameters, simulationParameters){
         //Cuadrante 2
         for(a=0;a<vuelta+1;a++){
           for(b=a;b>0;b--){
-            console.log("se mete en el for b")
-            if(staticStageAux[origin[1] - a + vuelta ][origin[0] -b ] == "blue"){
-              staticStageAux[origin[1] - a + vuelta ][origin[0] - b] = "brown";
-              counter++;
+            if (setInsideStage(origin[0] - b, origin[1] - a + vuelta, stageParameters, simulationParameters)){
+              if((staticStageAux[origin[1] - a + vuelta ][origin[0] -b ] == "blue")  && (staticStageAux[origin[1] - a + vuelta ][origin[0] -b ] != undefined)){
+                staticStageAux[origin[1] - a + vuelta ][origin[0] - b] = "brown";
+                counter++;
+              }
+            }    
+          }
         }
-      }
-      }
     
         //Cuadrante 3
         for(a=0;a<vuelta;a++){
           for(b=0;b<a+1;b++){
-            console.log("se mete en el for b")
-            if(staticStageAux[origin[1] + a - vuelta ][origin[0]-b] == "blue"){
+            if (setInsideStage(origin[0] - b, origin[1] +a -vuelta, stageParameters,simulationParameters)) {
+            if (staticStageAux[origin[1] + a - vuelta ][origin[0]-b] == "blue"){
               staticStageAux[origin[1] + a - vuelta  ][origin[0]-b] = "brown";
               counter++;
         }
-          
+      }  
       }
     }    
       
         //Cuadrante 4
         for(a=vuelta;a>0;a--){
           for(b=0;b<a;b++){
-            console.log("se mete en el for b")
-            if(staticStageAux[origin[1] + a - vuelta ][origin[0]+b + 1] == "blue"){
+          if (setInsideStage(origin[0] + b + 1, origin[1] +a -vuelta, stageParameters,simulationParameters)) {
+            if((staticStageAux[origin[1] + a - vuelta ][origin[0]+b + 1] == "blue") && (staticStageAux[origin[1] + a - vuelta ][origin[0]+b + 1] != undefined)){
               staticStageAux[origin[1] + a - vuelta  ][origin[0]+b + 1] = "brown";
               counter++;
         }
-          
+      }
       }
     }
      

@@ -120,6 +120,17 @@ function setInFreePosition(item,stageParameters){//This function is used to init
   stageParameters.matrix[item.y][item.x] = item.color;
 }
 
+function setInsideStage(x,y,stageParameters,simulationParameters){
+let flag = true;
+if (x < 0 || x > Math.floor(simulationParameters.wideDimension / simulationParameters.squareSide) -1) {
+  flag = false;
+}
+if (y < 0 || y > Math.floor(simulationParameters.heightDimension / simulationParameters.squareSide) -1) {
+  flag = false;
+}
+return flag;
+}
+
 export {
   checkSimpleCellsExistence,
   checkNumbersTypeCell,
@@ -127,5 +138,6 @@ export {
   occupyPosition,
   occupyPositionv2,
   forbiddenPosition,
-  setInFreePosition
+  setInFreePosition,
+  setInsideStage  
 };

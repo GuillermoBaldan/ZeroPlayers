@@ -31,7 +31,7 @@ class grossPredator {
     this.reproductionRadio = 1;
     this.vitalFunctions = {
       death: true,
-      reproduction: false,
+      reproduction: true,
       prey: true,
   }
     
@@ -68,7 +68,7 @@ class yellowPredator {
     this.reproductionRadio = 1;
     this.vitalFunctions = {
       death: true,
-      reproduction: false,
+      reproduction: true,
       prey: true,
   }
     
@@ -98,7 +98,7 @@ class grossCell {
     this.reproductionRadio = 5;
     this.vitalFunctions = {
       death: true,
-      reproduction: false,
+      reproduction: true,
       prey: false,
   }
 }
