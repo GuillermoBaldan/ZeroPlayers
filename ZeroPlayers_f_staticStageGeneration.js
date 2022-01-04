@@ -75,8 +75,12 @@ function random(stageParameters, simulationParameters){
       staticStageAux.push(row);
       
     }
-   //2 Generamos el cuadrado central
-
+   //2 Generamos el origen
+    //Generamos la coordenada x 
+    origin[0] = Math.floor(Math.random() * (simulationParameters.wideDimension / simulationParameters.squareSide));
+    //Generamos la coordenada y
+    origin[1] = Math.floor(Math.random() * (simulationParameters.heightDimension / simulationParameters.squareSide));
+    //Asignamos el color
     staticStageAux[origin[1]][origin[0]] = "brown";
    do {
         //Cuadrante 1
