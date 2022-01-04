@@ -46,7 +46,7 @@ function random(stageParameters, simulationParameters){
     let row = [];
     let staticStageAux = [];
     let counter = 0;
-    let vuelta = 8;
+    let vuelta = 1;
     let subvuelta = vuelta -1;
     let numberUnits = 24;
     let safe = 0;
@@ -133,7 +133,7 @@ function random(stageParameters, simulationParameters){
     }
      
       safe++;
-    } while(counter<numberUnits && safe<100)
+    } while(counter<numberUnits && safe<100);
     
 
     
