@@ -46,9 +46,8 @@ function random(stageParameters, simulationParameters){
     let row = [];
     let staticStageAux = [];
     let counter = 0;
-    let vuelta = 1;
-    let subvuelta = vuelta -1;
-    let numberUnits = 24;
+    let vuelta = 5;
+    let numberUnits = 20;
     let safe = 0;
     //Primero pintamos todo de azul
     for (
@@ -82,12 +81,13 @@ function random(stageParameters, simulationParameters){
     origin[1] = Math.floor(Math.random() * (simulationParameters.heightDimension / simulationParameters.squareSide));
     //Asignamos el color
     staticStageAux[origin[1]][origin[0]] = "brown";
+    counter++;
    do {
         //Cuadrante 1
         for(a=vuelta;a>0;a--){
           for(b=a;b>0;b--){
             if(setInsideStage(origin[0]+b-1,origin[1]-a+vuelta+1,stageParameters,simulationParameters)){
-              if((staticStageAux[origin[1] - a + vuelta + 1][origin[0] +b -1  ] == "blue") && (staticStageAux[origin[1] - a + vuelta + 1][origin[0] +b -1  ] != undefined)){
+              if((staticStageAux[origin[1] - a + vuelta + 1][origin[0] +b -1  ] == "blue") && (counter<numberUnits)){
               staticStageAux[origin[1] - a + vuelta + 1 ][origin[0] + b -1 ] = "brown";
               counter++;
         }
@@ -100,7 +100,7 @@ function random(stageParameters, simulationParameters){
         for(a=0;a<vuelta+1;a++){
           for(b=a;b>0;b--){
             if (setInsideStage(origin[0] - b, origin[1] - a + vuelta, stageParameters, simulationParameters)){
-              if((staticStageAux[origin[1] - a + vuelta ][origin[0] -b ] == "blue")  && (staticStageAux[origin[1] - a + vuelta ][origin[0] -b ] != undefined)){
+              if((staticStageAux[origin[1] - a + vuelta ][origin[0] -b ] == "blue")  && (counter<numberUnits)){
                 staticStageAux[origin[1] - a + vuelta ][origin[0] - b] = "brown";
                 counter++;
               }
@@ -112,7 +112,7 @@ function random(stageParameters, simulationParameters){
         for(a=0;a<vuelta;a++){
           for(b=0;b<a+1;b++){
             if (setInsideStage(origin[0] - b, origin[1] +a -vuelta, stageParameters,simulationParameters)) {
-            if (staticStageAux[origin[1] + a - vuelta ][origin[0]-b] == "blue"){
+            if ((staticStageAux[origin[1] + a - vuelta ][origin[0]-b] == "blue") && (counter<numberUnits)){
               staticStageAux[origin[1] + a - vuelta  ][origin[0]-b] = "brown";
               counter++;
         }
@@ -124,7 +124,7 @@ function random(stageParameters, simulationParameters){
         for(a=vuelta;a>0;a--){
           for(b=0;b<a;b++){
           if (setInsideStage(origin[0] + b + 1, origin[1] +a -vuelta, stageParameters,simulationParameters)) {
-            if((staticStageAux[origin[1] + a - vuelta ][origin[0]+b + 1] == "blue") && (staticStageAux[origin[1] + a - vuelta ][origin[0]+b + 1] != undefined)){
+            if((staticStageAux[origin[1] + a - vuelta ][origin[0]+b + 1] == "blue") && (counter<numberUnits)){
               staticStageAux[origin[1] + a - vuelta  ][origin[0]+b + 1] = "brown";
               counter++;
         }
@@ -132,8 +132,7 @@ function random(stageParameters, simulationParameters){
       }
     }
      
-      safe++;
-    } while(counter<numberUnits && safe<100);
+    } while(counter<numberUnits)
     
 
     
