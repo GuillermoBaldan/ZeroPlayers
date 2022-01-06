@@ -47,6 +47,7 @@ function random(stageParameters, simulationParameters){
     let staticStageAux = [];
     let counter = 0;
     let vuelta = 7;
+    let radious = vuelta
     let numberUnits = Math.floor(((vuelta*2+1)**2)/2)+1
     //let safe = 0;
     //Primero pintamos todo de azul
@@ -76,9 +77,9 @@ function random(stageParameters, simulationParameters){
     }
    //2 Generamos el origen
     //Generamos la coordenada x 
-    origin[0] = Math.floor(Math.random() * (simulationParameters.wideDimension / simulationParameters.squareSide));
+    origin[0] = radious + 1 + Math.floor(Math.random() * (simulationParameters.wideDimension / simulationParameters.squareSide - 2*radious - 2));
     //Generamos la coordenada y
-    origin[1] = Math.floor(Math.random() * (simulationParameters.heightDimension / simulationParameters.squareSide));
+    origin[1] = radious + 1 + Math.floor(Math.random() * (simulationParameters.heightDimension / simulationParameters.squareSide - 2*radious - 2));
     //Asignamos el color
     staticStageAux[origin[1]][origin[0]] = "brown";
     counter++;
