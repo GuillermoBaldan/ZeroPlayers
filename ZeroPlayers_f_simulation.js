@@ -33,8 +33,8 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
     stageParameters,
     simulationParameters
   );
-  debug_simulationCicle();
-  debug_EnergyBalance();
+  
+  
   refreshGUI();
   drawingMatrix(stageParameters, simulationParameters);
   simulationParameters.singularSimulationStep += 1;

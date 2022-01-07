@@ -83,7 +83,6 @@ function random(stageParameters, simulationParameters){
     //Asignamos el color
     staticStageAux[origin[1]][origin[0]] = "brown";
     counter++;
-   console.log(`NumberOfUnits: ${numberUnits}`);
     do {
         //Cuadrante 1
         for(a=vuelta;a>0;a--){

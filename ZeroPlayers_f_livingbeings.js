@@ -222,8 +222,7 @@ if (stageParameters.dynamicElementsArray[i].vitalFunctions.death){
     stageParameters.matrix[stageParameters.dynamicElementsArray[i].y][stageParameters.dynamicElementsArray[i].x] = stageParameters.staticStage[stageParameters.dynamicElementsArray[i].y][stageParameters.dynamicElementsArray[i].x];
     stageParameters.dynamicElementsArray.splice(i, 1);
   i =0;
-  }
-if(stageParameters.dynamicElementsArray[i].life<=0){
+  } else if (stageParameters.dynamicElementsArray[i].life<=0){
   stageParameters.matrix[stageParameters.dynamicElementsArray[i].y][stageParameters.dynamicElementsArray[i].x] = stageParameters.staticStage[stageParameters.dynamicElementsArray[i].y][stageParameters.dynamicElementsArray[i].x];
   energy2Universe(stageParameters.dynamicElementsArray[i].energy, stageParameters);
   stageParameters.dynamicElementsArray.splice(i, 1);

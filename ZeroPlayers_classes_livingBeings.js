@@ -22,7 +22,7 @@ class grossPredator {
     this.energyBorn = this.maxEnergy / 2;
     this.energy = this.energyBorn;
     this.lifeConsumption = 1;
-    this.energyConsumption = 25;
+    this.energyConsumption = 5;
     this.behaviourRules = {
       forbiddenPositions: ["water", "simpleCell"],
       forbiddenColors: ["blue", "yellow"],
@@ -54,8 +54,8 @@ class yellowPredator {
     this.trajectory_x = [1, 1, 1, 1, 1, 1, 1];
     this.trajectory_y = [0, 0, 0, 0, 0, 0, 0];
     this.walk = totalFreedom;
-    this.life = 1000;
-    this.maxEnergy = 5000;
+    this.life = 300;
+    this.maxEnergy = 250;
     this.energyBorn = this.maxEnergy / 2;
     this.energy = this.energyBorn;
     this.lifeConsumption = 1;

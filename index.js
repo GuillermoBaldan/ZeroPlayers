@@ -44,10 +44,10 @@ let stageParameters = {
   livingBeingsCollection: [
     {
       type: grossCell,
-      number: 0,
+      number: 10,
     },
-    { type: grossPredator, number: 0},
-    { type: yellowPredator, number: 0 }
+    { type: grossPredator, number: 2},
+    { type: yellowPredator, number: 1 }
   ],
   dynamicElementsArray: [],
   staticStage: [],
@@ -58,8 +58,8 @@ let stageParameters = {
 };
 
 let simulationParameters = {
-  simulationStepsNumber: 25,
-  timePerStep: 100,
+  simulationStepsNumber: 10000,
+  timePerStep: 50,
   wideDimension: 400,
   heightDimension: 400,
   squareSide: 20,
