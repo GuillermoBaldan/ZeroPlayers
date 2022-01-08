@@ -4,7 +4,7 @@ import {
 } from "./ZeroPlayers_f_universe.js";
 import { checkExistenceInMatrix } from "./ZeroPlayers_f_dataCoherence.js";
 import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
-import { debug_, debug_energyOfCells, debug_energyOfUniverse, debug_numberOfCells } from "./ZeroPlayers_f_debugging.js";
+import { debug_, debug_EnergyBalance, debug_energyOfCells, debug_energyOfUniverse, debug_numberOfCells } from "./ZeroPlayers_f_debugging.js";
 import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
 import {setInFreePosition, forbiddenPosition} from "./ZeroPlayers_f_checkValues.js"
@@ -271,11 +271,20 @@ function feeding(stageParameters){
     if (preyCoordinates != undefined) {
       preySelectionAndRemove(item, preyCoordinates, stageParameters);
     }}else if (item.type == "vegetable"){
-      item.energy += item.energyConsumption * 3;
-      energy2dynamicElements(item.energyConsumption * 3, stageParameters);
+      let energyPortion = item.energyConsumption * 3;
+      if (item.energy + energyPortion > item.maxEnergy){
+        energy2Universe(item.energy + energyPortion - item.maxEnergy, stageParameters);
+        energyPortion = item.maxEnergy - item.energy;
+        energy2dynamicElements(energyPortion, stageParameters);
+      } else {
+        item.energy += energyPortion;
+        energy2dynamicElements(energyPortion, stageParameters);
+      }
+           
     }
 
   }); 
+  debug_EnergyBalance();
 }
 
 /* function feeding(stageParameters){

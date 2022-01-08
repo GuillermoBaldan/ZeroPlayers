@@ -19,7 +19,7 @@ class grossPredator {
     this.trajectory_y = [0, 0, 0, 0, 0, 0, 0];
     this.walk = totalFreedom;
     this.life = 500;
-    this.maxEnergy = 1000;
+    this.maxEnergy = 250;
     this.energyBorn = this.maxEnergy / 2;
     this.energy = this.energyBorn;
     this.lifeConsumption = 1;
@@ -91,7 +91,7 @@ class grossCell {
         (simulationParameters.heightDimension / simulationParameters.squareSide)
     );
     this.life =  400;
-    this.maxEnergy = 800;
+    this.maxEnergy = 300;
     this.energyBorn = this.maxEnergy / 2;
     this.energy = this.energyBorn;
     this.lifeConsumption = 1;

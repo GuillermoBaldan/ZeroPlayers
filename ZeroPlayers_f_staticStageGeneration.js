@@ -46,7 +46,7 @@ function random(stageParameters, simulationParameters){
     let row = [];
     let staticStageAux = [];
     let counter = 0;
-    let vuelta = 7;
+    let vuelta = 8;
     let radious = vuelta
     let numberUnits = Math.floor(((vuelta*2+1)**2)/2)+1
     //let safe = 0;
