@@ -32,6 +32,14 @@ let universeRules = {
 
 let stageParameters = {
   universeRules: universeRules,
+  livingBeingsRules: {
+    reproduction: {
+      type: "sexual", //There are two options: 'sexual' and 'asexual'
+      probability: 0.5, //It is the probability of reproduction
+      distantTowater:1,
+      proximityTosameCells: 3
+    }
+    },
   legendTerrain: {
     ground: "brown",
     water: "blue"
@@ -58,7 +66,7 @@ let stageParameters = {
 };
 
 let simulationParameters = {
-  simulationStepsNumber: 10000,
+  simulationStepsNumber: 1000,
   timePerStep: 50,
   wideDimension: 400,
   heightDimension: 400,

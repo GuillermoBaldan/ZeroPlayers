@@ -3,6 +3,7 @@ import { totalFreedom } from "./ZeroPlayers_f_livingbeings.js";
 
 class grossPredator {
   constructor() {
+    this.type = "predator",
     this.color = "yellow";
     this.x = Math.floor(
       Math.random() *
@@ -40,6 +41,7 @@ class grossPredator {
 
 class yellowPredator {
   constructor() {
+    this.type = "predator"
     this.color = "purple";
     this.x = Math.floor(
       Math.random() *
@@ -77,6 +79,7 @@ class yellowPredator {
 
 class grossCell {
   constructor() {
+    this.type = "vegetable"
     this.color = "green";
     this.walkmode = "static";
     this.x = Math.floor(

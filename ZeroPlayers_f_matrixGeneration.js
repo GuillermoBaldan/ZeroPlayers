@@ -15,7 +15,7 @@ import {
   dynamicElementsGenerator,
   cellsEnergyConsumption,
   cellsLifeConsumption,
-  preyAction
+  feeding
 } from "./ZeroPlayers_f_livingbeings.js";
 import {
   energy2Universe,
@@ -114,7 +114,7 @@ function matrixGenerator(stageParameters, simulationParameters) {
   //Giving Movement to Dynamic Elements
  stageParameters.matrix = giveMovementToDynamicElements(stageParameters.matrix, stageParameters, simulationParameters);
  //Prey function of predator cells
-preyAction(stageParameters)
+feeding(stageParameters)
  //Reproduction of cells
 reproductionFunction(stageParameters, simulationParameters);
  //Consumption of energy

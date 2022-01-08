@@ -261,14 +261,28 @@ function cellsLifeConsumption(stageParameters){
   }); 
 }
 
-function preyAction(stageParameters){
+function feeding(stageParameters){
   stageParameters.dynamicElementsArray.forEach((item) => {
+    if (item.type == "predator"){
     let preyCoordinates = preyDetection(item, stageParameters);
     if (preyCoordinates != undefined) {
       preySelectionAndRemove(item, preyCoordinates, stageParameters);
+    }}else if (item.type == "vegetable"){
+      item.energy += item.energyConsumption * 3;
+      energy2dynamicElements(item.energyConsumption * 3, stageParameters);
     }
+
   }); 
 }
+
+/* function feeding(stageParameters){
+  if (stageParameters.dynamicElementsArray.length > 0) {
+    stageParameters.dynamicElementsArray.forEach((item) => {
+   if item.type == "Predator"{
+     feeding(stageParameters);
+    });
+  }
+} */
 
 export {
   totalFreedom,
@@ -284,5 +298,5 @@ export {
   dynamicElementsGenerator,
   cellsEnergyConsumption,
   cellsLifeConsumption,
-  preyAction
+  feeding
 };
