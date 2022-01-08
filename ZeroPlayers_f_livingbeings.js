@@ -7,7 +7,7 @@ import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
 import { debug_, debug_energyOfCells, debug_energyOfUniverse, debug_numberOfCells } from "./ZeroPlayers_f_debugging.js";
 import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
-import {setInFreePosition} from "./ZeroPlayers_f_checkValues.js"
+import {setInFreePosition, forbiddenPosition} from "./ZeroPlayers_f_checkValues.js"
 
 function totalFreedom(dynamicItem_x, dynamicItem_y) {
   let buffer = randomSteps();
@@ -192,7 +192,9 @@ function reproductionFunction(stageParameters, simulationParameters) {
       );
 
       if ((!checkExistenceInMatrix(son.x, son.y, stageParameters)) &&(item.energy > item.energyBorn)) {
-        //If there isn´t any object of dynamicElementsArray with this coordinates, then an object is created
+        //If there isn´t any object of dynamicElementsArray with this coordinates, 
+        if (!(forbiddenPosition(son.x,son.y,stageParameters, stageParameters.matrix))) {
+          //and if the position is not a forbidden position, then the object is created
         sonsArray.push(son);
         //Transfer of energy from Father to Son
         item.energy -= item.energyBorn;
@@ -210,7 +212,8 @@ function reproductionFunction(stageParameters, simulationParameters) {
     simulationParameters.auxCounter++;
   }
 }
-})
+}
+});
 }
 
 
