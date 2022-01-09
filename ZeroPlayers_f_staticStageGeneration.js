@@ -38,6 +38,59 @@ function random(stageParameters, simulationParameters){
   
     return staticStageAux;
   }
+  function circularIsland(stageParameters, simulationParameters){
+  let staticStageAux = [];
+  let row =[];
+  let origin = [9,9]
+  let radio = 5;
+  let a;
+  let b;
+  let x;
+  let y;
+  let by;
+  let array = [];
+  //Primero pintamos todo de azul
+  for (
+    b = 0;
+    b <
+    Math.floor(
+      simulationParameters.heightDimension / simulationParameters.squareSide
+    );
+    b++
+  ) {
+    row = [];
+    for (
+      a = 0;
+      a <
+      Math.floor(
+        simulationParameters.wideDimension / simulationParameters.squareSide
+      );
+      a++
+    ) {
+      row.push(
+      "blue"
+      );
+    }
+    staticStageAux.push(row);
+    
+  }
+  stageParameters.staticStage = staticStageAux;
+
+  for(x=1;x<5;x++){
+    y = Math.floor(radio*Math.sin(Math.acos(x/radio)))
+    for(by=0;by<y;by++){
+      array.push([x,by])
+    }
+  }
+
+  array.forEach(item =>{
+    stageParameters.staticStage[item[1]][item[0]] = "brown"
+  })
+
+ console.log('staticStage at circularIsland function')
+ console.log(stageParameters.staticStage)
+
+  }
 
   function islandGeneration(stageParameters,simulationParameters){
     let origin = [19,19];
@@ -149,4 +202,4 @@ function staticStageGeneration(algorithm, stageParameters, simulationParameters)
     return algorithm(stageParameters, simulationParameters);
 }
 
-export {random, islandGeneration, staticStageGeneration};
+export {random, islandGeneration, circularIsland, staticStageGeneration};
