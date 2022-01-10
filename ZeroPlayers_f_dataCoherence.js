@@ -9,6 +9,8 @@ function checkDataCoherence(stageParameters, simulationParameters) {
   let flagMultiple = true; //checkDataCoherence is true if there isn´t data coherence errors
   let flagCheckInside = true;
   let flag = true;
+  console.log('staticStage')
+  console.log(stageParameters.staticStage)
   let numberOfTerrainUnits = countingUnitTypes("ground",stageParameters)
   let counter = 0;
   //1. Comprobar que wideDimension es multiplo de squarSide
