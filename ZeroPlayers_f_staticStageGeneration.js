@@ -89,6 +89,7 @@ function random(stageParameters, simulationParameters){
 
  console.log('staticStage at circularIsland function')
  console.log(stageParameters.staticStage)
+ return stageParameters.staticStage;
 
   }
 
