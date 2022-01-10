@@ -30,8 +30,7 @@ function init(stageParameters, simulationParameters) {
   //staticStage Generation
   stageParameters.staticStage = staticStageGeneration(stageParameters.generationStageAlgorithm,stageParameters, simulationParameters);
   //0. Check Data Coherence
-  console.log('staticStage at init')
-  console.log(stageParameters.staticStage)
+ 
   flag = checkDataCoherence(stageParameters, simulationParameters);
   if (flag) {
     //1.Initialize Canvas

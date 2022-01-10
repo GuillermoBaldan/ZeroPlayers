@@ -42,7 +42,7 @@ function random(stageParameters, simulationParameters){
   let staticStageAux = [];
   let row =[];
   let origin = [9,9]
-  let radio = 5;
+  let radio = 8;
   let a;
   let b;
   let x;
@@ -75,11 +75,11 @@ function random(stageParameters, simulationParameters){
     
   }
   stageParameters.staticStage = staticStageAux;
-
-  for(x=1;x<5;x++){
+//Generamos el círculo
+  for(x=-radio;x<radio;x++){
     y = Math.floor(radio*Math.sin(Math.acos(x/radio)))
-    for(by=0;by<y;by++){
-      array.push([x,by])
+    for(by=-y;by<y;by++){
+      array.push([x + origin[0],by + origin[1]])
     }
   }
 
@@ -87,8 +87,7 @@ function random(stageParameters, simulationParameters){
     stageParameters.staticStage[item[1]][item[0]] = "brown"
   })
 
- console.log('staticStage at circularIsland function')
- console.log(stageParameters.staticStage)
+ 
  return stageParameters.staticStage;
 
   }

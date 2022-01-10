@@ -9,9 +9,7 @@ function checkDataCoherence(stageParameters, simulationParameters) {
   let flagMultiple = true; //checkDataCoherence is true if there isn´t data coherence errors
   let flagCheckInside = true;
   let flag = true;
-  console.log('staticStage')
-  console.log(stageParameters.staticStage)
-  let numberOfTerrainUnits = countingUnitTypes("ground",stageParameters)
+    let numberOfTerrainUnits = countingUnitTypes("ground",stageParameters)
   let counter = 0;
   //1. Comprobar que wideDimension es multiplo de squarSide
   flagMultiple = multiple(simulationParameters);
@@ -138,7 +136,7 @@ function coordinatesAssigment(simulationParameters, stageParameters) {
 function countingUnitTypes(unitType, stageParameters) {
   let counter = 0;
   let typeColor = stageParameters.legendTerrain[unitType];
-  console.log(stageParameters.staticStage)
+
      stageParameters.staticStage.forEach((row) => {
     row.forEach((item) => {
       if (item == typeColor) {
