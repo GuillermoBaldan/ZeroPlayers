@@ -82,7 +82,24 @@ function debug_matrix() {
   });
 }
 
-export {
+function debug_circle() {
+ //draw a circle using canvas tag
+ /*  let canvas = document.getElementById("lienzo");
+  let ctx = canvas.getContext("2d"); */
+  let centerX = 9*simulationParameters.squareSide;
+  let centerY = 9*simulationParameters.squareSide;
+  let radius = 8*simulationParameters.squareSide;
+  let ctx = simulationParameters.ctx;;
+
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+  ctx.lineWidth = 1;
+  ctx.strokeStyle = 'lightgreen';
+  ctx.stroke();
+  
+}
+
+  export {
   debug_PrintDynamicsElementsCoordinates,
   debug_DetectCoordinatesRepeated,
   debug_,
@@ -92,5 +109,6 @@ export {
   debug_simulationCicle,
   debug_matrix,
   debug_energyOfCells,
-  debug_EnergyBalance
+  debug_EnergyBalance,
+  debug_circle
 };

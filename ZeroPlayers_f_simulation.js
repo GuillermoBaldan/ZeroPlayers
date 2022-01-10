@@ -20,6 +20,7 @@ import {
   debug_totalEnergy,
   debug_energyOfUniverse,
   debug_EnergyBalance,
+  debug_circle,
 } from "./ZeroPlayers_f_debugging.js";
 import { refreshGUI, simulationStopAndEnd } from "./ZeroPlayers_f_GUI.js";
 
@@ -37,6 +38,7 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
   
   refreshGUI();
   drawingMatrix(stageParameters, simulationParameters);
+  
   simulationParameters.singularSimulationStep += 1;
  
   if (!simulationStopAndEnd()) {
