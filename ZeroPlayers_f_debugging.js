@@ -1,5 +1,6 @@
 import { stageParameters, simulationParameters } from "./index.js";
 import { sum } from "./ZeroPlayers_f_arraysManipulation.js";
+import { simulation } from "./ZeroPlayers_f_level1.js";
 
 function debug_PrintDynamicsElementsCoordinates(Array) {
   Array.forEach((element) => {
@@ -99,6 +100,30 @@ function debug_circle() {
   
 }
 
+function debug_grid(){
+let ctx = simulationParameters.ctx;
+let x = 0;
+let y;
+ //1º let´s do the horizontal lines
+ 
+    for(y = 0; y < simulationParameters.heightDimension; y += simulationParameters.squareSide){
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(x + simulationParameters.heightDimension, y);
+      ctx.stroke();
+    }
+
+
+    //2º let´s do the vertical lines
+    for (x = 0; x < simulationParameters.wideDimension; x += simulationParameters.squareSide) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, simulationParameters.heightDimension);
+      ctx.stroke();
+    }
+ 
+}
+
   export {
   debug_PrintDynamicsElementsCoordinates,
   debug_DetectCoordinatesRepeated,
@@ -110,5 +135,6 @@ function debug_circle() {
   debug_matrix,
   debug_energyOfCells,
   debug_EnergyBalance,
-  debug_circle
+  debug_circle,
+  debug_grid
 };
