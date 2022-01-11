@@ -77,7 +77,12 @@ function random(stageParameters, simulationParameters){
   stageParameters.staticStage = staticStageAux;
 //Generamos el círculo
   for(x=-radio;x<radio;x++){
-    y = Math.floor(radio*Math.sin(Math.acos(x/radio)))
+    if (x>=0){
+    y = Math.floor(radio*Math.sin(Math.acos((x+1)/radio)))
+    }
+    else{
+    y = Math.floor(radio*Math.sin(Math.acos((x)/radio)))
+    }
     for(by=-y;by<y;by++){
       array.push([x + origin[0],by + origin[1]])
     }
