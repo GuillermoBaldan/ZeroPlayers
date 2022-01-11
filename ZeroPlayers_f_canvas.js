@@ -35,8 +35,8 @@ function drawingMatrix(stageParameters, simulationParameters) {
     y = y + Ay;
   });
   // matrixAux = [];
-  debug_circle();
-  debug_grid();
+ /*  debug_circle();
+  debug_grid(); */
 }
 
 function drawSquare(x, y, color, simulationParameters) {

@@ -41,10 +41,10 @@ function random(stageParameters, simulationParameters){
   function circularIsland(stageParameters, simulationParameters){
   let staticStageAux = [];
   let row =[];
-  let center_x = 9;
-  let center_y = 9;
+  let center_x = 20;
+  let center_y = 20;
   let origin = [center_x,center_y]
-  let radious = 8;
+  let radious = 12;
   let radio = radious + 1;
   let a;
   let b;

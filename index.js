@@ -52,10 +52,10 @@ let stageParameters = {
   livingBeingsCollection: [
     {
       type: grossCell,
-      number: 0,
+      number: 40,
     },
-    { type: grossPredator, number: 0},
-    { type: yellowPredator, number: 0 }
+    { type: grossPredator, number: 1},
+    { type: yellowPredator, number: 1 }
   ],
   dynamicElementsArray: [],
   staticStage: [],
@@ -67,9 +67,9 @@ let stageParameters = {
 
 let simulationParameters = {
   simulationStepsNumber: 1000,
-  timePerStep: 100,
-  wideDimension: 400,
-  heightDimension: 400,
+  timePerStep: 500,
+  wideDimension: 800,
+  heightDimension: 800,
   squareSide: 20,
   lienzo: lienzo,
   ctx: ctx,
