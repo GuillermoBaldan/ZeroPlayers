@@ -150,6 +150,7 @@ function reproductionFunction(stageParameters, simulationParameters) {
   let son;
   stageParameters.dynamicElementsArray.forEach((item) => {
   if(item.vitalFunctions.reproduction){
+    
   if (stageParameters.dynamicElementsArray.indexOf(item) != -1) {
     if (item.reproductionRadio != undefined) {
       son = new item.constructor();
