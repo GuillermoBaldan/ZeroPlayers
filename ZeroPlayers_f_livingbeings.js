@@ -149,7 +149,7 @@ function reproductionFunction(stageParameters, simulationParameters) {
   let sonsArray = [];
   let son;
   stageParameters.dynamicElementsArray.forEach((item) => {
-  if(item.vitalFunctions.reproduction){
+  if(item.vitalFunctions.reproduction &&(item.cyclesToReproduction == item.reproductionPeriod)) {
     
   if (stageParameters.dynamicElementsArray.indexOf(item) != -1) {
     if (item.reproductionRadio != undefined) {
@@ -211,9 +211,12 @@ function reproductionFunction(stageParameters, simulationParameters) {
       stageParameters.dynamicElementsArray.concat(sonsArray);
     sonsArray = [];
     simulationParameters.auxCounter++;
+       }
+    }
+  item.cyclesToReproduction = 0;
+  }else{
+    item.cyclesToReproduction++;
   }
-}
-}
 });
 }
 

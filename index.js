@@ -54,8 +54,8 @@ let stageParameters = {
       type: grossCell,
       number: 40,
     },
-    { type: grossPredator, number: 1},
-    { type: yellowPredator, number: 1 }
+    { type: grossPredator, number: 5},
+    { type: yellowPredator, number: 1}, 
   ],
   dynamicElementsArray: [],
   staticStage: [],
@@ -67,7 +67,7 @@ let stageParameters = {
 
 let simulationParameters = {
   simulationStepsNumber: 1000,
-  timePerStep: 500,
+  timePerStep: 100,
   wideDimension: 800,
   heightDimension: 800,
   squareSide: 20,
