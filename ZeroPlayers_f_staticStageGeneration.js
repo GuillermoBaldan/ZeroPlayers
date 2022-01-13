@@ -41,10 +41,14 @@ function random(stageParameters, simulationParameters){
   function circularIsland(stageParameters, simulationParameters){
   let staticStageAux = [];
   let row =[];
-  let center_x = 20;
-  let center_y = 20;
+  let center_x = Math.floor(
+    (simulationParameters.wideDimension / simulationParameters.squareSide ) / 2
+  );
+  let center_y = Math.floor(
+    (simulationParameters.heightDimension / simulationParameters.squareSide  ) / 2
+  );
   let origin = [center_x,center_y]
-  let radious = 12;
+  let radious = 9;
   let radio = radious + 1;
   let a;
   let b;
@@ -52,6 +56,7 @@ function random(stageParameters, simulationParameters){
   let y;
   let by;
   let array = [];
+  console.log(`origin: ${origin}`);
   //Primero pintamos todo de azul
   for (
     b = 0;
@@ -90,8 +95,12 @@ function random(stageParameters, simulationParameters){
       array.push([x + origin[0],by + origin[1]])
     }
   }
+console.log('array')
+console.log(array)
+console.log(stageParameters.staticStage)
 
   array.forEach(item =>{
+    console.log(`${item[0]} ${item[1]}`)
     stageParameters.staticStage[item[1]][item[0]] = "brown"
   })
 

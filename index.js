@@ -52,24 +52,24 @@ let stageParameters = {
   livingBeingsCollection: [
     {
       type: grossCell,
-      number: 40,
+      number: 5,
     },
     { type: grossPredator, number: 5},
-    { type: yellowPredator, number: 1}, 
+    { type: yellowPredator, number: 5}, 
   ],
   dynamicElementsArray: [],
   staticStage: [],
   matrix: [],
   freePlacesArray: [],
-  universeEnergy: 50000,
+  universeEnergy: 500000,
   generationStageAlgorithm: circularIsland
 };
 
 let simulationParameters = {
   simulationStepsNumber: 1000,
   timePerStep: 100,
-  wideDimension: 800,
-  heightDimension: 800,
+  wideDimension: 400,
+  heightDimension: 400,
   squareSide: 20,
   lienzo: lienzo,
   ctx: ctx,

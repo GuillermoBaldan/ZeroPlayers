@@ -30,7 +30,7 @@ class grossPredator {
     };
     this.preyClasses = [grossCell];
     this.reproductionRadio = 1;
-    this.reproductionPeriod = 4;
+    this.reproductionPeriod = 14;
     this.cyclesToReproduction = Math.round(Math.random()*this.reproductionPeriod)
     this.vitalFunctions = {
       death: true,
@@ -70,7 +70,7 @@ class yellowPredator {
     };
     this.preyClasses = [grossPredator];
     this.reproductionRadio = 1;
-    this.reproductionPeriod = 2;
+    this.reproductionPeriod = 4;
     this.cyclesToReproduction = Math.round(Math.random()*this.reproductionPeriod)
     this.vitalFunctions = {
       death: true,
@@ -102,7 +102,7 @@ class grossCell {
     this.energyConsumption = 1;
     this.behaviourRules = { forbiddenPositions: ["water","gross","yellow"] };
     this.preyClasses = [];
-    this.reproductionRadio = 5;
+    this.reproductionRadio = 1;
     this.reproductionPeriod = 1;
     this.cyclesToReproduction = Math.round(Math.random()*this.reproductionPeriod)
     this.vitalFunctions = {
