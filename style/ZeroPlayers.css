@@ -40,7 +40,6 @@ h1 {
 }
 
 .board-canvas {
-  display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
@@ -89,6 +88,7 @@ h1 {
 }
 
 .container {
+  display: grid;
   margin: 0;
   position: absolute;
   top: 50%;
