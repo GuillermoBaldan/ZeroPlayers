@@ -81,7 +81,7 @@ body {
     width: 100%;
   }
   .container {
-    width: 100%;
+    width: inherit;
     grid-gap: 1%;
     grid-template-areas:
     "title title"
