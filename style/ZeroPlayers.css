@@ -10,52 +10,19 @@
 
 body {
   background-color: lightgreen;
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
 }
 
-.title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/* .title {
+  grid-column: 1/2;
+  grid-row: 1/2;
+ 
+} */
 
-h1 {
-  margin-bottom: 5%;
-  font-size: 25px;
-}
 
-.board {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.board-btns-canvas {
-  display: block;
-  justify-content: center;
-  align-items: center;
-  background-color: blue;
-}
-
-.board-canvas {
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.btn-board {
-  margin-left: 6%;
-  margin-top: 0;
-  margin-bottom: 30%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  flex-direction: column;
-}
 .nes-btn {
   border-image-slice: 2;
   border-image-width: 2;
@@ -69,8 +36,7 @@ h1 {
   display: block;
   padding: 6px 8px;
   margin-bottom: 10%;
-  text-align: center;
-  vertical-align: middle;
+ 
   cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
       14 0,
     pointer;
@@ -82,16 +48,103 @@ h1 {
   background-color: #fff;
 }
 
-.nes-container {
-  width: inherit;
-  display: block;
-}
 
-.container {
-  display: grid;
+/* .container {
+  display: grid; 
   margin: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;  
+} */
+
+.container {
+  display: grid;
+  width:200px;
+  grid-gap: 5px;
+  grid-template-areas:
+  "title"
+  "lienzo"
+  "simulationCicles"
+  "progressBar"
+  "onesimulation"
+  "playButton"
+  "stopButton"
+  "killButton"
 }
+
+@media (max-width:500px){
+
+  body{
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+    grid-gap: 1%;
+    grid-template-areas:
+    "title title"
+    "lienzo lienzo"
+    "simulationCicles progressBar"
+    "onesimulation playButton"
+    "stopButton killButton"
+
+  }
+
+  .simulation-cicles {
+    position: relative;
+    padding: 0.5rem 1rem;
+    border-color: black;
+    border-style: solid;
+    border-width: 4px;
+    width: 100%;
+  }
+  .nes-progress {
+   
+    width: 81%;
+    
+}
+canvas {
+  grid-area: lienzo;
+  width: 90%;
+}
+}
+
+h1 {
+  grid-area: title;
+}
+
+canvas {
+  grid-area: lienzo;
+}
+
+.cicles{
+  grid-area: simulationCicles;
+  height: 25px;
+}
+
+#progressBar {
+  grid-area: progressBar;
+}
+
+#oneSimulationStep{
+  grid-area: onesimulation;
+}
+
+#playButton {
+  grid-area: playButton;
+} 
+
+#stopButton {
+  grid-area: stopButton;
+} 
+
+#killButton {
+  grid-area: killButton;
+} 
+
+button{
+  width: 200px;
+}
+
