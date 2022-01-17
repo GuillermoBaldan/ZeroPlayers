@@ -108,31 +108,7 @@ return stageParameters.staticStage;
   let array = [];
   console.log(`origin: ${origin}`);
   //Primero pintamos todo de azul
-  for (
-    b = 0;
-    b <
-    Math.floor(
-      simulationParameters.heightDimension / simulationParameters.squareSide
-    );
-    b++
-  ) {
-    row = [];
-    for (
-      a = 0;
-      a <
-      Math.floor(
-        simulationParameters.wideDimension / simulationParameters.squareSide
-      );
-      a++
-    ) {
-      row.push(
-      "blue"
-      );
-    }
-    staticStageAux.push(row);
-    
-  }
-  stageParameters.staticStage = staticStageAux;
+  stageParameters.staticStage = blueStage(simulationParameters);
 //Generamos el círculo
   for(x=-radio;x<radio;x++){
     if (x>=0){
@@ -261,6 +237,38 @@ return stageParameters.staticStage;
     stageParameters.staticStage = staticStageAux;
     return stageParameters.staticStage;
   }
+
+function blueStage(simulationParameters){
+  let b;
+  let a;
+  let staticStageAux = [];
+  let row = [];
+  for (
+    b = 0;
+    b <
+    Math.floor(
+      simulationParameters.heightDimension / simulationParameters.squareSide
+    );
+    b++
+  ) {
+    row = [];
+    for (
+      a = 0;
+      a <
+      Math.floor(
+        simulationParameters.wideDimension / simulationParameters.squareSide
+      );
+      a++
+    ) {
+      row.push(
+      "blue"
+      );
+    }
+    staticStageAux.push(row);
+    
+  }
+  return staticStageAux;
+}
   
 function staticStageGeneration(algorithm, stageParameters, simulationParameters){
     return algorithm(stageParameters, simulationParameters);
