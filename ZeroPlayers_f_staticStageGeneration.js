@@ -59,31 +59,7 @@ function continent(stageParameters, simulationParameters){
   let array = [];
   console.log(`origin: ${origin}`);
   //Primero pintamos todo de azul
-  for (
-    b = 0;
-    b <
-    Math.floor(
-      simulationParameters.heightDimension / simulationParameters.squareSide
-    );
-    b++
-  ) {
-    row = [];
-    for (
-      a = 0;
-      a <
-      Math.floor(
-        simulationParameters.wideDimension / simulationParameters.squareSide
-      );
-      a++
-    ) {
-      row.push(
-      "blue"
-      );
-    }
-    staticStageAux.push(row);
-    
-  }
-  stageParameters.staticStage = staticStageAux;
+ stageParameters.staticStage = blueStage(simulationParameters);
 
 return stageParameters.staticStage;
 }
