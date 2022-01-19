@@ -82,8 +82,7 @@ return stageParameters.staticStage;
   let y;
   let by;
   let array = [];
-  console.log(`origin: ${origin}`);
-  //Primero pintamos todo de azul
+   //Primero pintamos todo de azul
   stageParameters.staticStage = blueStage(simulationParameters);
 //Generamos el círculo
   for(x=-radio;x<radio;x++){
