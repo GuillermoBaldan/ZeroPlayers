@@ -291,14 +291,10 @@ function feeding(stageParameters){
   debug_EnergyBalance();
 }
 
-/* function feeding(stageParameters){
-  if (stageParameters.dynamicElementsArray.length > 0) {
-    stageParameters.dynamicElementsArray.forEach((item) => {
-   if item.type == "Predator"{
-     feeding(stageParameters);
-    });
-  }
-} */
+function hunterPathFinder(stageParameters){
+
+}
+
 
 export {
   totalFreedom,
