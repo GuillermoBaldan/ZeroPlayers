@@ -8,6 +8,7 @@ import { debug_, debug_EnergyBalance, debug_energyOfCells, debug_energyOfUnivers
 import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
 import {setInFreePosition, forbiddenPosition} from "./ZeroPlayers_f_checkValues.js"
+import { stageParameters } from "./index.js";
 
 function totalFreedom(dynamicItem_x, dynamicItem_y) {
   let buffer = randomSteps();
@@ -19,6 +20,14 @@ function totalFreedom(dynamicItem_x, dynamicItem_y) {
     dynamicItem_y = dynamicItem_y + buffer;
     return [dynamicItem_x, dynamicItem_y];
   }
+}
+
+function hunterMovement(dynamicItem_x, dynamicItem_y){
+ let path =  hunterPathFinder(dynamicItem_x, dynamicItem_y, stageParameters)[0];
+ console.log(`path = ${path}`);
+ let new_x = path[0];
+ let new_y = path[1];
+  return [new_x, new_y];
 }
 
 function left(dynamicItem_x, dynamicItem_y) {
@@ -271,10 +280,19 @@ function cellsLifeConsumption(stageParameters){
 function feeding(stageParameters){
   stageParameters.dynamicElementsArray.forEach((item) => {
     if (item.type == "predator"){
-    let preyCoordinates = preyDetection(item, stageParameters);
-    if (preyCoordinates != undefined) {
-      preySelectionAndRemove(item, preyCoordinates, stageParameters);
-    }}else if (item.type == "vegetable"){
+    /*   if (item.cognitiveFunctions){
+        hunterPathFinder(item, stageParameters);
+      } else {
+        let preyCoordinates = preyDetection(item, stageParameters);
+        if (preyCoordinates != undefined) {
+          preySelectionAndRemove(item, preyCoordinates, stageParameters);
+        }
+      } */
+      let preyCoordinates = preyDetection(item, stageParameters);
+        if (preyCoordinates != undefined) {
+          preySelectionAndRemove(item, preyCoordinates, stageParameters);
+        }
+    }else if (item.type == "vegetable"){
       let energyPortion = item.energyConsumption * 3;
       if (item.energy + energyPortion > item.maxEnergy){
         energy2Universe(item.energy + energyPortion - item.maxEnergy, stageParameters);
@@ -291,18 +309,22 @@ function feeding(stageParameters){
   debug_EnergyBalance();
 }
 
-function hunterPathFinder(self, stageParameters){
+function hunterPathFinder(dynamicItem_x, dynamicItem_y, stageParameters){
   let preyArray = [];
   let path2prey = [];
+  let finder = new PF.AStarFinder();
 //1. Locate the preys
   stageParameters.dynamicElementsArray.forEach((item) => {
-    if (typeof(item) == "grossCell"){
+     if ((item.constructor.name) == "grossCell"){
       preyArray.push(item)
+      console.log("Se mete en el if")
     }
   });
+  
+  console.log(`preyArray: ${preyArray}`);
 //2. Calculate the path to the preys
   preyArray.forEach((item) => {
-    path2prey.push(finder.findPath(self.x, self.y, item.x, item.y, gridConversion(stageParameters.matrix)));
+    path2prey.push(finder.findPath(dynamicItem_x, dynamicItem_y, item.x, item.y, gridConversion(stageParameters.matrix)));
   });
 
   return path2prey;
@@ -322,5 +344,7 @@ export {
   dynamicElementsGenerator,
   cellsEnergyConsumption,
   cellsLifeConsumption,
-  feeding
+  feeding,
+  hunterPathFinder,
+  hunterMovement  
 };

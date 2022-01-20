@@ -1,5 +1,5 @@
 import { simulationParameters } from "./index.js";
-import { totalFreedom } from "./ZeroPlayers_f_livingbeings.js";
+import { hunterMovement, totalFreedom } from "./ZeroPlayers_f_livingbeings.js";
 
 class grossPredator {
   constructor() {
@@ -17,7 +17,7 @@ class grossPredator {
     this.walkmode = "autonomous";
     this.trajectory_x = [1, 1, 1, 1, 1, 1, 1];
     this.trajectory_y = [0, 0, 0, 0, 0, 0, 0];
-    this.walk = totalFreedom;
+    this.walk = hunterMovement;
     this.life = 500;
     this.maxEnergy = 250;
     this.energyBorn = this.maxEnergy / 2;
