@@ -291,10 +291,22 @@ function feeding(stageParameters){
   debug_EnergyBalance();
 }
 
-function hunterPathFinder(stageParameters){
+function hunterPathFinder(self, stageParameters){
+  let preyArray = [];
+  let path2prey = [];
+//1. Locate the preys
+  stageParameters.dynamicElementsArray.forEach((item) => {
+    if (typeof(item) == "grossCell"){
+      preyArray.push(item)
+    }
+  });
+//2. Calculate the path to the preys
+  preyArray.forEach((item) => {
+    path2prey.push(finder.findPath(self.x, self.y, item.x, item.y, gridConversion(stageParameters.matrix)));
+  });
 
+  return path2prey;
 }
-
 
 export {
   totalFreedom,
