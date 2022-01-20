@@ -24,10 +24,17 @@ function totalFreedom(dynamicItem_x, dynamicItem_y) {
 }
 
 function hunterMovement(dynamicItem_x, dynamicItem_y){
- let path =  hunterPathFinder(dynamicItem_x, dynamicItem_y, stageParameters)[1];
- console.log(`path = ${path}`);
- let new_x = path[0];
- let new_y = path[1];
+ let new_x;
+ let new_y;
+ let path =  hunterPathFinder(dynamicItem_x, dynamicItem_y, stageParameters);
+ if (path!=undefined){
+ new_x = path[1][0];
+ new_y = path[1][1];
+ }else{
+   let randomCoordinate = totalFreedom(dynamicItem_x, dynamicItem_y);
+    new_x = randomCoordinate[0];
+    new_y = randomCoordinate[1];
+ }
   return [new_x, new_y];
 }
 
@@ -333,8 +340,11 @@ function hunterPathFinder(dynamicItem_x, dynamicItem_y, stageParameters){
     console.log(grid)
     path2prey.push(finder.findPath(dynamicItem_x, dynamicItem_y, item.x, item.y, grid));
   }); */
+  if (preyArray.length > 0){
   path2prey = finder.findPath(dynamicItem_x, dynamicItem_y,preyArray[0].x, preyArray[0].y, grid);
-
+  } else {
+    path2prey = undefined;
+  }
 
   return path2prey;
 }
