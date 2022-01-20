@@ -37,6 +37,10 @@ class grossPredator {
       reproduction: true,
       prey: true,
   }
+  this.cognitiveFunctions = {
+    see: true,
+    pathfinder: true,
+  }
     
   }
 }
@@ -76,7 +80,11 @@ class yellowPredator {
       death: true,
       reproduction: true,
       prey: true,
-  }
+      }
+    this.cognitiveFunctions = {
+      see: true,
+      pathfinder: true,
+    }
     
   }
 }
