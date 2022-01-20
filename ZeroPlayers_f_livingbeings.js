@@ -9,6 +9,7 @@ import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
 import {setInFreePosition, forbiddenPosition} from "./ZeroPlayers_f_checkValues.js"
 import { stageParameters } from "./index.js";
+import {gridConversion} from "./ZeroPlayers_f_pathfinder.js"
 
 function totalFreedom(dynamicItem_x, dynamicItem_y) {
   let buffer = randomSteps();
@@ -23,7 +24,7 @@ function totalFreedom(dynamicItem_x, dynamicItem_y) {
 }
 
 function hunterMovement(dynamicItem_x, dynamicItem_y){
- let path =  hunterPathFinder(dynamicItem_x, dynamicItem_y, stageParameters)[0];
+ let path =  hunterPathFinder(dynamicItem_x, dynamicItem_y, stageParameters)[1];
  console.log(`path = ${path}`);
  let new_x = path[0];
  let new_y = path[1];
@@ -313,19 +314,27 @@ function hunterPathFinder(dynamicItem_x, dynamicItem_y, stageParameters){
   let preyArray = [];
   let path2prey = [];
   let finder = new PF.AStarFinder();
+  let grid = new PF.Grid(gridConversion(stageParameters.matrix))
 //1. Locate the preys
   stageParameters.dynamicElementsArray.forEach((item) => {
      if ((item.constructor.name) == "grossCell"){
       preyArray.push(item)
-      console.log("Se mete en el if")
     }
   });
   
-  console.log(`preyArray: ${preyArray}`);
+  console.log("preyArray");
+  console.log(preyArray);
 //2. Calculate the path to the preys
-  preyArray.forEach((item) => {
-    path2prey.push(finder.findPath(dynamicItem_x, dynamicItem_y, item.x, item.y, gridConversion(stageParameters.matrix)));
-  });
+/*   preyArray.forEach((item) => {
+    console.log(`dynamicItem_x: ${dynamicItem_x}`);
+    console.log(`dynamicItem_y: ${dynamicItem_y}`);
+    console.log(`item.x: ${item.x}`);
+    console.log(`item.y: ${item.y}`);
+    console.log(grid)
+    path2prey.push(finder.findPath(dynamicItem_x, dynamicItem_y, item.x, item.y, grid));
+  }); */
+  path2prey = finder.findPath(dynamicItem_x, dynamicItem_y,preyArray[0].x, preyArray[0].y, grid);
+
 
   return path2prey;
 }

@@ -8,6 +8,7 @@ function gridConversion(matrix){
             }else{
                 row.push(0)
             }
+            
         }
         walkableGrid.push(row);
         row = [];
