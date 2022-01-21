@@ -115,8 +115,13 @@ class grossCell {
     this.cyclesToReproduction = Math.round(Math.random()*this.reproductionPeriod)
     this.vitalFunctions = {
       death: true,
-      reproduction: false,
+      reproduction: true,
       prey: false,
+      sense: true,
+  };
+  this.memorySense = {
+    memory: [],
+    senseRadious: 4,
   }
 }
 }

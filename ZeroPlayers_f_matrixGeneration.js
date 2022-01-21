@@ -124,7 +124,7 @@ cellsEnergyConsumption(stageParameters);
 cellsLifeConsumption(stageParameters);
  //Death of cells
   cellDeath(stageParameters);
-  console.log(gridConversion(stageParameters.matrix));
+  
   return stageParameters.matrix;
 }
 
