@@ -23,10 +23,10 @@ function totalFreedom(dynamicItem_x, dynamicItem_y) {
   }
 }
 
-function hunterMovement(dynamicItem_x, dynamicItem_y){
+function hunterGroupMovement(dynamicItem_x, dynamicItem_y){
  let new_x;
  let new_y;
- let path =  hunterPathFinder(dynamicItem_x, dynamicItem_y, stageParameters);
+ let path =  hunterGroupPathFinder(dynamicItem_x, dynamicItem_y, stageParameters);
  if (path!=undefined){
  new_x = path[1][0];
  new_y = path[1][1];
@@ -317,7 +317,7 @@ function feeding(stageParameters){
   debug_EnergyBalance();
 }
 
-function hunterPathFinder(dynamicItem_x, dynamicItem_y, stageParameters){
+function hunterGroupPathFinder(dynamicItem_x, dynamicItem_y, stageParameters){
   let preyArray = [];
   let path2prey = [];
   let finder = new PF.AStarFinder();
@@ -364,6 +364,6 @@ export {
   cellsEnergyConsumption,
   cellsLifeConsumption,
   feeding,
-  hunterPathFinder,
-  hunterMovement  
+  hunterGroupPathFinder,
+  hunterGroupMovement  
 };
