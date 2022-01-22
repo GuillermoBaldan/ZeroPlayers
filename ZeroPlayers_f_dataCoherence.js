@@ -2,7 +2,7 @@ import { simulationParameters } from "./index.js";
 import {
   cloneArray2D,
   lastElement,
-} from "./zeroPlayers_f_arraysManipulation.js";
+} from "./ZeroPlayers_f_arraysManipulation.js";
 import { multiple } from "./ZeroPlayers_f_math.js";
 
 function checkDataCoherence(stageParameters, simulationParameters) {
