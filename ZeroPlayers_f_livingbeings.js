@@ -366,6 +366,14 @@ function circularSelection(origin_x,origin_y,radious){ //Selecciona todas las co
   return array;
 }
 
+function perception(stageParameters){
+  stageParameters.dynamicElementsArray.forEach((item) => {
+    if (item.constructor.name == "grossCell"){
+     item.memorySense.memory = circularSelection(item.x,item.y,item.memorySense.senseRadious);
+    }
+  });
+}
+
 export {
   totalFreedom,
   left,
@@ -383,5 +391,6 @@ export {
   feeding,
   hunterGroupPathFinder,
   hunterGroupMovement,
-  circularSelection  
+  circularSelection,
+  perception 
 };
