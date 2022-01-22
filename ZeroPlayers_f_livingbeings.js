@@ -8,6 +8,8 @@ import { debug_, debug_EnergyBalance, debug_energyOfCells, debug_energyOfUnivers
 import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
 import {setInFreePosition, forbiddenPosition} from "./ZeroPlayers_f_checkValues.js"
+import { stageParameters } from "./index.js";
+import {gridConversion} from "./ZeroPlayers_f_pathfinder.js"
 
 function totalFreedom(dynamicItem_x, dynamicItem_y) {
   let buffer = randomSteps();
@@ -19,6 +21,21 @@ function totalFreedom(dynamicItem_x, dynamicItem_y) {
     dynamicItem_y = dynamicItem_y + buffer;
     return [dynamicItem_x, dynamicItem_y];
   }
+}
+
+function hunterGroupMovement(dynamicItem_x, dynamicItem_y){
+ let new_x;
+ let new_y;
+ let path =  hunterGroupPathFinder(dynamicItem_x, dynamicItem_y, stageParameters);
+ if (path!=undefined){
+ new_x = path[1][0];
+ new_y = path[1][1];
+ }else{
+   let randomCoordinate = totalFreedom(dynamicItem_x, dynamicItem_y);
+    new_x = randomCoordinate[0];
+    new_y = randomCoordinate[1];
+ }
+  return [new_x, new_y];
 }
 
 function left(dynamicItem_x, dynamicItem_y) {
@@ -271,10 +288,19 @@ function cellsLifeConsumption(stageParameters){
 function feeding(stageParameters){
   stageParameters.dynamicElementsArray.forEach((item) => {
     if (item.type == "predator"){
-    let preyCoordinates = preyDetection(item, stageParameters);
-    if (preyCoordinates != undefined) {
-      preySelectionAndRemove(item, preyCoordinates, stageParameters);
-    }}else if (item.type == "vegetable"){
+    /*   if (item.cognitiveFunctions){
+        hunterPathFinder(item, stageParameters);
+      } else {
+        let preyCoordinates = preyDetection(item, stageParameters);
+        if (preyCoordinates != undefined) {
+          preySelectionAndRemove(item, preyCoordinates, stageParameters);
+        }
+      } */
+      let preyCoordinates = preyDetection(item, stageParameters);
+        if (preyCoordinates != undefined) {
+          preySelectionAndRemove(item, preyCoordinates, stageParameters);
+        }
+    }else if (item.type == "vegetable"){
       let energyPortion = item.energyConsumption * 3;
       if (item.energy + energyPortion > item.maxEnergy){
         energy2Universe(item.energy + energyPortion - item.maxEnergy, stageParameters);
@@ -291,14 +317,37 @@ function feeding(stageParameters){
   debug_EnergyBalance();
 }
 
-/* function feeding(stageParameters){
-  if (stageParameters.dynamicElementsArray.length > 0) {
-    stageParameters.dynamicElementsArray.forEach((item) => {
-   if item.type == "Predator"{
-     feeding(stageParameters);
-    });
+function hunterGroupPathFinder(dynamicItem_x, dynamicItem_y, stageParameters){
+  let preyArray = [];
+  let path2prey = [];
+  let finder = new PF.AStarFinder();
+  let grid = new PF.Grid(gridConversion(stageParameters.matrix))
+//1. Locate the preys
+  stageParameters.dynamicElementsArray.forEach((item) => {
+     if ((item.constructor.name) == "grossCell"){
+      preyArray.push(item)
+    }
+  });
+  
+  console.log("preyArray");
+  console.log(preyArray);
+//2. Calculate the path to the preys
+/*   preyArray.forEach((item) => {
+    console.log(`dynamicItem_x: ${dynamicItem_x}`);
+    console.log(`dynamicItem_y: ${dynamicItem_y}`);
+    console.log(`item.x: ${item.x}`);
+    console.log(`item.y: ${item.y}`);
+    console.log(grid)
+    path2prey.push(finder.findPath(dynamicItem_x, dynamicItem_y, item.x, item.y, grid));
+  }); */
+  if (preyArray.length > 0){
+  path2prey = finder.findPath(dynamicItem_x, dynamicItem_y,preyArray[0].x, preyArray[0].y, grid);
+  } else {
+    path2prey = undefined;
   }
-} */
+
+  return path2prey;
+}
 
 export {
   totalFreedom,
@@ -314,5 +363,7 @@ export {
   dynamicElementsGenerator,
   cellsEnergyConsumption,
   cellsLifeConsumption,
-  feeding
+  feeding,
+  hunterGroupPathFinder,
+  hunterGroupMovement  
 };

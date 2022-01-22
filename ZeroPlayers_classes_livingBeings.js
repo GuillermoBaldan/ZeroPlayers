@@ -1,5 +1,5 @@
 import { simulationParameters } from "./index.js";
-import { totalFreedom } from "./ZeroPlayers_f_livingbeings.js";
+import { hunterGroupMovement, totalFreedom } from "./ZeroPlayers_f_livingbeings.js";
 
 class grossPredator {
   constructor() {
@@ -17,7 +17,7 @@ class grossPredator {
     this.walkmode = "autonomous";
     this.trajectory_x = [1, 1, 1, 1, 1, 1, 1];
     this.trajectory_y = [0, 0, 0, 0, 0, 0, 0];
-    this.walk = totalFreedom;
+    this.walk = hunterGroupMovement;
     this.life = 500;
     this.maxEnergy = 250;
     this.energyBorn = this.maxEnergy / 2;
@@ -36,6 +36,10 @@ class grossPredator {
       death: true,
       reproduction: true,
       prey: true,
+  }
+  this.cognitiveFunctions = {
+    see: true,
+    pathfinder: true,
   }
     
   }
@@ -76,7 +80,11 @@ class yellowPredator {
       death: true,
       reproduction: true,
       prey: true,
-  }
+      }
+    this.cognitiveFunctions = {
+      see: true,
+      pathfinder: true,
+    }
     
   }
 }
@@ -109,6 +117,11 @@ class grossCell {
       death: true,
       reproduction: true,
       prey: false,
+      sense: true,
+  };
+  this.memorySense = {
+    memory: [],
+    senseRadious: 4,
   }
 }
 }

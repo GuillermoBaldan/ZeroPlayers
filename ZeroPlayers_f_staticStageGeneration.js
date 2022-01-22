@@ -38,7 +38,8 @@ function random(stageParameters, simulationParameters){
   
     return staticStageAux;
   }
-  function circularIsland(stageParameters, simulationParameters){
+
+function continent(stageParameters, simulationParameters){
   let staticStageAux = [];
   let row =[];
   let center_x = Math.floor(
@@ -58,31 +59,31 @@ function random(stageParameters, simulationParameters){
   let array = [];
   console.log(`origin: ${origin}`);
   //Primero pintamos todo de azul
-  for (
-    b = 0;
-    b <
-    Math.floor(
-      simulationParameters.heightDimension / simulationParameters.squareSide
-    );
-    b++
-  ) {
-    row = [];
-    for (
-      a = 0;
-      a <
-      Math.floor(
-        simulationParameters.wideDimension / simulationParameters.squareSide
-      );
-      a++
-    ) {
-      row.push(
-      "blue"
-      );
-    }
-    staticStageAux.push(row);
-    
-  }
-  stageParameters.staticStage = staticStageAux;
+ stageParameters.staticStage = blueStage(simulationParameters);
+
+return stageParameters.staticStage;
+}
+
+  function circularIsland(stageParameters, simulationParameters){
+  let staticStageAux = [];
+  let row =[];
+  let center_x = Math.floor(
+    (simulationParameters.wideDimension / simulationParameters.squareSide ) / 2
+  );
+  let center_y = Math.floor(
+    (simulationParameters.heightDimension / simulationParameters.squareSide  ) / 2
+  );
+  let origin = [center_x,center_y]
+  let radious = 9;
+  let radio = radious + 1;
+  let a;
+  let b;
+  let x;
+  let y;
+  let by;
+  let array = [];
+   //Primero pintamos todo de azul
+  stageParameters.staticStage = blueStage(simulationParameters);
 //Generamos el círculo
   for(x=-radio;x<radio;x++){
     if (x>=0){
@@ -95,12 +96,9 @@ function random(stageParameters, simulationParameters){
       array.push([x + origin[0],by + origin[1]])
     }
   }
-console.log('array')
-console.log(array)
-console.log(stageParameters.staticStage)
+
 
   array.forEach(item =>{
-    console.log(`${item[0]} ${item[1]}`)
     stageParameters.staticStage[item[1]][item[0]] = "brown"
   })
 
@@ -214,6 +212,38 @@ console.log(stageParameters.staticStage)
     stageParameters.staticStage = staticStageAux;
     return stageParameters.staticStage;
   }
+
+function blueStage(simulationParameters){
+  let b;
+  let a;
+  let staticStageAux = [];
+  let row = [];
+  for (
+    b = 0;
+    b <
+    Math.floor(
+      simulationParameters.heightDimension / simulationParameters.squareSide
+    );
+    b++
+  ) {
+    row = [];
+    for (
+      a = 0;
+      a <
+      Math.floor(
+        simulationParameters.wideDimension / simulationParameters.squareSide
+      );
+      a++
+    ) {
+      row.push(
+      "blue"
+      );
+    }
+    staticStageAux.push(row);
+    
+  }
+  return staticStageAux;
+}
   
 function staticStageGeneration(algorithm, stageParameters, simulationParameters){
     return algorithm(stageParameters, simulationParameters);
