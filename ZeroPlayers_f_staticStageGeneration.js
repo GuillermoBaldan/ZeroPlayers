@@ -1,5 +1,6 @@
 import {materialGeneration} from './ZeroPlayers_f_matrixGeneration.js';
 import { setInsideStage} from './ZeroPlayers_f_checkValues.js';
+import {circularSelection} from './ZeroPlayers_f_livingbeings.js';
 
 function random(stageParameters, simulationParameters){
     let a;
@@ -85,20 +86,10 @@ return stageParameters.staticStage;
    //Primero pintamos todo de azul
   stageParameters.staticStage = blueStage(simulationParameters);
 //Generamos el círculo
-  for(x=-radio;x<radio;x++){
-    if (x>=0){
-    y = Math.floor(radio*Math.sin(Math.acos((x+1)/radio)))
-    }
-    else{
-    y = Math.floor(radio*Math.sin(Math.acos((x)/radio)))
-    }
-    for(by=-y;by<y;by++){
-      array.push([x + origin[0],by + origin[1]])
-    }
-  }
+array = circularSelection(origin[0],origin[1],radious)
 
-
-  array.forEach(item =>{
+//Cambiamos el color de las celdas seleccionadas, las que están dentro del círculo
+array.forEach(item =>{
     stageParameters.staticStage[item[1]][item[0]] = "brown"
   })
 

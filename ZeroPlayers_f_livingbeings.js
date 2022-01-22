@@ -349,6 +349,23 @@ function hunterGroupPathFinder(dynamicItem_x, dynamicItem_y, stageParameters){
   return path2prey;
 }
 
+function circularSelection(origin_x,origin_y,radious){ //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado
+  let array = [];
+  let x,y,by;
+  for(x=-radious;x<radious;x++){
+    if (x>=0){
+    y = Math.floor(radious*Math.sin(Math.acos((x+1)/radious)))
+    }
+    else{
+    y = Math.floor(radious*Math.sin(Math.acos((x)/radious)))
+    }
+    for(by=-y;by<y;by++){
+      array.push([x + origin_x,by + origin_y])
+    }
+  }
+  return array;
+}
+
 export {
   totalFreedom,
   left,
@@ -365,5 +382,6 @@ export {
   cellsLifeConsumption,
   feeding,
   hunterGroupPathFinder,
-  hunterGroupMovement  
+  hunterGroupMovement,
+  circularSelection  
 };
