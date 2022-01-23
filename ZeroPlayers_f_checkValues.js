@@ -131,6 +131,46 @@ if (y < 0 || y > Math.floor(simulationParameters.heightDimension / simulationPar
 return flag;
 }
 
+function coordinates2son(father_item,son_item, simulationParameters){ //This function is used inside reproduction functions in order to assing the coordinates of the new item son.
+   do {
+    son_item.x =
+      father_item.x +
+      Math.round(
+        Math.random() * (father_item.reproductionRadio + father_item.reproductionRadio) -
+          father_item.reproductionRadio
+      );
+  } while (
+    !(
+      son_item.x >= 0 &&
+      son_item.x <=
+        Math.floor(
+          simulationParameters.wideDimension /
+            simulationParameters.squareSide
+        ) -
+          1
+    )
+  );
+  do {
+    son_item.y =
+      father_item.y +
+      Math.round(
+        Math.random() * (father_item.reproductionRadio + father_item.reproductionRadio) -
+          father_item.reproductionRadio
+      );
+  } while (
+    !(
+      son_item.y >= 0 &&
+      son_item.y <=
+        Math.floor(
+          simulationParameters.heightDimension /
+            simulationParameters.squareSide
+        ) -
+          1
+    )
+  );
+  return son_item;
+}
+
 export {
   checkSimpleCellsExistence,
   checkNumbersTypeCell,
@@ -139,5 +179,6 @@ export {
   occupyPositionv2,
   forbiddenPosition,
   setInFreePosition,
-  setInsideStage  
+  setInsideStage,
+  coordinates2son  
 };

@@ -2,14 +2,15 @@ import {
   energy2dynamicElements,
   energy2Universe,
 } from "./ZeroPlayers_f_universe.js";
-import { checkExistenceInMatrix } from "./ZeroPlayers_f_dataCoherence.js";
+import { checkExistenceInMatrix, coordinatesAssigment } from "./ZeroPlayers_f_dataCoherence.js";
 import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
 import { debug_, debug_EnergyBalance, debug_energyOfCells, debug_energyOfUniverse, debug_numberOfCells } from "./ZeroPlayers_f_debugging.js";
 import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
-import {setInFreePosition, forbiddenPosition} from "./ZeroPlayers_f_checkValues.js"
+import {setInFreePosition, forbiddenPosition, coordinates2son} from "./ZeroPlayers_f_checkValues.js"
 import { stageParameters } from "./index.js";
 import {gridConversion} from "./ZeroPlayers_f_pathfinder.js"
+
 
 function totalFreedom(dynamicItem_x, dynamicItem_y) {
   let buffer = randomSteps();
@@ -165,63 +166,31 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters) {
 function reproductionFunction(stageParameters, simulationParameters) {
   let sonsArray = [];
   let son;
-  stageParameters.dynamicElementsArray.forEach((item) => {
-  if(item.vitalFunctions.reproduction &&(item.cyclesToReproduction == item.reproductionPeriod)) {
-    
-  if (stageParameters.dynamicElementsArray.indexOf(item) != -1) {
-    if (item.reproductionRadio != undefined) {
-      son = new item.constructor();
-      // do{
-      do {
-        son.x =
-          item.x +
-          Math.round(
-            Math.random() * (son.reproductionRadio + son.reproductionRadio) -
-              son.reproductionRadio
-          );
-      } while (
-        !(
-          son.x >= 0 &&
-          son.x <=
-            Math.floor(
-              simulationParameters.wideDimension /
-                simulationParameters.squareSide
-            ) -
-              1
-        )
-      );
-      do {
-        son.y =
-          item.y +
-          Math.round(
-            Math.random() * (son.reproductionRadio + son.reproductionRadio) -
-              son.reproductionRadio
-          );
-      } while (
-        !(
-          son.y >= 0 &&
-          son.y <=
-            Math.floor(
-              simulationParameters.heightDimension /
-                simulationParameters.squareSide
-            ) -
-              1
-        )
-      );
+  let sonCoordinates;
 
-      if ((!checkExistenceInMatrix(son.x, son.y, stageParameters)) &&(item.energy > item.energyBorn)) {
+  stageParameters.dynamicElementsArray.forEach((father) => {
+  //1. Si se cumplen las condiciones de reproducción, se crea un nuevo elemento
+  if(father.vitalFunctions.reproduction &&(father.cyclesToReproduction == father.reproductionPeriod)) {
+    
+  if (stageParameters.dynamicElementsArray.indexOf(father) != -1) {
+    if (father.reproductionRadio != undefined) {
+      son = new father.constructor();
+      son = coordinates2son(father, son, simulationParameters); //Assignamos coordenadas al nuevo elemento generado que se encuentren en la
+         
+       //2. Una vez generado el hijo se trata de situarlo en la matrix
+      if ((!checkExistenceInMatrix(son.x, son.y, stageParameters)) &&(father.energy > father.energyBorn)) {
         //If there isn´t any object of dynamicElementsArray with this coordinates, 
         if (!(forbiddenPosition(son.x,son.y,stageParameters, stageParameters.matrix))) {
           //and if the position is not a forbidden position, then the object is created
         sonsArray.push(son);
         //Transfer of energy from Father to Son
-        item.energy -= item.energyBorn;
+        father.energy -= father.energyBorn;
         simulationParameters.globalCounter++;
       }
     }
-    sonsArray.forEach((item2) => {
-      // setColor(item, item2.color, stageParameters.matrix, simulationParameters);
-      stageParameters.matrix[item2.y][item2.x] = item2.color;
+    sonsArray.forEach((son_item) => {
+      // setColor(item, son_item.color, stageParameters.matrix, simulationParameters);
+      stageParameters.matrix[son_item.y][son_item.x] = son_item.color;
       //drawingMatrix(stageParameters, simulationParameters);
     });
     stageParameters.dynamicElementsArray =
@@ -230,9 +199,9 @@ function reproductionFunction(stageParameters, simulationParameters) {
     simulationParameters.auxCounter++;
        }
     }
-  item.cyclesToReproduction = 0;
+  father.cyclesToReproduction = 0;
   }else{
-    item.cyclesToReproduction++;
+    father.cyclesToReproduction++;
   }
 });
 }
@@ -314,7 +283,7 @@ function feeding(stageParameters){
     }
 
   }); 
-  debug_EnergyBalance();
+  
 }
 
 function hunterGroupPathFinder(dynamicItem_x, dynamicItem_y, stageParameters){
@@ -329,8 +298,7 @@ function hunterGroupPathFinder(dynamicItem_x, dynamicItem_y, stageParameters){
     }
   });
   
-  console.log("preyArray");
-  console.log(preyArray);
+
 //2. Calculate the path to the preys
 /*   preyArray.forEach((item) => {
     console.log(`dynamicItem_x: ${dynamicItem_x}`);
