@@ -1,4 +1,5 @@
 import { stageParameters } from "./index.js";
+import { checkExistenceInMatrix } from "./ZeroPlayers_f_dataCoherence.js";
 function checkSimpleCellsExistence(cadena, stageParameters) {
   let a;
   let b = 0;
@@ -171,6 +172,21 @@ function coordinates2son(father_item,son_item, simulationParameters){ //This fun
   return son_item;
 }
 
+function sonInMatrix(father, son, stageParameters, simulationParameters){
+  let sonsArray = [];
+  if ((!checkExistenceInMatrix(son.x, son.y, stageParameters)) &&(father.energy > father.energyBorn)) {
+    //If there isn´t any object of dynamicElementsArray with this coordinates, 
+    if (!(forbiddenPosition(son.x,son.y,stageParameters, stageParameters.matrix))) {
+      //and if the position is not a forbidden position, then the object is created
+    sonsArray.push(son);
+    //Transfer of energy from Father to Son
+    father.energy -= father.energyBorn;
+    simulationParameters.globalCounter++;
+  }
+}
+return sonsArray;
+}
+
 export {
   checkSimpleCellsExistence,
   checkNumbersTypeCell,
@@ -180,5 +196,6 @@ export {
   forbiddenPosition,
   setInFreePosition,
   setInsideStage,
-  coordinates2son  
+  coordinates2son,
+  sonInMatrix  
 };

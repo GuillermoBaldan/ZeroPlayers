@@ -7,7 +7,7 @@ import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
 import { debug_, debug_EnergyBalance, debug_energyOfCells, debug_energyOfUniverse, debug_numberOfCells } from "./ZeroPlayers_f_debugging.js";
 import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
-import {setInFreePosition, forbiddenPosition, coordinates2son} from "./ZeroPlayers_f_checkValues.js"
+import {setInFreePosition, forbiddenPosition, coordinates2son, sonInMatrix} from "./ZeroPlayers_f_checkValues.js"
 import { stageParameters } from "./index.js";
 import {gridConversion} from "./ZeroPlayers_f_pathfinder.js"
 
@@ -178,16 +178,8 @@ function reproductionFunction(stageParameters, simulationParameters) {
       son = coordinates2son(father, son, simulationParameters); //Assignamos coordenadas al nuevo elemento generado que se encuentren en la
          
        //2. Una vez generado el hijo se trata de situarlo en la matrix
-      if ((!checkExistenceInMatrix(son.x, son.y, stageParameters)) &&(father.energy > father.energyBorn)) {
-        //If there isn´t any object of dynamicElementsArray with this coordinates, 
-        if (!(forbiddenPosition(son.x,son.y,stageParameters, stageParameters.matrix))) {
-          //and if the position is not a forbidden position, then the object is created
-        sonsArray.push(son);
-        //Transfer of energy from Father to Son
-        father.energy -= father.energyBorn;
-        simulationParameters.globalCounter++;
-      }
-    }
+      sonsArray = sonInMatrix(father, son, stageParameters, simulationParameters);
+      
     sonsArray.forEach((son_item) => {
       // setColor(item, son_item.color, stageParameters.matrix, simulationParameters);
       stageParameters.matrix[son_item.y][son_item.x] = son_item.color;
