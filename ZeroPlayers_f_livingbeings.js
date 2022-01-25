@@ -164,40 +164,29 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters) {
 }
 
 function reproductionFunction(stageParameters, simulationParameters) {
-
-  let sonCoordinates;
-
   stageParameters.dynamicElementsArray.forEach((father) => {
-  fatherReproduction(father, stageParameters, simulationParameters);
- 
-});
+    if (father.vitalFunctions.reproduction){
+        fatherReproduction(father, stageParameters, simulationParameters);
+    }
+  });
 }
 
 function fatherReproduction(father, stageParameters, simulationParameters){
   let sonsArray = [];
   let son;
   //1. Si se cumplen las condiciones de reproducción, se crea un nuevo elemento
-  if(father.vitalFunctions.reproduction &&(father.cyclesToReproduction == father.reproductionPeriod)) {
-    
-    if (stageParameters.dynamicElementsArray.indexOf(father) != -1) {
-      if (father.reproductionRadio != undefined) {
+  if((father.cyclesToReproduction == father.reproductionPeriod)) {
         son = new father.constructor();
         son = coordinates2son(father, son, simulationParameters); //Assignamos coordenadas al nuevo elemento generado que se encuentren en la
-           
-         //2. Una vez generado el hijo se trata de situarlo en la matrix
+        //2. Una vez generado el hijo se trata de situarlo en la matrix
         sonsArray = sonInMatrix(father, son, stageParameters, simulationParameters);
-        
-      sonsArray.forEach((son_item) => {
-        // setColor(item, son_item.color, stageParameters.matrix, simulationParameters);
-        stageParameters.matrix[son_item.y][son_item.x] = son_item.color;
-        //drawingMatrix(stageParameters, simulationParameters);
+        sonsArray.forEach((son_item) => {
+      stageParameters.matrix[son_item.y][son_item.x] = son_item.color;
       });
       stageParameters.dynamicElementsArray =
         stageParameters.dynamicElementsArray.concat(sonsArray);
       sonsArray = [];
       simulationParameters.auxCounter++;
-         }
-      }
     father.cyclesToReproduction = 0;
     }else{
       father.cyclesToReproduction++;
