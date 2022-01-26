@@ -7,7 +7,7 @@ import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
 import { debug_, debug_EnergyBalance, debug_energyOfCells, debug_energyOfUniverse, debug_numberOfCells } from "./ZeroPlayers_f_debugging.js";
 import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
-import {setInFreePosition, forbiddenPosition, coordinates2son, sonInMatrix} from "./ZeroPlayers_f_checkValues.js"
+import {setInFreePosition, forbiddenPosition, coordinates2son, sonInMatrix, checkReproductionRules} from "./ZeroPlayers_f_checkValues.js"
 import { stageParameters } from "./index.js";
 import {gridConversion} from "./ZeroPlayers_f_pathfinder.js"
 
@@ -165,7 +165,7 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters) {
 
 function reproductionFunction(stageParameters, simulationParameters) {
   stageParameters.dynamicElementsArray.forEach((father) => {
-    if (father.vitalFunctions.reproduction && checkReprodutionRules(father)){
+    if (father.vitalFunctions.reproduction && checkReproductionRules(father, stageParameters)) {
         fatherReproduction(father, stageParameters, simulationParameters);
     }
   });
@@ -310,14 +310,18 @@ function circularSelection(origin_x,origin_y,radious){ //Selecciona todas las co
   for(x=-radious;x<radious;x++){
     if (x>=0){
     y = Math.floor(radious*Math.sin(Math.acos((x+1)/radious)))
-    }
-    else{
+   
+    } else{
     y = Math.floor(radious*Math.sin(Math.acos((x)/radious)))
     }
     for(by=-y;by<y;by++){
-      array.push([x + origin_x,by + origin_y])
-    }
+      if (((by + origin_y) >= 0) && ((by + origin_y) < (stageParameters.staticStage.length-1))){
+           array.push([x + origin_x,by + origin_y])
+           //console.log(`Se mete en el if`)
+          }  
+      }
   }
+ 
   return array;
 }
 
@@ -325,6 +329,7 @@ function perception(stageParameters){
   stageParameters.dynamicElementsArray.forEach((item) => {
     if (item.constructor.name == "grossCell"){
      item.memorySense.memory = circularSelection(item.x,item.y,item.memorySense.senseRadious);
+     
     }
   });
 }

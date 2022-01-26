@@ -117,6 +117,7 @@ class grossCell {
         [
           {
             type: "water",
+            color: "blue",
             number: 1,
           }
         ]     

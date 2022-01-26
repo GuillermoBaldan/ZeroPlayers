@@ -1,5 +1,6 @@
 import { stageParameters } from "./index.js";
 import { checkExistenceInMatrix } from "./ZeroPlayers_f_dataCoherence.js";
+import { circularSelection } from "./ZeroPlayers_f_livingbeings.js";
 function checkSimpleCellsExistence(cadena, stageParameters) {
   let a;
   let b = 0;
@@ -187,21 +188,28 @@ function sonInMatrix(father, son, stageParameters, simulationParameters){
 return sonsArray;
 }
 
-function checkReproductionRules(father){
+function checkReproductionRules(father, stageParameters){
   let counter = 0;
   let flag = false;
+ if (father.memorySense != undefined) {
  father.memorySense.memory.forEach((item) => {
-  father.ReproductionRules.blocks.forEach((item2) => {
-    if (item == item2.type) {
+  father.reproductionRules.blocks.forEach((item2) => {
+    //console.log(`item.x: ${item[0]} item.y: ${item[1]}`);
+    //console.log(stageParameters.matrix[item[1]][item[0]]);
+    
+    if (stageParameters.matrix[item[1]][item[0]] == item2.color) {
+      //console.log("Se mete en el if")
       counter++;
       if (counter == item2.number) {
         flag = true;
+        
       }
     }
   });
  });
-
-
+} else{
+  flag = true;
+}
   return flag;
 }
 
@@ -215,5 +223,6 @@ export {
   setInFreePosition,
   setInsideStage,
   coordinates2son,
-  sonInMatrix  
+  sonInMatrix,
+  checkReproductionRules
 };
