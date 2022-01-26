@@ -113,14 +113,13 @@ class grossCell {
     this.reproductionRadio = 1;
     this.reproductionPeriod = 1;
     this.reproductionRules = {
-      blocks: {
-        types: [
+      blocks: 
+        [
           {
             type: "water",
             number: 1,
           }
-        ]
-      }
+        ]     
     }
     this.cyclesToReproduction = Math.round(Math.random()*this.reproductionPeriod)
     this.vitalFunctions = {

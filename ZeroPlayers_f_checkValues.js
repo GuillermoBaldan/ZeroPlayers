@@ -187,6 +187,24 @@ function sonInMatrix(father, son, stageParameters, simulationParameters){
 return sonsArray;
 }
 
+function checkReproductionRules(father){
+  let counter = 0;
+  let flag = false;
+ father.memorySense.memory.forEach((item) => {
+  father.ReproductionRules.blocks.forEach((item2) => {
+    if (item == item2.type) {
+      counter++;
+      if (counter == item2.number) {
+        flag = true;
+      }
+    }
+  });
+ });
+
+
+  return flag;
+}
+
 export {
   checkSimpleCellsExistence,
   checkNumbersTypeCell,
