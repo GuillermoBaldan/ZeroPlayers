@@ -112,6 +112,16 @@ class grossCell {
     this.preyClasses = [];
     this.reproductionRadio = 1;
     this.reproductionPeriod = 1;
+    this.reproductionRules = {
+      blocks: {
+        types: [
+          {
+            type: "water",
+            number: 1,
+          }
+        ]
+      }
+    }
     this.cyclesToReproduction = Math.round(Math.random()*this.reproductionPeriod)
     this.vitalFunctions = {
       death: true,
