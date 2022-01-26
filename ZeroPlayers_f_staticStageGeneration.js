@@ -75,7 +75,7 @@ return stageParameters.staticStage;
     (simulationParameters.heightDimension / simulationParameters.squareSide  ) / 2
   );
   let origin = [center_x,center_y]
-  let radious = 9;
+  let radious = 18;
   let radio = radious + 1;
   let a;
   let b;
