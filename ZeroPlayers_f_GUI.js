@@ -19,7 +19,7 @@ function refreshGUI() {
   document.getElementById("progressBar").value =
     simulationParameters.singularSimulationStep;
   document.getElementById("progressBar").max =
-    simulationParameters.simulationStepsNumber;
+    simulationParameters.simulationStepsNumber - 1;
 }
 
 function clickButtonsDetection() {
