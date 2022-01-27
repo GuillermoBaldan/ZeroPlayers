@@ -40,6 +40,7 @@ function clickButtonsDetection() {
       simulationParameters.singularSimulationStep = 0;
       simulation(stageParameters, simulationParameters);
       document.getElementById("playButton").disabled = true;
+     
     },
     false
   );
@@ -66,11 +67,35 @@ function clickButtonsDetection() {
     },
     false
   );
+
+ //Acciones asociadas al modal
+  document.getElementById("playButton_Modal").addEventListener(
+    "click",
+    function () {
+      //Capture the value of the input duration
+      let stepsNumber = document.getElementById("numberSteps").value;
+      simulationParameters.simulationStepsNumber = stepsNumber;
+      
+
+        //Close modal
+        let closeModal = document.getElementsByClassName("close")[0];
+        closeModal.click();
+        document.getElementById("playButton").click();
+
+
+      /* document.getElementById("progressBar").style.display = "block";
+      simulationParameters.auxStep = 0;
+      simulationParameters.singularSimulationStep = 0;
+      simulation(stageParameters, simulationParameters);
+      document.getElementById("playButton").disabled = true; */
+    },
+    false
+  );
+
 }
 
 function simulationStopAndEnd() {
   let flag = false;
-
  if (
     simulationParameters.simulationStepsNumber -
       simulationParameters.singularSimulationStep -
