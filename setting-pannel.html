@@ -50,16 +50,28 @@
                                <input type="number" id="numberSteps" name="user_name">
                              </li>
                              <li>
-                               <label for="mail">Correo electrónico:</label>
-                               <input type="email" id="mail" name="user_mail">
+                               <label for="timePerStep">Time per Step (ms)</label>
+                               <input type="number" id="timePerStep">
                              </li>
                              <li>
-                               <label for="msg">Mensaje:</label>
-                               <textarea id="msg" name="user_message"></textarea>
-                               <br>
-                               <button id="playButton_Modal" class="nes-btn btn" type="button">Play Simulation</button>
-                             </li>
+                              <label for="universeSize">Size of Universe</label>
+                              <select id="universeSize">
+
+                                <option value=80 >Tiny 4x4</option>
+                                
+                                <option value=400 selected>Small 20x20</optionv>
+                               
+                                <option value=1000>Medium 50x50</option>
+
+                                <option value=2000>Big 100x100</option>
+
+                                <option value=4000>Huge 200x200</option>
+                               </select>
+                            </li>
+                             
                             </ul>
+                            <button id="playButton_Modal" class="nes-btn btn" type="button">Play Simulation</button>
+
                            </form>
                     </div>
                 </div>

@@ -68,8 +68,8 @@ let stageParameters = {
 let simulationParameters = {
   simulationStepsNumber: 30,
   timePerStep: 100,
-  wideDimension: 800,
-  heightDimension: 800,
+  wideDimension: 1000,
+  heightDimension: 1000,
   squareSide: 20,
   lienzo: lienzo,
   ctx: ctx,

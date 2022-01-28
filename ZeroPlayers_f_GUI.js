@@ -75,7 +75,14 @@ function clickButtonsDetection() {
       //Capture the value of the input duration
       let stepsNumber = document.getElementById("numberSteps").value;
       simulationParameters.simulationStepsNumber = stepsNumber;
-      
+      //Capture the value of the time per Step input
+      let timePerStep = document.getElementById("timePerStep").value;
+      simulationParameters.timePerStep = timePerStep;
+      //Capture the value of the wide dimension input
+      let wideDimension = document.getElementById("universeSize").value;
+      simulationParameters.wideDimension = wideDimension;
+      simulation.heightDimension = wideDimension;
+      console.log(simulationParameters.wideDimension);
 
         //Close modal
         let closeModal = document.getElementsByClassName("close")[0];
