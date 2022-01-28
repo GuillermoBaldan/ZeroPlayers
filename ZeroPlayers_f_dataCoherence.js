@@ -11,7 +11,7 @@ function checkDataCoherence(stageParameters, simulationParameters) {
   let flag = true;
     let numberOfTerrainUnits = countingUnitTypes("ground",stageParameters)
   let counter = 0;
-  //1. Comprobar que wideDimension es multiplo de squarSide
+  //1. Comprobar que wideDimension es multiplo de squareSide
   flagMultiple = multiple(simulationParameters);
   //2. Comprobar que el número de los elementos dinámicos están caven dentro del escenario
   //2.1 Contamos el número de elementos dinámicos.
@@ -21,6 +21,7 @@ function checkDataCoherence(stageParameters, simulationParameters) {
   //2.2 Comprobamos que el número de elementos dinámicos es igual o menor al número de celdas de terrreno del escenario
   if (counter > numberOfTerrainUnits) {
     flag = false;
+    console.log("Number of dynamic elements is greater than the number of terrain units");
     return flag;
   }
   //3. Comprobar que ningún elemento dinámico queda fuera del canvas
@@ -29,6 +30,8 @@ function checkDataCoherence(stageParameters, simulationParameters) {
     flag = true;
   } else {
     flag = false;
+    console.log("There are dynamic Elements outside the canvas");
+    console.log(`flagMultiple: ${flagMultiple}, flagCheckInside: ${flagCheckInside}`);
   }
   return flag;
 }

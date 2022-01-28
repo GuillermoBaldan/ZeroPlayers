@@ -11,7 +11,7 @@ import {
   killSimulation,
   oneSimulationStep,
 } from "./ZeroPlayers_f_simulation.js";
-import { simulation } from "./ZeroPlayers_f_level1.js";
+import { simulation, init } from "./ZeroPlayers_f_level1.js";
 
 function refreshGUI() {
   document.getElementById("simulationCicles").innerHTML =
@@ -83,12 +83,15 @@ function clickButtonsDetection() {
       simulationParameters.wideDimension = wideDimension;
       simulation.heightDimension = wideDimension;
       console.log(simulationParameters.wideDimension);
+      
 
         //Close modal
         let closeModal = document.getElementsByClassName("close")[0];
         closeModal.click();
         document.getElementById("playButton").click();
 
+        //Initialize the stage
+      //simulationParameters.init_output = init(stageParameters, simulationParameters);
 
       /* document.getElementById("progressBar").style.display = "block";
       simulationParameters.auxStep = 0;
