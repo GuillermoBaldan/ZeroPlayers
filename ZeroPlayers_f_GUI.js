@@ -79,19 +79,20 @@ function clickButtonsDetection() {
       let timePerStep = document.getElementById("timePerStep").value;
       simulationParameters.timePerStep = timePerStep;
       //Capture the value of the wide dimension input
-      let wideDimension = document.getElementById("universeSize").value;
+      /* let wideDimension = document.getElementById("universeSize").value;
       simulationParameters.wideDimension = wideDimension;
       simulation.heightDimension = wideDimension;
-      console.log(simulationParameters.wideDimension);
+      console.log(simulationParameters.wideDimension); */
       
-
+      simulationParameters.init_output = init(stageParameters, simulationParameters);
         //Close modal
         let closeModal = document.getElementsByClassName("close")[0];
         closeModal.click();
         document.getElementById("playButton").click();
 
         //Initialize the stage
-      //simulationParameters.init_output = init(stageParameters, simulationParameters);
+      stageParameters.livingBeingsCollection[0].number = 100;
+      simulationParameters.init_output = init(stageParameters, simulationParameters);
 
       /* document.getElementById("progressBar").style.display = "block";
       simulationParameters.auxStep = 0;
