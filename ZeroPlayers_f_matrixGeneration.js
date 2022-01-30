@@ -106,6 +106,9 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
  stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
  //Add dinamic Elements
  dynamicElementsGenerator(stageParameters)
+ stageParameters.dynamicElementsArray.forEach(item =>{
+  console.log(`f: matrixGeneratorInit: item.x: ${item.x} item.y: ${item.y} item.color: ${item.color}`)
+  })
  
   return stageParameters.matrix;
 }

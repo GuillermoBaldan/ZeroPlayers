@@ -1,4 +1,4 @@
-import { stageParameters } from "./index.js";
+import { simulationParameters, stageParameters } from "./index.js";
 import { checkExistenceInMatrix } from "./ZeroPlayers_f_dataCoherence.js";
 import { circularSelection } from "./ZeroPlayers_f_livingbeings.js";
 function checkSimpleCellsExistence(cadena, stageParameters) {
@@ -106,6 +106,7 @@ function occupyPositionv2(x, y, stageParamenters, matrix) {
 
 function forbiddenPosition(x, y, stageParameters, matrix) {
   let flag = false;
+  console.log(`x: ${x} y: ${y}`);
   stageParameters.legendForbiddenColors.forEach((item) => {
      if (matrix[y][x] == item) {
       flag = true;
@@ -116,10 +117,11 @@ function forbiddenPosition(x, y, stageParameters, matrix) {
 
 function setInFreePosition(item,stageParameters){//This function is used to initialize the stage
   while(forbiddenPosition(item.x,item.y,stageParameters,stageParameters.matrix)){
-    item.x = Math.floor(Math.random() * stageParameters.matrix[0].length);
-    item.y = Math.floor(Math.random() * stageParameters.matrix.length);
+    item.x = Math.floor(Math.random() * ((simulationParameters.wideDimension / simulationParameters.squareSide) - 1));
+    item.y = Math.floor(Math.random() *((simulationParameters.heightDimension / simulationParameters.squareSide) - 1));
   }
   stageParameters.matrix[item.y][item.x] = item.color;
+ 
 }
 
 function setInsideStage(x,y,stageParameters,simulationParameters){

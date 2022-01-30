@@ -8,7 +8,7 @@ import { debug_, debug_EnergyBalance, debug_energyOfCells, debug_energyOfUnivers
 import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
 import {setInFreePosition, forbiddenPosition, coordinates2son, sonInMatrix, checkReproductionRules} from "./ZeroPlayers_f_checkValues.js"
-import { stageParameters } from "./index.js";
+import { simulationParameters, stageParameters } from "./index.js";
 import {gridConversion} from "./ZeroPlayers_f_pathfinder.js"
 
 
@@ -220,6 +220,9 @@ function dynamicElementsGenerator(stageParameters) {
     stageParameters.dynamicElementsArray.push(new element.type)
     }});
    stageParameters.dynamicElementsArray.forEach((item) => {
+    item.x = Math.floor(Math.random() * ((simulationParameters.wideDimension / simulationParameters.squareSide) - 1));
+    item.y = Math.floor(Math.random() *((simulationParameters.heightDimension / simulationParameters.squareSide) - 1));
+    console.log(`${item.constructor.name} x: ${item.x} y: ${item.y}`);
      //Live or dynamic elements color are added to the matrix
      setInFreePosition(item,stageParameters);
      //Transfer of energy from universe to cells

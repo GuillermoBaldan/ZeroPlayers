@@ -73,6 +73,7 @@ function clickButtonsDetection() {
     "click",
     function () {
       //Capture the value of the input duration
+      console.log("Setting Pannel click-----------------------------")
       let stepsNumber = document.getElementById("numberSteps").value;
       simulationParameters.simulationStepsNumber = stepsNumber;
       //Capture the value of the time per Step input
@@ -82,10 +83,11 @@ function clickButtonsDetection() {
        let wideDimension = document.getElementById("universeSize").value;
       simulationParameters.wideDimension = wideDimension;
       simulationParameters.heightDimension = wideDimension;
-      console.log(simulationParameters.wideDimension);  
       stageParameters.livingBeingsCollection[0].number = 1;
+      stageParameters.dynamicElementsArray = [];
       simulationParameters.init_output = init(stageParameters, simulationParameters);
-        //Close modal
+       
+      //Close modal
         let closeModal = document.getElementsByClassName("close")[0];
         closeModal.click();
         document.getElementById("playButton").click();
