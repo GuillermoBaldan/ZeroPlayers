@@ -40,6 +40,39 @@ function random(stageParameters, simulationParameters){
     return staticStageAux;
   }
 
+function allTerrain(stageParameters, simulationParameters){
+  let b;
+  let a;
+  let staticStageAux = [];
+  let row = [];
+  for (
+    b = 0;
+    b <
+    Math.floor(
+      simulationParameters.heightDimension / simulationParameters.squareSide
+    );
+    b++
+  ) {
+    row = [];
+    for (
+      a = 0;
+      a <
+      Math.floor(
+        simulationParameters.wideDimension / simulationParameters.squareSide
+      );
+      a++
+    ) {
+      row.push(
+      "brown"
+      );
+    }
+    staticStageAux.push(row);
+    
+  }
+  return staticStageAux;
+}
+
+
 function continent(stageParameters, simulationParameters){
   let staticStageAux = [];
   let row =[];
@@ -241,4 +274,4 @@ function staticStageGeneration(algorithm, stageParameters, simulationParameters)
     return algorithm(stageParameters, simulationParameters);
 }
 
-export {random, islandGeneration, circularIsland, staticStageGeneration};
+export {random, islandGeneration, circularIsland, staticStageGeneration, allTerrain};
