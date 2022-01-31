@@ -12,6 +12,7 @@ import {
   oneSimulationStep,
 } from "./ZeroPlayers_f_simulation.js";
 import { simulation, init } from "./ZeroPlayers_f_level1.js";
+import { allTerrain, circularIsland } from "./ZeroPlayers_f_staticStageGeneration.js";
 
 function refreshGUI() {
   document.getElementById("simulationCicles").innerHTML =
@@ -83,7 +84,12 @@ function clickButtonsDetection() {
        let wideDimension = document.getElementById("universeSize").value;
       simulationParameters.wideDimension = wideDimension;
       simulationParameters.heightDimension = wideDimension;
-      stageParameters.livingBeingsCollection[0].number = 1;
+      //stageParameters.livingBeingsCollection[0].number = 1;
+      if (wideDimension == 80){
+        stageParameters.generationStageAlgorithm = allTerrain;
+      } else {
+        stageParameters.generationStageAlgorithm = circularIsland;
+      }
       stageParameters.dynamicElementsArray = [];
       simulationParameters.init_output = init(stageParameters, simulationParameters);
        
