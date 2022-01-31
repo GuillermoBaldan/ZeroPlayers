@@ -90,6 +90,8 @@ function clickButtonsDetection() {
       } else {
         stageParameters.generationStageAlgorithm = circularIsland;
       }
+      let borders = document.querySelector( 'input[name="borders"]:checked').value;
+      stageParameters.universeRules.frontier = borders;
       stageParameters.dynamicElementsArray = [];
       simulationParameters.init_output = init(stageParameters, simulationParameters);
        

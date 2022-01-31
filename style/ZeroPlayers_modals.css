@@ -55,3 +55,8 @@ transition: opacity 400ms ease-in;
     text-decoration: none;
     color: black
 }
+
+button a {
+	text-decoration: none;
+	color: black;
+}
