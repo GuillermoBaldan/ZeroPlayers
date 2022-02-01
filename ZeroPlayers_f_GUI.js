@@ -69,7 +69,7 @@ function clickButtonsDetection() {
     false
   );
 
- //Acciones asociadas al modal
+ //Acciones asociadas al modal setting Stage
   document.getElementById("playButton_Modal").addEventListener(
     "click",
     function () {
@@ -112,6 +112,21 @@ function clickButtonsDetection() {
     },
     false
   );
+
+  //Acciones asociadas al modal Editor Species
+ /*  document.getElementById("addSpeciesButton_Modal").addEventListener(
+    "click",
+    function () {
+      console.log("Se ha hecho click en el botón de añadir especie del Editor de Especie") 
+       
+      //Close modal
+        let closeSpeciesModal = document.getElementById("closeSpeciesModal");
+        closeSpeciesModal.click();
+        document.getElementById("playButton_Modal").click();
+      
+    },
+    false
+  ); */
 
 }
 

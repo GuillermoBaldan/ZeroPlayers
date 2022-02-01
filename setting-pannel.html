@@ -42,7 +42,7 @@
                 <div id="Modal" class="modalDialog">
                     <div>
                         <a href="#close" title="Close" class="close">X</a>
-                        <h2>Settings</h2>
+                        <h2>Settings Stage</h2>
                         <form action="/my-handling-form-page" method="post">
                             <ul>
                              <li>
@@ -91,7 +91,7 @@
                 </div>
                 <div id="speciesModal" class="modalDialog">
                   <div>
-                      <a href="#close" title="Close" class="close">X</a>
+                      <a id="closeSpeciesModal"href="#Modal" title="Close" class="close">X</a>
                       <h2>Species editor</h2>
                       <form action="/my-handling-form-page" method="post">
                           <ul>
@@ -131,7 +131,12 @@
                            </li>
                           
                           </ul>
-                          <button><a href="">Add species</a></button>
+                          <!--
+                          <button id="addSpeciesButton_Modal" class="nes-btn btn" type="button">Add Species</button>
+                          -->
+                          <button><a  class="button" href="#Modal" >Add Species</a></button>
+
+
 
                          </form>
                   </div>
