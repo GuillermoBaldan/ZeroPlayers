@@ -96,16 +96,22 @@
                       <form action="/my-handling-form-page" method="post">
                           <ul>
                            <li>
-                             <label for="numberSteps">Simulation Steps</label>
-                             <input type="number" id="numberSteps" name="user_name">
+                             <label for="speciesName">Name</label>
+                             <input type="text" id="speciesName" name="especies_name">
                            </li>
                            <li>
-                             <label for="timePerStep">Time per Step (ms)</label>
-                             <input type="number" id="timePerStep">
+                            <label for="speciesType">Type</label>
+                              <input type="radio" name="speciesType" value="vegetable">vegetable
+                          
+                              <input type="radio" name="speciesType" value="predator">predator
                            </li>
                            <li>
-                            <label for="universeSize">Size of Universe</label>
-                            <select id="universeSize">
+                             <label for="color">color</label>
+                             <input type="number" id="color">
+                           </li>
+                           <li>
+                            <label for="preys">Preys</label>
+                            <select id="preys">
 
                               <option value=80 >Tiny 4x4</option>
                               
@@ -118,23 +124,14 @@
                              </select>
                           </li>
                           <li>
-                            <p>
-
-                              Borders Type<br>
+                            <label for="movement">Movement</label>
+                              <input type="radio" name="movement" value="random">random
                           
-                              <input type="radio" name="borders" value="close">close borders<br>
+                              <input type="radio" name="movement" value="pathFinder">path finder
+                           </li>
                           
-                              <input type="radio" name="borders" value="adjacent ends">adjacent ends<br>
-                          
-                         
-                            </p>
-                          </li>
-                          <li>
-                            <button><a href="">Add species</a></button>
-                          </li>
-                           
                           </ul>
-                          <button id="playButton_Modal" class="nes-btn btn" type="button">Play Simulation</button>
+                          <button><a href="">Add species</a></button>
 
                          </form>
                   </div>
