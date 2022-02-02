@@ -136,4 +136,51 @@ class grossCell {
 }
 }
 
-export { grossPredator, grossCell, yellowPredator };
+class vegetable {
+  constructor() {
+    this.type = "vegetable"
+    this.color = "green";
+    this.walkmode = "static";
+    this.x = Math.floor(
+      Math.random() *
+        (simulationParameters.wideDimension / simulationParameters.squareSide)
+    ); //Math.random() * (max - min) + min;
+    this.y = Math.floor(
+      Math.random() *
+        (simulationParameters.heightDimension / simulationParameters.squareSide)
+    );
+    this.life =  400;
+    this.maxEnergy = 300;
+    this.energyBorn = this.maxEnergy / 2;
+    this.energy = this.energyBorn;
+    this.lifeConsumption = 1;
+    this.energyConsumption = 1;
+    this.behaviourRules = { forbiddenPositions: ["water","gross","yellow"] };
+    this.preyClasses = [];
+    this.reproductionRadio = 1;
+    this.reproductionPeriod = 1;
+    this.reproductionRules = {
+      blocks: 
+        [
+          {
+            type: "water",
+            color: "blue",
+            number: 1,
+          }
+        ]     
+    }
+    this.cyclesToReproduction = Math.round(Math.random()*this.reproductionPeriod)
+    this.vitalFunctions = {
+      death: true,
+      reproduction: true,
+      prey: false,
+      sense: true,
+  };
+  this.memorySense = {
+    memory: [],
+    senseRadious: 4,
+  }
+}
+}
+
+export { grossPredator, grossCell, yellowPredator, vegetable };
