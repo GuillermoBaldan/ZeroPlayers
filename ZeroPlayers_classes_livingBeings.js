@@ -186,7 +186,7 @@ class vegetable {
 class predator {
   constructor() {
     this.type = "predator"
-    this.color = "purple";
+    this.color = "red";
     this.x = Math.floor(
       Math.random() *
         (simulationParameters.wideDimension / simulationParameters.squareSide)

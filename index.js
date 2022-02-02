@@ -7,7 +7,7 @@ import {
   up,
 } from "./ZeroPlayers_f_livingbeings.js";
 import { generateStaticStage } from "./ZeroPlayers_f_matrixGeneration.js";
-import { grossCell, grossPredator, yellowPredator } from "./ZeroPlayers_classes_livingBeings.js";
+import { grossCell, grossPredator, yellowPredator, vegetable, predator } from "./ZeroPlayers_classes_livingBeings.js";
 import {
   continuosSimulationStep,
   killSimulation,
@@ -50,11 +50,11 @@ let stageParameters = {
   },
   legendForbiddenColors: ["blue", "yellow","green", "purple"],
   livingBeingsCollection: [
-    {
-      type: grossCell,
+    { 
+      type: vegetable,
       number: 1,
     },
-    { type: grossPredator, number: 1},
+    { type: predator, number: 1},
     { type: yellowPredator, number: 0}, 
   ],
   dynamicElementsArray: [],

@@ -14,6 +14,8 @@ import {
 import { simulation, init } from "./ZeroPlayers_f_level1.js";
 import { allTerrain, circularIsland } from "./ZeroPlayers_f_staticStageGeneration.js";
 
+let livingBeingsCollectionAux = [];
+
 function refreshGUI() {
   document.getElementById("simulationCicles").innerHTML =
     simulationParameters.historicalSimulationSteps;
@@ -100,15 +102,23 @@ function clickButtonsDetection() {
         closeModal.click();
         document.getElementById("playButton").click();
 
-        //Initialize the stage
-      
-      //simulationParameters.init_output = init(stageParameters, simulationParameters);
+       //Add this species button
+        let addThisSpeciesButton = document.getElementById("addThisSpecies");
+        console.log(addThisSpeciesButton);
+        let name = document.getElementById("speciesName").value;
+        let type =  document.querySelector( 'input[name="speciesType"]:checked').value;
+        let preys = document.getElementById("preys").value;
+        let movement =  document.querySelector( 'input[name="movement"]:checked').value;
+        let initialNumber = document.getElementById("initialNumber").value;
+        livingBeingsCollectionAux.push({
+          name: name,
+          type: type,
+          preys: preys,
+          movement: movement,
+          initialNumber: initialNumber,
+        });
+        console.log(livingBeingsCollectionAux);
 
-      /* document.getElementById("progressBar").style.display = "block";
-      simulationParameters.auxStep = 0;
-      simulationParameters.singularSimulationStep = 0;
-      simulation(stageParameters, simulationParameters);
-      document.getElementById("playButton").disabled = true; */
     },
     false
   );
