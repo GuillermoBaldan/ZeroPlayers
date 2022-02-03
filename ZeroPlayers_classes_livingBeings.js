@@ -275,4 +275,4 @@ class genericLivingBeing {
   }
 }
 
-export { grossPredator, grossCell, yellowPredator, vegetable, predator };
+export { grossPredator, grossCell, yellowPredator, vegetable, predator, genericLivingBeing };

@@ -10,7 +10,7 @@ import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
 import {setInFreePosition, forbiddenPosition, coordinates2son, sonInMatrix, checkReproductionRules} from "./ZeroPlayers_f_checkValues.js"
 import { simulationParameters, stageParameters } from "./index.js";
 import {gridConversion} from "./ZeroPlayers_f_pathfinder.js"
-
+import {genericLivingBeing} from "./ZeroPlayers_classes_livingbeings.js"
 
 function totalFreedom(dynamicItem_x, dynamicItem_y) {
   let buffer = randomSteps();
@@ -216,9 +216,12 @@ if (stageParameters.dynamicElementsArray[i].vitalFunctions.death){
 
 function dynamicElementsGenerator(stageParameters) {
   stageParameters.livingBeingsCollection.forEach((element) => {
-    for(let i = 0; i < element.number; i++){
-    stageParameters.dynamicElementsArray.push(new element.type)
-    }});
+    for(let i = 0; i < element.initialNumber; i++){
+    stageParameters.dynamicElementsArray.push(
+      new genericLivingBeing( element.name, element.type, element.color, element.preys, element.movement, element.initialNumber)
+    );
+    }
+  });
    stageParameters.dynamicElementsArray.forEach((item) => {
     item.x = Math.floor(Math.random() * ((simulationParameters.wideDimension / simulationParameters.squareSide) - 1));
     item.y = Math.floor(Math.random() *((simulationParameters.heightDimension / simulationParameters.squareSide) - 1));
@@ -229,6 +232,7 @@ function dynamicElementsGenerator(stageParameters) {
      energy2dynamicElements(item.energyBorn, stageParameters);
    });
 }
+
 
 function cellsEnergyConsumption(stageParameters){
   stageParameters.dynamicElementsArray.forEach((item) => {
@@ -356,4 +360,4 @@ export {
   hunterGroupMovement,
   circularSelection,
   perception 
-};
+}
