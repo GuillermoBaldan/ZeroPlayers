@@ -2,6 +2,10 @@ import { stageParameters, simulationParameters } from "./index.js";
 import { sum } from "./ZeroPlayers_f_arraysManipulation.js";
 import { simulation } from "./ZeroPlayers_f_level1.js";
 
+function debug(string){
+  console.log(string)
+}
+
 function debug_PrintDynamicsElementsCoordinates(Array) {
   Array.forEach((element) => {
     console.log(`(${element.x},${element.y})`);
@@ -125,6 +129,7 @@ let y;
 }
 
   export {
+  debug,
   debug_PrintDynamicsElementsCoordinates,
   debug_DetectCoordinatesRepeated,
   debug_,
