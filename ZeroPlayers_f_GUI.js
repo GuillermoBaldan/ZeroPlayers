@@ -102,26 +102,35 @@ function clickButtonsDetection() {
         closeModal.click();
         document.getElementById("playButton").click();
 
-       //Add this species button
-        let addThisSpeciesButton = document.getElementById("addThisSpecies");
-        console.log(addThisSpeciesButton);
-        let name = document.getElementById("speciesName").value;
-        let type =  document.querySelector( 'input[name="speciesType"]:checked').value;
-        let preys = document.getElementById("preys").value;
-        let movement =  document.querySelector( 'input[name="movement"]:checked').value;
-        let initialNumber = document.getElementById("initialNumber").value;
-        livingBeingsCollectionAux.push({
-          name: name,
-          type: type,
-          preys: preys,
-          movement: movement,
-          initialNumber: initialNumber,
-        });
-        console.log(livingBeingsCollectionAux);
-
+    
+   
+  
     },
     false
   );
+   //Add this species button
+  let addThisSpeciesButton = document.getElementById("addThisSpecies").addEventListener(
+    "click",
+    function () {
+  console.log(addThisSpeciesButton);
+  let name = document.getElementById("speciesName").value;
+  let type =  document.querySelector( 'input[name="speciesType"]:checked').value;
+  let color = document.getElementById("color").value;
+  let preys = document.getElementById("preys").value;
+  let movement =  document.querySelector( 'input[name="movement"]:checked').value;
+  let initialNumber = document.getElementById("initialNumber").value;
+  livingBeingsCollectionAux.push({
+    name: name,
+    type: type,
+    color: color,
+    preys: preys,
+    movement: movement,
+    initialNumber: initialNumber,
+  });
+  console.log(livingBeingsCollectionAux);
+},
+false
+);
 
   //Acciones asociadas al modal Editor Species
  /*  document.getElementById("addSpeciesButton_Modal").addEventListener(

@@ -50,11 +50,14 @@ let stageParameters = {
   },
   legendForbiddenColors: ["blue", "yellow","green", "purple"],
   livingBeingsCollection: [
-    { 
+    { name: "gross",
       type: vegetable,
+      color: "green",
+      preys: [],
+      movement: totalFreedom,
       number: 1,
     },
-    { type: predator, number: 1},
+    { type: predator, number: 0},
     { type: yellowPredator, number: 0}, 
   ],
   dynamicElementsArray: [],
