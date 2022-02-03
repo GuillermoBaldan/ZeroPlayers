@@ -47,7 +47,8 @@ import {
   debug_numberOfCells,
   debug_energyOfUniverse,
   debug_energyOfCells,
-  debug_EnergyBalance
+  debug_EnergyBalance,
+  debug_simulationCicle
 } from "./ZeroPlayers_f_debugging.js";
 import { simulation } from "./ZeroPlayers_f_level1.js";
 import{gridConversion} from "./ZeroPlayers_f_pathfinder.js"
@@ -116,6 +117,7 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
 
 
 function matrixGenerator(stageParameters, simulationParameters) {
+  debug_simulationCicle();
   // Inicializamos las variables
  //perceiving the environment
 perception(stageParameters);
@@ -131,7 +133,7 @@ cellsEnergyConsumption(stageParameters);
 cellsLifeConsumption(stageParameters);
  //Death of cells
   cellDeath(stageParameters);
-  
+  debug_numberOfCells();
   return stageParameters.matrix;
 }
 

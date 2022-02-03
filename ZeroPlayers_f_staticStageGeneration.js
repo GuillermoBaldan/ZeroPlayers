@@ -109,7 +109,7 @@ return stageParameters.staticStage;
   );
   let origin = [center_x,center_y]
   let radious = Math.floor((simulationParameters.wideDimension/simulationParameters.squareSide)/3)
-  console.log(`radious: ${radious}`)
+  //console.log(`radious: ${radious}`)
   let radio = radious + 1;
   let a;
   let b;
