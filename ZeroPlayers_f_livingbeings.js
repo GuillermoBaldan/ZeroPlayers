@@ -219,8 +219,11 @@ function dynamicElementsGenerator(stageParameters) {
     for(let i = 0; i < element.initialNumber; i++){
     stageParameters.dynamicElementsArray.push(
       new genericLivingBeing( element.name, element.type, element.color, element.preys, element.movement, element.initialNumber)
-    );
+      
+      );
+      console.log("Elemento creado")
     }
+    
   });
    stageParameters.dynamicElementsArray.forEach((item) => {
     item.x = Math.floor(Math.random() * ((simulationParameters.wideDimension / simulationParameters.squareSide) - 1));
