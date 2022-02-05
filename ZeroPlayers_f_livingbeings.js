@@ -215,8 +215,10 @@ if (stageParameters.dynamicElementsArray[i].vitalFunctions.death){
 }
 
 function dynamicElementsGenerator(stageParameters) {
+  console.log("dynamicElementsGenerator iniciate");
+  console.log(stageParameters.livingBeingsCollection)
   stageParameters.livingBeingsCollection.forEach((element) => {
-    for(let i = 0; i < element.initialNumber; i++){
+    for(let i = 0; i < element.number; i++){
     stageParameters.dynamicElementsArray.push(
       new genericLivingBeing( element.name, element.type, element.color, element.preys, element.movement, element.initialNumber)
       
