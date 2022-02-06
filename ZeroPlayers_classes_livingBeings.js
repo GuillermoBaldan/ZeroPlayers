@@ -246,9 +246,14 @@ class genericLivingBeing {
     this.life = 100;
     if (movement == "None") {
     this.walkmode = "static";
-    } else {
+    } else if (movement == "Random") {
       this.walkmode = "autonomous";
-    }
+      this.walk = totalFreedom;
+     } else if (movement == "path finder") {
+      this.walkmode = "autonomous";
+      this.walk = pathFinder;
+     }
+
     this.trajectory_x = [1, 1, 1, 1, 1, 1, 1];
     this.trajectory_y = [0, 0, 0, 0, 0, 0, 0];
     this.walk = totalFreedom;
@@ -262,7 +267,7 @@ class genericLivingBeing {
       forbiddenPositions: ["water", "simpleCell"],
       forbiddenColors: ["blue", "yellow", "purple"],
     };
-    this.preyClasses = [grossPredator];
+    this.preys = preys;
     this.reproductionRadio = 1;
     this.reproductionPeriod = 4;
     this.cyclesToReproduction = Math.round(Math.random()*this.reproductionPeriod)

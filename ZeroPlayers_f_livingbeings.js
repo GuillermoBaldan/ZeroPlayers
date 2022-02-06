@@ -101,6 +101,7 @@ function checkForbiddenPosition(
 }
 
 function preyDetection(item, stageParameters) {
+  console.log("Function preyDetection");
   //We assign the values of the coolindates cells
   let predator_x = item.x;
   let predator_y = item.y;
@@ -122,9 +123,11 @@ function preyDetection(item, stageParameters) {
   }
   //We collect all the prey elements in an array
   stageParameters.dynamicElementsArray.forEach((item2) => {
-    item.preyClasses.forEach((item3) => {
-      if (item2.constructor.name == item3.name) {
+    console.log(`item2.name = ${item2.name}`);
+    item.preys.forEach((item3) => {
+      if (item2.name == item3) {
         preyArray.push(item2);
+        console.log("Prey detected");
       }
     });
   });
