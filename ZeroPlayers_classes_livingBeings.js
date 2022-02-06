@@ -244,7 +244,11 @@ class genericLivingBeing {
         (simulationParameters.heightDimension / simulationParameters.squareSide)
     );
     this.life = 100;
-    this.walkmode = "autonomous";
+    if (movement == "None") {
+    this.walkmode = "static";
+    } else {
+      this.walkmode = "autonomous";
+    }
     this.trajectory_x = [1, 1, 1, 1, 1, 1, 1];
     this.trajectory_y = [0, 0, 0, 0, 0, 0, 0];
     this.walk = totalFreedom;

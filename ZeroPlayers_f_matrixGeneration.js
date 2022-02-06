@@ -150,6 +150,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
     xy_before[0] = item.x
     xy_before[1] = item.y 
     //1 Calculamos nueva posicióndo
+    console.log(`f: giveMovementToDynamicElements: walkmode: ${item.walkmode}`)
     if (!(item.walkmode == "static")) { //If dynamic Elements are not static they can recive movement
     do {
      
