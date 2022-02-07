@@ -15,7 +15,7 @@ import {
 } from "./ZeroPlayers_f_simulation.js";
 import { debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
 import { clickButtonsDetection } from "./ZeroPlayers_f_GUI.js";
-import {random, islandGeneration, circularIsland} from "./ZeroPlayers_f_staticStageGeneration.js"
+import {random, islandGeneration, circularIsland, allTerrain} from "./ZeroPlayers_f_staticStageGeneration.js"
 
 let staticStage;
 let lienzo;
@@ -51,18 +51,18 @@ let stageParameters = {
   legendForbiddenColors: ["blue", "yellow","green", "purple"],
   livingBeingsCollection: [
     { name: "gross",
-      type: vegetable,
+      type: "vegetable",
       color: "green",
       preys: [],
       movement: "None",
-      number: 100,
+      number: 8,
     },
     { name: "gross predator",
-    type: predator,
+    type: "predator",
     color: "yellow",
     preys: ["gross"],
     movement: "Random",
-    number: 10,
+    number: 1,
     },
     { type: yellowPredator, number: 0}, 
   ],
@@ -71,14 +71,14 @@ let stageParameters = {
   matrix: [],
   freePlacesArray: [],
   universeEnergy: 500000,
-  generationStageAlgorithm: circularIsland
+  generationStageAlgorithm: allTerrain
 };
 
 let simulationParameters = {
   simulationStepsNumber: 30,
   timePerStep: 250,
-  wideDimension: 1000,
-  heightDimension: 1000,
+  wideDimension: 80,
+  heightDimension: 80,
   squareSide: 20,
   lienzo: lienzo,
   ctx: ctx,

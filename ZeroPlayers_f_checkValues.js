@@ -70,10 +70,7 @@ function freePositionsArrayGenerator(simulationParameters, stageParameters) {
 
 function occupyPosition(coordinates, stageParameters, simulationParameters) {
   let flag = false;
-  console.log(
-    `coordinates_x: ${coordinates[0]} coordinates_y: ${coordinates[1]}`
-  );
-  stageParameters.legendForbiddenColors.forEach((item) => {
+   stageParameters.legendForbiddenColors.forEach((item) => {
     /* if (
       stageParameters.matrix[
         -coordinates[1] +
@@ -106,7 +103,6 @@ function occupyPositionv2(x, y, stageParamenters, matrix) {
 
 function forbiddenPosition(x, y, stageParameters, matrix) {
   let flag = false;
-  console.log(`x: ${x} y: ${y}`);
   stageParameters.legendForbiddenColors.forEach((item) => {
      if (matrix[y][x] == item) {
       flag = true;

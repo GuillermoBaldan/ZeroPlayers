@@ -4,7 +4,7 @@ import {
 } from "./ZeroPlayers_f_universe.js";
 import { checkExistenceInMatrix, coordinatesAssigment } from "./ZeroPlayers_f_dataCoherence.js";
 import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
-import { debug_, debug_EnergyBalance, debug_energyOfCells, debug_energyOfUniverse, debug_numberOfCells } from "./ZeroPlayers_f_debugging.js";
+import { debug,debug_, debug_EnergyBalance, debug_energyOfCells, debug_energyOfUniverse, debug_numberOfCells } from "./ZeroPlayers_f_debugging.js";
 import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
 import {setInFreePosition, forbiddenPosition, coordinates2son, sonInMatrix, checkReproductionRules} from "./ZeroPlayers_f_checkValues.js"
@@ -257,8 +257,10 @@ function cellsLifeConsumption(stageParameters){
 }
 
 function feeding(stageParameters){
+  debug("feeding function iniciate");
   stageParameters.dynamicElementsArray.forEach((item) => {
     if (item.type == "predator"){
+      debug("f: feeding - predator")
     /*   if (item.cognitiveFunctions){
         hunterPathFinder(item, stageParameters);
       } else {

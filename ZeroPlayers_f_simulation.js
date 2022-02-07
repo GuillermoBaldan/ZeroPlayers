@@ -25,6 +25,7 @@ import {
 import { refreshGUI, simulationStopAndEnd } from "./ZeroPlayers_f_GUI.js";
 
 function continuosSimulationStep(stageParameters, simulationParameters) {
+  debug_simulationCicle();
   // oneSimulationStep(simulationStepsNumber,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
   simulationParameters.historicalSimulationSteps += 1;
  
