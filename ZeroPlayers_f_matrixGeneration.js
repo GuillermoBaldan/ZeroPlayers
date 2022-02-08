@@ -108,6 +108,7 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
  //Add dinamic Elements
  console.log("matrixGenerationInit runs")
  dynamicElementsGenerator(stageParameters)
+ console.log("After dynamicElementsGenerator")
  stageParameters.dynamicElementsArray.forEach(item =>{
   console.log(`f: matrixGeneratorInit: item.x: ${item.x} item.y: ${item.y} item.color: ${item.color}`)
   })

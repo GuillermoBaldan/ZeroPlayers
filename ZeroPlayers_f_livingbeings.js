@@ -235,7 +235,7 @@ function dynamicElementsGenerator(stageParameters) {
     item.y = Math.floor(Math.random() *((simulationParameters.heightDimension / simulationParameters.squareSide) - 1));
     console.log(`${item.constructor.name} x: ${item.x} y: ${item.y}`);
      //Live or dynamic elements color are added to the matrix
-     setInFreePosition(item,stageParameters);
+     setInFreePosition(item,stageParameters, simulationParameters);
      //Transfer of energy from universe to cells
      energy2dynamicElements(item.energyBorn, stageParameters);
    });
