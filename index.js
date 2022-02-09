@@ -50,13 +50,6 @@ let stageParameters = {
   },
   legendForbiddenColors: ["blue", "yellow","green", "purple"],
   livingBeingsCollection: [
-    { name: "gross",
-      type: "vegetable",
-      color: "green",
-      preys: [],
-      movement: "None",
-      number: 15,
-    },
     { name: "gross predator",
     type: "predator",
     color: "yellow",
@@ -64,6 +57,14 @@ let stageParameters = {
     movement: "Random",
     number: 1,
     },
+    { name: "gross",
+      type: "vegetable",
+      color: "green",
+      preys: [],
+      movement: "None",
+      number: 0,
+    },
+    
     { type: yellowPredator, number: 0}, 
   ],
   dynamicElementsArray: [],
@@ -75,7 +76,7 @@ let stageParameters = {
 };
 
 let simulationParameters = {
-  simulationStepsNumber: 30,
+  simulationStepsNumber: 50,
   timePerStep: 250,
   wideDimension: 80,
   heightDimension: 80,
