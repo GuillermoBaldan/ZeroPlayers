@@ -101,7 +101,6 @@ function checkForbiddenPosition(
 }
 
 function preyDetection(item, stageParameters) {
-  console.log("Function preyDetection");
   //We assign the values of the coolindates cells
   let predator_x = item.x;
   let predator_y = item.y;
@@ -123,11 +122,9 @@ function preyDetection(item, stageParameters) {
   }
   //We collect all the prey elements in an array
   stageParameters.dynamicElementsArray.forEach((item2) => {
-    console.log(`item2.name = ${item2.name}`);
     item.preys.forEach((item3) => {
       if (item2.name == item3) {
         preyArray.push(item2);
-        console.log("Prey detected");
       }
     });
   });
@@ -241,6 +238,8 @@ function dynamicElementsGenerator(stageParameters) {
    });
    //Reordenación de elementos para evitar el visual flicker bug
    vegetablesFirst(stageParameters);
+   console.log(stageParameters.dynamicElementsArray);
+
    
 
 }
@@ -261,10 +260,8 @@ function cellsLifeConsumption(stageParameters){
 }
 
 function feeding(stageParameters){
-  debug("feeding function iniciate");
   stageParameters.dynamicElementsArray.forEach((item) => {
     if (item.type == "predator"){
-      debug("f: feeding - predator")
     /*   if (item.cognitiveFunctions){
         hunterPathFinder(item, stageParameters);
       } else {

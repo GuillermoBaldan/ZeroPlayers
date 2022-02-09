@@ -7,6 +7,7 @@ import {
 } from "./ZeroPlayers_f_arraysManipulation.js";
 import { movement } from "./ZeroPlayers_f_movement.js";
 import {
+  
   checkForbiddenPosition,
   preyDetection,
   preySelectionAndRemove,
@@ -120,6 +121,7 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
 
 function matrixGenerator(stageParameters, simulationParameters) {
   
+  vegetablesFirst(stageParameters);
   // Inicializamos las variables
  //perceiving the environment
 perception(stageParameters);

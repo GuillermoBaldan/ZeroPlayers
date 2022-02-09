@@ -62,7 +62,7 @@ let stageParameters = {
       color: "green",
       preys: [],
       movement: "None",
-      number: 0,
+      number: 15,
     },
     
     { type: yellowPredator, number: 0}, 
