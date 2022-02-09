@@ -3,7 +3,7 @@ import {
   energy2Universe,
 } from "./ZeroPlayers_f_universe.js";
 import { checkExistenceInMatrix, coordinatesAssigment } from "./ZeroPlayers_f_dataCoherence.js";
-import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
+import { setColor, vegetablesFirst } from "./ZeroPlayers_f_matrixGeneration.js";
 import { debug,debug_, debug_EnergyBalance, debug_energyOfCells, debug_energyOfUniverse, debug_numberOfCells } from "./ZeroPlayers_f_debugging.js";
 import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
@@ -239,6 +239,10 @@ function dynamicElementsGenerator(stageParameters) {
      //Transfer of energy from universe to cells
      energy2dynamicElements(item.energyBorn, stageParameters);
    });
+   //Reordenación de elementos para evitar el visual flicker bug
+   vegetablesFirst(stageParameters);
+   
+
 }
 
 

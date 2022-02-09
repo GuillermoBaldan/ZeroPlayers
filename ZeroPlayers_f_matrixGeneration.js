@@ -190,4 +190,18 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
   return matrix;
 }
 
-export { generateStaticStage, matrixGeneratorInit, matrixGenerator, setColor, materialGeneration };
+function vegetablesFirst(stageParameters){
+  let temp;
+ for(let i = 0; i<stageParameters.dynamicElementsArray.length;i++){
+  if(stageParameters.dynamicElementsArray[i].type == "vegetable"){
+    //
+    temp = stageParameters.dynamicElementsArray[i];
+    //delete stageParameters.dynamicElementsArray[i];
+    stageParameters.dynamicElementsArray.splice(i,1);
+    stageParameters.dynamicElementsArray.unshift(temp);
+  }
+ }
+}
+
+
+export { vegetablesFirst, generateStaticStage, matrixGeneratorInit, matrixGenerator, setColor, materialGeneration };
