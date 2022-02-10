@@ -112,7 +112,6 @@ function forbiddenPosition(x, y, stageParameters, matrix) {
 }
 
 function setInFreePosition(item,stageParameters, simulationParameters){//This function is used to initialize the stage
-  console.log("Se mete en setInFreePosition");
   while(forbiddenPosition(item.x,item.y,stageParameters,stageParameters.matrix)){
     item.x = Math.floor(Math.random() * ((simulationParameters.wideDimension / simulationParameters.squareSide) ));
     item.y = Math.floor(Math.random() *((simulationParameters.heightDimension / simulationParameters.squareSide) ));

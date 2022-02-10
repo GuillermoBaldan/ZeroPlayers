@@ -63,9 +63,8 @@ let stageParameters = {
       preys: [],
       movement: "None",
       number: 15,
-    },
+    }
     
-    { type: yellowPredator, number: 0}, 
   ],
   dynamicElementsArray: [],
   staticStage: [],

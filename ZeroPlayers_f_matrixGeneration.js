@@ -49,7 +49,8 @@ import {
   debug_energyOfUniverse,
   debug_energyOfCells,
   debug_EnergyBalance,
-  debug_simulationCicle
+  debug_simulationCicle,
+  debug_classesOfCells
 } from "./ZeroPlayers_f_debugging.js";
 import { simulation } from "./ZeroPlayers_f_level1.js";
 import{gridConversion} from "./ZeroPlayers_f_pathfinder.js"
@@ -107,12 +108,8 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
  stageParameters.dynamicElementsArray = [];
  stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
  //Add dinamic Elements
- console.log("matrixGenerationInit runs")
  dynamicElementsGenerator(stageParameters)
- console.log("After dynamicElementsGenerator")
- stageParameters.dynamicElementsArray.forEach(item =>{
-  console.log(`f: matrixGeneratorInit: item.x: ${item.x} item.y: ${item.y} item.color: ${item.color}`)
-  })
+
  
   return stageParameters.matrix;
 }
@@ -137,6 +134,8 @@ cellsEnergyConsumption(stageParameters);
 cellsLifeConsumption(stageParameters);
  //Death of cells
   cellDeath(stageParameters);
+  debug_numberOfCells();
+  debug_classesOfCells();
   
   return stageParameters.matrix;
 }

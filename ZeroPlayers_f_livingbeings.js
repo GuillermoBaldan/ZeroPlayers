@@ -176,7 +176,7 @@ function fatherReproduction(father, stageParameters, simulationParameters){
   let son;
   //1. Si se cumplen las condiciones de reproducción, se crea un nuevo elemento
   if((father.cyclesToReproduction == father.reproductionPeriod)) {
-        son = new father.constructor();
+        son = new genericLivingBeing( father.name, father.type, father.color, father.preys, father.movement, father.initialNumber)
         son = coordinates2son(father, son, simulationParameters); //Assignamos coordenadas al nuevo elemento generado que se encuentren en la
         //2. Una vez generado el hijo se trata de situarlo en la matrix
         sonsArray = sonInMatrix(father, son, stageParameters, simulationParameters);
@@ -215,22 +215,19 @@ if (stageParameters.dynamicElementsArray[i].vitalFunctions.death){
 }
 
 function dynamicElementsGenerator(stageParameters) {
-  console.log("dynamicElementsGenerator iniciate");
-  console.log(stageParameters.livingBeingsCollection)
   stageParameters.livingBeingsCollection.forEach((element) => {
     for(let i = 0; i < element.number; i++){
     stageParameters.dynamicElementsArray.push(
       new genericLivingBeing( element.name, element.type, element.color, element.preys, element.movement, element.initialNumber)
       
       );
-      console.log("Elemento creado")
+  
     }
     
   });
    stageParameters.dynamicElementsArray.forEach((item) => {
     item.x = Math.floor(Math.random() * ((simulationParameters.wideDimension / simulationParameters.squareSide) - 1));
     item.y = Math.floor(Math.random() *((simulationParameters.heightDimension / simulationParameters.squareSide) - 1));
-    console.log(`${item.constructor.name} x: ${item.x} y: ${item.y}`);
      //Live or dynamic elements color are added to the matrix
      setInFreePosition(item,stageParameters, simulationParameters);
      //Transfer of energy from universe to cells
@@ -238,7 +235,6 @@ function dynamicElementsGenerator(stageParameters) {
    });
    //Reordenación de elementos para evitar el visual flicker bug
    vegetablesFirst(stageParameters);
-   console.log(stageParameters.dynamicElementsArray);
 
    
 
