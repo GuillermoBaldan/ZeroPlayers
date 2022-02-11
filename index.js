@@ -54,7 +54,7 @@ let stageParameters = {
     type: "predator",
     color: "yellow",
     preys: ["gross"],
-    movement: "Random",
+    movement: "path finder",
     number: 1,
     },
     { name: "gross",
@@ -75,7 +75,7 @@ let stageParameters = {
 };
 
 let simulationParameters = {
-  simulationStepsNumber: 50,
+  simulationStepsNumber: 10,
   timePerStep: 250,
   wideDimension: 80,
   heightDimension: 80,

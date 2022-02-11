@@ -246,12 +246,14 @@ class genericLivingBeing {
     this.life = 100;
     if (movement == "None") {
     this.walkmode = "static";
+    this.walk = "None";
+    console.log(`Se ha registrado movement = None y por tanto walk = ${this.walk}`)
     } else if (movement == "Random") {
       this.walkmode = "autonomous";
       this.walk = totalFreedom;
      } else if (movement == "path finder") {
       this.walkmode = "autonomous";
-      this.walk = pathFinder;
+      this.walk = hunterGroupMovement;
      }
 
     this.trajectory_x = [1, 1, 1, 1, 1, 1, 1];

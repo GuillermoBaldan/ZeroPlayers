@@ -50,7 +50,8 @@ import {
   debug_energyOfCells,
   debug_EnergyBalance,
   debug_simulationCicle,
-  debug_classesOfCells
+  debug_classesOfCells,
+  debug
 } from "./ZeroPlayers_f_debugging.js";
 import { simulation } from "./ZeroPlayers_f_level1.js";
 import{gridConversion} from "./ZeroPlayers_f_pathfinder.js"
@@ -108,8 +109,11 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
  stageParameters.dynamicElementsArray = [];
  stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
  //Add dinamic Elements
+ stageParameters.dynamicElementsArray.forEach((item) => {
+  console.log(`Before dynamicElementsGenerator: item.name: ${item.name} item.walk: ${item.walk}`)});
  dynamicElementsGenerator(stageParameters)
-
+ stageParameters.dynamicElementsArray.forEach((item) => {
+  console.log(`After dynamicElementsGenerator: item.name: ${item.name} item.walk: ${item.walk}`)});
  
   return stageParameters.matrix;
 }
@@ -118,10 +122,13 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
 
 function matrixGenerator(stageParameters, simulationParameters) {
   
-  vegetablesFirst(stageParameters);
+  stageParameters.dynamicElementsArray.forEach((item) => {
+    console.log(`At the begginning of matrixGenerator: item.name: ${item.name} item.walk: ${item.walk}`)});
   // Inicializamos las variables
  //perceiving the environment
 perception(stageParameters);
+  debug(`After perception: element: ${lastElement(stageParameters.dynamicElementsArray).name} - walk: ${lastElement(stageParameters.dynamicElementsArray).movement}`);
+
   //Giving Movement to Dynamic Elements
  stageParameters.matrix = giveMovementToDynamicElements(stageParameters.matrix, stageParameters, simulationParameters);
  //Prey function of predator cells
@@ -134,9 +141,11 @@ cellsEnergyConsumption(stageParameters);
 cellsLifeConsumption(stageParameters);
  //Death of cells
   cellDeath(stageParameters);
-  debug_numberOfCells();
-  debug_classesOfCells();
-  
+
+  stageParameters.dynamicElementsArray.forEach((item) => {
+    console.log(`item.name: ${item.name} item.walk: ${item.walk}`)});
+    debug(`After last sentence: element: ${lastElement(stageParameters.dynamicElementsArray).name} - walk: ${lastElement(stageParameters.dynamicElementsArray).movement}`);
+
   return stageParameters.matrix;
 }
 

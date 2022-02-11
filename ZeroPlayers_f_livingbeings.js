@@ -5,7 +5,7 @@ import {
 import { checkExistenceInMatrix, coordinatesAssigment } from "./ZeroPlayers_f_dataCoherence.js";
 import { setColor, vegetablesFirst } from "./ZeroPlayers_f_matrixGeneration.js";
 import { debug,debug_, debug_EnergyBalance, debug_energyOfCells, debug_energyOfUniverse, debug_numberOfCells } from "./ZeroPlayers_f_debugging.js";
-import { removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
+import { lastElement, removeItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
 import {setInFreePosition, forbiddenPosition, coordinates2son, sonInMatrix, checkReproductionRules} from "./ZeroPlayers_f_checkValues.js"
 import { simulationParameters, stageParameters } from "./index.js";
@@ -25,6 +25,7 @@ function totalFreedom(dynamicItem_x, dynamicItem_y) {
 }
 
 function hunterGroupMovement(dynamicItem_x, dynamicItem_y){
+ debug("into hunterGroupMovement");
  let new_x;
  let new_y;
  let path =  hunterGroupPathFinder(dynamicItem_x, dynamicItem_y, stageParameters);
@@ -219,9 +220,7 @@ function dynamicElementsGenerator(stageParameters) {
     for(let i = 0; i < element.number; i++){
     stageParameters.dynamicElementsArray.push(
       new genericLivingBeing( element.name, element.type, element.color, element.preys, element.movement, element.initialNumber)
-      
       );
-  
     }
     
   });
@@ -232,10 +231,11 @@ function dynamicElementsGenerator(stageParameters) {
      setInFreePosition(item,stageParameters, simulationParameters);
      //Transfer of energy from universe to cells
      energy2dynamicElements(item.energyBorn, stageParameters);
+     
    });
    //Reordenación de elementos para evitar el visual flicker bug
-   vegetablesFirst(stageParameters);
-
+   stageParameters.dynamicElementsArray.forEach((item) => {
+    console.log(`Inside dynamicElementsGenerator: item.name: ${item.name} item.walk: ${item.walk}`)});
    
 
 }
