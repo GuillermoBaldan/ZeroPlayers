@@ -294,7 +294,8 @@ function hunterGroupPathFinder(dynamicItem_x, dynamicItem_y, stageParameters){
   let grid = new PF.Grid(gridConversion(stageParameters.matrix))
 //1. Locate the preys
   stageParameters.dynamicElementsArray.forEach((item) => {
-     if ((item.constructor.name) == "grossCell"){
+    
+     if ((item.name) == "gross"){
       preyArray.push(item)
     }
   });
