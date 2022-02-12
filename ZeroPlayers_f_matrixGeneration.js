@@ -122,12 +122,10 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
 
 function matrixGenerator(stageParameters, simulationParameters) {
   
-  stageParameters.dynamicElementsArray.forEach((item) => {
-    console.log(`At the begginning of matrixGenerator: item.name: ${item.name} item.walk: ${item.walk}`)});
+
   // Inicializamos las variables
  //perceiving the environment
 perception(stageParameters);
-  debug(`After perception: element: ${lastElement(stageParameters.dynamicElementsArray).name} - walk: ${lastElement(stageParameters.dynamicElementsArray).movement}`);
 
   //Giving Movement to Dynamic Elements
  stageParameters.matrix = giveMovementToDynamicElements(stageParameters.matrix, stageParameters, simulationParameters);
@@ -164,7 +162,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
     if (!(item.walkmode == "static")) { //If dynamic Elements are not static they can recive movement
     do {
      
-      newPosition = movement(item.x, item.y, item.walk,stageParameters,simulationParameters);
+      newPosition = movement(item, item.walk,stageParameters,simulationParameters);
     } while (
       !(
         newPosition[0] >= 0 &&

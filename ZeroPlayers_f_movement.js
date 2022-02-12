@@ -27,10 +27,10 @@ function movement(
 
     if (stageParameters.universeRules.movementType == "zigzag") {
       //zigzag case
-      aux = zigzag(item.x, item.y, f_movement);
+      aux = zigzag(item, f_movement);
     } else {
       //diagonal case
-      aux = diagonal(item.x, item.y, f_movement);
+      aux = diagonal(item, f_movement);
     }
     if (checkAdjacentEdges(aux, simulationParameters)) {
       //Comprobamos si hay bordes
@@ -40,11 +40,11 @@ function movement(
     //Caso de extremos adyacentes 'adjacent ends'
     if (stageParameters.universeRules.movementType == "zigzag") {
       //zigzag case
-      aux = zigzag(item.x, item.y, f_movement);
+      aux = zigzag(item, f_movement);
     } else {
       //diagonal case
 
-      aux = diagonal(item.x, item.y, f_movement);
+      aux = diagonal(item, f_movement);
     }
 
     aux = changeAdjacentEdges(aux, simulationParameters); //Comprobamos si hay bordes
@@ -74,11 +74,11 @@ function trajectoryMovement(item, stageParamenters, simulationParameters) {
   ][item.x] = item.color;
 }
 
-function zigzag(dynamicItem_x, dy, f_movement) {
-  return f_movement(item.x, item.y);
+function zigzag(item, f_movement) {
+  return f_movement(item);
 }
 
-function diagonal(item.y, item.y, f_movement) {
+function diagonal(item, f_movement) {
   let aux1;
   let aux2;
   aux1 = f_movement(item.x, item.y);
