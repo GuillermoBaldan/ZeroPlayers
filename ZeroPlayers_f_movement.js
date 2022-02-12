@@ -27,7 +27,7 @@ function movement(
 
     if (stageParameters.universeRules.movementType == "zigzag") {
       //zigzag case
-      aux = zigzag(item, f_movement);
+      aux = zigzag(item, f_movement, stageParameters);
     } else {
       //diagonal case
       aux = diagonal(item, f_movement);
@@ -74,8 +74,8 @@ function trajectoryMovement(item, stageParamenters, simulationParameters) {
   ][item.x] = item.color;
 }
 
-function zigzag(item, f_movement) {
-  return f_movement(item);
+function zigzag(item, f_movement, stageParameters) {
+  return f_movement(item,stageParameters);
 }
 
 function diagonal(item, f_movement) {
