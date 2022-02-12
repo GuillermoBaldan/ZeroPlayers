@@ -24,16 +24,16 @@ function totalFreedom(dynamicItem_x, dynamicItem_y) {
   }
 }
 
-function hunterGroupMovement(dynamicItem_x, dynamicItem_y){
+function hunterGroupMovement(hunter, stageParameters){
  debug("into hunterGroupMovement");
  let new_x;
  let new_y;
- let path =  hunterGroupPathFinder(dynamicItem_x, dynamicItem_y, stageParameters);
+ let path =  hunterGroupPathFinder(hunter, stageParameters);
  if (path!=undefined){
  new_x = path[1][0];
  new_y = path[1][1];
  }else{
-   let randomCoordinate = totalFreedom(dynamicItem_x, dynamicItem_y);
+   let randomCoordinate = totalFreedom(hunter.x, hunter.y);
     new_x = randomCoordinate[0];
     new_y = randomCoordinate[1];
  }
@@ -287,10 +287,12 @@ function feeding(stageParameters){
   
 }
 
-function hunterGroupPathFinder(dynamicItem_x, dynamicItem_y, stageParameters){
+function hunterGroupPathFinder(hunter, stageParameters){
   let preyArray = [];
   let path2prey = [];
   let finder = new PF.AStarFinder();
+  console.log("stageParameters")
+  console.log(stageParameters)
   let grid = new PF.Grid(gridConversion(stageParameters.matrix))
 //1. Locate the preys
   stageParameters.dynamicElementsArray.forEach((item) => {
@@ -311,7 +313,7 @@ function hunterGroupPathFinder(dynamicItem_x, dynamicItem_y, stageParameters){
     path2prey.push(finder.findPath(dynamicItem_x, dynamicItem_y, item.x, item.y, grid));
   }); */
   if (preyArray.length > 0){
-  path2prey = finder.findPath(dynamicItem_x, dynamicItem_y,preyArray[0].x, preyArray[0].y, grid);
+  path2prey = finder.findPath(hunter.x, hunter.y,preyArray[0].x, preyArray[0].y, grid);
   } else {
     path2prey = undefined;
   }

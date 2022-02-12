@@ -14,13 +14,12 @@ import { setColor } from "./ZeroPlayers_f_matrixGeneration.js";
 import { energy2Universe } from "./ZeroPlayers_f_universe.js";
 
 function movement(
-  dynamicItem_x,
-  dynamicItem_y,
+  item,
   f_movement,
   stageParameters,
   simulationParameters
 ) {
-  let beforeAux = [dynamicItem_x, dynamicItem_y];
+  let beforeAux = [item.x, item.y];
   let aux;
   let flag = false;
   if (stageParameters.universeRules.frontier == "close") {
@@ -28,10 +27,10 @@ function movement(
 
     if (stageParameters.universeRules.movementType == "zigzag") {
       //zigzag case
-      aux = zigzag(dynamicItem_x, dynamicItem_y, f_movement);
+      aux = zigzag(item.x, item.y, f_movement);
     } else {
       //diagonal case
-      aux = diagonal(dynamicItem_x, dynamicItem_y, f_movement);
+      aux = diagonal(item.x, item.y, f_movement);
     }
     if (checkAdjacentEdges(aux, simulationParameters)) {
       //Comprobamos si hay bordes
@@ -41,11 +40,11 @@ function movement(
     //Caso de extremos adyacentes 'adjacent ends'
     if (stageParameters.universeRules.movementType == "zigzag") {
       //zigzag case
-      aux = zigzag(dynamicItem_x, dynamicItem_y, f_movement);
+      aux = zigzag(item.x, item.y, f_movement);
     } else {
       //diagonal case
 
-      aux = diagonal(dynamicItem_x, dynamicItem_y, f_movement);
+      aux = diagonal(item.x, item.y, f_movement);
     }
 
     aux = changeAdjacentEdges(aux, simulationParameters); //Comprobamos si hay bordes
@@ -75,15 +74,15 @@ function trajectoryMovement(item, stageParamenters, simulationParameters) {
   ][item.x] = item.color;
 }
 
-function zigzag(dynamicItem_x, dynamicItem_y, f_movement) {
-  return f_movement(dynamicItem_x, dynamicItem_y);
+function zigzag(dynamicItem_x, dy, f_movement) {
+  return f_movement(item.x, item.y);
 }
 
-function diagonal(dynamicItem_x, dynamicItem_y, f_movement) {
+function diagonal(item.y, item.y, f_movement) {
   let aux1;
   let aux2;
-  aux1 = f_movement(dynamicItem_x, dynamicItem_y);
-  aux2 = f_movement(dynamicItem_x, dynamicItem_y);
+  aux1 = f_movement(item.x, item.y);
+  aux2 = f_movement(item.x, item.y);
   return [aux1[0] - aux2[0], aux1[1] - aux2[1]]; //Esto produce el movimiento exponencial
 }
 
