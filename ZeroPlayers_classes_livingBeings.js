@@ -258,7 +258,6 @@ class genericLivingBeing {
 
     this.trajectory_x = [1, 1, 1, 1, 1, 1, 1];
     this.trajectory_y = [0, 0, 0, 0, 0, 0, 0];
-    this.walk = totalFreedom;
     this.life = 300;
     this.maxEnergy = 250;
     this.energyBorn = this.maxEnergy / 2;
