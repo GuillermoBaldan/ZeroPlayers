@@ -12,15 +12,15 @@ import { simulationParameters, stageParameters } from "./index.js";
 import {gridConversion} from "./ZeroPlayers_f_pathfinder.js"
 import {genericLivingBeing} from "./ZeroPlayers_classes_livingbeings.js"
 
-function totalFreedom(dynamicItem_x, dynamicItem_y) {
+function totalFreedom(item, stageParameters) {
   let buffer = randomSteps();
-  dynamicItem_x = dynamicItem_x + buffer;
+  item.x = item.x + buffer;
   if (buffer != 0) {
-    return [dynamicItem_x, dynamicItem_y];
+    return [item.x, item.y];
   } else {
     buffer = randomSteps();
-    dynamicItem_y = dynamicItem_y + buffer;
-    return [dynamicItem_x, dynamicItem_y];
+    item.y = item.y + buffer;
+    return [item.x, item.y];
   }
 }
 
@@ -234,11 +234,7 @@ function dynamicElementsGenerator(stageParameters) {
      
    });
    //Reordenación de elementos para evitar el visual flicker bug
-   stageParameters.dynamicElementsArray.forEach((item) => {
-    console.log(`Inside dynamicElementsGenerator: item.name: ${item.name} item.walk: ${item.walk}`)});
-   
-
-}
+  }
 
 
 function cellsEnergyConsumption(stageParameters){

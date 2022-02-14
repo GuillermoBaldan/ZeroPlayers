@@ -112,9 +112,7 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
  stageParameters.dynamicElementsArray.forEach((item) => {
   console.log(`Before dynamicElementsGenerator: item.name: ${item.name} item.walk: ${item.walk}`)});
  dynamicElementsGenerator(stageParameters)
- stageParameters.dynamicElementsArray.forEach((item) => {
-  console.log(`After dynamicElementsGenerator: item.name: ${item.name} item.walk: ${item.walk}`)});
- 
+
   return stageParameters.matrix;
 }
 
@@ -122,15 +120,15 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
 
 function matrixGenerator(stageParameters, simulationParameters) {
   
-
   // Inicializamos las variables
  //perceiving the environment
 perception(stageParameters);
 
   //Giving Movement to Dynamic Elements
+ debug("Antes de dar movimento a los elementos dinámicos")
  stageParameters.matrix = giveMovementToDynamicElements(stageParameters.matrix, stageParameters, simulationParameters);
  //Prey function of predator cells
-feeding(stageParameters)
+ feeding(stageParameters)
  //Reproduction of cells
 reproductionFunction(stageParameters, simulationParameters);
  //Consumption of energy
@@ -153,6 +151,7 @@ function setColor(x, y, color, matrix, simulationParameters) {
 }
 
 function giveMovementToDynamicElements(matrix, stageParameters, simulationParameters) {
+  debug("Inside giveMovementToDynamicElements")
   let xy_before = [];
   let newPosition = [];
   stageParameters.dynamicElementsArray.forEach((item) => {
@@ -163,6 +162,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
     do {
      
       newPosition = movement(item, item.walk,stageParameters,simulationParameters);
+  
     } while (
       !(
         newPosition[0] >= 0 &&
@@ -173,6 +173,8 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
           simulationParameters.heightDimension / simulationParameters.squareSide 
       )
     );
+    debug("Después del primer while")
+    
      //1.2 Comprobamos que no hay agua u otra célula en la nueva posición
     if (
       !forbiddenPosition(

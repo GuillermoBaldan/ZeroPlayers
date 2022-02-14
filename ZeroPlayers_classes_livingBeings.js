@@ -247,7 +247,6 @@ class genericLivingBeing {
     if (movement == "None") {
     this.walkmode = "static";
     this.walk = "None";
-    console.log(`Se ha registrado movement = None y por tanto walk = ${this.walk}`)
     } else if (movement == "Random") {
       this.walkmode = "autonomous";
       this.walk = totalFreedom;
