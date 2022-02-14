@@ -109,8 +109,7 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
  stageParameters.dynamicElementsArray = [];
  stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
  //Add dinamic Elements
- stageParameters.dynamicElementsArray.forEach((item) => {
-  console.log(`Before dynamicElementsGenerator: item.name: ${item.name} item.walk: ${item.walk}`)});
+ 
  dynamicElementsGenerator(stageParameters)
 
   return stageParameters.matrix;
@@ -125,7 +124,6 @@ function matrixGenerator(stageParameters, simulationParameters) {
 perception(stageParameters);
 
   //Giving Movement to Dynamic Elements
- debug("Antes de dar movimento a los elementos dinámicos")
  stageParameters.matrix = giveMovementToDynamicElements(stageParameters.matrix, stageParameters, simulationParameters);
  //Prey function of predator cells
  feeding(stageParameters)
@@ -138,9 +136,7 @@ cellsLifeConsumption(stageParameters);
  //Death of cells
   cellDeath(stageParameters);
 
-  stageParameters.dynamicElementsArray.forEach((item) => {
-    console.log(`item.name: ${item.name} item.walk: ${item.walk}`)});
-    debug(`After last sentence: element: ${lastElement(stageParameters.dynamicElementsArray).name} - walk: ${lastElement(stageParameters.dynamicElementsArray).movement}`);
+  
 
   return stageParameters.matrix;
 }
@@ -151,7 +147,6 @@ function setColor(x, y, color, matrix, simulationParameters) {
 }
 
 function giveMovementToDynamicElements(matrix, stageParameters, simulationParameters) {
-  debug("Inside giveMovementToDynamicElements")
   let xy_before = [];
   let newPosition = [];
   stageParameters.dynamicElementsArray.forEach((item) => {
@@ -173,7 +168,6 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
           simulationParameters.heightDimension / simulationParameters.squareSide 
       )
     );
-    debug("Después del primer while")
     
      //1.2 Comprobamos que no hay agua u otra célula en la nueva posición
     if (
