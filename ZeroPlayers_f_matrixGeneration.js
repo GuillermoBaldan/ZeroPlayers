@@ -53,7 +53,8 @@ import {
   debug_classesOfCells,
   debug,
   debug_typesOfSpecies,
-  debug_matrix
+  debug_matrix,
+  debug_numberOfUnitsWithColor,
 } from "./ZeroPlayers_f_debugging.js";
 import { simulation } from "./ZeroPlayers_f_level1.js";
 import{gridConversion} from "./ZeroPlayers_f_pathfinder.js"
@@ -138,7 +139,7 @@ cellsLifeConsumption(stageParameters);
  //Death of cells
   cellDeath(stageParameters);
 debug_matrix();
-  
+console.log(`units of yellow: ${debug_numberOfUnitsWithColor("yellow")}`);
 
   return stageParameters.matrix;
 }
@@ -193,8 +194,6 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
        throw new Error("Error dibujando la matrix")
       }
     }
-  } else{
-    
   }
 
   });

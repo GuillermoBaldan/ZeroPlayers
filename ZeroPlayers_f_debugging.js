@@ -103,7 +103,7 @@ function debug_numberOfUnitsWithColor(color){
   let counter = 0;
   for(let i = 0; i < simulationParameters.wideDimension/simulationParameters.squareSide; i++){
     for(let j = 0; j < simulationParameters.heightDimension/simulationParameters.squareSide; j++){
-      if(stageParameters.staticStage[i][j] === color){
+      if(stageParameters.matrix[i][j] == color){
         counter++;
       }
     }
@@ -167,5 +167,6 @@ let y;
   debug_circle,
   debug_grid,
   debug_classesOfCells,
-  debug_typesOfSpecies
+  debug_typesOfSpecies,
+  debug_numberOfUnitsWithColor
 };
