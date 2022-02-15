@@ -24,6 +24,12 @@ function debug_numberOfCells() {
   );
 }
 
+function debug_typesOfSpecies(){
+  stageParameters.dynamicElementsArray.forEach(item => {
+    console.log(`${item.color} es ${item.name}`);
+  })
+}
+
 function debug_classesOfCells(){
   stageParameters.dynamicElementsArray.forEach(item => {
     console.log(`${item.color} es ${item.name}`);
@@ -148,5 +154,6 @@ let y;
   debug_EnergyBalance,
   debug_circle,
   debug_grid,
-  debug_classesOfCells
+  debug_classesOfCells,
+  debug_typesOfSpecies
 };
