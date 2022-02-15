@@ -51,7 +51,9 @@ import {
   debug_EnergyBalance,
   debug_simulationCicle,
   debug_classesOfCells,
-  debug
+  debug,
+  debug_typesOfSpecies,
+  debug_matrix
 } from "./ZeroPlayers_f_debugging.js";
 import { simulation } from "./ZeroPlayers_f_level1.js";
 import{gridConversion} from "./ZeroPlayers_f_pathfinder.js"
@@ -135,7 +137,7 @@ cellsEnergyConsumption(stageParameters);
 cellsLifeConsumption(stageParameters);
  //Death of cells
   cellDeath(stageParameters);
-
+debug_matrix();
   
 
   return stageParameters.matrix;
@@ -178,12 +180,18 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
         matrix
       )
     ) {//Actualizamos nueva posición
-  
+      if (item.x == xy_before[0] && item.y == xy_before[1]) {
+      console.log("Posible error en el dibujo de la matriz")
+      throw new Error("Posible error en el dibujo de la matrix")
+      }
       item.x = newPosition[0];
       item.y = newPosition[1];
       matrix[item.y][item.x] = item.color;
       matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
-     
+      if (matrix[item.y][item.x] == matrix[xy_before[1]][xy_before[0]]) {
+       console.log("Error dibujando la matrix")
+       throw new Error("Error dibujando la matrix")
+      }
     }
   } else{
     

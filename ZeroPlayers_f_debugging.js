@@ -99,6 +99,18 @@ function debug_matrix() {
   });
 }
 
+function debug_numberOfUnitsWithColor(color){
+  let counter = 0;
+  for(let i = 0; i < simulationParameters.wideDimension/simulationParameters.squareSide; i++){
+    for(let j = 0; j < simulationParameters.heightDimension/simulationParameters.squareSide; j++){
+      if(stageParameters.staticStage[i][j] === color){
+        counter++;
+      }
+    }
+  }
+  return counter;
+}
+
 function debug_circle() {
  //draw a circle using canvas tag
  /*  let canvas = document.getElementById("lienzo");
