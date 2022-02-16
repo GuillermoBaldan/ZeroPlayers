@@ -12,7 +12,7 @@ import { simulationParameters, stageParameters } from "./index.js";
 import {gridConversion} from "./ZeroPlayers_f_pathfinder.js"
 import {genericLivingBeing} from "./ZeroPlayers_classes_livingbeings.js"
 
-function totalFreedom(item, stageParameters) {
+function totalFreedom(item) {
   let buffer = randomSteps();
   item.x = item.x + buffer;
   if (buffer != 0) {
