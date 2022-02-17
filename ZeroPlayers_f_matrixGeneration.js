@@ -18,6 +18,7 @@ import {
   cellsLifeConsumption,
   feeding,
   perception,
+  totalFreedom
 } from "./ZeroPlayers_f_livingbeings.js";
 import {
   energy2Universe,
@@ -129,9 +130,9 @@ perception(stageParameters);
   //Giving Movement to Dynamic Elements
  stageParameters.matrix = giveMovementToDynamicElements(stageParameters.matrix, stageParameters, simulationParameters);
  //Prey function of predator cells
- feeding(stageParameters)
+ //feeding(stageParameters)
  //Reproduction of cells
-reproductionFunction(stageParameters, simulationParameters);
+//reproductionFunction(stageParameters, simulationParameters);
  //Consumption of energy
 cellsEnergyConsumption(stageParameters);
 //Consumption of life
@@ -152,28 +153,31 @@ function setColor(x, y, color, matrix, simulationParameters) {
 function giveMovementToDynamicElements(matrix, stageParameters, simulationParameters) {
   let xy_before = [];
   let newPosition = [];
+  let counter = 0;
   stageParameters.dynamicElementsArray.forEach((item) => {
-    xy_before[0] = item.x
-    xy_before[1] = item.y 
+/*     xy_before[0] = item.x
+    xy_before[1] = item.y  */
     //1 Calculamos nueva posicióndo
     if (!(item.walkmode == "static")) { //If dynamic Elements are not static they can recive movement
-    do {
-     
-      newPosition = movement(item, item.walk,stageParameters,simulationParameters);
+      xy_before[0] = item.x
+      xy_before[1] = item.y 
+      do {
+      newPosition = totalFreedom(item, stageParameters, simulationParameters);
   
-    } while (
-      !(
-        newPosition[0] >= 0 &&
-        newPosition[0] <
-          simulationParameters.wideDimension / simulationParameters.squareSide &&
-        newPosition[1] >= 0 &&
-        newPosition[1] <
-          simulationParameters.heightDimension / simulationParameters.squareSide 
-      )
-    );
+    console.log(`xy_before[0]: ${xy_before[0]}; item.x ${item.x}; newPosition[0]: ${newPosition[0]}`);
+    console.log(`xy_before[1]: ${xy_before[1]}; item.y ${item.y} newPosition[1]: ${newPosition[1]}`);
+      } while ((newPosition[0] > (simulationParameters.wideDimension/simulationParameters.squareSide -1)) || (newPosition[0] < 0) || (newPosition[1] > (simulationParameters.heightDimension/simulationParameters.squareSide - 1)) || (newPosition[1] < 0));
+   
+    
+    matrix[newPosition[1]][newPosition[0]] = item.color;
+    matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
+   item.x = newPosition[0];
+   item.y = newPosition[1];
+    
+    }
     
      //1.2 Comprobamos que no hay agua u otra célula en la nueva posición
-    if (
+   /*  if (
       !forbiddenPosition(
         newPosition[0],
         newPosition[1],
@@ -181,21 +185,17 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
         matrix
       )
     ) {//Actualizamos nueva posición
-      if (item.x == xy_before[0] && item.y == xy_before[1]) {
-      console.log("Posible error en el dibujo de la matriz")
-      throw new Error("Posible error en el dibujo de la matrix")
-      }
+      
       item.x = newPosition[0];
       item.y = newPosition[1];
       matrix[item.y][item.x] = item.color;
       matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
-      if (matrix[item.y][item.x] == matrix[xy_before[1]][xy_before[0]]) {
-       console.log("Error dibujando la matrix")
-       throw new Error("Error dibujando la matrix")
-      }
+    
     }
-  }
-
+  } */
+  //Actualizamos nueva posición
+      
+ 
   });
 
   return matrix;

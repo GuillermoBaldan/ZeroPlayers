@@ -62,7 +62,7 @@ let stageParameters = {
       color: "green",
       preys: [],
       movement: "None",
-      number: 15,
+      number: 0,
     }
     
   ],
