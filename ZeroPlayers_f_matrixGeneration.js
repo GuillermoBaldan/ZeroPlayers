@@ -162,14 +162,15 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
       xy_before[0] = item.x
       xy_before[1] = item.y 
       do {
-      newPosition = totalFreedom(item, stageParameters, simulationParameters);
-  
-    console.log(`xy_before[0]: ${xy_before[0]}; item.x ${item.x}; newPosition[0]: ${newPosition[0]}`);
-    console.log(`xy_before[1]: ${xy_before[1]}; item.y ${item.y} newPosition[1]: ${newPosition[1]}`);
-      } while ((newPosition[0] > (simulationParameters.wideDimension/simulationParameters.squareSide -1)) || (newPosition[0] < 0) || (newPosition[1] > (simulationParameters.heightDimension/simulationParameters.squareSide - 1)) || (newPosition[1] < 0));
+      newPosition[0] = totalFreedom(item, stageParameters, simulationParameters)[0];
+      } while ((newPosition[0] > simulationParameters.wideDimension/simulationParameters.squareSide - 1) || (newPosition[0] < 0))
+      do {
+        newPosition[1] = totalFreedom(item, stageParameters, simulationParameters)[1];
+        } while ((newPosition[1] > simulationParameters.heightDimension/simulationParameters.squareSide - 1) || (newPosition[1] < 0))
+        console.log(`xy_before[0]: ${xy_before[0]}, xy_before[1]: ${xy_before[1]}`)
+        console.log(`xy_before[1]: ${xy_before[1]}; item.y ${item.y} newPosition[1]: ${newPosition[1]}`);
    
-    
-    matrix[newPosition[1]][newPosition[0]] = item.color;
+       matrix[newPosition[1]][newPosition[0]] = item.color;
     matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
    item.x = newPosition[0];
    item.y = newPosition[1];
