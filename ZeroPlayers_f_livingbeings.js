@@ -24,6 +24,33 @@ function totalFreedom(item) {
   }
 }
 
+function totalFreedomv2(item,stageParameters,simulationParameters){
+  let rightEnd = simulationParameters.wideDimension/simulationParameters.squareSide - 1;
+  let upEnd = simulationParameters.heightDimension/simulationParameters.squareSide - 1;
+  let buffer = randomSteps();
+  if ((item.x + buffer) < 0){ //left end
+    item.x =  item.x - buffer;
+  }
+  if ((item.x + buffer) > rightEnd){ //right end
+  item.x = item.x - buffer;
+  }
+  if (buffer == 0){
+    do{
+    buffer = randomSteps();
+    }while(buffer == 0)
+
+    if ((item.y + buffer) < 0){
+      item.y = item.y - buffer;
+    }
+
+    if ((item.y + buffer) > upEnd){
+      item.y = item.y + buffer;
+    }
+  }
+
+  return [item.x, item.y]
+}
+
 function hunterGroupMovement(hunter, stageParameters){
  debug("into hunterGroupMovement");
  let new_x;
