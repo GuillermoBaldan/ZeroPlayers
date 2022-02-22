@@ -18,7 +18,8 @@ import {
   cellsLifeConsumption,
   feeding,
   perception,
-  totalFreedom
+  totalFreedom,
+  totalFreedomv2,
 } from "./ZeroPlayers_f_livingbeings.js";
 import {
   energy2Universe,
@@ -160,12 +161,20 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
     if (!(item.walkmode == "static")) { //If dynamic Elements are not static they can recive movement
       xy_before[0] = item.x
       xy_before[1] = item.y 
-
+      newPosition = totalFreedomv2(item, stageParameters, simulationParameters);
+      console.log(`newPosition[0]: ${newPosition[0]}`);
+      console.log(`newPosition[1]: ${newPosition[1]}`);
+      if ((newPosition[0] != xy_before[0]) || (newPosition[1] != xy_before[1])) {
+        matrix[newPosition[1]][newPosition[0]] = item.color; 
+        matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
+       }
+       item.x = newPosition[0];
+       item.y = newPosition[1];
    /*    do {
         newPosition = totalFreedom(item, stageParameters, simulationParameters)
         } while ( (newPosition[0] > (simulationParameters.wideDimension / simulationParameters.squareSide - 1)) || (newPosition[0] < 0 ) || ((newPosition[1] > simulationParameters.heightDimension/simulationParameters.squareSide - 1 )) || newPosition[1] < 0 )
        */
-       do {
+      /*  do {
       newPosition[0] = totalFreedom(item, stageParameters, simulationParameters)[0];
       
       } while ((newPosition[0] > simulationParameters.wideDimension/simulationParameters.squareSide - 1) || (newPosition[0] < 0))
@@ -185,7 +194,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
        }
        item.x = newPosition[0];
        item.y = newPosition[1];
-    
+     */
     }
     
      //1.2 Comprobamos que no hay agua u otra célula en la nueva posición
