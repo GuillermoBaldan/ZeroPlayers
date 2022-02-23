@@ -165,6 +165,8 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
       console.log(`newPosition[0]: ${newPosition[0]}`);
       console.log(`newPosition[1]: ${newPosition[1]}`);
       if ((newPosition[0] != xy_before[0]) || (newPosition[1] != xy_before[1])) {
+        console.log(matrix)
+        console.log(`matrix[newPosition[1]][newPosition[0]]: ${matrix[newPosition[1]][newPosition[0]]}`);
         matrix[newPosition[1]][newPosition[0]] = item.color; 
         matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
        }

@@ -44,7 +44,7 @@ function totalFreedomv2(item,stageParameters,simulationParameters){
     if ((item.y + buffer) < 0){
       item.y = item.y - buffer;
     } else if ((item.y + buffer) > upEnd){
-      item.y = item.y + buffer;
+      item.y = item.y - buffer;
     } else {
       item.y = item.y + buffer;
     }
