@@ -131,9 +131,9 @@ perception(stageParameters);
   //Giving Movement to Dynamic Elements
  stageParameters.matrix = giveMovementToDynamicElements(stageParameters.matrix, stageParameters, simulationParameters);
  //Prey function of predator cells
- //feeding(stageParameters)
+ feeding(stageParameters)
  //Reproduction of cells
-//reproductionFunction(stageParameters, simulationParameters);
+reproductionFunction(stageParameters, simulationParameters);
  //Consumption of energy
 cellsEnergyConsumption(stageParameters);
 //Consumption of life
