@@ -55,14 +55,14 @@ let stageParameters = {
     color: "yellow",
     preys: ["gross"],
     movement: "Random",
-    number: 4,
+    number: 15,
     },
     { name: "gross",
       type: "vegetable",
       color: "green",
       preys: [],
       movement: "None",
-      number: 150,
+      number: 0,
     }
     
   ],
@@ -75,10 +75,10 @@ let stageParameters = {
 };
 
 let simulationParameters = {
-  simulationStepsNumber: 50,
-  timePerStep: 100,
-  wideDimension: 400,
-  heightDimension: 400,
+  simulationStepsNumber: 10,
+  timePerStep: 500,
+  wideDimension: 80,
+  heightDimension: 80,
   squareSide: 20,
   lienzo: lienzo,
   ctx: ctx,
