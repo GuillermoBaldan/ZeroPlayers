@@ -20,6 +20,7 @@ import {
   perception,
   totalFreedom,
   zigzagFreedom,
+  hunterGroupPathFinder
 } from "./ZeroPlayers_f_livingbeings.js";
 import {
   energy2Universe,
@@ -161,7 +162,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
     if (!(item.walkmode == "static")) { //If dynamic Elements are not static they can recive movement
       xy_before[0] = item.x
       xy_before[1] = item.y 
-      newPosition = zigzagFreedom(item, stageParameters, simulationParameters);
+      newPosition = hunterGroupPathFinder(item, stageParameters, simulationParameters);
     
       if ((newPosition[0] != xy_before[0]) || (newPosition[1] != xy_before[1])) {
        
