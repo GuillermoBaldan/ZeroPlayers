@@ -24,7 +24,7 @@ function totalFreedom(item) {
   }
 }
 
-function totalFreedomv2(item,stageParameters,simulationParameters){
+function zigzagFreedom(item,stageParameters,simulationParameters){
   let rightEnd = simulationParameters.wideDimension/simulationParameters.squareSide - 1;
   let upEnd = simulationParameters.heightDimension/simulationParameters.squareSide - 1;
   let buffer = randomSteps();
@@ -378,7 +378,7 @@ function perception(stageParameters){
 
 export {
   totalFreedom,
-  totalFreedomv2,
+  zigzagFreedom,
   left,
   right,
   up,
