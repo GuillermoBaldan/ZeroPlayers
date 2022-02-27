@@ -103,6 +103,9 @@ function occupyPositionv2(x, y, stageParamenters, matrix) {
 
 function forbiddenPosition(x, y, stageParameters, matrix) {
   let flag = false;
+  console.log("matrix")
+  console.log(matrix)
+  console.log(`x = ${x} y = ${y}`)
   stageParameters.legendForbiddenColors.forEach((item) => {
      if (matrix[y][x] == item) {
       flag = true;
