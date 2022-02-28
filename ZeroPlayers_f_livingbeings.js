@@ -62,7 +62,7 @@ function hunterGroupMovement(hunter, stageParameters){
  new_x = path[1][0];
  new_y = path[1][1];
  }else{
-   let randomCoordinate = totalFreedom(hunter.x, hunter.y);
+   let randomCoordinate = totalFreedom(hunter);
     new_x = randomCoordinate[0];
     new_y = randomCoordinate[1];
  }
