@@ -53,7 +53,7 @@ function zigzagFreedom(item,stageParameters,simulationParameters){
   return [item.x, item.y]
 }
 
-function hunterGroupMovement(hunter, stageParameters){
+function hunterGroupMovement(hunter, stageParameters, simulationParameters){
  debug("into hunterGroupMovement");
  let new_x;
  let new_y;

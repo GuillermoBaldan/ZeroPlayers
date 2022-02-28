@@ -163,7 +163,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
     if (!(item.walkmode == "static")) { //If dynamic Elements are not static they can recive movement
       xy_before[0] = item.x
       xy_before[1] = item.y 
-      newPosition = hunterGroupMovement(item, stageParameters);
+      newPosition = item.walk(item, stageParameters, simulationParameters);
       console.log("newPosition");
       console.log(newPosition);
       if ((newPosition[0] != xy_before[0]) || (newPosition[1] != xy_before[1])) {

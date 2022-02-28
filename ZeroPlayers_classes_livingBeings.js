@@ -1,5 +1,5 @@
 import { simulationParameters } from "./index.js";
-import { hunterGroupMovement, totalFreedom } from "./ZeroPlayers_f_livingbeings.js";
+import { hunterGroupMovement, totalFreedom, zigzagFreedom } from "./ZeroPlayers_f_livingbeings.js";
 
 class grossPredator {
   constructor() {
@@ -249,7 +249,7 @@ class genericLivingBeing {
     this.walk = "None";
     } else if (movement == "Random") {
       this.walkmode = "autonomous";
-      this.walk = totalFreedom;
+      this.walk = zigzagFreedom;
      } else if (movement == "path finder") {
       this.walkmode = "autonomous";
       this.walk = hunterGroupMovement;
