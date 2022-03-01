@@ -107,6 +107,9 @@ function forbiddenPosition(x, y, stageParameters, matrix) {
   console.log(matrix)
   console.log(`x = ${x} y = ${y}`)
   stageParameters.legendForbiddenColors.forEach((item) => {
+    console.log(`matrix[y].length = ${matrix[y].length}`)
+    console.log("forbiddenPosition Inside")
+    console.log(`x = ${x} y = ${y}`)
      if (matrix[y][x] == item) {
       flag = true;
     }

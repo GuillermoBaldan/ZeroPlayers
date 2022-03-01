@@ -180,6 +180,8 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
           item.x = newPosition[0];
           item.y = newPosition[1];
           matrix[item.y][item.x] = item.color;
+          console.log("matrix[xy_before[1]][xy_before[0]]");
+          console.log(matrix[xy_before[1]][xy_before[0]]);
           matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
         
         }

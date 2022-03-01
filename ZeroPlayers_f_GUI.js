@@ -128,6 +128,8 @@ function clickButtonsDetection() {
     initialNumber: initialNumber,
   });
   console.log(livingBeingsCollectionAux);
+  stageParameters.livingBeingsCollection = livingBeingsCollectionAux;
+  
 },
 false
 );
