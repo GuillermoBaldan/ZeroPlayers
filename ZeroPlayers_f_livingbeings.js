@@ -274,7 +274,7 @@ function cellsEnergyConsumption(stageParameters){
 
 function cellsLifeConsumption(stageParameters){
   stageParameters.dynamicElementsArray.forEach((item) => {
-    item.life -= item.lifeConsumption;
+    item.age += item.lifeConsumption;
   }); 
 }
 

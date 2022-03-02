@@ -229,7 +229,10 @@ class predator {
 
 class genericLivingBeing {
   constructor(name, type, color, preys, movement, initialNumber) {
+    let counter = 0;
     this.name = name;
+    this.id = `${name}_${counter}`;
+    counter++;
     this.type = type; //It can be "vegetable", "predator"
     this.color = color;
     this.preys = preys;
@@ -257,6 +260,7 @@ class genericLivingBeing {
     this.trajectory_x = [1, 1, 1, 1, 1, 1, 1];
     this.trajectory_y = [0, 0, 0, 0, 0, 0, 0];
     this.life = 20;
+    this.age = 0;
     this.maxEnergy = 250;
     this.energyBorn = this.maxEnergy / 2;
     this.energy = this.energyBorn;
