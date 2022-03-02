@@ -142,7 +142,6 @@ cellsEnergyConsumption(stageParameters);
 cellsLifeConsumption(stageParameters);
  //Death of cells
   cellDeath(stageParameters);
-console.log(`units of yellow: ${debug_numberOfUnitsWithColor("yellow")}`);
 
   return stageParameters.matrix;
 }
@@ -164,8 +163,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
       xy_before[0] = item.x
       xy_before[1] = item.y 
       newPosition = item.walk(item, stageParameters, simulationParameters);
-      console.log("newPosition");
-      console.log(newPosition);
+ 
       if ((newPosition[0] != xy_before[0]) || (newPosition[1] != xy_before[1])) {
        
         if (
@@ -180,8 +178,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
           item.x = newPosition[0];
           item.y = newPosition[1];
           matrix[item.y][item.x] = item.color;
-          console.log("matrix[xy_before[1]][xy_before[0]]");
-          console.log(matrix[xy_before[1]][xy_before[0]]);
+       
           matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
         
         }

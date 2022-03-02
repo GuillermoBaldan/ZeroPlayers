@@ -28,7 +28,6 @@ function zigzagFreedom(item,stageParameters,simulationParameters){
   let rightEnd = simulationParameters.wideDimension/simulationParameters.squareSide - 1;
   let upEnd = simulationParameters.heightDimension/simulationParameters.squareSide - 1;
   let buffer = randomSteps();
-  console.log(`buffer = ${buffer}`);
   if ((item.x + buffer) < 0){ //left end
     item.x =  item.x - buffer;
   } else if((item.x + buffer) > rightEnd){ //right end
@@ -54,7 +53,6 @@ function zigzagFreedom(item,stageParameters,simulationParameters){
 }
 
 function hunterGroupMovement(hunter, stageParameters, simulationParameters){
- debug("into hunterGroupMovement");
  let new_x;
  let new_y;
  let path =  hunterGroupPathFinder(hunter, stageParameters);
@@ -316,8 +314,6 @@ function hunterGroupPathFinder(hunter, stageParameters, simulationParameters){
   let preyArray = [];
   let path2prey = [];
   let finder = new PF.AStarFinder();
-  console.log("stageParameters")
-  console.log(stageParameters)
   let grid = new PF.Grid(gridConversion(stageParameters.matrix))
 //1. Locate the preys
   stageParameters.dynamicElementsArray.forEach((item) => {
