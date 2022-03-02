@@ -1,4 +1,4 @@
-import { simulationParameters } from "./index.js";
+import { simulationParameters, stageParameters } from "./index.js";
 import { hunterGroupMovement, totalFreedom, zigzagFreedom } from "./ZeroPlayers_f_livingbeings.js";
 
 let counter = [];
@@ -249,7 +249,7 @@ class predator {
 class genericLivingBeing {
     constructor(name, type, color, preys, movement, initialNumber) {
     this.name = name;
-    this.id = `${name}_${counter}`;
+    this.id = countingSpecies(this.name, stageParameters);
     counter++;
     this.type = type; //It can be "vegetable", "predator"
     this.color = color;
