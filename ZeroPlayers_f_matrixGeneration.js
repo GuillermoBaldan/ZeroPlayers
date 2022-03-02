@@ -59,6 +59,7 @@ import {
   debug_typesOfSpecies,
   debug_matrix,
   debug_numberOfUnitsWithColor,
+  debug_ageOfcell,
 } from "./ZeroPlayers_f_debugging.js";
 import { simulation } from "./ZeroPlayers_f_level1.js";
 import{gridConversion} from "./ZeroPlayers_f_pathfinder.js"
@@ -143,6 +144,7 @@ cellsLifeConsumption(stageParameters);
  //Death of cells
   cellDeath(stageParameters);
 debug_typesOfSpecies();
+debug_ageOfcell();
   return stageParameters.matrix;
 }
 

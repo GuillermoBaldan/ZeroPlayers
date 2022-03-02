@@ -1,6 +1,25 @@
 import { simulationParameters } from "./index.js";
 import { hunterGroupMovement, totalFreedom, zigzagFreedom } from "./ZeroPlayers_f_livingbeings.js";
 
+let counter = [];
+
+function countingSpecies(name, stageParameters){
+let i;
+let flag = false;
+let id;
+for(i=0;i<stageParameters.dynamicElementsArray.length;i++){
+  if(stageParameters.dynamicElementsArray[i].name==name){
+    stageParameters.dynamicElementsArray[i].number++;
+    id = `${name}_${stageParameters.dynamicElementsArray[i].number}`;
+    flag = true;
+  }
+}
+if (flag == false){
+  stageParameters.dynamicElementsArray.push({name: name, number: 1});
+  id = `${name}_1`;
+}
+
+}
 class grossPredator {
   constructor() {
     this.type = "predator",
@@ -228,8 +247,7 @@ class predator {
 }
 
 class genericLivingBeing {
-  constructor(name, type, color, preys, movement, initialNumber) {
-    let counter = 0;
+    constructor(name, type, color, preys, movement, initialNumber) {
     this.name = name;
     this.id = `${name}_${counter}`;
     counter++;
