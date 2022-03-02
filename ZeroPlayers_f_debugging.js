@@ -43,7 +43,13 @@ function debug_typesOfSpecies(){
       console.log(`${item.name} has ${item.number} units`);
     })
 
-} 
+}
+
+function debug_ageOfcell(){
+  stageParameters.dynamicElementsArray.forEach(item => {
+    console.log(`${item.name} named ${item.id} has ${item.age} cycles`);
+  })
+}
 
 function debug_classesOfCells(){
   stageParameters.dynamicElementsArray.forEach(item => {
@@ -183,5 +189,6 @@ let y;
   debug_grid,
   debug_classesOfCells,
   debug_typesOfSpecies,
-  debug_numberOfUnitsWithColor
+  debug_numberOfUnitsWithColor,
+  debug_ageOfcell
 };
