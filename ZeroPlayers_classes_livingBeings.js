@@ -243,7 +243,6 @@ class genericLivingBeing {
       Math.random() *
         (simulationParameters.heightDimension / simulationParameters.squareSide)
     );
-    this.life = 100;
     if (movement == "None") {
     this.walkmode = "static";
     this.walk = "None";
@@ -257,7 +256,7 @@ class genericLivingBeing {
 
     this.trajectory_x = [1, 1, 1, 1, 1, 1, 1];
     this.trajectory_y = [0, 0, 0, 0, 0, 0, 0];
-    this.life = 300;
+    this.life = 20;
     this.maxEnergy = 250;
     this.energyBorn = this.maxEnergy / 2;
     this.energy = this.energyBorn;

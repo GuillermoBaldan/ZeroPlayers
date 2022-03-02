@@ -25,10 +25,25 @@ function debug_numberOfCells() {
 }
 
 function debug_typesOfSpecies(){
+  let typesOfSpecies = [];
+  let i;
+  let flag = false;
   stageParameters.dynamicElementsArray.forEach(item => {
-    console.log(`${item.color} es ${item.name}`);
-  })
-}
+   for(i = 0; i < typesOfSpecies.length; i++){
+      if(typesOfSpecies[i].name == item.name){
+       typesOfSpecies[i].number++;
+       flag = true;
+      }
+   }
+    if (flag == false){
+      typesOfSpecies.push({name: item.name, number: 1, color: item.color});
+    }
+    })
+    typesOfSpecies.forEach(item => {
+      console.log(`${item.name} has ${item.number} units`);
+    })
+
+} 
 
 function debug_classesOfCells(){
   stageParameters.dynamicElementsArray.forEach(item => {

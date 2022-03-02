@@ -142,7 +142,7 @@ cellsEnergyConsumption(stageParameters);
 cellsLifeConsumption(stageParameters);
  //Death of cells
   cellDeath(stageParameters);
-
+debug_typesOfSpecies();
   return stageParameters.matrix;
 }
 
