@@ -117,7 +117,8 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
  stageParameters.dynamicElementsArray = [];
  stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
  //Add dinamic Elements
- 
+ console.log("dynamicELementsArray initial");
+    console.log(stageParameters.dynamicElementsArray);
  dynamicElementsGenerator(stageParameters)
 
   return stageParameters.matrix;
@@ -157,13 +158,20 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
   let xy_before = [];
   let newPosition = [];
   let counter = 0;
+  console.log("dynamicElementsArray")
+  console.log(stageParameters.dynamicElementsArray)
   stageParameters.dynamicElementsArray.forEach((item) => {
 /*     xy_before[0] = item.x
     xy_before[1] = item.y  */
     //1 Calculamos nueva posicióndo
     if (!(item.walkmode == "static")) { //If dynamic Elements are not static they can recive movement
       xy_before[0] = item.x
-      xy_before[1] = item.y 
+      xy_before[1] = item.y
+      console.log("item")
+      console.log(item)
+      console.log(`item.name: ${item.name}`)
+      console.log(`item.walkmode: ${item.walkmode}`)
+      console.log(`item.walk = ${item.walk}`)
       newPosition = item.walk(item, stageParameters, simulationParameters);
  
       if ((newPosition[0] != xy_before[0]) || (newPosition[1] != xy_before[1])) {

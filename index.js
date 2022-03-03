@@ -71,7 +71,8 @@ let stageParameters = {
   matrix: [],
   freePlacesArray: [],
   universeEnergy: 500000,
-  generationStageAlgorithm: allTerrain
+  generationStageAlgorithm: allTerrain,
+  speciesCounter: [],
 };
 
 let simulationParameters = {

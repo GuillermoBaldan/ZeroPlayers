@@ -243,11 +243,16 @@ if (stageParameters.dynamicElementsArray[i].vitalFunctions.death){
 }
 
 function dynamicElementsGenerator(stageParameters) {
+  
   stageParameters.livingBeingsCollection.forEach((element) => {
     for(let i = 0; i < element.number; i++){
+    
     stageParameters.dynamicElementsArray.push(
       new genericLivingBeing( element.name, element.type, element.color, element.preys, element.movement, element.initialNumber)
       );
+      console.log(`element.name: ${element.name} has function movement ${stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length - 1].walk}`);
+      console.log(`element.name: ${element.name} has walkmode ${stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length - 1].walkmode}`);
+
     }
     
   });
