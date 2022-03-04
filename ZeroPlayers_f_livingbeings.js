@@ -258,9 +258,7 @@ function dynamicElementsGenerator(stageParameters) {
     
     
   }});
-   console.log("After push: dynamicElementsArray");
-   console.log(stageParameters.dynamicElementsArray);
-   stageParameters.dynamicElementsArray = [];
+  
    stageParameters.dynamicElementsArray.forEach((item) => {
     item.x = Math.floor(Math.random() * ((simulationParameters.wideDimension / simulationParameters.squareSide) - 1));
     item.y = Math.floor(Math.random() *((simulationParameters.heightDimension / simulationParameters.squareSide) - 1));
