@@ -4,7 +4,6 @@ import { hunterGroupMovement, totalFreedom, zigzagFreedom } from "./ZeroPlayers_
 let counter = [];
 
 function countingSpecies(name, stageParameters){
-let i;
 let flag = false;
 let id;
 
@@ -19,9 +18,9 @@ if (flag == false){
   stageParameters.speciesCounter.push({name: name, number: 1})
   id = `${name}_1`;
 }
-
 return id;
 } 
+
 class grossPredator {
   constructor() {
     this.type = "predator",
