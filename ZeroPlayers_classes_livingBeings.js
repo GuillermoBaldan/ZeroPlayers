@@ -3,23 +3,25 @@ import { hunterGroupMovement, totalFreedom, zigzagFreedom } from "./ZeroPlayers_
 
 let counter = [];
 
-/* function countingSpecies(name, stageParameters){
+function countingSpecies(name, stageParameters){
 let i;
 let flag = false;
 let id;
-for(i=0;i<stageParameters.dynamicElementsArray.length;i++){
-  if(stageParameters.dynamicElementsArray[i].name==name){
-    stageParameters.dynamicElementsArray[i].number++;
-    id = `${name}_${stageParameters.dynamicElementsArray[i].number}`;
-    flag = true;
-  }
-}
+
+stageParameters.speciesCounter.forEach(item => {
+ if (item.name == name){
+   flag = true;
+   id = `${name}_${item.number}`;
+  item.number++;
+ }});
+
 if (flag == false){
-  stageParameters.dynamicElementsArray.push({name: name, number: 1});
+  stageParameters.speciesCounter.push({name: name, number: 1})
   id = `${name}_1`;
 }
 
-} */
+return id;
+} 
 class grossPredator {
   constructor() {
     this.type = "predator",
@@ -249,7 +251,7 @@ class predator {
 class genericLivingBeing {
     constructor(name, type, color, preys, movement, initialNumber) {
     this.name = name;
-    //this.id = countingSpecies(this.name, stageParameters);
+    this.id = countingSpecies(this.name, stageParameters);
     //counter++;
     this.type = type; //It can be "vegetable", "predator"
     this.color = color;
