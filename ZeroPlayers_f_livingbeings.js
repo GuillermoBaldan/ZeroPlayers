@@ -244,18 +244,24 @@ if (stageParameters.dynamicElementsArray[i].vitalFunctions.death){
 
 function dynamicElementsGenerator(stageParameters) {
   
+  console.log("InsidedynamicElementsGenerator: stageParameters.dynamicElementsArray");
+  console.log(stageParameters.dynamicElementsArray);
   stageParameters.livingBeingsCollection.forEach((element) => {
     for(let i = 0; i < element.number; i++){
-    
-    stageParameters.dynamicElementsArray.push(
+    /* console.log("Initial on for blucle: dynamicElementsArray");
+    console.log(stageParameters.dynamicElementsArray);
+    stageParameters.dynamicElementsArray = []; */
+    /* stageParameters.dynamicElementsArray.push(
       new genericLivingBeing( element.name, element.type, element.color, element.preys, element.movement, element.initialNumber)
-      );
+      ); */
       console.log(`element.name: ${element.name} has function movement ${stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length - 1].walk}`);
       console.log(`element.name: ${element.name} has walkmode ${stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length - 1].walkmode}`);
 
     }
     
   });
+   console.log("After push: dynamicElementsArray");
+   console.log(stageParameters.dynamicElementsArray);
    stageParameters.dynamicElementsArray.forEach((item) => {
     item.x = Math.floor(Math.random() * ((simulationParameters.wideDimension / simulationParameters.squareSide) - 1));
     item.y = Math.floor(Math.random() *((simulationParameters.heightDimension / simulationParameters.squareSide) - 1));

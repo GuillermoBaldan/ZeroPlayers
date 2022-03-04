@@ -28,15 +28,19 @@ function init(stageParameters, simulationParameters) {
  
   document.getElementById("progressBar").style.display = "none";
   //staticStage Generation
+  console.log("Before statiStageGeneration: dynamicELementsArray initial");
+    console.log(stageParameters.dynamicElementsArray);
   stageParameters.staticStage = staticStageGeneration(stageParameters.generationStageAlgorithm,stageParameters, simulationParameters);
   //0. Check Data Coherence
- 
+  console.log("After statiStageGeneration: dynamicELementsArray initial");
+  console.log(stageParameters.dynamicElementsArray);
   flag = checkDataCoherence(stageParameters, simulationParameters);
   if (flag) {
     //1.Initialize Canvas
     canvas = initCanvas(simulationParameters);
     //2.staticStage
-   
+    console.log("After initCanvas: dynamicELementsArray initial");
+    console.log(stageParameters.dynamicElementsArray);
 
     
     

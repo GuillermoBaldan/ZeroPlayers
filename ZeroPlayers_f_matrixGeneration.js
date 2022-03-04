@@ -114,11 +114,17 @@ function materialGeneration(legendTerrain) {
 
 function matrixGeneratorInit(stageParameters, simulationParameters) {
  //Initial case
+ console.log("Before Sentence stageParameters.dynamicElementsArray = []");
+  console.log(stageParameters.dynamicElementsArray);
  stageParameters.dynamicElementsArray = [];
+ console.log("Before cloneArray2D: dynamicELementsArray initial");
+  console.log(stageParameters.dynamicElementsArray);
  stageParameters.matrix = cloneArray2D(stageParameters.staticStage);
  //Add dinamic Elements
- console.log("dynamicELementsArray initial");
+ console.log("Inside matrixGeneratorInit.f : dynamicELementsArray initial");
     console.log(stageParameters.dynamicElementsArray);
+stageParameters.dynamicElementsArray = [];
+
  dynamicElementsGenerator(stageParameters)
 
   return stageParameters.matrix;
