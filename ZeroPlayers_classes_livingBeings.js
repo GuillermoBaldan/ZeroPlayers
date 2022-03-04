@@ -9,9 +9,10 @@ let id;
 
 stageParameters.speciesCounter.forEach(item => {
  if (item.name == name){
-   flag = true;
-   id = `${name}_${item.number}`;
   item.number++;
+  flag = true;
+  id = `${name}_${item.number}`;
+  
  }});
 
 if (flag == false){
