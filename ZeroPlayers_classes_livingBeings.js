@@ -18,6 +18,8 @@ stageParameters.speciesCounter.forEach(item => {
 if (flag == false){
   stageParameters.speciesCounter.push({name: name, number: 1})
   id = `${name}_1`;
+  //replace all the spaces with underscores
+  id = id.replace(/\s+/g, "_");
 }
 return id;
 } 
