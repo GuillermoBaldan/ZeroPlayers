@@ -254,8 +254,7 @@ class predator {
 class genericLivingBeing {
     constructor(name, type, color, preys, movement, initialNumber) {
     this.name = name;
-    this.id = countingSpecies(this.name, stageParameters);
-    //counter++;
+    //this.id = countingSpecies(this.name, stageParameters);
     this.type = type; //It can be "vegetable", "predator"
     this.color = color;
     this.preys = preys;
@@ -310,4 +309,4 @@ class genericLivingBeing {
   }
 }
 
-export { grossPredator, grossCell, yellowPredator, vegetable, predator, genericLivingBeing };
+export { grossPredator, grossCell, yellowPredator, vegetable, predator, genericLivingBeing, countingSpecies}

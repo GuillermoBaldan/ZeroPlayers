@@ -10,7 +10,7 @@ import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
 import {setInFreePosition, forbiddenPosition, coordinates2son, sonInMatrix, checkReproductionRules} from "./ZeroPlayers_f_checkValues.js"
 import { simulationParameters, stageParameters } from "./index.js";
 import {gridConversion} from "./ZeroPlayers_f_pathfinder.js"
-import {genericLivingBeing} from "./ZeroPlayers_classes_livingbeings.js"
+import {genericLivingBeing, countingSpecies} from "./ZeroPlayers_classes_livingbeings.js"
 
 function totalFreedom(item) {
   let buffer = randomSteps();
@@ -210,6 +210,7 @@ function fatherReproduction(father, stageParameters, simulationParameters){
         sonsArray = sonInMatrix(father, son, stageParameters, simulationParameters);
         sonsArray.forEach((son_item) => {
       stageParameters.matrix[son_item.y][son_item.x] = son_item.color;
+      son_item.id = countingSpecies(son_item.name, stageParameters)
       });
       stageParameters.dynamicElementsArray =
         stageParameters.dynamicElementsArray.concat(sonsArray);
@@ -244,14 +245,14 @@ if (stageParameters.dynamicElementsArray[i].vitalFunctions.death){
 
 function dynamicElementsGenerator(stageParameters) {
   let i;
-  console.log("InsidedynamicElementsGenerator: stageParameters.dynamicElementsArray");
-  console.log(stageParameters.dynamicElementsArray);
+
   stageParameters.livingBeingsCollection.forEach((element) => {
      for(i = 0; i < element.number; i++){
     
     stageParameters.dynamicElementsArray.push(
       new genericLivingBeing( element.name, element.type, element.color, element.preys, element.movement, element.initialNumber)
       );
+    stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length - 1].id = countingSpecies(element.name, stageParameters);
       /* console.log(`element.name: ${element.name} has function movement ${stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length - 1].walk}`);
       console.log(`element.name: ${element.name} has walkmode ${stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length - 1].walkmode}`);
  */

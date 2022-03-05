@@ -169,11 +169,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
     if (!(item.walkmode == "static")) { //If dynamic Elements are not static they can recive movement
       xy_before[0] = item.x
       xy_before[1] = item.y
-      console.log("item")
-      console.log(item)
-      console.log(`item.name: ${item.name}`)
-      console.log(`item.walkmode: ${item.walkmode}`)
-      console.log(`item.walk = ${item.walk}`)
+     
       newPosition = item.walk(item, stageParameters, simulationParameters);
  
       if ((newPosition[0] != xy_before[0]) || (newPosition[1] != xy_before[1])) {
