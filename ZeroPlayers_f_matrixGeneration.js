@@ -136,17 +136,17 @@ function matrixGenerator(stageParameters, simulationParameters) {
 perception(stageParameters);
 
   //Giving Movement to Dynamic Elements
- stageParameters.matrix = giveMovementToDynamicElements(stageParameters.matrix, stageParameters, simulationParameters);
+ stageParameters.matrix = giveMovementToDynamicElementsv3(stageParameters.matrix, stageParameters, simulationParameters);
  //Prey function of predator cells
- feeding(stageParameters)
+ //feeding(stageParameters)
  //Reproduction of cells
-reproductionFunction(stageParameters, simulationParameters);
+//reproductionFunction(stageParameters, simulationParameters);
  //Consumption of energy
-cellsEnergyConsumption(stageParameters);
+//cellsEnergyConsumption(stageParameters);
 //Consumption of life
 cellsLifeConsumption(stageParameters);
  //Death of cells
-  cellDeath(stageParameters);
+  //cellDeath(stageParameters);
 debug_typesOfSpecies();
 debug_ageOfcell();
   return stageParameters.matrix;
@@ -190,6 +190,8 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
           matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
         
         }
+       } else {
+
        }
     
  
@@ -200,6 +202,52 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
   });
 
   return matrix;
+}
+
+function giveMovementToDynamicElementsv2(matrix, stageParameters, simulationParameters) {
+  let xy_before = [];
+  stageParameters.dynamicElementsArray.forEach((item) => {
+    if (!(item.walkmode == "static")) { //If dynamic Elements are not static they can recive movement
+    xy_before[0] = item.x
+    xy_before[1] = item.y
+    //1 Calculamos nueva posición
+    let newPosition = item.walk(item, stageParameters, simulationParameters);
+    //2. Comprobamos que la nueva posición no es igual a la anterior
+    if ((newPosition[0] != xy_before[0]) || (newPosition[1] != xy_before[1])) {  
+      //3. Comprobamos que la nueva posición no es prohibida
+      if (!forbiddenPosition(newPosition[0], newPosition[1], stageParameters, matrix)) {
+        //4. Actualizamos nueva posición
+        item.x = newPosition[0];
+        item.y = newPosition[1];
+        matrix[item.y][item.x] = item.color;
+        //5. Actualizamos la posición anterior
+        matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
+      } 
+    }
+  }});
+}
+
+  function giveMovementToDynamicElementsv3(matrix, stageParameters, simulationParameters){
+    let xy_before = [];
+    let newPosition = [];
+    stageParameters.dynamicElementsArray.forEach((item) => {
+    if (!(item.walkmode == "static")){
+    xy_before[0] = item.x;
+    xy_before[1] = item.y;  
+    newPosition = item.walk(item, stageParameters, simulationParameters)
+    item.x = newPosition[0]
+    item.y = newPosition[1]
+    console.log(`item.x: ${item.x}; item.y: ${item.y}`)
+      if (matrix[item.y][item.x] == "yellow"){
+        item.x = xy_before[0];
+        item.y = xy_before[1];
+      } else {
+        matrix[item.y][item.x] = item.color;
+        matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
+      }
+    } 
+  })
+ return matrix;
 }
 
 function vegetablesFirst(stageParameters){
@@ -216,4 +264,4 @@ function vegetablesFirst(stageParameters){
 }
 
 
-export { vegetablesFirst, generateStaticStage, matrixGeneratorInit, matrixGenerator, setColor, materialGeneration };
+export { vegetablesFirst, generateStaticStage, matrixGeneratorInit, matrixGenerator, setColor, materialGeneration, giveMovementToDynamicElementsv2 }

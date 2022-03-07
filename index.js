@@ -55,14 +55,14 @@ let stageParameters = {
     color: "yellow",
     preys: ["gross"],
     movement: "path finder",
-    number: 4,
+    number: 15,
     },
     { name: "gross",
       type: "vegetable",
       color: "green",
       preys: [],
       movement: "None",
-      number: 12,
+      number: 0,
     }
     
   ],
