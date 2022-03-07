@@ -161,7 +161,7 @@ function giveMovementToDynamicElements(matrix, stageParameters, simulationParame
   let xy_before = [];
   let newPosition = [];
   let counter = 0;
-  
+  //matrix = cloneArray2D(stageParameters.staticStage)
   stageParameters.dynamicElementsArray.forEach((item) => {
 /*     xy_before[0] = item.x
     xy_before[1] = item.y  */

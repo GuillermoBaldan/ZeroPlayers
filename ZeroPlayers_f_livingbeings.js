@@ -231,11 +231,14 @@ if (stageParameters.dynamicElementsArray[i].vitalFunctions.death){
     stageParameters.matrix[stageParameters.dynamicElementsArray[i].y][stageParameters.dynamicElementsArray[i].x] = stageParameters.staticStage[stageParameters.dynamicElementsArray[i].y][stageParameters.dynamicElementsArray[i].x];
     stageParameters.dynamicElementsArray.splice(i, 1);
   i =0;
-  } else if (stageParameters.dynamicElementsArray[i].life == stageParameters.dynamicElementsArray[i].age){
+  } else if (stageParameters.dynamicElementsArray[i].life <= stageParameters.dynamicElementsArray[i].age){
   stageParameters.matrix[stageParameters.dynamicElementsArray[i].y][stageParameters.dynamicElementsArray[i].x] = stageParameters.staticStage[stageParameters.dynamicElementsArray[i].y][stageParameters.dynamicElementsArray[i].x];
   energy2Universe(stageParameters.dynamicElementsArray[i].energy, stageParameters);
-  console.log(`The cell ${stageParameters.dynamicElementsArray[i].id} has death`)
+  console.log(`The cell ${stageParameters.dynamicElementsArray[i].id} of coordinates (${stageParameters.dynamicElementsArray[i].x},${stageParameters.dynamicElementsArray[i].y}) has death`)
+  console.log("stageParameters.staticStage");
   console.log(stageParameters.staticStage)
+  console.log("stageParameters.matrix");
+  console.log(stageParameters.matrix)
   stageParameters.dynamicElementsArray.splice(i, 1);
     i = 0;
   }
