@@ -298,7 +298,7 @@ class genericLivingBeing {
     this.cyclesToReproduction = Math.round(Math.random()*this.reproductionPeriod)
     this.vitalFunctions = {
       death: true,
-      reproduction: false,
+      reproduction: true,
       prey: true,
       }
     this.cognitiveFunctions = {

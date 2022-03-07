@@ -138,15 +138,15 @@ perception(stageParameters);
   //Giving Movement to Dynamic Elements
  stageParameters.matrix = giveMovementToDynamicElementsv3(stageParameters.matrix, stageParameters, simulationParameters);
  //Prey function of predator cells
- //feeding(stageParameters)
+ feeding(stageParameters)
  //Reproduction of cells
-//reproductionFunction(stageParameters, simulationParameters);
+reproductionFunction(stageParameters, simulationParameters);
  //Consumption of energy
-//cellsEnergyConsumption(stageParameters);
+cellsEnergyConsumption(stageParameters);
 //Consumption of life
 cellsLifeConsumption(stageParameters);
  //Death of cells
-  //cellDeath(stageParameters);
+cellDeath(stageParameters);
 debug_typesOfSpecies();
 debug_ageOfcell();
   return stageParameters.matrix;
@@ -238,7 +238,7 @@ function giveMovementToDynamicElementsv2(matrix, stageParameters, simulationPara
     item.x = newPosition[0]
     item.y = newPosition[1]
     console.log(`item.x: ${item.x}; item.y: ${item.y}`)
-      if (matrix[item.y][item.x] == "yellow"){
+      if (forbiddenPosition(newPosition[0], newPosition[1], stageParameters, matrix)){
         item.x = xy_before[0];
         item.y = xy_before[1];
       } else {
