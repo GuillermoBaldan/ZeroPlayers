@@ -53,7 +53,7 @@ function zigzagFreedom(item,stageParameters,simulationParameters){
   } else {
     console.log("The option selected is adjacent ends")
     if ((item.x + buffer) < 0){ //left end
-      item.x =  rightEnd - buffer;
+      item.x =  rightEnd;
     } else if((item.x + buffer) > rightEnd){ //right end
     item.x = 0;
     } else{
