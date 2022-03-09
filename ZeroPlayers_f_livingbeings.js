@@ -55,7 +55,7 @@ function zigzagFreedom(item,stageParameters,simulationParameters){
     if ((item.x + buffer) < 0){ //left end
       item.x =  rightEnd - buffer;
     } else if((item.x + buffer) > rightEnd){ //right end
-    item.x = buffer;
+    item.x = 0;
     } else{
       item.x = item.x + buffer;
     }
@@ -65,6 +65,7 @@ function zigzagFreedom(item,stageParameters,simulationParameters){
       }while(buffer == 0)
       console.log(`buffer: ${buffer}`)
       console.log(`item.y: ${item.y}`)
+      console.log(`item.x: ${item.x}`)
 
       if ((item.y + buffer) < 0){
         item.y = upEnd + buffer;
