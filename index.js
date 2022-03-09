@@ -26,7 +26,7 @@ let singularSimulationStep = 0;
 
 let universeRules = {
   movementType: "zigzag", //There are two options: 'zigzag' and 'diagonal'
-  frontier: "close", //There are two options: 'close' and 'adjacent ends'
+  frontier: "adjacent ends", //There are two options: 'close' and 'adjacent ends'
 };
 //We put into one object, stageParamenters, the next objects: legend, cell, universeRules
 
@@ -54,7 +54,7 @@ let stageParameters = {
     type: "predator",
     color: "yellow",
     preys: ["gross"],
-    movement: "path finder",
+    movement: "Random",
     number: 1,
     },
     { name: "gross",
@@ -62,7 +62,7 @@ let stageParameters = {
       color: "green",
       preys: [],
       movement: "None",
-      number: 15,
+      number: 24,
     }
     
   ],
@@ -77,9 +77,9 @@ let stageParameters = {
 
 let simulationParameters = {
   simulationStepsNumber: 50,
-  timePerStep: 200,
-  wideDimension: 80,
-  heightDimension: 80,
+  timePerStep: 500,
+  wideDimension: 100,
+  heightDimension: 100,
   squareSide: 20,
   lienzo: lienzo,
   ctx: ctx,

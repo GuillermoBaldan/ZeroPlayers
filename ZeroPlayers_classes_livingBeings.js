@@ -281,7 +281,7 @@ class genericLivingBeing {
 
     this.trajectory_x = [1, 1, 1, 1, 1, 1, 1];
     this.trajectory_y = [0, 0, 0, 0, 0, 0, 0];
-    this.life = 20;
+    this.life = 200;
     this.age = 0;
     this.maxEnergy = 250;
     this.energyBorn = this.maxEnergy / 2;
@@ -298,7 +298,7 @@ class genericLivingBeing {
     this.cyclesToReproduction = Math.round(Math.random()*this.reproductionPeriod)
     this.vitalFunctions = {
       death: true,
-      reproduction: true,
+      reproduction: false,
       prey: true,
       }
     this.cognitiveFunctions = {
