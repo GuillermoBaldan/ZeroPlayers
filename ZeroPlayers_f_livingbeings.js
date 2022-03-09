@@ -69,7 +69,7 @@ function zigzagFreedom(item,stageParameters,simulationParameters){
       if ((item.y + buffer) < 0){
         item.y = upEnd + buffer;
       } else if ((item.y + buffer) > upEnd){
-        item.y =  buffer;
+        item.y =  0;
       } else {
         item.y = item.y + buffer;
       }
