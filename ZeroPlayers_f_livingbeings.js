@@ -28,7 +28,8 @@ function zigzagFreedom(item,stageParameters,simulationParameters){
   let rightEnd = simulationParameters.wideDimension/simulationParameters.squareSide - 1;
   let upEnd = simulationParameters.heightDimension/simulationParameters.squareSide - 1;
   let buffer = randomSteps();
-  if (stageParameters.universeRules.fronties == "close"){
+  if (stageParameters.universeRules.frontier == "close"){
+    console.log("The option selected is close")
     if ((item.x + buffer) < 0){ //left end
       item.x =  item.x - buffer;
     } else if((item.x + buffer) > rightEnd){ //right end
@@ -50,6 +51,7 @@ function zigzagFreedom(item,stageParameters,simulationParameters){
       }
     }
   } else {
+    console.log("The option selected is adjacent ends")
     if ((item.x + buffer) < 0){ //left end
       item.x =  rightEnd - buffer;
     } else if((item.x + buffer) > rightEnd){ //right end
@@ -61,9 +63,11 @@ function zigzagFreedom(item,stageParameters,simulationParameters){
       do{
       buffer = randomSteps();
       }while(buffer == 0)
+      console.log(`buffer: ${buffer}`)
+      console.log(`item.y: ${item.y}`)
 
       if ((item.y + buffer) < 0){
-        item.y = upEnd - buffer;
+        item.y = upEnd + buffer;
       } else if ((item.y + buffer) > upEnd){
         item.y =  buffer;
       } else {
@@ -71,9 +75,10 @@ function zigzagFreedom(item,stageParameters,simulationParameters){
       }
     }
   }
-  }
   return [item.x, item.y]
-}
+  }
+  
+
 
 function hunterGroupMovement(hunter, stageParameters, simulationParameters){
  let new_x;
