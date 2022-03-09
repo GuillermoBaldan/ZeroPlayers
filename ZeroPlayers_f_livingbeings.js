@@ -28,27 +28,50 @@ function zigzagFreedom(item,stageParameters,simulationParameters){
   let rightEnd = simulationParameters.wideDimension/simulationParameters.squareSide - 1;
   let upEnd = simulationParameters.heightDimension/simulationParameters.squareSide - 1;
   let buffer = randomSteps();
-  if ((item.x + buffer) < 0){ //left end
-    item.x =  item.x - buffer;
-  } else if((item.x + buffer) > rightEnd){ //right end
-  item.x = item.x - buffer;
-  } else{
-    item.x = item.x + buffer;
-  }
-  if (buffer == 0){
-    do{
-    buffer = randomSteps();
-    }while(buffer == 0)
+  if (stageParameters.universeRules.fronties == "close"){
+    if ((item.x + buffer) < 0){ //left end
+      item.x =  item.x - buffer;
+    } else if((item.x + buffer) > rightEnd){ //right end
+    item.x = item.x - buffer;
+    } else{
+      item.x = item.x + buffer;
+    }
+    if (buffer == 0){
+      do{
+      buffer = randomSteps();
+      }while(buffer == 0)
 
-    if ((item.y + buffer) < 0){
-      item.y = item.y - buffer;
-    } else if ((item.y + buffer) > upEnd){
-      item.y = item.y - buffer;
-    } else {
-      item.y = item.y + buffer;
+      if ((item.y + buffer) < 0){
+        item.y = item.y - buffer;
+      } else if ((item.y + buffer) > upEnd){
+        item.y = item.y - buffer;
+      } else {
+        item.y = item.y + buffer;
+      }
+    }
+  } else {
+    if ((item.x + buffer) < 0){ //left end
+      item.x =  rightEnd - buffer;
+    } else if((item.x + buffer) > rightEnd){ //right end
+    item.x = buffer;
+    } else{
+      item.x = item.x + buffer;
+    }
+    if (buffer == 0){
+      do{
+      buffer = randomSteps();
+      }while(buffer == 0)
+
+      if ((item.y + buffer) < 0){
+        item.y = upEnd - buffer;
+      } else if ((item.y + buffer) > upEnd){
+        item.y =  buffer;
+      } else {
+        item.y = item.y + buffer;
+      }
     }
   }
-
+  }
   return [item.x, item.y]
 }
 
