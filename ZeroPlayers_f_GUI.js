@@ -87,13 +87,20 @@ function clickButtonsDetection() {
       simulationParameters.wideDimension = wideDimension;
       simulationParameters.heightDimension = wideDimension;
       //stageParameters.livingBeingsCollection[0].number = 1;
-      if (wideDimension == 80){
+      if (wideDimension == 80){//¿?
         stageParameters.generationStageAlgorithm = allTerrain;
       } else {
         stageParameters.generationStageAlgorithm = circularIsland;
       }
       let borders = document.querySelector( 'input[name="borders"]:checked').value;
       stageParameters.universeRules.frontier = borders;
+      console.log({
+        stepsNumber,
+        timePerStep,
+        wideDimension,
+        borders,
+      });
+     
       stageParameters.dynamicElementsArray = [];
       simulationParameters.init_output = init(stageParameters, simulationParameters);
        
