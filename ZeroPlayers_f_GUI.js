@@ -100,6 +100,7 @@ function clickButtonsDetection() {
         wideDimension,
         borders,
       });
+      console.log(livingBeingsCollectionAux);
      
       stageParameters.dynamicElementsArray = [];
       simulationParameters.init_output = init(stageParameters, simulationParameters);
