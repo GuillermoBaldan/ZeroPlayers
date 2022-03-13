@@ -98,14 +98,9 @@ function clickButtonsDetection() {
       simulationParameters.timePerStep = timePerStep;
       simulationParameters.wideDimension = wideDimension;
       simulationParameters.heightDimension = wideDimension;
+      stageParameters.livingBeingsCollection = livingBeingsCollectionAux;
       
-      console.log({
-        stepsNumber,
-        timePerStep,
-        wideDimension,
-        borders,
-      });
-      console.log(livingBeingsCollectionAux);
+      
      
       stageParameters.dynamicElementsArray = [];
       simulationParameters.init_output = init(stageParameters, simulationParameters);
@@ -126,23 +121,30 @@ function clickButtonsDetection() {
     "click",
     function () {
   console.log(addThisSpeciesButton);
+  console.log("livingBeingsCollection")
+  console.log(stageParameters.livingBeingsCollection);
   let name = document.getElementById("speciesName").value;
   let type =  document.querySelector( 'input[name="speciesType"]:checked').value;
   let color = document.getElementById("color").value;
   let preys = document.getElementById("preys").value;
   let movement =  document.querySelector( 'input[name="movement"]:checked').value;
   let initialNumber = document.getElementById("initialNumber").value;
+  let preySelector = document.getElementById("preys");
+   preySelector.innerHTML = "";
+   preySelector.innerHTML = `<option value="None" >None</option>`
+  stageParameters.livingBeingsCollection.forEach(item => {
+    preySelector.innerHTML +=`<option value="${item.name}>${item.name}</option>`
+  })
   livingBeingsCollectionAux.push({
     name: name,
     type: type,
     color: color,
     preys: preys,
     movement: movement,
-    initialNumber: initialNumber,
+    number: initialNumber,
   });
-  console.log(livingBeingsCollectionAux);
+
   stageParameters.livingBeingsCollection = livingBeingsCollectionAux;
-  
 },
 false
 );

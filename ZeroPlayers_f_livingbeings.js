@@ -275,8 +275,10 @@ if (stageParameters.dynamicElementsArray[i].vitalFunctions.death){
 }
 
 function dynamicElementsGenerator(stageParameters) {
+  console.log("Arranca la función dynamicElementsGenerator")
   let i;
-
+  console.log("livingBeingsCollection")
+  console.log(stageParameters.livingBeingsCollection)
   stageParameters.livingBeingsCollection.forEach((element) => {
      for(i = 0; i < element.number; i++){
     
@@ -288,7 +290,7 @@ function dynamicElementsGenerator(stageParameters) {
       console.log(`element.name: ${element.name} has walkmode ${stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length - 1].walkmode}`);
  */
     
-    
+    console.log("Se ha creado un elemento dinámico")
   }});
   
    stageParameters.dynamicElementsArray.forEach((item) => {

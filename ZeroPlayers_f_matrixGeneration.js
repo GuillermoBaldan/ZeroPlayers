@@ -130,6 +130,8 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
 
 
 function matrixGenerator(stageParameters, simulationParameters) {
+  console.log("DynamicElementsArray")
+  console.log(stageParameters.dynamicElementsArray)
   
   // Inicializamos las variables
  //perceiving the environment
