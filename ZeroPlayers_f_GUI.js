@@ -94,6 +94,11 @@ function clickButtonsDetection() {
       }
       let borders = document.querySelector( 'input[name="borders"]:checked').value;
       stageParameters.universeRules.frontier = borders;
+      simulationParameters.simulationStepsNumber = stepsNumber;
+      simulationParameters.timePerStep = timePerStep;
+      simulationParameters.wideDimension = wideDimension;
+      simulationParameters.heightDimension = wideDimension;
+      
       console.log({
         stepsNumber,
         timePerStep,
