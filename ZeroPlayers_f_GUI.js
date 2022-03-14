@@ -121,20 +121,22 @@ function clickButtonsDetection() {
     "click",
     function () {
   console.log(addThisSpeciesButton);
-  console.log("livingBeingsCollection")
-  console.log(stageParameters.livingBeingsCollection);
+  
   let name = document.getElementById("speciesName").value;
   let type =  document.querySelector( 'input[name="speciesType"]:checked').value;
   let color = document.getElementById("color").value;
   let preys = document.getElementById("preys").value;
   let movement =  document.querySelector( 'input[name="movement"]:checked').value;
   let initialNumber = document.getElementById("initialNumber").value;
-  let preySelector = document.getElementById("preys");
+ /*  let preySelector = document.getElementById("preys");
+  console.log("preySelectorr")
+  console.log(preySelector)
    preySelector.innerHTML = "";
-   preySelector.innerHTML = `<option value="None" >None</option>`
+   preySelector.innerHTML = `<option value="None">None</option>`
+   preySelector.innerHTML += `<option value="Test">Test</option>`
   stageParameters.livingBeingsCollection.forEach(item => {
     preySelector.innerHTML +=`<option value="${item.name}>${item.name}</option>`
-  })
+  }) */
   livingBeingsCollectionAux.push({
     name: name,
     type: type,
@@ -145,26 +147,32 @@ function clickButtonsDetection() {
   });
 
   stageParameters.livingBeingsCollection = livingBeingsCollectionAux;
+  console.log("livingBeingsCollection")
+  console.log(stageParameters.livingBeingsCollection);
 },
 false
 );
 
-  //Acciones asociadas al modal Editor Species
- /*  document.getElementById("addSpeciesButton_Modal").addEventListener(
-    "click",
-    function () {
-      console.log("Se ha hecho click en el botón de añadir especie del Editor de Especie") 
-       
-      //Close modal
-        let closeSpeciesModal = document.getElementById("closeSpeciesModal");
-        closeSpeciesModal.click();
-        document.getElementById("playButton_Modal").click();
-      
-    },
-    false
-  ); */
+let AddSpeciesButton = document.getElementById("speciesModalButton").addEventListener("click",
+function () {
+  //let modalSpeciesEditor = document.getElementById("speciesModal");
+  let preySelector = document.getElementById("preys");
+  console.log("preySelector")
+  console.log(preySelector)
+   preySelector.innerHTML = "";
+   preySelector.innerHTML = `<option value="None">None</option>`
+   stageParameters.livingBeingsCollection.forEach(item => {
+    console.log("se mete en el forEach")
+    preySelector.innerHTML +=`<option value="${item.name}">${item.name}</option>`
+});
 
-}
+});
+
+};
+
+
+
+
 
 function simulationStopAndEnd() {
   let flag = false;
