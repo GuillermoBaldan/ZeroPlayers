@@ -87,11 +87,12 @@ function clickButtonsDetection() {
       simulationParameters.wideDimension = wideDimension;
       simulationParameters.heightDimension = wideDimension;
       //stageParameters.livingBeingsCollection[0].number = 1;
-      if (wideDimension == 80){//¿?
+     /*  if (wideDimension == 80){//¿?
         stageParameters.generationStageAlgorithm = allTerrain;
       } else {
         stageParameters.generationStageAlgorithm = circularIsland;
-      }
+      } */
+      stageParameters.generationStageAlgorithm = circularIsland;
       let borders = document.querySelector( 'input[name="borders"]:checked').value;
       stageParameters.universeRules.frontier = borders;
       simulationParameters.simulationStepsNumber = stepsNumber;
@@ -128,6 +129,7 @@ function clickButtonsDetection() {
   let preys = document.getElementById("preys").value;
   let movement =  document.querySelector( 'input[name="movement"]:checked').value;
   let initialNumber = document.getElementById("initialNumber").value;
+  initialNumber = parseInt(initialNumber);
  /*  let preySelector = document.getElementById("preys");
   console.log("preySelectorr")
   console.log(preySelector)
@@ -157,13 +159,10 @@ let AddSpeciesButton = document.getElementById("speciesModalButton").addEventLis
 function () {
   //let modalSpeciesEditor = document.getElementById("speciesModal");
   let preySelector = document.getElementById("preys");
-  console.log("preySelector")
-  console.log(preySelector)
    preySelector.innerHTML = "";
    preySelector.innerHTML = `<option value="None">None</option>`
    stageParameters.livingBeingsCollection.forEach(item => {
-    console.log("se mete en el forEach")
-    preySelector.innerHTML +=`<option value="${item.name}">${item.name}</option>`
+     preySelector.innerHTML +=`<option value="${item.name}">${item.name}</option>`
 });
 
 });

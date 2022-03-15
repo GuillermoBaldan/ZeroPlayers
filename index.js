@@ -49,7 +49,8 @@ let stageParameters = {
     simpleCell: "yellow",
   },
   legendForbiddenColors: ["blue", "yellow","green", "purple"],
-  livingBeingsCollection: [
+  livingBeingsCollection: [],
+ /*  livingBeingsCollection: [
     { name: "gross predator",
     type: "predator",
     color: "yellow",
@@ -65,7 +66,7 @@ let stageParameters = {
       number: 24,
     }
     
-  ],
+  ], */
   dynamicElementsArray: [],
   staticStage: [],
   matrix: [],

@@ -20,6 +20,9 @@ import {
 import {staticStageGeneration} from "./ZeroPlayers_f_staticStageGeneration.js";
 
 function init(stageParameters, simulationParameters) {
+
+  console.log("stageParameters.generationStageAlgorithm");
+  console.log(stageParameters.generationStageAlgorithm);
   let staticStageAux = [];
   let matrixAux = [];
   let canvas;
