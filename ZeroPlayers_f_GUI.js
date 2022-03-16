@@ -122,11 +122,13 @@ function clickButtonsDetection() {
     "click",
     function () {
   console.log(addThisSpeciesButton);
-  
+  let preys = [];
   let name = document.getElementById("speciesName").value;
   let type =  document.querySelector( 'input[name="speciesType"]:checked').value;
   let color = document.getElementById("color").value;
-  let preys = document.getElementById("preys").value;
+  preys = preys.push(document.getElementById("preys").value);
+  console.log("preys at addThisSpeciesButton: ");
+  console.log(preys);
   let movement =  document.querySelector( 'input[name="movement"]:checked').value;
   let initialNumber = document.getElementById("initialNumber").value;
   initialNumber = parseInt(initialNumber);

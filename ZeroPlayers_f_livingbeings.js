@@ -156,6 +156,8 @@ function checkForbiddenPosition(
 
 function preyDetection(item, stageParameters) {
   //We assign the values of the coolindates cells
+  console.log("item")
+  console.log(item)
   let predator_x = item.x;
   let predator_y = item.y;
   let aux_1 = [predator_x, predator_y + 1]; //In principle this does not work for "adjacent ends" mode
@@ -176,6 +178,8 @@ function preyDetection(item, stageParameters) {
   }
   //We collect all the prey elements in an array
   stageParameters.dynamicElementsArray.forEach((item2) => {
+    console.log(`item.preys`)
+    console.log(item.preys)
     item.preys.forEach((item3) => {
       if (item2.name == item3) {
         preyArray.push(item2);
