@@ -235,7 +235,9 @@ function giveMovementToDynamicElementsv2(matrix, stageParameters, simulationPara
     stageParameters.dynamicElementsArray.forEach((item) => {
     if (!(item.walkmode == "static")){
     xy_before[0] = item.x;
-    xy_before[1] = item.y;  
+    xy_before[1] = item.y; 
+    console.log("Show item.walk")
+    console.log(item.walk) 
     newPosition = item.walk(item, stageParameters, simulationParameters)
     item.x = newPosition[0]
     item.y = newPosition[1]
