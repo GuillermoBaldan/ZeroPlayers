@@ -76,7 +76,7 @@ function clickButtonsDetection() {
     "click",
     function () {
       //Capture the value of the input duration
-      console.log("Setting Pannel click-----------------------------")
+      
       let stepsNumber = document.getElementById("numberSteps").value;
       simulationParameters.simulationStepsNumber = stepsNumber;
       //Capture the value of the time per Step input
@@ -121,14 +121,14 @@ function clickButtonsDetection() {
   let addThisSpeciesButton = document.getElementById("addThisSpecies").addEventListener(
     "click",
     function () {
-  console.log(addThisSpeciesButton);
+  ;
   let preys = [];
   let name = document.getElementById("speciesName").value;
   let type =  document.querySelector( 'input[name="speciesType"]:checked').value;
   let color = document.getElementById("color").value;
   preys.push(document.getElementById("preys").value);
-  console.log("preys at addThisSpeciesButton: ");
-  console.log(preys);
+  ;
+  ;
   let movement =  document.querySelector( 'input[name="movement"]:checked').value;
   let initialNumber = document.getElementById("initialNumber").value;
   initialNumber = parseInt(initialNumber);
@@ -142,8 +142,8 @@ function clickButtonsDetection() {
   });
 
   stageParameters.livingBeingsCollection = livingBeingsCollectionAux;
-  console.log("livingBeingsCollection")
-  console.log(stageParameters.livingBeingsCollection);
+  
+  ;
 },
 false
 );

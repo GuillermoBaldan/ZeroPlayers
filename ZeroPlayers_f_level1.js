@@ -21,8 +21,8 @@ import {staticStageGeneration} from "./ZeroPlayers_f_staticStageGeneration.js";
 
 function init(stageParameters, simulationParameters) {
 
-  console.log("stageParameters.generationStageAlgorithm");
-  console.log(stageParameters.generationStageAlgorithm);
+  ;
+  ;
   let staticStageAux = [];
   let matrixAux = [];
   let canvas;
@@ -50,7 +50,7 @@ function init(stageParameters, simulationParameters) {
     //
     return [staticStageAux, matrixAux, canvas[0], canvas[1]]; //lienzo = canvas[0];ctx = canvas[1]
   } else {
-    console.log("The data is not consistent");
+    ;
   }
 }
 

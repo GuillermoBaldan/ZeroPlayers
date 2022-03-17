@@ -130,8 +130,8 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
 
 
 function matrixGenerator(stageParameters, simulationParameters) {
-  console.log("DynamicElementsArray")
-  console.log(stageParameters.dynamicElementsArray)
+  
+  
   
   // Inicializamos las variables
  //perceiving the environment
@@ -149,8 +149,6 @@ cellsEnergyConsumption(stageParameters);
 cellsLifeConsumption(stageParameters);
  //Death of cells
 cellDeath(stageParameters);
-debug_typesOfSpecies();
-debug_ageOfcell();
   return stageParameters.matrix;
 }
 
@@ -236,12 +234,12 @@ function giveMovementToDynamicElementsv2(matrix, stageParameters, simulationPara
     if (!(item.walkmode == "static")){
     xy_before[0] = item.x;
     xy_before[1] = item.y; 
-    console.log("Show item.walk")
-    console.log(item.walk) 
+    
+     
     newPosition = item.walk(item, stageParameters, simulationParameters)
     item.x = newPosition[0]
     item.y = newPosition[1]
-    console.log(`item.x: ${item.x}; item.y: ${item.y}`)
+    
       if (forbiddenPosition(newPosition[0], newPosition[1], stageParameters, matrix)){
         item.x = xy_before[0];
         item.y = xy_before[1];

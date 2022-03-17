@@ -9,7 +9,7 @@ function energy2dynamicElements(energy, stageParamenters) {
   if (stageParameters.universeEnergy <= 0) {
     //End Simulation and show a message
     //TODO: End simulation sentence here
-    console.log("The heat death of the universe was reached");
+    ;
     killSimulation(simulationParameters);
     return 0;
   } else {

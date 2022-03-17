@@ -29,7 +29,7 @@ function zigzagFreedom(item,stageParameters,simulationParameters){
   let upEnd = simulationParameters.heightDimension/simulationParameters.squareSide - 1;
   let buffer = randomSteps();
   if (stageParameters.universeRules.frontier == "close"){
-    console.log("The option selected is close")
+    
     if ((item.x + buffer) < 0){ //left end
       item.x =  item.x - buffer;
     } else if((item.x + buffer) > rightEnd){ //right end
@@ -156,8 +156,8 @@ function checkForbiddenPosition(
 
 function preyDetection(item, stageParameters) {
   //We assign the values of the coolindates cells
-  console.log("item")
-  console.log(item)
+  
+  
   let predator_x = item.x;
   let predator_y = item.y;
   let aux_1 = [predator_x, predator_y + 1]; //In principle this does not work for "adjacent ends" mode
@@ -178,8 +178,8 @@ function preyDetection(item, stageParameters) {
   }
   //We collect all the prey elements in an array
   stageParameters.dynamicElementsArray.forEach((item2) => {
-    console.log(`item.preys`)
-    console.log(item.preys)
+    
+    
     item.preys.forEach((item3) => {
       if (item2.name == item3) {
         preyArray.push(item2);
@@ -265,10 +265,10 @@ if (stageParameters.dynamicElementsArray[i].vitalFunctions.death){
   stageParameters.matrix[stageParameters.dynamicElementsArray[i].y][stageParameters.dynamicElementsArray[i].x] = stageParameters.staticStage[stageParameters.dynamicElementsArray[i].y][stageParameters.dynamicElementsArray[i].x];
   energy2Universe(stageParameters.dynamicElementsArray[i].energy, stageParameters);
   console.log(`The cell ${stageParameters.dynamicElementsArray[i].id} of coordinates (${stageParameters.dynamicElementsArray[i].x},${stageParameters.dynamicElementsArray[i].y}) has death`)
-  console.log("stageParameters.staticStage");
-  console.log(stageParameters.staticStage)
-  console.log("stageParameters.matrix");
-  console.log(stageParameters.matrix)
+  ;
+  
+  ;
+  
   stageParameters.dynamicElementsArray.splice(i, 1);
     i = 0;
   }
@@ -279,10 +279,10 @@ if (stageParameters.dynamicElementsArray[i].vitalFunctions.death){
 }
 
 function dynamicElementsGenerator(stageParameters) {
-  console.log("Arranca la función dynamicElementsGenerator")
+  
   let i;
-  console.log("livingBeingsCollection")
-  console.log(stageParameters.livingBeingsCollection)
+  
+  
   stageParameters.livingBeingsCollection.forEach((element) => {
      for(i = 0; i < element.number; i++){
     
@@ -294,7 +294,7 @@ function dynamicElementsGenerator(stageParameters) {
       console.log(`element.name: ${element.name} has walkmode ${stageParameters.dynamicElementsArray[stageParameters.dynamicElementsArray.length - 1].walkmode}`);
  */
     
-    console.log("Se ha creado un elemento dinámico")
+    
   }});
   
    stageParameters.dynamicElementsArray.forEach((item) => {
@@ -374,9 +374,9 @@ function hunterGroupPathFinder(hunter, stageParameters, simulationParameters){
 /*   preyArray.forEach((item) => {
     console.log(`dynamicItem_x: ${dynamicItem_x}`);
     console.log(`dynamicItem_y: ${dynamicItem_y}`);
-    console.log(`item.x: ${item.x}`);
-    console.log(`item.y: ${item.y}`);
-    console.log(grid)
+    ;
+    ;
+    
     path2prey.push(finder.findPath(dynamicItem_x, dynamicItem_y, item.x, item.y, grid));
   }); */
   if (preyArray.length > 0){
@@ -401,7 +401,7 @@ function circularSelection(origin_x,origin_y,radious){ //Selecciona todas las co
     for(by=-y;by<y;by++){
       if (((by + origin_y) >= 0) && ((by + origin_y) < (stageParameters.staticStage.length-1))){
            array.push([x + origin_x,by + origin_y])
-           //console.log(`Se mete en el if`)
+           //
           }  
       }
   }

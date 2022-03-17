@@ -57,7 +57,7 @@ function killSimulation(simulationParameters) {
 
 function oneSimulationStep(stageParameters, simulationParameters) {
   // oneSimulationStep(simulationStepsNumber,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
-  console.log("----------------------------------");
+  ;
   console.log(
     "simulation Step: " + (simulationParameters.singularSimulationStep + 1)
   );

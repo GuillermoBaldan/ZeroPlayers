@@ -88,7 +88,7 @@ function occupyPosition(coordinates, stageParameters, simulationParameters) {
     }
   });
   if (flag) {
-    console.log("La posición está ocupada");
+    ;
   }
   return flag;
 }
@@ -198,7 +198,7 @@ function checkReproductionRules(father, stageParameters){
     //console.log(stageParameters.matrix[item[1]][item[0]]);
     
     if (stageParameters.matrix[item[1]][item[0]] == item2.color) {
-      //console.log("Se mete en el if")
+      //
       counter++;
       if (counter == item2.number) {
         flag = true;

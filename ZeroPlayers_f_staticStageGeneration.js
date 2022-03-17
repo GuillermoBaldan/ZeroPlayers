@@ -91,7 +91,7 @@ function continent(stageParameters, simulationParameters){
   let y;
   let by;
   let array = [];
-  console.log(`origin: ${origin}`);
+  ;
   //Primero pintamos todo de azul
  stageParameters.staticStage = blueStage(simulationParameters);
 
@@ -109,7 +109,7 @@ return stageParameters.staticStage;
   );
   let origin = [center_x,center_y]
   let radious = Math.floor((simulationParameters.wideDimension/simulationParameters.squareSide)/3)
-  //console.log(`radious: ${radious}`)
+  //
   let radio = radious + 1;
   let a;
   let b;
