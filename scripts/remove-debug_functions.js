@@ -10,7 +10,11 @@ let files2clean = [
   "ZeroPlayers_f_movement.js",
   "ZeroPlayers_f_simulation.js",
   "ZeroPlayers_f_universe.js",
-];
+  "ZeroPlayers_f_GUI.js",
+  "ZeroPlayers_f_staticStageGeneration.js",
+  "ZeroPlayers_f_checkValues.js",
+  "ZeroPlayers_f_pathfinder.js",
+    ];
 
 let file;
 let fs = require("fs");
