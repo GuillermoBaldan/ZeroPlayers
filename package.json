@@ -29,7 +29,7 @@
     "echotest2": "echo \"Guillermo\"",
     "echotests": "npm run echotest1 && npm run echotest2",
     "removeDebug": "node .\\scripts\\remove-debug_functions.js",
-    "removeConsole": "node .\\scripts\\remove-console_functions.js"    
+    "removeConsole": "node .\\scripts\\remove-console.logs.js"    
   },
   "repository": {
     "type": "git",
