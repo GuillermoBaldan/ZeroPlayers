@@ -126,21 +126,12 @@ function clickButtonsDetection() {
   let name = document.getElementById("speciesName").value;
   let type =  document.querySelector( 'input[name="speciesType"]:checked').value;
   let color = document.getElementById("color").value;
-  preys = preys.push(document.getElementById("preys").value);
+  preys.push(document.getElementById("preys").value);
   console.log("preys at addThisSpeciesButton: ");
   console.log(preys);
   let movement =  document.querySelector( 'input[name="movement"]:checked').value;
   let initialNumber = document.getElementById("initialNumber").value;
   initialNumber = parseInt(initialNumber);
- /*  let preySelector = document.getElementById("preys");
-  console.log("preySelectorr")
-  console.log(preySelector)
-   preySelector.innerHTML = "";
-   preySelector.innerHTML = `<option value="None">None</option>`
-   preySelector.innerHTML += `<option value="Test">Test</option>`
-  stageParameters.livingBeingsCollection.forEach(item => {
-    preySelector.innerHTML +=`<option value="${item.name}>${item.name}</option>`
-  }) */
   livingBeingsCollectionAux.push({
     name: name,
     type: type,
