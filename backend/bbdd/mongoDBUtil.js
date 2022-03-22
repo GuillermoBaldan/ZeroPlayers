@@ -19,7 +19,7 @@ exports.conectarBBDD = function () {
       .then(function (dbs) {
         console.log("Conexión establecida");
 
-        let esquema = dbs.db("tienda");
+        let esquema = dbs.db("ZeroPlayers-users");
         //Cuidado que en process.env solo podemos guardar cadenas de texto y aqui estariamos intentando guardar un objeto!!!
         //process.env.esquema = esquema //MCEMPV
         process.esquema = esquema;
