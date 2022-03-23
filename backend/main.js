@@ -11,7 +11,7 @@ const usuariosRouter = require("./rest/usuariosREST").router;
 const autenticacionRouter =
   require("./autenticacion/autenticacionRouter").router;
 const cors = require("cors");
-whitelist = ["http://localhost:5500"];
+whitelist = ["http://localhost:5500", "http://localhost:5501"];
 //Primer paso: leer el fichero de configuracion
 require("./util/configUtil");
 
@@ -42,7 +42,7 @@ function arrancarServidor() {
       limit: "5mb", //Tamaño máximo del body que estamos dispuestos a leer. IMPRESCINDIBLE
     })
   );
-  app.use(cors({ origin: true, credentials: true }));
+  app.use(cors({ origin: whitelist, credentials: true,optionSuccessStatus:200 }));
   app.use(interceptorLog);
   app.use(interceptorCORS);
   app.use(interceptorJWT);
@@ -55,7 +55,17 @@ function arrancarServidor() {
   http.createServer(app).listen(process.env.app_puerto, function () {
     console.log("Esperando peticiones en el puerto " + process.env.app_puerto);
   });
+
+  //Mandamos el frontend al puerto 3000
+app.use(express.static(__dirname + '../../frontend/'));
+
+app.listen('3000', function() {
+  console.log('Servidor escuchando en el puerto 3000');
+});
+
 }
+
+
 
 ////////////////////////////////////////////////////////////////////
 //MIDDLEWARE. Funciones interceptoras///////////////////////////////
