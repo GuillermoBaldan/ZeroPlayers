@@ -387,6 +387,31 @@ function hunterPathFinder(hunter, stageParameters, simulationParameters){
   return path2prey[0].path;
 }
 
+function hunterGroupPathFinder(hunter, stageParameters, simulationParameters){
+  let preyArray = [];
+  let path2prey = [];
+  let finder = new PF.AStarFinder();
+  let grid = new PF.Grid(gridConversion(stageParameters.matrix))
+//1. Locate the preys
+  stageParameters.dynamicElementsArray.forEach((item) => {
+    
+     if ((item.name) == "gross"){
+      preyArray.push(item)
+    }
+  });
+  
+
+//2. Calculate the path to the preys
+
+  if (preyArray.length > 0){
+  path2prey = finder.findPath(hunter.x, hunter.y,preyArray[0].x, preyArray[0].y, grid);
+  } else {
+    path2prey = undefined;
+  }
+
+  return path2prey;
+}
+
 function circularSelection(origin_x,origin_y,radious){ //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado
   let array = [];
   let x,y,by;
