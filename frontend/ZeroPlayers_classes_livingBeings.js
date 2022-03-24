@@ -276,7 +276,7 @@ class genericLivingBeing {
       this.walk = zigzagFreedom;
      } else if (movement == "path finder") {
       this.walkmode = "autonomous";
-      this.walk = hunterGroupMovement;
+      this.walk = hunterPathFinder;
      }
 
     this.trajectory_x = [1, 1, 1, 1, 1, 1, 1];
