@@ -356,36 +356,35 @@ function feeding(stageParameters){
   
 }
 
-function hunterGroupPathFinder(hunter, stageParameters, simulationParameters){
+function hunterPathFinder(hunter, stageParameters, simulationParameters){
+  let preys =[];
   let preyArray = [];
-  let path2prey = [];
+  let path2prey;
   let finder = new PF.AStarFinder();
   let grid = new PF.Grid(gridConversion(stageParameters.matrix))
 //1. Locate the preys
   stageParameters.dynamicElementsArray.forEach((item) => {
     
      if ((item.name) == "gross"){
-      preyArray.push(item)
+      preys.push({item: item});
     }
-  });
   
-
-//2. Calculate the path to the preys
-/*   preyArray.forEach((item) => {
-    console.log(`dynamicItem_x: ${dynamicItem_x}`);
-    console.log(`dynamicItem_y: ${dynamicItem_y}`);
-    ;
-    ;
-    
-    path2prey.push(finder.findPath(dynamicItem_x, dynamicItem_y, item.x, item.y, grid));
-  }); */
+//2. Calcule the path to the preys
   if (preyArray.length > 0){
   path2prey = finder.findPath(hunter.x, hunter.y,preyArray[0].x, preyArray[0].y, grid);
   } else {
     path2prey = undefined;
   }
+  preys[preys.length-1].path = path2prey;
 
-  return path2prey;
+  });
+//.3 Fillter by the shortest path
+  path2prey = preys.sort(function(a, b){
+    return a.path.length - b.path.length;
+  });
+
+
+  return path2prey[0].path;
 }
 
 function circularSelection(origin_x,origin_y,radious){ //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado
