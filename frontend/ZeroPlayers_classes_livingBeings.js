@@ -1,5 +1,5 @@
 import { simulationParameters, stageParameters } from "./index.js";
-import { hunterGroupMovement, totalFreedom, zigzagFreedom } from "./ZeroPlayers_f_livingbeings.js";
+import { hunterGroupMovement, hunterPathFinder, totalFreedom, zigzagFreedom } from "./ZeroPlayers_f_livingbeings.js";
 
 let counter = [];
 

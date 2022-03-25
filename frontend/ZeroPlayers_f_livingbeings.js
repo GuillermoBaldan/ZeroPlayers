@@ -460,6 +460,7 @@ export {
   feeding,
   hunterGroupPathFinder,
   hunterGroupMovement,
+  hunterPathFinder,
   circularSelection,
   perception 
 }
