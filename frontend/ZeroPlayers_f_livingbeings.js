@@ -360,6 +360,7 @@ function hunterPathFinder(hunter, stageParameters, simulationParameters){
   let preys =[];
   let preyArray = [];
   let path2prey;
+  let result;
   let finder = new PF.AStarFinder();
   let grid = new PF.Grid(gridConversion(stageParameters.matrix))
 //1. Locate the preys
@@ -370,21 +371,24 @@ function hunterPathFinder(hunter, stageParameters, simulationParameters){
     }
   
 //2. Calcule the path to the preys
-  if (preyArray.length > 0){
-  path2prey = finder.findPath(hunter.x, hunter.y,preyArray[0].x, preyArray[0].y, grid);
-  } else {
-    path2prey = undefined;
-  }
+console.log(`prey.x: ${preys[preys.length-1].item.x} prey.y: ${preys[preys.length-1].item.y}`);
+console.log("grid")
+console.log(grid)
+console.log("hunter.x: " + hunter.x + " hunter.y: " + hunter.y)
+  path2prey = finder.findPath(hunter.x, hunter.y,preys[preys.length-1].x,preys[preys.length-1].y, grid);
+ 
   preys[preys.length-1].path = path2prey;
+  console.log("preys");
+  console.log(preys)
 
   });
 //.3 Fillter by the shortest path
-  path2prey = preys.sort(function(a, b){
+  result = preys.sort(function(a, b){
     return a.path.length - b.path.length;
   });
 
 
-  return path2prey[0].path;
+  return result[0].path;
 }
 
 function hunterGroupPathFinder(hunter, stageParameters, simulationParameters){
