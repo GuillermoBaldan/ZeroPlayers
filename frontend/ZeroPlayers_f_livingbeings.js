@@ -371,6 +371,8 @@ function hunterPathFinder(hunter, stageParameters, simulationParameters){
     }
   
 //2. Calcule the path to the preys
+console.log("preys");
+console.log(preys);
 console.log(`prey.x: ${preys[preys.length-1].item.x} prey.y: ${preys[preys.length-1].item.y}`);
 console.log("grid")
 console.log(grid)
@@ -412,8 +414,9 @@ function hunterGroupPathFinder(hunter, stageParameters, simulationParameters){
   } else {
     path2prey = undefined;
   }
-
-  return path2prey;
+ console.log("path2prey");
+ console.log(path2prey);
+  return path2prey[0];
 }
 
 function circularSelection(origin_x,origin_y,radious){ //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado
