@@ -131,8 +131,8 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
 
 function matrixGenerator(stageParameters, simulationParameters) {
   
-  ;
-  ;
+  console.log("stageParameters.matrix");
+  console.log(stageParameters.matrix);
   
   // Inicializamos las variables
  //perceiving the environment
