@@ -20,9 +20,9 @@ let file;
 let fs = require("fs");
 //1. Open and read the file ZeroPlayers_classes_livingBeings.js
 files2clean.forEach(function (item) {
-  file = fs.readFileSync(`./${item}`, "utf8");
+  file = fs.readFileSync(`./frontend/${item}`, "utf8");
   //2. Remove the debug functions, using a regex, the expressions start with 'debug_' and ends with ')'
   file = file.replace(/debug_[A-Za-z]+\(\);/g, "");
   //3. Write the file
-  fs.writeFileSync(`${item}`, file);
+  fs.writeFileSync(`./frontend/${item}`, file);
 });
