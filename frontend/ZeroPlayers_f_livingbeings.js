@@ -371,17 +371,17 @@ function hunterPathFinder(hunter, stageParameters, simulationParameters){
     }
   
 //2. Calcule the path to the preys
-console.log("preys");
-console.log(preys);
+;
+;
 console.log(`prey.x: ${preys[preys.length-1].item.x} prey.y: ${preys[preys.length-1].item.y}`);
-console.log("grid")
-console.log(grid)
+
+
 console.log("hunter.x: " + hunter.x + " hunter.y: " + hunter.y)
   path2prey = finder.findPath(hunter.x, hunter.y,preys[preys.length-1].x,preys[preys.length-1].y, grid);
  
   preys[preys.length-1].path = path2prey;
-  console.log("preys");
-  console.log(preys)
+  ;
+  
 
   });
 //.3 Fillter by the shortest path
@@ -414,8 +414,8 @@ function hunterGroupPathFinder(hunter, stageParameters, simulationParameters){
   } else {
     path2prey[1] = zigzagFreedom(hunter, stageParameters, simulationParameters);
   }
- console.log("path2prey");
- console.log(path2prey);
+ ;
+ ;
   return path2prey[1];
 }
 

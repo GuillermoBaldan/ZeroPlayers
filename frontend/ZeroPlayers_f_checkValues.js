@@ -105,7 +105,11 @@ function forbiddenPosition(x, y, stageParameters, matrix) {
   let flag = false;
 
   stageParameters.legendForbiddenColors.forEach((item) => {
-   
+   ;
+   ;
+   ;
+   console.log("matrix[y][x]");
+    console.log(matrix[y][x]);
      if (matrix[y][x] == item) {
       flag = true;
     }
