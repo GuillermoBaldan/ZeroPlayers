@@ -416,7 +416,7 @@ function hunterGroupPathFinder(hunter, stageParameters, simulationParameters){
   }
  console.log("path2prey");
  console.log(path2prey);
-  return path2prey[0];
+  return path2prey[1];
 }
 
 function circularSelection(origin_x,origin_y,radious){ //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado
