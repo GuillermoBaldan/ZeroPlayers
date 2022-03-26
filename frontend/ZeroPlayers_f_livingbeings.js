@@ -412,7 +412,7 @@ function hunterGroupPathFinder(hunter, stageParameters, simulationParameters){
   if (preyArray.length > 0){
   path2prey = finder.findPath(hunter.x, hunter.y,preyArray[0].x, preyArray[0].y, grid);
   } else {
-    path2prey = undefined;
+    path2prey[1] = zigzagFreedom(hunter, stageParameters, simulationParameters);
   }
  console.log("path2prey");
  console.log(path2prey);
