@@ -399,6 +399,7 @@ function hunterPathFinderv2(hunter, stageParameters, simulationParameters){
   let path2prey;
   let paths = [];
   let filteredPaths = [];
+  let result;
   let finder = new PF.AStarFinder();
   let grid = new PF.Grid(gridConversion(stageParameters.matrix))
   stageParameters.dynamicElementsArray.forEach((item) => {
@@ -418,14 +419,13 @@ function hunterPathFinderv2(hunter, stageParameters, simulationParameters){
 filteredPaths = paths.sort(function(a, b){
   return a.length - b.length;
 });
-
+   result = filteredPaths[0][1];
  } else {
-   filteredPaths[1] = zigzagFreedom(hunter, stageParameters, simulationParameters);
+   result =  zigzagFreedom(hunter, stageParameters, simulationParameters);
  }
 
+return result;
 
-
- return filteredPaths[1];
 }
 
 
