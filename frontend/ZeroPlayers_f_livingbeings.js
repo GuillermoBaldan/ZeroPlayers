@@ -393,6 +393,43 @@ console.log("hunter.x: " + hunter.x + " hunter.y: " + hunter.y)
   return result[0].path;
 }
 
+function hunterPathFinderv2(hunter, stageParameters, simulationParameters){
+  let preys =[];
+  let preyArray = [];
+  let path2prey;
+  let paths = [];
+  let filteredPaths = [];
+  let finder = new PF.AStarFinder();
+  let grid = new PF.Grid(gridConversion(stageParameters.matrix))
+  stageParameters.dynamicElementsArray.forEach((item) => {
+    
+    if ((item.name) == "gross"){
+     preyArray.push(item)
+   }
+ });
+ 
+
+//2. Calculate the path to the preys
+
+ if (preyArray.length > 0){
+ path2prey = finder.findPath(hunter.x, hunter.y,preyArray[0].x, preyArray[0].y, grid);
+  paths.push(path2prey);
+  //3. Filter by the shortest path
+filteredPaths = paths.sort(function(a, b){
+  return a.length - b.length;
+});
+
+ } else {
+   filteredPaths[1] = zigzagFreedom(hunter, stageParameters, simulationParameters);
+ }
+
+
+
+ return filteredPaths[1];
+}
+
+
+
 function hunterGroupPathFinder(hunter, stageParameters, simulationParameters){
   let preyArray = [];
   let path2prey = [];
