@@ -1,8 +1,7 @@
 import { simulationParameters, stageParameters } from "./index.js";
-import { hunterGroupMovement, hunterGroupPathFinder, hunterPathFinder, totalFreedom, zigzagFreedom } from "./ZeroPlayers_f_livingbeings.js";
+import { hunterGroupMovement, hunterGroupPathFinder, hunterPathFinder, hunterPathFinderv2, totalFreedom, zigzagFreedom } from "./ZeroPlayers_f_livingbeings.js";
 
 let counter = [];
-
 function countingSpecies(name, stageParameters){
 let flag = false;
 let id;
@@ -276,7 +275,7 @@ class genericLivingBeing {
       this.walk = zigzagFreedom;
      } else if (movement == "path finder") {
       this.walkmode = "autonomous";
-      this.walk = hunterGroupPathFinder;
+      this.walk = hunterPathFinderv2;
      }
 
     this.trajectory_x = [1, 1, 1, 1, 1, 1, 1];

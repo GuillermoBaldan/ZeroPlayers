@@ -503,6 +503,7 @@ export {
   cellsLifeConsumption,
   feeding,
   hunterGroupPathFinder,
+  hunterPathFinderv2,
   hunterGroupMovement,
   hunterPathFinder,
   circularSelection,
