@@ -429,8 +429,7 @@ return result;
 }
 
 
-
-function hunterGroupPathFinder(hunter, stageParameters, simulationParameters){
+ function hunterGroupPathFinder(hunter, stageParameters, simulationParameters){
   let preyArray = [];
   let path2prey = [];
   let finder = new PF.AStarFinder();
