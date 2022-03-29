@@ -256,6 +256,7 @@ function giveMovementToDynamicElementsv2(matrix, stageParameters, simulationPara
 function giveMovementToDynamicElementsv4(matrix, stageParameters, simulationParameters){
   let xy_before = [];
   let newPosition = [];
+  let preyStack = [];
   stageParameters.dynamicElementsArray.forEach((item) => {
   if (!(item.walkmode == "static")){
   xy_before[0] = item.x;
