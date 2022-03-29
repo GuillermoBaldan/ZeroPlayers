@@ -253,6 +253,31 @@ function giveMovementToDynamicElementsv2(matrix, stageParameters, simulationPara
  return matrix;
 }
 
+function giveMovementToDynamicElementsv4(matrix, stageParameters, simulationParameters){
+  let xy_before = [];
+  let newPosition = [];
+  stageParameters.dynamicElementsArray.forEach((item) => {
+  if (!(item.walkmode == "static")){
+  xy_before[0] = item.x;
+  xy_before[1] = item.y; 
+  
+   
+  newPosition = item.walk(item, stageParameters, simulationParameters)
+  item.x = newPosition[0]
+  item.y = newPosition[1]
+  
+    if (forbiddenPosition(newPosition[0], newPosition[1], stageParameters, matrix)){
+      item.x = xy_before[0];
+      item.y = xy_before[1];
+    } else {
+      matrix[item.y][item.x] = item.color;
+      matrix[xy_before[1]][xy_before[0]] = stageParameters.staticStage[xy_before[1]][xy_before[0]];
+    }
+  } 
+})
+return matrix;
+}
+
 function vegetablesFirst(stageParameters){
   let temp;
  for(let i = 0; i<stageParameters.dynamicElementsArray.length;i++){
