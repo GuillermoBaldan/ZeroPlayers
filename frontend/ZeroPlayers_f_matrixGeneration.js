@@ -262,7 +262,20 @@ function giveMovementToDynamicElementsv4(matrix, stageParameters, simulationPara
   xy_before[0] = item.x;
   xy_before[1] = item.y; 
   
+  if (preyStack.length == 0){
+  item.preys.forEach((preyname => 
+    {
+      stageParameters.dynamicElementsArray.forEach((item2) => {
+        if (item2.name == preyname){
+          preyStack.push(item2);
+        }
+      })
+    }))
+  }
+  
    
+
+
   newPosition = item.walk(item, stageParameters, simulationParameters)
   item.x = newPosition[0]
   item.y = newPosition[1]
