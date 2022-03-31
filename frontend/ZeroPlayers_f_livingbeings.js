@@ -428,6 +428,42 @@ return result;
 
 }
 
+function hunterPathFinderv3(hunter, stageParameters, simulationParameters){
+ //This function is being design to work with giveMomevementToDynamicElementsv4
+  let preys =[];
+  let preyArray = [];
+  let path2prey;
+  let paths = [];
+  let filteredPaths = [];
+  let result;
+  let finder = new PF.AStarFinder();
+  let grid = new PF.Grid(gridConversion(stageParameters.matrix))
+  stageParameters.dynamicElementsArray.forEach((item) => {
+    
+    if ((item.name) == "gross"){
+     preyArray.push(item)
+   }
+ });
+ 
+
+//2. Calculate the path to the preys
+
+ if (preyArray.length > 0){
+ path2prey = finder.findPath(hunter.x, hunter.y,preyArray[0].x, preyArray[0].y, grid);
+  paths.push(path2prey);
+  //3. Filter by the shortest path
+filteredPaths = paths.sort(function(a, b){
+  return a.length - b.length;
+});
+   result = filteredPaths[0][1];
+ } else {
+   result =  zigzagFreedom(hunter, stageParameters, simulationParameters);
+ }
+
+return result;
+
+}
+
 
  function hunterGroupPathFinder(hunter, stageParameters, simulationParameters){
   let preyArray = [];

@@ -271,6 +271,7 @@ function giveMovementToDynamicElementsv4(matrix, stageParameters, simulationPara
         }
       })
     }))
+    item.preyStack = preyStack;
   }
   
    
