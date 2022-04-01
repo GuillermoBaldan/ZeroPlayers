@@ -254,6 +254,7 @@ function giveMovementToDynamicElementsv2(matrix, stageParameters, simulationPara
 }
 
 function giveMovementToDynamicElementsv4(matrix, stageParameters, simulationParameters){
+  //This function isn´t ready yet
   let xy_before = [];
   let newPosition = [];
   let preyStack = [];
