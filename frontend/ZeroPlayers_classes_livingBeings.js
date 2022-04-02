@@ -304,7 +304,9 @@ class genericLivingBeing {
       see: true,
       pathfinder: true,
     }
-    this.memorySense = [];
+    this.memorySense = {
+      memory: [],
+      senseRadious: 4,
     
   }
 }
