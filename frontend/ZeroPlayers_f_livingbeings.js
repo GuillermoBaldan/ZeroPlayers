@@ -521,6 +521,26 @@ function perception(stageParameters){
   });
 }
 
+function squareSelection(item){ //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado
+let superiorEnd = (simulationParameters.wideDimension/simulationParameters.squareDimension)
+let j;
+let i;
+let result = [];
+  for(i = - item.memorySense.senseRadious; i<item.memorySense.senseRadious; i--){
+    for(j = - item.memorySense.senseRadious; j<item.memorySense.senseRadious; j++){
+      if (((i + item.x) >= 0) && ((i + item.x) < (superiorEnd)) && ((j + item.y) >= 0) && ((j + item.y) < (superiorEnd))){
+           result.push([i + item.x,j + item.y])
+           
+          }  
+      }
+  }
+  return result;
+}
+
+
+
+
+
 export {
   totalFreedom,
   zigzagFreedom,
