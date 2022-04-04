@@ -521,6 +521,13 @@ function perception(stageParameters){
   });
 }
 
+function perceptionv2(stageParameters){
+  stageParameters.dynamicElementsArray.forEach((item) => {
+    item.memorySense.memory.push(squareSelection(item));
+    //Quitamos las coordenados repetidas
+    
+});
+
 function squareSelection(item){ //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado
 let superiorEnd = (simulationParameters.wideDimension/simulationParameters.squareDimension)
 let j;
