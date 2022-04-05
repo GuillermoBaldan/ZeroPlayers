@@ -55,6 +55,18 @@ function removeItem(item, array) {
     array.splice(index, 1);
   }
   return array;
+} 
+
+function deleteRepeatedItem(array){
+  let item;
+  let i;
+  for(i=0; i<array.length; i++){
+    item = array[i];
+    if(array.indexOf(item) !== i){
+      array.splice(i, 1);
+      i=0;
+    }
+  }
 }
 
 export {
