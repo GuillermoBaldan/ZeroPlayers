@@ -77,4 +77,5 @@ export {
   copyVariable,
   sum,
   removeItem,
+  deteleteRepeatedItem
 };
