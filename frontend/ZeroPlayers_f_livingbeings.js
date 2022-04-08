@@ -527,6 +527,7 @@ function perceptionv2(stageParameters){
     //Quitamos las coordenados repetidas
     deteleteRepeatedItem(item.memorySense.memory)
 });
+}
 
 function squareSelection(item){ //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado
 let superiorEnd = (simulationParameters.wideDimension/simulationParameters.squareDimension)
