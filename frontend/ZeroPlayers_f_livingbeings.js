@@ -5,7 +5,7 @@ import {
 import { checkExistenceInMatrix, coordinatesAssigment } from "./ZeroPlayers_f_dataCoherence.js";
 import { setColor, vegetablesFirst } from "./ZeroPlayers_f_matrixGeneration.js";
 import { debug,debug_, debug_EnergyBalance, debug_energyOfCells, debug_energyOfUniverse, debug_numberOfCells } from "./ZeroPlayers_f_debugging.js";
-import { lastElement, removeItem, deteleteRepeatedItem } from "./ZeroPlayers_f_arraysManipulation.js";
+import { lastElement, removeItem, deleteRepeatedItem } from "./ZeroPlayers_f_arraysManipulation.js";
 import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
 import {setInFreePosition, forbiddenPosition, coordinates2son, sonInMatrix, checkReproductionRules} from "./ZeroPlayers_f_checkValues.js"
 import { simulationParameters, stageParameters } from "./index.js";

@@ -310,6 +310,7 @@ class genericLivingBeing {
     
   }
 }
+}
 
 class nodeMap { //This the base node of the grapth map of the stage for the internal memory of the cell
   constructor(color){
