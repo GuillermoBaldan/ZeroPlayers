@@ -70,9 +70,9 @@ function clickButtonsDetection() {
     },
     false
   );
-
+  }
  //Acciones asociadas al modal setting Stage
-  document.getElementById("playButton_Modal").addEventListener(
+/*   document.getElementById("playButton_Modal").addEventListener(
     "click",
     function () {
       //Capture the value of the input duration
@@ -86,12 +86,7 @@ function clickButtonsDetection() {
        let wideDimension = document.getElementById("universeSize").value;
       simulationParameters.wideDimension = wideDimension;
       simulationParameters.heightDimension = wideDimension;
-      //stageParameters.livingBeingsCollection[0].number = 1;
-     /*  if (wideDimension == 80){//¿?
-        stageParameters.generationStageAlgorithm = allTerrain;
-      } else {
-        stageParameters.generationStageAlgorithm = circularIsland;
-      } */
+
       stageParameters.generationStageAlgorithm = circularIsland;
       let borders = document.querySelector( 'input[name="borders"]:checked').value;
       stageParameters.universeRules.frontier = borders;
@@ -116,9 +111,9 @@ function clickButtonsDetection() {
   
     },
     false
-  );
+  ); */
    //Add this species button
-  let addThisSpeciesButton = document.getElementById("addThisSpecies").addEventListener(
+/*   let addThisSpeciesButton = document.getElementById("addThisSpecies").addEventListener(
     "click",
     function () {
   ;
@@ -146,9 +141,9 @@ function clickButtonsDetection() {
   ;
 },
 false
-);
+); */
 
-let AddSpeciesButton = document.getElementById("speciesModalButton").addEventListener("click",
+/* let AddSpeciesButton = document.getElementById("speciesModalButton").addEventListener("click",
 function () {
   //let modalSpeciesEditor = document.getElementById("speciesModal");
   let preySelector = document.getElementById("preys");
@@ -160,7 +155,7 @@ function () {
 
 });
 
-};
+}; */
 
 
 
