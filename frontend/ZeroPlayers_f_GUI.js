@@ -15,6 +15,7 @@ import { simulation, init } from "./ZeroPlayers_f_level1.js";
 import { allTerrain, circularIsland } from "./ZeroPlayers_f_staticStageGeneration.js";
 
 let livingBeingsCollectionAux = [];
+let modalDialog = document.getElementsByClassName("modalDialog")
 
 function refreshGUI() {
   document.getElementById("simulationCicles").innerHTML =
@@ -71,8 +72,12 @@ function clickButtonsDetection() {
     false
   );
   }
+  
+
+  if (modalDialog.length == 2 ){
+    console.log("modalDialog == 2")
  //Acciones asociadas al modal setting Stage
-/*   document.getElementById("playButton_Modal").addEventListener(
+  document.getElementById("playButton_Modal").addEventListener(
     "click",
     function () {
       //Capture the value of the input duration
@@ -111,9 +116,9 @@ function clickButtonsDetection() {
   
     },
     false
-  ); */
+  ); 
    //Add this species button
-/*   let addThisSpeciesButton = document.getElementById("addThisSpecies").addEventListener(
+  let addThisSpeciesButton = document.getElementById("addThisSpecies").addEventListener(
     "click",
     function () {
   ;
@@ -141,9 +146,9 @@ function clickButtonsDetection() {
   ;
 },
 false
-); */
+);
 
-/* let AddSpeciesButton = document.getElementById("speciesModalButton").addEventListener("click",
+let AddSpeciesButton = document.getElementById("speciesModalButton").addEventListener("click",
 function () {
   //let modalSpeciesEditor = document.getElementById("speciesModal");
   let preySelector = document.getElementById("preys");
@@ -155,9 +160,9 @@ function () {
 
 });
 
-}; */
+};
 
-
+  
 
 
 
