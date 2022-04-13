@@ -545,6 +545,66 @@ let result = [];
   return result;
 }
 
+function squareSelection(item){ //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado e identificamos el ser vivo
+  let superiorEnd = (simulationParameters.wideDimension/simulationParameters.squareDimension)
+  let j;
+  let i;
+  let result = [];
+    for(i = - item.memorySense.senseRadious; i<item.memorySense.senseRadious; i--){
+      for(j = - item.memorySense.senseRadious; j<item.memorySense.senseRadious; j++){
+        if (((i + item.x) >= 0) && ((i + item.x) < (superiorEnd)) && ((j + item.y) >= 0) && ((j + item.y) < (superiorEnd))){
+             result.push([i + item.x,j + item.y])
+             
+            }  
+        }
+    }
+    return result;
+  }
+
+  function squareSelectionv2(item){ //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado e identificamos el ser vivo
+    let superiorEnd = (simulationParameters.wideDimension/simulationParameters.squareDimension)
+    let j;
+    let i;
+    let result = [];
+      for(i = - item.memorySense.senseRadious; i<item.memorySense.senseRadious; i--){
+        for(j = - item.memorySense.senseRadious; j<item.memorySense.senseRadious; j++){
+          if (((i + item.x) >= 0) && ((i + item.x) < (superiorEnd)) && ((j + item.y) >= 0) && ((j + item.y) < (superiorEnd))){
+               result.push({ x: i + item.x, y: j + item.y})
+               
+              }  
+          }
+      }
+      return result;
+    }
+    
+    //Esta función está incompleta
+    function unitFinder(x,y, stageParameters){ //This return the unit in the position x,y it can be a piece of terrain or a living being
+      let result = [];
+      let aux;
+      stageParameters.dynamicElementsArray.forEach((item) => {
+        if ((item.x == x) && (item.y == y)){
+          result.push(item.name);
+        } else{
+          aux = stageParameters.matrix[y][x]; 
+          //result.push(colorToUnit(aux));
+        }
+      });
+      return result;
+    }
+
+    function colorToUnit(color, stageParameters){
+      let result = "";
+      //First, we check if it is a living being
+      stageParameters.dynamicElementsArray.forEach((item) => {
+        if (item.color == color){
+          result = item.name;
+        }
+      });
+      //Second, we check if it is a pice of terrain
+      
+      return result;
+    }
+
 
 
 

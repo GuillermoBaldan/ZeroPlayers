@@ -26,7 +26,7 @@ let singularSimulationStep = 0;
 
 let universeRules = {
   movementType: "zigzag", //There are two options: 'zigzag' and 'diagonal'
-  frontier: "adjacent ends", //There are two options: 'close' and 'adjacent ends'
+  frontier: "close", //There are two options: 'close' and 'adjacent ends'
 };
 //We put into one object, stageParamenters, the next objects: legend, cell, universeRules
 
@@ -78,7 +78,7 @@ let stageParameters = {
 
 let simulationParameters = {
   simulationStepsNumber: 50,
-  timePerStep: 500,
+  timePerStep: 200,
   wideDimension: 400,
   heightDimension: 400,
   squareSide: 20,
