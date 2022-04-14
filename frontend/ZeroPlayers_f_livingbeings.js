@@ -687,7 +687,11 @@ function squareSelectionv2(item) {
         j + item.y >= 0 &&
         j + item.y < superiorEnd
       ) {
-        result.push({ x: i + item.x, y: j + item.y });
+        result.push({
+          x: i + item.x,
+          y: j + item.y,
+          item: unitFinder(i + item.x, j + item.y, stageParameters),
+        });
       }
     }
   }
