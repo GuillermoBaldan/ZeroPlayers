@@ -591,7 +591,8 @@ function squareSelection(item){ //Selecciona todas las coordenadas, entorno a un
       });
       return result;
     }
-
+    
+  
     function colorToUnit(color, stageParameters){
       let result = "";
       //First, we check if it is a living being
@@ -601,8 +602,12 @@ function squareSelection(item){ //Selecciona todas las coordenadas, entorno a un
         }
       });
       //Second, we check if it is a pice of terrain
-      
-      return result;
+      for (const key in stageParameters.legendTerrain){
+        if (stageParameters.legendTerrain[key] == color){
+          result = key;
+        }
+      }
+     return result;
     }
 
 
