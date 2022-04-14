@@ -614,7 +614,7 @@ function squareSelection(item) {
   for (
     i = -item.memorySense.senseRadious;
     i < item.memorySense.senseRadious;
-    i--
+    i++
   ) {
     for (
       j = -item.memorySense.senseRadious;
@@ -644,7 +644,7 @@ function squareSelectionv2(item) {
   for (
     i = -item.memorySense.senseRadious;
     i < item.memorySense.senseRadious;
-    i--
+    i++
   ) {
     for (
       j = -item.memorySense.senseRadious;
@@ -674,7 +674,7 @@ function squareSelectionv3(item) {
   for (
     i = -item.memorySense.senseRadious;
     i < item.memorySense.senseRadious;
-    i--
+    i++
   ) {
     for (
       j = -item.memorySense.senseRadious;
