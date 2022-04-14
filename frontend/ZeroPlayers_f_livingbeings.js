@@ -598,7 +598,7 @@ function perception(stageParameters) {
 
 function perceptionv2(stageParameters) {
   stageParameters.dynamicElementsArray.forEach((item) => {
-    item.memorySense.memory.push(squareSelection(item));
+    item.memorySense.memory.push(squareSelectionv3(item));
     //Quitamos las coordenados repetidas
     deteleteRepeatedItem(item.memorySense.memory);
   });
@@ -634,7 +634,7 @@ function squareSelection(item) {
   return result;
 }
 
-function squareSelection(item) {
+function squareSelectionv2(item) {
   //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado e identificamos el ser vivo
   let superiorEnd =
     simulationParameters.wideDimension / simulationParameters.squareDimension;
@@ -664,7 +664,7 @@ function squareSelection(item) {
   return result;
 }
 
-function squareSelectionv2(item) {
+function squareSelectionv3(item) {
   //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado e identificamos el ser vivo
   let superiorEnd =
     simulationParameters.wideDimension / simulationParameters.squareDimension;
@@ -752,4 +752,5 @@ export {
   hunterPathFinder,
   circularSelection,
   perception,
+  perceptionv2,
 };
