@@ -600,7 +600,7 @@ function perceptionv2(stageParameters) {
   stageParameters.dynamicElementsArray.forEach((item) => {
     item.memorySense.memory.push(squareSelectionv3(item));
     //Quitamos las coordenados repetidas
-    deteleteRepeatedItem(item.memorySense.memory);
+    deleteRepeatedItem(item.memorySense.memory);
   });
 }
 
