@@ -578,15 +578,16 @@ function squareSelection(item){ //Selecciona todas las coordenadas, entorno a un
     }
     
     //Esta función está incompleta
-    function unitFinder(x,y, stageParameters){ //This return the unit in the position x,y it can be a piece of terrain or a living being
+    function unitFinder(x, y, stageParameters) {
+      //This return the unit in the position x,y it can be a piece of terrain or a living being
       let result = [];
       let aux;
       stageParameters.dynamicElementsArray.forEach((item) => {
-        if ((item.x == x) && (item.y == y)){
+        if (item.x == x && item.y == y) {
           result.push(item.name);
-        } else{
-          aux = stageParameters.matrix[y][x]; 
-          //result.push(colorToUnit(aux));
+        } else {
+          aux = stageParameters.matrix[y][x];
+          result.push(colorToUnit(aux));
         }
       });
       return result;
