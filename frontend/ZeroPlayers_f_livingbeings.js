@@ -569,7 +569,11 @@ function squareSelection(item){ //Selecciona todas las coordenadas, entorno a un
       for(i = - item.memorySense.senseRadious; i<item.memorySense.senseRadious; i--){
         for(j = - item.memorySense.senseRadious; j<item.memorySense.senseRadious; j++){
           if (((i + item.x) >= 0) && ((i + item.x) < (superiorEnd)) && ((j + item.y) >= 0) && ((j + item.y) < (superiorEnd))){
-               result.push({ x: i + item.x, y: j + item.y})
+            result.push({
+              x: i + item.x,
+              y: j + item.y,
+              item: unitFinder(i + item.x, j + item.y, stageParameters),
+            });
                
               }  
           }
