@@ -291,7 +291,7 @@ class genericLivingBeing {
       this.reproductionRules = {
         blocks: [
           {
-            type: "water",
+            name: "water",
             color: "blue",
             number: 1,
           },
