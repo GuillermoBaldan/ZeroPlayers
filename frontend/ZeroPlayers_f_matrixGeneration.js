@@ -121,7 +121,7 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
   dynamicElementsGenerator(stageParameters);
 
   stageParameters.dynamicElementsArray.forEach((item) => {
-    console.log(`item.name: ${item.name}`);
+    
   });
 
   return stageParameters.matrix;

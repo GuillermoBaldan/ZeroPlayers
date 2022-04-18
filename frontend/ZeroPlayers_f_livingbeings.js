@@ -20,7 +20,7 @@ import {
   removeItem,
   deleteRepeatedItem,
 } from "./ZeroPlayers_f_arraysManipulation.js";
-import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
+import { drawingMatrix, simulation } from "./ZeroPlayers_f_level1.js";
 import {
   setInFreePosition,
   forbiddenPosition,
@@ -251,8 +251,8 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters) {
 
 function reproductionFunction(stageParameters, simulationParameters) {
   stageParameters.dynamicElementsArray.forEach((father) => {
-    console.log("father");
-    console.log(father);
+    
+    
     if (
       father.vitalFunctions.reproduction &&
       checkReproductionRulesv2(father, stageParameters)
@@ -601,7 +601,7 @@ function perception(stageParameters) {
 
 function perceptionv2(stageParameters) {
   stageParameters.dynamicElementsArray.forEach((item) => {
-    item.memorySense.memory.push(squareSelectionv3(item));
+    item.memorySense.memory.push(squareSelectionv3(item, simulationParameters));
     //Quitamos las coordenados repetidas
     deleteRepeatedItem(item.memorySense.memory);
   });
@@ -670,12 +670,10 @@ function squareSelectionv2(item) {
 function squareSelectionv3(item, simulationParameters) {
   //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado e identificamos el ser vivo
   let superiorEnd =
-    simulationParameters.wideDimension / simulationParameters.squareDimension;
+    simulationParameters.wideDimension / simulationParameters.squareSide;
   let j;
   let i;
   let result = [];
-  console.log("superiorEnd");
-  console.log(superiorEnd);
   for (
     i = -item.memorySense.senseRadious;
     i < item.memorySense.senseRadious;
@@ -712,7 +710,7 @@ function unitFinder(x, y, stageParameters) {
       result.push(item.name);
     } else {
       aux = stageParameters.matrix[y][x];
-      result.push(colorToUnit(aux));
+      result.push(colorToUnit(aux, stageParameters));
     }
   });
   return result;
