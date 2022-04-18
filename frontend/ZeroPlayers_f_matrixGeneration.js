@@ -21,7 +21,8 @@ import {
   totalFreedom,
   zigzagFreedom,
   hunterGroupPathFinder,
-  hunterGroupMovement
+  hunterGroupMovement,
+  perceptionv2,
 } from "./ZeroPlayers_f_livingbeings.js";
 import {
   energy2Universe,

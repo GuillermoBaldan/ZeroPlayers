@@ -523,7 +523,7 @@ function perception(stageParameters){
 
 function perceptionv2(stageParameters){
   stageParameters.dynamicElementsArray.forEach((item) => {
-    item.memorySense.memory.push(squareSelection(item));
+    item.memorySense.memory.push(squareSelectionv3(item));
     //Quitamos las coordenados repetidas
     deteleteRepeatedItem(item.memorySense.memory)
 });
