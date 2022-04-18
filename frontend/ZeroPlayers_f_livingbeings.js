@@ -251,8 +251,6 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters) {
 
 function reproductionFunction(stageParameters, simulationParameters) {
   stageParameters.dynamicElementsArray.forEach((father) => {
-    
-    
     if (
       father.vitalFunctions.reproduction &&
       checkReproductionRulesv2(father, stageParameters)
@@ -601,7 +599,9 @@ function perception(stageParameters) {
 
 function perceptionv2(stageParameters) {
   stageParameters.dynamicElementsArray.forEach((item) => {
-    item.memorySense.memory.push(squareSelectionv3(item, simulationParameters));
+    item.memorySense.memory = item.memorySense.memory.concat(
+      squareSelectionv3(item, simulationParameters)
+    );
     //Quitamos las coordenados repetidas
     deleteRepeatedItem(item.memorySense.memory);
   });
@@ -707,10 +707,10 @@ function unitFinder(x, y, stageParameters) {
   let aux;
   stageParameters.dynamicElementsArray.forEach((item) => {
     if (item.x == x && item.y == y) {
-      result.push(item.name);
+      result = item.name;
     } else {
       aux = stageParameters.matrix[y][x];
-      result.push(colorToUnit(aux, stageParameters));
+      result = colorToUnit(aux, stageParameters);
     }
   });
   return result;

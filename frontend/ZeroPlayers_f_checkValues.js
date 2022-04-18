@@ -222,11 +222,7 @@ function checkReproductionRules(father, stageParameters) {
     father.reproductionRules.blocks.length > 0
   ) {
     father.memorySense.memory.forEach((item) => {
-      
-      
       father.reproductionRules.blocks.forEach((item2) => {
-        
-        
         if (stageParameters.matrix[father.y][father.x] == item2.color) {
           //
           counter++;
@@ -246,12 +242,9 @@ function checkReproductionRulesv2(father, stageParameters) {
   let counter = 0;
   let flag = false;
   father.memorySense.memory.forEach((item) => {
-    
-    
-    
-    
     father.reproductionRules.blocks.forEach((item2) => {
-      if (item.name == item2.name) {
+      console.log();
+      if (item.item == item2.name) {
         counter++;
         if (counter >= item2.number) {
           flag = true;
@@ -259,6 +252,7 @@ function checkReproductionRulesv2(father, stageParameters) {
       }
     });
   });
+
   return flag;
 }
 
