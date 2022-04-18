@@ -27,6 +27,7 @@ import {
   coordinates2son,
   sonInMatrix,
   checkReproductionRules,
+  checkReproductionRulesv2,
 } from "./ZeroPlayers_f_checkValues.js";
 import { simulationParameters, stageParameters } from "./index.js";
 import { gridConversion } from "./ZeroPlayers_f_pathfinder.js";
@@ -254,7 +255,7 @@ function reproductionFunction(stageParameters, simulationParameters) {
     console.log(father);
     if (
       father.vitalFunctions.reproduction &&
-      checkReproductionRules(father, stageParameters)
+      checkReproductionRulesv2(father, stageParameters)
     ) {
       fatherReproduction(father, stageParameters, simulationParameters);
     }
