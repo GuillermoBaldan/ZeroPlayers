@@ -581,6 +581,40 @@ function squareSelection(item){ //Selecciona todas las coordenadas, entorno a un
       return result;
     }
     
+    function squareSelectionv3(item) {
+      //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado e identificamos el ser vivo
+      let superiorEnd =
+        simulationParameters.wideDimension / simulationParameters.squareDimension;
+      let j;
+      let i;
+      let result = [];
+      for (
+        i = -item.memorySense.senseRadious;
+        i < item.memorySense.senseRadious;
+        i++
+      ) {
+        for (
+          j = -item.memorySense.senseRadious;
+          j < item.memorySense.senseRadious;
+          j++
+        ) {
+          if (
+            i + item.x >= 0 &&
+            i + item.x < superiorEnd &&
+            j + item.y >= 0 &&
+            j + item.y < superiorEnd
+          ) {
+            result.push({
+              x: i + item.x,
+              y: j + item.y,
+              item: unitFinder(i + item.x, j + item.y, stageParameters),
+            });
+          }
+        }
+      }
+      return result;
+    }
+
     //Esta función está incompleta
     function unitFinder(x, y, stageParameters) {
       //This return the unit in the position x,y it can be a piece of terrain or a living being
