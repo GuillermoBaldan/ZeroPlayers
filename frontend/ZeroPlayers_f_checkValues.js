@@ -222,10 +222,11 @@ function checkReproductionRules(father, stageParameters) {
     father.reproductionRules.blocks.length > 0
   ) {
     father.memorySense.memory.forEach((item) => {
+      console.log(father);
       father.reproductionRules.blocks.forEach((item2) => {
-        console.log(`item.name: ${item.name}`);
-        console.log(`item.color: ${item.color}`);
-        if (stageParameters.matrix[item[1]][item[0]] == item2.color) {
+        console.log("item2");
+        console.log(item2);
+        if (stageParameters.matrix[father.y][father.x] == item2.color) {
           //
           counter++;
           if (counter == item2.number) {

@@ -250,6 +250,8 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters) {
 
 function reproductionFunction(stageParameters, simulationParameters) {
   stageParameters.dynamicElementsArray.forEach((father) => {
+    console.log("father");
+    console.log(father);
     if (
       father.vitalFunctions.reproduction &&
       checkReproductionRules(father, stageParameters)
