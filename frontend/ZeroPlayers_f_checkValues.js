@@ -241,6 +241,23 @@ function checkReproductionRules(father, stageParameters) {
   return flag;
 }
 
+function checkReproductionRulesv2(father, stageParameters) {
+  let counter = 0;
+  let flag = false;
+  father.memorySense.memory.forEach((item) => {
+    father.reproductionRules.blocks((item2) => {
+      if (item.name == item2.name) {
+        counter++;
+        if (counter >= item2.number) {
+          flag = true;
+        }
+      }
+    });
+  });
+  return flag;
+}
+
+
 export {
   checkSimpleCellsExistence,
   checkNumbersTypeCell,

@@ -7,7 +7,13 @@ import {
   up,
 } from "./ZeroPlayers_f_livingbeings.js";
 import { generateStaticStage } from "./ZeroPlayers_f_matrixGeneration.js";
-import { grossCell, grossPredator, yellowPredator, vegetable, predator } from "./ZeroPlayers_classes_livingBeings.js";
+import {
+  grossCell,
+  grossPredator,
+  yellowPredator,
+  vegetable,
+  predator,
+} from "./ZeroPlayers_classes_livingBeings.js";
 import {
   continuosSimulationStep,
   killSimulation,
@@ -15,7 +21,12 @@ import {
 } from "./ZeroPlayers_f_simulation.js";
 import { debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
 import { clickButtonsDetection } from "./ZeroPlayers_f_GUI.js";
-import {random, islandGeneration, circularIsland, allTerrain} from "./ZeroPlayers_f_staticStageGeneration.js"
+import {
+  random,
+  islandGeneration,
+  circularIsland,
+  allTerrain,
+} from "./ZeroPlayers_f_staticStageGeneration.js";
 
 let staticStage;
 let lienzo;
@@ -36,51 +47,52 @@ let stageParameters = {
     reproduction: {
       type: "sexual", //There are two options: 'sexual' and 'asexual'
       probability: 0.5, //It is the probability of reproduction
-      distantTowater:1,
-      proximityTosameCells: 3
-    }
+      distantTowater: 1,
+      proximityTosameCells: 3,
     },
+  },
   legendTerrain: {
     ground: "brown",
-    water: "blue"
+    water: "blue",
   },
   legend: {
     water: "blue",
     simpleCell: "yellow",
   },
-  legendForbiddenColors: ["blue", "yellow","green", "purple"],
+  legendForbiddenColors: ["blue", "yellow", "green", "purple"],
   livingBeingsCollection: [],
-   livingBeingsCollection: [
-    { name: "gross predator",
-    type: "predator",
-    color: "yellow",
-    preys: ["gross"],
-    movement: "Random",
-    number: 1,
+  livingBeingsCollection: [
+    {
+      name: "gross predator",
+      type: "predator",
+      color: "yellow",
+      preys: ["gross"],
+      movement: "Random",
+      number: 0,
     },
-    { name: "gross",
+    {
+      name: "gross",
       type: "vegetable",
       color: "green",
       preys: [],
       movement: "None",
       number: 24,
-    }
-    
-  ], 
+    },
+  ],
   dynamicElementsArray: [],
   staticStage: [],
   matrix: [],
   freePlacesArray: [],
   universeEnergy: 500000,
-  generationStageAlgorithm: allTerrain,
+  generationStageAlgorithm: circularIsland,
   speciesCounter: [],
 };
 
 let simulationParameters = {
   simulationStepsNumber: 50,
   timePerStep: 200,
-  wideDimension: 400,
-  heightDimension: 400,
+  wideDimension: 600,
+  heightDimension: 600,
   squareSide: 20,
   lienzo: lienzo,
   ctx: ctx,
