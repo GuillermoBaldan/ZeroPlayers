@@ -25,24 +25,23 @@ import {
 import { refreshGUI, simulationStopAndEnd } from "./ZeroPlayers_f_GUI.js";
 
 function continuosSimulationStep(stageParameters, simulationParameters) {
-  
   // oneSimulationStep(simulationStepsNumber,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
   simulationParameters.historicalSimulationSteps += 1;
- 
 
   //------
   stageParameters.matrix = matrixGenerator(
     stageParameters,
     simulationParameters
   );
-  
-  
+
   refreshGUI();
   drawingMatrix(stageParameters, simulationParameters);
-  
-  simulationParameters.singularSimulationStep += 1;
- //debug_simulationCicle
- debug_simulationCicle()
+
+  if (simulationParameters.type == "finite") {
+    simulationParameters.singularSimulationStep += 1;
+  }
+  //debug_simulationCicle
+  debug_simulationCicle();
   if (!simulationStopAndEnd()) {
     setTimeout(function () {
       continuosSimulationStep(stageParameters, simulationParameters);
@@ -57,7 +56,6 @@ function killSimulation(simulationParameters) {
 
 function oneSimulationStep(stageParameters, simulationParameters) {
   // oneSimulationStep(simulationStepsNumber,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
-  ;
   console.log(
     "simulation Step: " + (simulationParameters.singularSimulationStep + 1)
   );

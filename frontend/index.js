@@ -90,6 +90,7 @@ let stageParameters = {
 
 let simulationParameters = {
   simulationStepsNumber: 50,
+  type: "finite", //The other option is 'infinite' for a simulation with a infinite number of steps
   timePerStep: 200,
   wideDimension: 600,
   heightDimension: 600,
