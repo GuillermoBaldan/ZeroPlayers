@@ -67,8 +67,8 @@ let stageParameters = {
       type: "predator",
       color: "yellow",
       preys: ["gross"],
-      movement: "Random",
-      number: 0,
+      movement: "path finder",
+      number: 1,
     },
     {
       name: "gross",
