@@ -245,7 +245,9 @@ function checkReproductionRulesv2(father, stageParameters) {
   let counter = 0;
   let flag = false;
   father.memorySense.memory.forEach((item) => {
-    father.reproductionRules.blocks((item2) => {
+    console.log("father");
+    console.log(father.reproductionRules.blocks);
+    father.reproductionRules.blocks.forEach((item2) => {
       if (item.name == item2.name) {
         counter++;
         if (counter >= item2.number) {
@@ -270,4 +272,5 @@ export {
   coordinates2son,
   sonInMatrix,
   checkReproductionRules,
+  checkReproductionRulesv2,
 };
