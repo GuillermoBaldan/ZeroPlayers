@@ -245,6 +245,10 @@ function checkReproductionRulesv2(father, stageParameters) {
   let counter = 0;
   let flag = false;
   father.memorySense.memory.forEach((item) => {
+    console.log("father.memorySense.memory");
+    console.log(father.memorySense.memory);
+    console.log("item");
+    console.log(item);
     console.log("father");
     console.log(father.reproductionRules.blocks);
     father.reproductionRules.blocks.forEach((item2) => {

@@ -667,13 +667,15 @@ function squareSelectionv2(item) {
   return result;
 }
 
-function squareSelectionv3(item) {
+function squareSelectionv3(item, simulationParameters) {
   //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado e identificamos el ser vivo
   let superiorEnd =
     simulationParameters.wideDimension / simulationParameters.squareDimension;
   let j;
   let i;
   let result = [];
+  console.log("superiorEnd");
+  console.log(superiorEnd);
   for (
     i = -item.memorySense.senseRadious;
     i < item.memorySense.senseRadious;
