@@ -20,7 +20,7 @@ import {
   removeItem,
   deleteRepeatedItem,
 } from "./ZeroPlayers_f_arraysManipulation.js";
-import { drawingMatrix } from "./ZeroPlayers_f_level1.js";
+import { drawingMatrix, simulation } from "./ZeroPlayers_f_level1.js";
 import {
   setInFreePosition,
   forbiddenPosition,
@@ -601,7 +601,8 @@ function perception(stageParameters) {
 
 function perceptionv2(stageParameters) {
   stageParameters.dynamicElementsArray.forEach((item) => {
-    item.memorySense.memory.push(squareSelectionv3(item));
+    item.memorySense.memory.push(squareSelectionv3(item, simulationParameters));
+
     //Quitamos las coordenados repetidas
     deleteRepeatedItem(item.memorySense.memory);
   });
@@ -674,8 +675,7 @@ function squareSelectionv3(item, simulationParameters) {
   let j;
   let i;
   let result = [];
-  console.log("superiorEnd");
-  console.log(superiorEnd);
+
   for (
     i = -item.memorySense.senseRadious;
     i < item.memorySense.senseRadious;
@@ -712,7 +712,8 @@ function unitFinder(x, y, stageParameters) {
       result.push(item.name);
     } else {
       aux = stageParameters.matrix[y][x];
-      result.push(colorToUnit(aux));
+      result.push(colorToUnit(aux, stageParameters));
+
     }
   });
   return result;
