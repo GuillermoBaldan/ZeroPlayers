@@ -246,7 +246,7 @@ function checkReproductionRulesv2(father, stageParameters) {
   father.memorySense.memory.forEach((item) => {
    
     father.reproductionRules.blocks.forEach((item2) => {
-      if (item.name == item2.name) {
+      if (item.item == item2.name) {
         counter++;
         if (counter >= item2.number) {
           flag = true;

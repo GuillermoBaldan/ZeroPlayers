@@ -332,7 +332,7 @@ class genericLivingBeing {
     };
     this.memorySense = {
       memory: [],
-      senseRadious: 4,
+      senseRadious: 2,
     };
   }
 }

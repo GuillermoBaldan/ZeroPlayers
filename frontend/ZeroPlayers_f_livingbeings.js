@@ -601,13 +601,13 @@ function perception(stageParameters) {
 
 function perceptionv2(stageParameters) {
   stageParameters.dynamicElementsArray.forEach((item) => {
-    item.memorySense.memory.push(squareSelectionv3(item, simulationParameters));
-
+    item.memorySense.memory = item.memorySense.memory.concat(
+      squareSelectionv3(item, simulationParameters)
+    );
     //Quitamos las coordenados repetidas
     deleteRepeatedItem(item.memorySense.memory);
   });
 }
-
 function squareSelection(item) {
   //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado
   let superiorEnd =
