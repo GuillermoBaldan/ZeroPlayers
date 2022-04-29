@@ -333,6 +333,12 @@ class genericLivingBeing {
     this.memorySense = {
       memory: [],
       senseRadious: 2,
+      huntermemory: {
+        selectedprey: [],
+        preypath: [],
+        counterpath: 0,
+        mode: "search", //This register can be "search" or "prey selected"
+      },
     };
   }
 }
