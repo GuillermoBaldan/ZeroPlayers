@@ -77,7 +77,11 @@ function clickButtonsDetection() {
   document.getElementById("infiniteSimulation").addEventListener(
     "click",
     function () {
-      infiniteSimulation(stageParameters, simulationParameters);
+      document.getElementById("progressBar").style.display = "block";
+      simulationParameters.auxStep = 0;
+      simulationParameters.singularSimulationStep = 0;
+      simulation(stageParameters, simulationParameters);
+      document.getElementById("playButton").disabled = true;
     },
     false
   );
