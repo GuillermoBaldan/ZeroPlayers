@@ -69,8 +69,12 @@ function clickButtonsDetection() {
   document.getElementById("killButton").addEventListener(
     "click",
     function () {
+      if (stopFlag === true) {
+        modifyStopFlag(false);
+      }
       killSimulation(simulationParameters);
       document.getElementById("infiniteButton").disabled = false;
+      document.getElementById("playButton").disabled = false;
     },
     false
   );
