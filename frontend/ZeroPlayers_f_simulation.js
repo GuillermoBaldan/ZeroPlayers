@@ -21,6 +21,7 @@ import {
   debug_energyOfUniverse,
   debug_EnergyBalance,
   debug_circle,
+  debug_grid,
 } from "./ZeroPlayers_f_debugging.js";
 import { refreshGUI, simulationStopAndEnd } from "./ZeroPlayers_f_GUI.js";
 
@@ -36,7 +37,7 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
 
   refreshGUI();
   drawingMatrix(stageParameters, simulationParameters);
-
+  debug_grid();
   if (simulationParameters.type == "finite") {
     simulationParameters.singularSimulationStep += 1;
   }

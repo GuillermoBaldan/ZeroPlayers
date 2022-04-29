@@ -76,7 +76,7 @@ let stageParameters = {
       color: "green",
       preys: [],
       movement: "None",
-      number: 24,
+      number: 1,
     },
   ],
   dynamicElementsArray: [],

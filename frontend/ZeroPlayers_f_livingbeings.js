@@ -510,44 +510,6 @@ function hunterPathFinderv3(hunter, stageParameters, simulationParameters) {
     }
   });
 
-  function snailSelection(x, y) {
-    let temp = [];
-    let iterationCounter = 1;
-    let i = 0;
-    flag = false;
-    do {
-      //hace una iteración hasta que encuentra una presa;
-      //Cuadrante 1 - recorremos y de arriba abajo
-      for (i = iterationCounter; i > -iterationCounter; i--) {
-        if (stageParameters.matrix[y + i][x + iterationCounter] != "green") {
-          temp.push([x + iterationCounter, y + i]);
-        }
-      }
-      //Cuadrante 2 - recorremos x de derecha a izquierda
-      for (i = iterationCounter; i > -iterationCounter; i--) {
-        if (stageParameters.matrix[y - iterationCounter][x + i] != "green") {
-          temp.push([x + i, y - iterationCounter]);
-        }
-      }
-      //Cuadrante 3 - recorremos y de abajo arriba
-      for (i = -iterationCounter; i < iterationCounter; i++) {
-        if (stageParameters.matrix[y + i][x - iterationCounter] != "green") {
-          temp.push([x - iterationCounter, y + i]);
-        }
-      }
-      //Cuadrante 4 - recorremos x de izquierda a derecha
-      for (i = -iterationCounter; i < iterationCounter; i++) {
-        if (stageParameters.matrix[y + iterationCounter][x + i] != "green") {
-          temp.push([x + i, y + iterationCounter]);
-        }
-      }
-
-      iterationCounter += 1;
-    } while (flag == "false");
-
-    return temp;
-  }
-
   //2. Calculate the path to the preys
 
   if (preyArray.length > 0) {
@@ -571,8 +533,54 @@ function hunterPathFinderv3(hunter, stageParameters, simulationParameters) {
   return result;
 }
 
+function snailSelection(x, y) {
+  let temp = [];
+  let iterationCounter = 1;
+  let i = 0;
+  let flag = false;
+  do {
+    //hace una iteración hasta que encuentra una presa;
+    //Cuadrante 1 - recorremos y de arriba abajo
+    for (i = iterationCounter; i > -iterationCounter; i--) {
+      if (stageParameters.matrix[y + i][x + iterationCounter] != "green") {
+        temp.push([x + iterationCounter, y + i]);
+      }
+    }
+    //Cuadrante 2 - recorremos x de derecha a izquierda
+    for (i = iterationCounter; i > -iterationCounter; i--) {
+      if (stageParameters.matrix[y - iterationCounter][x + i] != "green") {
+        temp.push([x + i, y - iterationCounter]);
+      }
+    }
+    //Cuadrante 3 - recorremos y de abajo arriba
+    for (i = -iterationCounter; i < iterationCounter; i++) {
+      if (stageParameters.matrix[y + i][x - iterationCounter] != "green") {
+        temp.push([x - iterationCounter, y + i]);
+      }
+    }
+    //Cuadrante 4 - recorremos x de izquierda a derecha
+    for (i = -iterationCounter; i < iterationCounter; i++) {
+      if (stageParameters.matrix[y + iterationCounter][x + i] != "green") {
+        temp.push([x + i, y + iterationCounter]);
+      }
+    }
+
+    iterationCounter += 1;
+  } while (flag == "false");
+
+  return temp;
+}
+
 function hunterPathFinderv4(hunter, stageParameters, simulationParameters) {
+  let tempArray = [];
+  let result;
   //This algorith is based on Snail Selection Algorithm
+  //1. SSA (Snail Selection ALgorithm)
+  tempArray = snailSelection(hunter.x, hunter.y);
+  console.log("The prey is in:");
+  console.log(tempArray[tempArray.length - 1]);
+  result = zigzagFreedom(hunter, stageParameters, simulationParameters);
+  return result;
 }
 
 function hunterGroupPathFinder(hunter, stageParameters, simulationParameters) {
@@ -793,6 +801,7 @@ export {
   feeding,
   hunterGroupPathFinder,
   hunterPathFinderv2,
+  hunterPathFinderv4,
   hunterGroupMovement,
   hunterPathFinder,
   circularSelection,
