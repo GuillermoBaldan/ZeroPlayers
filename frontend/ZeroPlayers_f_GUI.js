@@ -73,6 +73,29 @@ function clickButtonsDetection() {
     },
     false
   );
+  document.getElementById("killButton").addEventListener(
+    "click",
+    function () {
+      killSimulation(simulationParameters);
+      document.getElementById("infiniteButton").disabled = false;
+    },
+    false
+  );
+
+  document.getElementById("infiniteButton").addEventListener(
+    "click",
+    function () {
+      simulationParameters.type = "infinite";
+      document.getElementById("progressBar").style.display = "block";
+      simulationParameters.auxStep = 0;
+      simulationParameters.singularSimulationStep = 0;
+      simulation(stageParameters, simulationParameters);
+      document.getElementById("playButton").disabled = true;
+      document.getElementById("infiniteButton").disabled = true;
+    },
+    false
+  );
+}
 
   document.getElementById("infiniteSimulation").addEventListener(
     "click",
