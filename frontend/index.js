@@ -91,7 +91,7 @@ let stageParameters = {
 let simulationParameters = {
   simulationStepsNumber: 50,
   type: "finite", //The other option is 'infinite' for a simulation with a infinite number of steps
-  timePerStep: 200,
+  timePerStep: 600,
   wideDimension: 600,
   heightDimension: 600,
   squareSide: 20,
@@ -104,6 +104,7 @@ let simulationParameters = {
   globalCounter: 0,
   auxCounter: 0,
   auxStep: 0,
+  auxTempArray: [],
 };
 
 function modifyStopFlag(value) {

@@ -1,5 +1,10 @@
 import { cloneArray2D } from "./ZeroPlayers_f_arraysManipulation.js";
-import { debug_DetectCoordinatesRepeated, debug_circle, debug_grid } from "./ZeroPlayers_f_debugging.js";
+import {
+  debug_DetectCoordinatesRepeated,
+  debug_circle,
+  debug_grid,
+  debug_drawCoordinates,
+} from "./ZeroPlayers_f_debugging.js";
 import { simulation } from "./ZeroPlayers_f_level1.js";
 
 function initCanvas(simulationParameters) {
@@ -35,7 +40,7 @@ function drawingMatrix(stageParameters, simulationParameters) {
     y = y + Ay;
   });
   // matrixAux = [];
- /*  
+  /*
    */
 }
 
@@ -68,4 +73,4 @@ function ordering4drawing(stageParameters) {
   return result;
 }
 
-export { initCanvas, drawingMatrix, ordering4drawing };
+export { initCanvas, drawingMatrix, ordering4drawing, drawSquare };
