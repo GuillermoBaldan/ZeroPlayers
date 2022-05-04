@@ -4,6 +4,8 @@ import {
   hunterGroupPathFinder,
   hunterPathFinder,
   hunterPathFinderv2,
+  hunterPathFinderv4,
+
   totalFreedom,
   zigzagFreedom,
 } from "./ZeroPlayers_f_livingbeings.js";
@@ -285,7 +287,7 @@ class genericLivingBeing {
       this.walk = zigzagFreedom;
     } else if (movement == "path finder") {
       this.walkmode = "autonomous";
-      this.walk = hunterPathFinderv2;
+      this.walk = hunterPathFinderv4;
     }
     if (this.type == "vegetable") {
       this.reproductionRules = {

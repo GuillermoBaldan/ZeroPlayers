@@ -36,6 +36,7 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
 
   refreshGUI();
   drawingMatrix(stageParameters, simulationParameters);
+  debug_grid();
 
   if (simulationParameters.type == "finite") {
     simulationParameters.singularSimulationStep += 1;
