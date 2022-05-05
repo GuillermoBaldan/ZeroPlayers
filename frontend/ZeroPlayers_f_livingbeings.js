@@ -525,44 +525,81 @@ function hunterPathFinderv4(hunter, stageParameters, simulationParameters) {
   return result;
 }
   
-  function snailSelection(x, y) {
-    let temp = [];
-    let iterationCounter = 1;
-    let i = 0;
-    let flag = false;
-    do {
-      //hace una iteración hasta que encuentra una presa;
-      //Cuadrante 1 - recorremos y de arriba abajo
-      for (i = iterationCounter; i > -iterationCounter; i--) {
-        if (stageParameters.matrix[y + i][x + iterationCounter] != "green") {
-          temp.push([x + iterationCounter, y + i]);
-        }
+function snailSelection(x, y) {
+  let temp = [];
+  let iterationCounter = 2;
+  let i = 0;
+  let flag = false;
+  do {
+    //hace una iteración hasta que encuentra una presa;
+    //Cuadrante 1 - recorremos y de arriba abajo
+    for (i = -iterationCounter; i < iterationCounter; i++) {
+      if (
+        stageParameters.matrix[y + i][x + iterationCounter] != "green" &&
+        flag == false
+      ) {
+        temp.push([x + iterationCounter, y + i]);
+      } else {
+        flag = true;
+        temp.push([x + iterationCounter, y + i]);
       }
-      //Cuadrante 2 - recorremos x de derecha a izquierda
-      for (i = iterationCounter; i > -iterationCounter; i--) {
-        if (stageParameters.matrix[y - iterationCounter][x + i] != "green") {
-          temp.push([x + i, y - iterationCounter]);
-        }
+    }
+    //Cuadrante 2 - recorremos x de derecha a izquierda
+    for (i = iterationCounter; i > -iterationCounter; i--) {
+      if (
+        stageParameters.matrix[y - iterationCounter][x + i] != "green" &&
+        flag == false
+      ) {
+        temp.push([x + i, y - iterationCounter]);
+      } else {
+        flag = true;
+        temp.push([x + i, y - iterationCounter]);
       }
-      //Cuadrante 3 - recorremos y de abajo arriba
-      for (i = -iterationCounter; i < iterationCounter; i++) {
-        if (stageParameters.matrix[y + i][x - iterationCounter] != "green") {
-          temp.push([x - iterationCounter, y + i]);
-        }
+    }
+    //Cuadrante 3 - recorremos y de abajo arriba
+    for (i = iterationCounter; i > iterationCounter; i--) {
+      if (
+        stageParameters.matrix[y + i][x - iterationCounter] != "green" &&
+        flag == false
+      ) {
+        temp.push([x - iterationCounter, y + i]);
+      } else {
+        flag = true;
+        temp.push([x - iterationCounter, y + i]);
       }
-      //Cuadrante 4 - recorremos x de izquierda a derecha
-      for (i = -iterationCounter; i < iterationCounter; i++) {
-        if (stageParameters.matrix[y + iterationCounter][x + i] != "green") {
-          temp.push([x + i, y + iterationCounter]);
-        }
+    }
+    //Cuadrante 4 - recorremos x de izquierda a derecha
+    for (i = -iterationCounter; i < iterationCounter; i++) {
+      if (
+        stageParameters.matrix[y + iterationCounter][x + i] != "green" &&
+        flag == false
+      ) {
+        temp.push([x + i, y + iterationCounter]);
+      } else {
+        flag = true;
+        temp.push([x + i, y + iterationCounter]);
       }
+    }
 
-      iterationCounter += 1;
-    } while (flag == "false");
+    iterationCounter += 1;
+  } while (flag === "false");
 
-    return temp;
-  }
+  return temp;
+}
 
+
+function hunterPathFinderv4(hunter, stageParameters, simulationParameters) {
+  let tempArray = [];
+  let result;
+  //This algorith is based on Snail Selection Algorithm
+  //1. SSA (Snail Selection ALgorithm)
+
+  result = zigzagFreedom(hunter, stageParameters, simulationParameters);
+  tempArray = snailSelection(result[0], result[1]);
+  simulationParameters.auxTempArray = tempArray;
+
+  return result;
+}
 
 
 function hunterPathFinderv3(hunter, stageParameters, simulationParameters) {

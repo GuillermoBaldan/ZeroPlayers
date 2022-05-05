@@ -1,5 +1,9 @@
 import { matrixGenerator } from "./ZeroPlayers_f_matrixGeneration.js";
-import { drawingMatrix, ordering4drawing } from "./ZeroPlayers_f_canvas.js";
+import {
+  drawingMatrix,
+  ordering4drawing,
+  drawSquare,
+} from "./ZeroPlayers_f_canvas.js";
 import {
   singularSimulationStep,
   stopFlag,
@@ -21,6 +25,7 @@ import {
   debug_energyOfUniverse,
   debug_EnergyBalance,
   debug_circle,
+  debug_drawCoordinates,
 } from "./ZeroPlayers_f_debugging.js";
 import { refreshGUI, simulationStopAndEnd } from "./ZeroPlayers_f_GUI.js";
 
@@ -35,8 +40,15 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
   );
 
   refreshGUI();
+
   drawingMatrix(stageParameters, simulationParameters);
+  debug_drawCoordinates(simulationParameters.auxTempArray, "pink");
   debug_grid();
+
+  //drawSquare(0, 0, "pink", simulationParameters);
+
+  simulationParameters.ctx.lineWidth = "1";
+  simulationParameters.ctx.strokeStyle = "black";
 
   if (simulationParameters.type == "finite") {
     simulationParameters.singularSimulationStep += 1;

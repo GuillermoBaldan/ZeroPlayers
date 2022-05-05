@@ -1,6 +1,12 @@
 import { cloneArray2D } from "./ZeroPlayers_f_arraysManipulation.js";
 import { debug_DetectCoordinatesRepeated, debug_circle, debug_grid } from "./ZeroPlayers_f_debugging.js";
 import { simulation } from "./ZeroPlayers_f_level1.js";
+import {
+  debug_DetectCoordinatesRepeated,
+  debug_circle,
+  debug_grid,
+  debug_drawCoordinates,
+} from "./ZeroPlayers_f_debugging.js";
 
 function initCanvas(simulationParameters) {
   simulationParameters.lienzo = document.getElementById("lienzo");
@@ -68,4 +74,4 @@ function ordering4drawing(stageParameters) {
   return result;
 }
 
-export { initCanvas, drawingMatrix, ordering4drawing };
+export { initCanvas, drawingMatrix, ordering4drawing, drawSquare };

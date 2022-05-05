@@ -104,6 +104,8 @@ let simulationParameters = {
   globalCounter: 0,
   auxCounter: 0,
   auxStep: 0,
+  auxTempArray: [],
+
 };
 
 function modifyStopFlag(value) {
