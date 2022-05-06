@@ -595,6 +595,117 @@ function snailSelection(x, y) {
   return temp;
 }
 
+function snailSelectionv2(x, y) {
+  let flag = false;
+  let iterationCounter = 3;
+  let temp = [];
+  let j = 0;
+  for (let i = 1; i <= iterationCounter; i++) {
+    //cuadrante 1
+    for (j = 0; j <= i; j++) {
+      if (stageParameters.matrix[y][x + i] != "green") {
+        temp.push([x + i, y + j]);
+      }
+    }
+    //cuadrante 2
+    for (j = 0; j <= i; j++) {
+      if (stageParameters.matrix[y + i][x - j] != "green") {
+        temp.push([x - j, y + i]);
+      }
+    }
+    //cuadrante 3
+    for (j = 0; j <= i; j++) {
+      if (stageParameters.matrix[y - j][x - i] != "green") {
+        temp.push([x - i, y - j]);
+      }
+    }
+    //cuadrante 4
+    for (j = 0; j <= i; j++) {
+      if (stageParameters.matrix[y - j][x + i] != "green") {
+        temp.push([x + j, y - i]);
+      }
+    }
+  }
+  console.log(temp);
+  return temp;
+}
+
+function snailSelectionv3(x, y) {
+  let flag = false;
+  let iN = 2; //Iteration Number
+  let iC = 0; //Iteration Counter
+  let temp = [];
+  let j = 0;
+  let i = 0;
+  let aux = 0;
+  let x_aux = x;
+  let y_aux = y;
+  let counter = 0;
+  let units = 9;
+
+  for (iC = 1; iC <= iN; iC++) {
+    //Arriba
+    console.log(`for-iC: ${iC}`);
+    for (j = iC; j <= iC; j++) {
+      console.log(`for-arriba: iC: ${iC} counter: ${counter}`);
+      y_aux--;
+      if (counter <= units) {
+        console.log(
+          `Arriba iC: ${iC} j: ${j} x: ${x_aux} y: ${y_aux} counter: ${counter}`
+        );
+        temp.push([x_aux, y_aux]);
+        counter++;
+      }
+    }
+    //Derecha
+
+    for (j = 0; j < iC; j++) {
+      x_aux++;
+      if (counter <= units) {
+        temp.push([x_aux, y_aux]);
+        counter++;
+      }
+    }
+
+    //Abajo
+    for (j = 0; j <= iC; j++) {
+      y_aux++;
+      if (counter <= units) {
+        temp.push([x_aux, y_aux]);
+        counter++;
+      }
+    }
+    //Izquierda
+    for (j = 0; j <= iC; j++) {
+      x_aux--;
+      if (counter <= units) {
+        temp.push([x_aux, y_aux]);
+        counter++;
+      }
+    }
+    //Arriba
+    for (j = 0; j <= iC; j++) {
+      y_aux--;
+      if (counter <= units) {
+        temp.push([x_aux, y_aux]);
+        counter++;
+      }
+    }
+    //Derecha
+    for (j = 0; j <= iC; j++) {
+      x_aux++;
+      if (counter <= units) {
+        temp.push([x_aux, y_aux]);
+        counter++;
+      }
+    }
+    console.log(`for-end-counter: ${counter}`);
+  }
+  /*  y_aux--;
+  temp.push([x_aux, y_aux]); */
+  return temp;
+}
+
 function hunterPathFinderv4(hunter, stageParameters, simulationParameters) {
   let tempArray = [];
   let result;
@@ -602,7 +713,8 @@ function hunterPathFinderv4(hunter, stageParameters, simulationParameters) {
   //1. SSA (Snail Selection ALgorithm)
 
   result = zigzagFreedom(hunter, stageParameters, simulationParameters);
-  tempArray = snailSelection(result[0], result[1]);
+  tempArray = snailSelectionv3(result[0], result[1]);
+  console.log(`tempArray.length: ${tempArray.length}`);
   simulationParameters.auxTempArray = tempArray;
 
   return result;
