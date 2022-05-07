@@ -341,8 +341,12 @@ function dynamicElementsGenerator(stageParameters) {
           element.color,
           element.preys,
           element.movement,
-          element.initialNumber
+          element.number
         )
+      );
+      console.log(`${element.name}: ${element.number}`);
+      console.log(
+        `${element.name}: is in position (${stageParameters.dynamicElementsArray[i].x},${stageParameters.dynamicElementsArray[i].y})`
       );
       stageParameters.dynamicElementsArray[
         stageParameters.dynamicElementsArray.length - 1
@@ -634,63 +638,69 @@ function snailSelectionv3(x, y) {
   let x_aux = x;
   let y_aux = y;
   let counter = 0;
-  let units = 9;
+  let units = 19;
 
   for (iC = 1; iC <= iN; iC++) {
-    //Arriba
+    if (iC > 1) {
+      aux = 1;
+    }
+    //Arriba - B1
     console.log(`for-iC: ${iC}`);
     for (j = iC; j <= iC; j++) {
       console.log(`for-arriba: iC: ${iC} counter: ${counter}`);
       y_aux--;
-      if (counter <= units) {
+      if (counter < units) {
         console.log(
           `Arriba iC: ${iC} j: ${j} x: ${x_aux} y: ${y_aux} counter: ${counter}`
         );
         temp.push([x_aux, y_aux]);
         counter++;
       }
+      console.log(`B1: iC: ${iC} counter: ${counter}`);
     }
-    //Derecha
+    //Derecha - B2
 
     for (j = 0; j < iC; j++) {
       x_aux++;
-      if (counter <= units) {
+      if (counter < units) {
         temp.push([x_aux, y_aux]);
         counter++;
       }
     }
 
-    //Abajo
-    for (j = 0; j <= iC; j++) {
+    //Abajo - B3
+    for (j = 0; j <= iC + aux; j++) {
       y_aux++;
-      if (counter <= units) {
+      if (counter < units) {
         temp.push([x_aux, y_aux]);
         counter++;
       }
     }
-    //Izquierda
+    //Izquierda - B4
     for (j = 0; j <= iC; j++) {
       x_aux--;
-      if (counter <= units) {
+      if (counter < units) {
         temp.push([x_aux, y_aux]);
         counter++;
       }
     }
-    //Arriba
+    //Arriba - B5
     for (j = 0; j <= iC; j++) {
       y_aux--;
-      if (counter <= units) {
+      if (counter < units) {
         temp.push([x_aux, y_aux]);
         counter++;
       }
+      console.log(`B5: iC: ${iC}  counter: ${counter}`);
     }
-    //Derecha
-    for (j = 0; j <= iC; j++) {
+    //Derecha - B6
+    for (j = 0; j < iC; j++) {
       x_aux++;
-      if (counter <= units) {
+      if (counter < units && iC > 1) {
         temp.push([x_aux, y_aux]);
         counter++;
       }
+      console.log(`B6: iC: ${iC} counter: ${counter}`);
     }
     console.log(`for-end-counter: ${counter}`);
   }
