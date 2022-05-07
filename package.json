@@ -7,6 +7,7 @@
     "canvas": "^2.8.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-handlebars": "^6.0.5",
     "http": "0.0.1-security",
     "jest": "^27.2.5",
     "jsdom": "^18.0.0",
@@ -29,7 +30,7 @@
     "echotest2": "echo \"Guillermo\"",
     "echotests": "npm run echotest1 && npm run echotest2",
     "removeDebug": "node .\\scripts\\remove-debug_functions.js",
-    "removeConsole": "node .\\scripts\\remove-console.logs.js"    
+    "removeConsole": "node .\\scripts\\remove-console.logs.js"
   },
   "repository": {
     "type": "git",

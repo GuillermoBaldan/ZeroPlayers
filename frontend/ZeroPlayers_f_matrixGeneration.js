@@ -120,10 +120,6 @@ function matrixGeneratorInit(stageParameters, simulationParameters) {
 
   dynamicElementsGenerator(stageParameters);
 
-  stageParameters.dynamicElementsArray.forEach((item) => {
-    
-  });
-
   return stageParameters.matrix;
 }
 

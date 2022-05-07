@@ -270,14 +270,24 @@ class genericLivingBeing {
     this.preys = preys;
     this.movement = movement;
     this.initialNumber = initialNumber;
-    this.x = Math.floor(
-      Math.random() *
-        (simulationParameters.wideDimension / simulationParameters.squareSide)
-    ); //Math.random() * (max - min) + min;
-    this.y = Math.floor(
-      Math.random() *
-        (simulationParameters.heightDimension / simulationParameters.squareSide)
-    );
+    /*  if (this.initialNumber === 1) {
+      this.x =
+        simulationParameters.wideDimension /
+        (simulationParameters.squareSide * 2);
+      this.y =
+        simulationParameters.heightDimension /
+        (simulationParameters.squareSide * 2);
+    } */ /* else {
+      this.x = Math.floor(
+        Math.random() *
+          (simulationParameters.wideDimension / simulationParameters.squareSide)
+      ); //Math.random() * (max - min) + min;
+      this.y = Math.floor(
+        Math.random() *
+          (simulationParameters.heightDimension /
+            simulationParameters.squareSide)
+      );
+    } */
     if (movement == "None") {
       this.walkmode = "static";
       this.walk = "None";
