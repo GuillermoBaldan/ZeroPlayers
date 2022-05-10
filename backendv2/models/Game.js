@@ -66,7 +66,62 @@ const GameSchema = new Schema({
             required: true
         }
     },
-    
+    legendForbiddenColors: [{
+        type: String,
+        default: "blue",
+        required: true
+    },
+    {
+        type: String,
+        default: "yellow",
+        required: true
+    },{
+        type: String,
+        default: "green",
+        required: true
+    },{
+        type: String,
+        default: "purple",
+        required: true
+    }],
+    livingBeingsCollection: [{
+        name: {
+            type: String,
+            default: "gross predator",
+            required: true
+        },
+        type: {
+            type: String,
+            enum: ["predator", "vegetable"],
+            default: "predator",
+            required: true
+        },
+        color: {
+            type: String,
+            default: "yellow",
+            required: true
+        },
+        preys: [{
+            type: String,
+            default: "gross",
+            required: true
+        }],
+        movement: {
+            type: String,
+            enum: ["path finder", "None", "Random"],
+            default: "path finder",
+            required: true
+        },
+        number: {
+            type: Number,
+            default: 1,
+            required: true
+        }
+
+
+    }],
+
+
 
 }});
 module.exports = mongoose.model("Game", GameSchema);

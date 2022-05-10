@@ -60,7 +60,6 @@ let stageParameters = {
     simpleCell: "yellow",
   },
   legendForbiddenColors: ["blue", "yellow", "green", "purple"],
-  livingBeingsCollection: [],
   livingBeingsCollection: [
     {
       name: "gross predator",
