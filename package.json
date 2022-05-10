@@ -27,7 +27,7 @@
   "devDependencies": {},
   "scripts": {
     "start": "nodemon ./backend/main.js",
-    "dev": "nodemon ./backend-v2/index.js",
+    "dev": "nodemon ./backendv2/index.js",
     "test": "test",
     "Baldanjs-update": "npm run Baldanjs-update-git-add && npm run Baldanjs-update-change-name-start && npm run Baldanjs-update-git-pull &&  npm run Baldanjs-update-git-push-to-Baldanjs",
     "Baldanjs-update-git-add": "git add .",
