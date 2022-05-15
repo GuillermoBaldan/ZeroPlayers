@@ -30,7 +30,7 @@
     "test": "test",
     "Baldanjs-update": "npm run Baldanjs-update-git-add && npm run Baldanjs-update-change-name-start && npm run Baldanjs-update-git-pull &&  npm run Baldanjs-update-git-push-to-Baldanjs",
     "Baldanjs-update-git-add": "git add .",
-    "dev": "nodemon ./backend-v2/index.js",
+    "dev": "nodemon ./backendv2/index.js",
     "Baldanjs-update-git-pull": "git pull https://github.com/GuillermoBaldan/Baldanjs.git develop",
     "Baldanjs-update-change-name-start": "git mv ZeroPlayers_f_arraysManipulation.js f_arraysManipulation.js",
     "Baldanjs-update-git-push-to-Baldanjs": "git add ./f_arraysManipulation.js && git commit -m \"update\" && git push -u https://github.com/GuillermoBaldan/Baldanjs.git develop",
