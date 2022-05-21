@@ -1,59 +1,72 @@
-const router = require("express").Router();
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
-const Game = require("../models/Game");
-const { isAuthenticated } = require("../helpers/auth");
+const GameSchema = new Schema({
+  stageParameters : {
+      universeRules : {
+            movementType : {
+               type: String,
+                enum: ["zigzag", "diagonal"],
+                default: "zigzag",
+                required: true
+            },
+            frontier : {
+                type: String,
+                enum: ["close", "adjacent ends"],
+                default: "close",
+                required: true
+            }
+  },
+  livingBeingsRules : {
+        reproduction : {
+            type: {
+            type: String,
+            enum: ["sexual", "asexual"],
+            default: "sexual",
+            required: true
+            },
+            probability : {
+                type: Number,
+                default: 0.5,
+                required: true
+            },
+            distantTowater : {
+                type: Number,
+                default: 1,
+                required: true
 
-router.get("/notes/add", isAuthenticated, (req, res) => {
-  res.render("notes/new-notes");
-});
+        },
+        proximityTosameCells : {
+            type: Number,
+            default: 3,
+            required: true
+        }
+    },
+    legendTerrain: {
+        ground: {
+            type: String,
+            default: "brown",
+            required: true
+        },
+        water: {
+            type: String,
+            default: "blue",
+            required: true
+        }
+    },
+    legend: {
+        water: {
+            type: String,
+            default: "blue",
+            required: true
+        },
+        simpleCell: {
+            type: String,
+            default: "yellow",
+            required: true
+        }
+    },
+    
 
-router.post("/notes/new-note", isAuthenticated, async (req, res) => {
-  const { title, description } = req.body;
-  const errors = [];
-  if (!title) {
-    errors.push({ text: "Please Write a title" });
-  }
-  if (!description) {
-    errors.push({ text: "Please Write a description" });
-  }
-  if (errors.length > 0) {
-    res.render("notes/new-notes", {
-      errors,
-      title,
-      description,
-    });
-  } else {
-    const newNote = new Note({ title, description });
-    newNote.user = req.user._id;
-    await newNote.save();
-    req.flash("success_msg", "Note Added Successfully");
-    res.redirect("/notes");
-  }
-});
-
-router.get("/notes", isAuthenticated, async (req, res) => {
-  const notes = await Note.find({ user: req.user._id })
-    .sort({ date: "desc" })
-    .lean();
-  res.render("notes/all-notes", { notes });
-});
-
-router.get("/notes/edit/:id", isAuthenticated, async (req, res) => {
-  const note = await Note.findById(req.params.id).lean();
-  res.render("notes/edit-note", { note });
-});
-
-router.put("/notes/edit-note/:id", isAuthenticated, async (req, res) => {
-  const { title, description } = req.body;
-  await Note.findByIdAndUpdate(req.params.id, { title, description });
-  req.flash("success_msg", "Note Updated Successfully");
-  res.redirect("/notes");
-});
-
-router.delete("/notes/delete/:id", isAuthenticated, async (req, res) => {
-  await Note.findByIdAndDelete(req.params.id);
-  req.flash("success_msg", "Note Deleted Successfully");
-  res.redirect("/notes");
-});
-
-module.exports = router;
+}});
+module.exports = mongoose.model("Game", GameSchema);
