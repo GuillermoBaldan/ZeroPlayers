@@ -60,15 +60,14 @@ let stageParameters = {
     simpleCell: "yellow",
   },
   legendForbiddenColors: ["blue", "yellow", "green", "purple"],
-  livingBeingsCollection: [],
   livingBeingsCollection: [
     {
       name: "gross predator",
       type: "predator",
       color: "yellow",
       preys: ["gross"],
-      movement: "Random",
-      number: 2,
+      movement: "path finder",
+      number: 1,
     },
     {
       name: "gross",
@@ -76,7 +75,7 @@ let stageParameters = {
       color: "green",
       preys: [],
       movement: "None",
-      number: 24,
+      number: 2,
     },
   ],
   dynamicElementsArray: [],
@@ -91,7 +90,7 @@ let stageParameters = {
 let simulationParameters = {
   simulationStepsNumber: 50,
   type: "finite", //The other option is 'infinite' for a simulation with a infinite number of steps
-  timePerStep: 200,
+  timePerStep: 600,
   wideDimension: 400,
   heightDimension: 400,
   squareSide: 20,
@@ -105,7 +104,6 @@ let simulationParameters = {
   auxCounter: 0,
   auxStep: 0,
   auxTempArray: [],
-
 };
 
 function modifyStopFlag(value) {
