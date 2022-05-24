@@ -144,6 +144,7 @@ function matrixGenerator(stageParameters, simulationParameters) {
   cellsLifeConsumption(stageParameters);
   //Death of cells
   cellDeath(stageParameters);
+  console.log(`simulationParameters.historicalSimulationSteps: ${simulationParameters.historicalSimulationSteps}`);
   return stageParameters.matrix;
 }
 

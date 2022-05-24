@@ -645,7 +645,7 @@ function snailSelectionv3(x, y) {
   let x_aux = x;
   let y_aux = y;
   let counter = 0;
-  let units = 19;
+  let units = 0;
 
   for (iC = 1; iC <= iN; iC++) {
     if (iC > 1) {
