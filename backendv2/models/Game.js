@@ -127,8 +127,8 @@ const GameSchema = new Schema({
       },
     ],
     dynamicElementsArray: [],
-    staticStage: [],
-    matrix: [],
+    staticStage: [[{ type: String }]],
+    matrix: [[{ type: String }]],
     freePlacesArray: [],
     universeEnergy: {
       type: Number,
