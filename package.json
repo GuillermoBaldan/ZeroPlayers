@@ -21,6 +21,7 @@
     "mongoose": "^6.3.3",
     "nes.css": "^2.3.0",
     "nodemon": "^2.0.16",
+    "passport": "^0.6.0",
     "path": "^0.12.7",
     "validatorjs": "^3.22.1"
   },
