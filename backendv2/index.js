@@ -4,6 +4,7 @@ const exphbs = require("express-handlebars");
 const methodOverride = require("method-override");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
 
 //Initializations
 const app = express();
@@ -36,6 +37,9 @@ app.use(
     saveUninitialized: true,
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
+require("./config/passport")(passport);
 app.use(flash());
 //Glbal Variables
 app.use((req, res, next) => {
