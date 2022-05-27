@@ -35,11 +35,15 @@ router.post(
   }
 );
 
-router.get("/simulations", isAuthenticated, async (req, res) => {
+/* router.get("/simulations", isAuthenticated, async (req, res) => {
   const notes = await Note.find({ user: req.user._id })
     .sort({ date: "desc" })
     .lean();
   res.render("simulations/all-simulations", { notes });
+}); */
+
+router.get("/menu", isAuthenticated, async (req, res) => {
+  res.render("menu/main-menu");
 });
 
 router.get("/simulations/edit/:id", isAuthenticated, async (req, res) => {
