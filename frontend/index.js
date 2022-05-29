@@ -83,14 +83,14 @@ let stageParameters = {
   matrix: [],
   freePlacesArray: [],
   universeEnergy: 500000,
-  generationStageAlgorithm: allTerrain, //random, circularIsland, allTerrain
+  generationStageAlgorithm: circularIsland, //random, circularIsland, allTerrain
   speciesCounter: [],
 };
 
 let simulationParameters = {
   simulationStepsNumber: 50,
   type: "finite", //The other option is 'infinite' for a simulation with a infinite number of steps
-  timePerStep: 600,
+  timePerStep: 300,
   wideDimension: 200,
   heightDimension: 200,
   squareSide: 20,

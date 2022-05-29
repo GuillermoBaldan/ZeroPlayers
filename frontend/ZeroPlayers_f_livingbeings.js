@@ -251,8 +251,6 @@ function preySelectionAndRemove(item, preyCoordinates, stageParameters) {
 
 function reproductionFunction(stageParameters, simulationParameters) {
   stageParameters.dynamicElementsArray.forEach((father) => {
-    console.log("father");
-    console.log(father);
     if (
       father.vitalFunctions.reproduction &&
       checkReproductionRulesv2(father, stageParameters)
@@ -477,6 +475,27 @@ function hunterPathFinderv2(hunter, stageParameters, simulationParameters) {
     }
   });
 
+  //2. Calculate the path to the preys
+
+  if (preyArray.length > 0) {
+    path2prey = finder.findPath(
+      hunter.x,
+      hunter.y,
+      preyArray[0].x,
+      preyArray[0].y,
+      grid
+    );
+    paths.push(path2prey);
+    //3. Filter by the shortest path
+    filteredPaths = paths.sort(function (a, b) {
+      return a.length - b.length;
+    });
+    result = filteredPaths[0][1];
+  } else {
+    result = zigzagFreedom(hunter, stageParameters, simulationParameters);
+  }
+
+  return result;
 }
 
 function hunterPathFinderv3(hunter, stageParameters, simulationParameters) {
@@ -517,18 +536,7 @@ function hunterPathFinderv3(hunter, stageParameters, simulationParameters) {
 
   return result;
 }
-function hunterPathFinderv4(hunter, stageParameters, simulationParameters) {
-  let tempArray = [];
-  let result;
-  //This algorith is based on Snail Selection Algorithm
-  //1. SSA (Snail Selection ALgorithm)
-  tempArray = snailSelection(hunter.x, hunter.y);
-  console.log("The prey is in:");
-  console.log(tempArray[tempArray.length - 1]);
-  result = zigzagFreedom(hunter, stageParameters, simulationParameters);
-  return result;
-}
-  
+
 function snailSelection(x, y) {
   let temp = [];
   let iterationCounter = 2;
@@ -591,7 +599,6 @@ function snailSelection(x, y) {
   return temp;
 }
 
-
 function snailSelectionv2(x, y) {
   let flag = false;
   let iterationCounter = 3;
@@ -638,7 +645,7 @@ function snailSelectionv3(x, y) {
   let x_aux = x;
   let y_aux = y;
   let counter = 0;
-  let units = 19;
+  let units = 0;
 
   for (iC = 1; iC <= iN; iC++) {
     if (iC > 1) {
@@ -723,48 +730,6 @@ function hunterPathFinderv4(hunter, stageParameters, simulationParameters) {
   return result;
 }
 
-
-
-function hunterPathFinderv3(hunter, stageParameters, simulationParameters) {
-  //This function is being design to work with giveMomevementToDynamicElementsv4
-  let preys = [];
-  let preyArray = [];
-  let path2prey;
-  let paths = [];
-  let filteredPaths = [];
-  let result;
-  let finder = new PF.AStarFinder();
-  let grid = new PF.Grid(gridConversion(stageParameters.matrix));
-  stageParameters.dynamicElementsArray.forEach((item) => {
-    if (item.name == "gross") {
-      preyArray.push(item);
-    }
-  });
-
-  //2. Calculate the path to the preys
-
-  if (preyArray.length > 0) {
-    path2prey = finder.findPath(
-      hunter.x,
-      hunter.y,
-      preyArray[0].x,
-      preyArray[0].y,
-      grid
-    );
-    paths.push(path2prey);
-    //3. Filter by the shortest path
-    filteredPaths = paths.sort(function (a, b) {
-      return a.length - b.length;
-    });
-    result = filteredPaths[0][1];
-  } else {
-    result = zigzagFreedom(hunter, stageParameters, simulationParameters);
-  }
-
-  return result;
-}
-
-
 function hunterGroupPathFinder(hunter, stageParameters, simulationParameters) {
   let preyArray = [];
   let path2prey = [];
@@ -838,6 +803,7 @@ function perceptionv2(stageParameters) {
     deleteRepeatedItem(item.memorySense.memory);
   });
 }
+
 function squareSelection(item) {
   //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado
   let superiorEnd =
@@ -901,11 +867,10 @@ function squareSelectionv2(item) {
 function squareSelectionv3(item, simulationParameters) {
   //Selecciona todas las coordenadas, entorno a un orgin dentro de un radio dado e identificamos el ser vivo
   let superiorEnd =
-    simulationParameters.wideDimension / simulationParameters.squareDimension;
+    simulationParameters.wideDimension / simulationParameters.squareSide;
   let j;
   let i;
   let result = [];
-
   for (
     i = -item.memorySense.senseRadious;
     i < item.memorySense.senseRadious;
@@ -939,11 +904,10 @@ function unitFinder(x, y, stageParameters) {
   let aux;
   stageParameters.dynamicElementsArray.forEach((item) => {
     if (item.x == x && item.y == y) {
-      result.push(item.name);
+      result = item.name;
     } else {
       aux = stageParameters.matrix[y][x];
-      result.push(colorToUnit(aux, stageParameters));
-
+      result = colorToUnit(aux, stageParameters);
     }
   });
   return result;
