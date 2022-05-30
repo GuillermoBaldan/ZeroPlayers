@@ -2,6 +2,9 @@ const router = require("express").Router();
 
 const Game = require("../models/Game");
 const { isAuthenticated } = require("../helpers/auth");
+let app = require("./index");
+const express = require("express");
+const path = require("path");
 
 router.get("/simulations/add", isAuthenticated, (req, res) => {
   res.render("simulations/new-simulation");
@@ -11,8 +14,7 @@ router.post(
   "/simulations/new-simulation",
   isAuthenticated,
   async (req, res) => {
-    console.log("Se coje la ruta");
-    req.flash("success_msg", "Note Added Successfully");
+    req.flash("success_msg", "New stage created for a new simulation");
     res.redirect("/playground/new-simulation");
   }
 );
@@ -34,7 +36,8 @@ router.get("/simulations/edit/:id", isAuthenticated, async (req, res) => {
 });
 
 router.get("/playground/new-simulation", isAuthenticated, async (req, res) => {
-  res.render("playground/new-simulation");
+  app.use("/playground", express.static(path.join(__dirname, "../frontend")));
+  res.redirect("index-script.html");
 });
 
 router.put(

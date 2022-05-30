@@ -55,12 +55,18 @@ app.use(require("./routes/simulations"));
 app.use(require("./routes/users"));
 
 //Static Files
-app.use(express.static(path.join(__dirname, "public")));
+//app.use(express.static(path.join(__dirname, "public")));
+//app.use(express.static(path.join(__dirname, "test")));
+//app.use('/playground',express.static(path.join(__dirname, "../frontend")));
+//app.use(express.static("test"));
+//app.use('/test', express.static('public'));
 
 //Server is listenning
 app.listen(app.get("port"), () => {
   console.log("Server on port", app.get("port"));
 });
+
+module.exports = app;
 
 /* Código final
 https://github.com/FaztTech/nodejs-notes-app */
