@@ -4,7 +4,14 @@
     <div class="card-body">
       <h5 class="card-title">New Simulation</h5>
       <p class="card-text">To execute a simulation</p>
-      <a href="#" class="btn btn-primary">Play simulation</a>
+      <form action="/simulations/new-simulation" method="POST">
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" type="submit">
+            Play simulation
+          </button>
+        </div>
+      </form>
     </div>
   </div>
   <div class="card" style="width: 18rem;">

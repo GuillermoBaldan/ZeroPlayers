@@ -21,6 +21,7 @@ app.engine(
     partialsDir: [
       path.join(app.get("views"), "partials"),
       path.join(app.get("views"), "menu"),
+      path.join(app.get("views"), "playground"),
     ],
     extname: ".hbs",
   })

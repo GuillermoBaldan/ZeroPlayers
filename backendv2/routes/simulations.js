@@ -11,27 +11,9 @@ router.post(
   "/simulations/new-simulation",
   isAuthenticated,
   async (req, res) => {
-    const { title, description } = req.body;
-    const errors = [];
-    if (!title) {
-      errors.push({ text: "Please Write a title" });
-    }
-    if (!description) {
-      errors.push({ text: "Please Write a description" });
-    }
-    if (errors.length > 0) {
-      res.render("simulations/new-simulation", {
-        errors,
-        title,
-        description,
-      });
-    } else {
-      const newNote = new Note({ title, description });
-      newNote.user = req.user._id;
-      await newNote.save();
-      req.flash("success_msg", "Note Added Successfully");
-      res.redirect("/simulations");
-    }
+    console.log("Se coje la ruta");
+    req.flash("success_msg", "Note Added Successfully");
+    res.redirect("/playground/new-simulation");
   }
 );
 
@@ -49,6 +31,10 @@ router.get("/menu", isAuthenticated, async (req, res) => {
 router.get("/simulations/edit/:id", isAuthenticated, async (req, res) => {
   const note = await Note.findById(req.params.id).lean();
   res.render("simulations/edit-simulation", { note });
+});
+
+router.get("/playground/new-simulation", isAuthenticated, async (req, res) => {
+  res.render("playground/new-simulation");
 });
 
 router.put(
