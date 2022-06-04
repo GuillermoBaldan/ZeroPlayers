@@ -94,11 +94,6 @@ dist
 # Serverless directories
 .serverless/
 
-<<<<<<< HEAD
-style/nes.css
-
-=======
->>>>>>> 94edbd6ba11925bd5e99ab7f106ba5deabab432f
 # FuseBox cache
 .fusebox/
 
