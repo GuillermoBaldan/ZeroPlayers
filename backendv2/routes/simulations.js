@@ -36,7 +36,11 @@ router.get("/simulations/edit/:id", isAuthenticated, async (req, res) => {
 });
 
 router.get("/playground/new-simulation", isAuthenticated, async (req, res) => {
-  app.use("/playground", express.static(path.join(__dirname, "../frontend")));
+  app.use(
+    "/playground",
+    express.static(path.join(__dirname, "../../frontend"))
+  );
+  console.log(path.join(__dirname, "../frontend"));
   res.redirect("index-script.html");
 });
 
