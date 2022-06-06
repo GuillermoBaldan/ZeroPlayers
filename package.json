@@ -21,16 +21,17 @@
     "mongoose": "^6.3.3",
     "nes.css": "^2.3.0",
     "nodemon": "^2.0.16",
+    "passport": "^0.6.0",
     "path": "^0.12.7",
     "validatorjs": "^3.22.1"
   },
   "devDependencies": {},
   "scripts": {
     "start": "nodemon ./backend/main.js",
+    "dev": "nodemon ./backendv2/index.js",
     "test": "test",
     "Baldanjs-update": "npm run Baldanjs-update-git-add && npm run Baldanjs-update-change-name-start && npm run Baldanjs-update-git-pull &&  npm run Baldanjs-update-git-push-to-Baldanjs",
     "Baldanjs-update-git-add": "git add .",
-    "dev": "nodemon ./backendv2/index.js",
     "Baldanjs-update-git-pull": "git pull https://github.com/GuillermoBaldan/Baldanjs.git develop",
     "Baldanjs-update-change-name-start": "git mv ZeroPlayers_f_arraysManipulation.js f_arraysManipulation.js",
     "Baldanjs-update-git-push-to-Baldanjs": "git add ./f_arraysManipulation.js && git commit -m \"update\" && git push -u https://github.com/GuillermoBaldan/Baldanjs.git develop",
