@@ -92,8 +92,31 @@ function clickButtonsDetection() {
     },
     false
   );
-}
 
+  document
+    .getElementById("saveSimulation")
+    .addEventListener("click", function () {
+      const data = new FormData();
+      data.append("variable", "Este es un ejemplo de valor almacenado");
+      fetch("../post.php", {
+        method: "POST",
+        body: data,
+      })
+        .then(function (response) {
+          if (response.ok) {
+            return response.text();
+          } else {
+            throw "Error en la llamada Ajax";
+          }
+        })
+        .then(function (texto) {
+          console.log(texto);
+        })
+        .catch(function (err) {
+          console.log(err);
+        });
+    });
+}
 if (modalDialog.length == 2) {
   console.log("modalDialog == 2");
   //Acciones asociadas al modal setting Stage
