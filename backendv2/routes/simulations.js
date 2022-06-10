@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 const Game = require("../models/Game");
+const dataTest = require("../models/dataTest");
 const { isAuthenticated } = require("../helpers/auth");
 let app = require("./index");
 const express = require("express");
@@ -16,6 +17,19 @@ router.post(
   async (req, res) => {
     req.flash("success_msg", "New stage created for a new simulation");
     res.redirect("/playground/new-simulation");
+  }
+);
+
+router.post(
+  "/simulations/save-data-test",
+  isAuthenticated,
+  async (req, res) => {
+    const { variable } = req.body;
+    const newData = new dataTest({ variable });
+    newData.user = req.user._id;
+    await newData.save();
+    req.flash("success_msg", "Data Test saved");
+    res.redirect("/menu/main-menu");
   }
 );
 
