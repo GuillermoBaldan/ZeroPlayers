@@ -98,7 +98,7 @@ function clickButtonsDetection() {
     .addEventListener("click", function () {
       const data = new FormData();
       data.append("variable", "Este es un ejemplo de valor almacenado");
-      fetch("../post.php", {
+      fetch("/simulations/save-data-test", {
         method: "POST",
         body: data,
       })

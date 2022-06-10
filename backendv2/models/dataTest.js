@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 const dataTestSchema = new Schema({
   variable: {
-    type: string,
+    type: String,
     required: true,
   },
 });
