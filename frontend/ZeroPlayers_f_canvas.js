@@ -6,6 +6,12 @@ import {
   debug_drawCoordinates,
 } from "./ZeroPlayers_f_debugging.js";
 import { simulation } from "./ZeroPlayers_f_level1.js";
+import {
+  debug_DetectCoordinatesRepeated,
+  debug_circle,
+  debug_grid,
+  debug_drawCoordinates,
+} from "./ZeroPlayers_f_debugging.js";
 
 function initCanvas(simulationParameters) {
   simulationParameters.lienzo = document.getElementById("lienzo");
@@ -73,4 +79,8 @@ function ordering4drawing(stageParameters) {
   return result;
 }
 
+<<<<<<< HEAD
 export { initCanvas, drawingMatrix, ordering4drawing, drawSquare };
+=======
+export { initCanvas, drawingMatrix, ordering4drawing, drawSquare };
+>>>>>>> 88f4fea249c805f9c2dd4e1176b7be8ec2e95a64

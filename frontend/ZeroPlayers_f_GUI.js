@@ -65,7 +65,6 @@ function clickButtonsDetection() {
     },
     false
   );
-
   document.getElementById("killButton").addEventListener(
     "click",
     function () {
@@ -92,6 +91,7 @@ function clickButtonsDetection() {
     },
     false
   );
+<<<<<<< HEAD
 
   document
     .getElementById("saveSimulation")
@@ -117,6 +117,23 @@ function clickButtonsDetection() {
         });
     });
 }
+=======
+}
+
+  document.getElementById("infiniteSimulation").addEventListener(
+    "click",
+    function () {
+      document.getElementById("progressBar").style.display = "block";
+      simulationParameters.auxStep = 0;
+      simulationParameters.singularSimulationStep = 0;
+      simulation(stageParameters, simulationParameters);
+      document.getElementById("playButton").disabled = true;
+    },
+    false
+  );
+}
+
+>>>>>>> 88f4fea249c805f9c2dd4e1176b7be8ec2e95a64
 if (modalDialog.length == 2) {
   console.log("modalDialog == 2");
   //Acciones asociadas al modal setting Stage
