@@ -1,32 +1,32 @@
-import { init, simulation } from "./ZeroPlayers_f_level1.js";
+import { init, simulation } from "../frontend/ZeroPlayers_f_level1.js";
 import {
   down,
   left,
   right,
   totalFreedom,
   up,
-} from "./ZeroPlayers_f_livingbeings.js";
-import { generateStaticStage } from "./ZeroPlayers_f_matrixGeneration.js";
+} from "../frontend/ZeroPlayers_f_livingbeings.js";
+import { generateStaticStage } from "../frontend/ZeroPlayers_f_matrixGeneration.js";
 import {
   grossCell,
   grossPredator,
   yellowPredator,
   vegetable,
   predator,
-} from "./ZeroPlayers_classes_livingBeings.js";
+} from "../frontend/ZeroPlayers_classes_livingBeings.js";
 import {
   continuosSimulationStep,
   killSimulation,
   oneSimulationStep,
-} from "./ZeroPlayers_f_simulation.js";
-import { debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
-import { clickButtonsDetection } from "./ZeroPlayers_f_GUI.js";
+} from "../frontend/ZeroPlayers_f_simulation.js";
+import { debug_energyOfUniverse } from "../frontend/ZeroPlayers_f_debugging.js";
+import { clickButtonsDetection } from "../frontend/ZeroPlayers_f_GUI.js";
 import {
   random,
   islandGeneration,
   circularIsland,
   allTerrain,
-} from "./ZeroPlayers_f_staticStageGeneration.js";
+} from "../frontend/ZeroPlayers_f_staticStageGeneration.js";
 
 let staticStage;
 let lienzo;
