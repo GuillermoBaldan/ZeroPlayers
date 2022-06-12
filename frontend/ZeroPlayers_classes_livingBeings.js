@@ -5,7 +5,6 @@ import {
   hunterPathFinder,
   hunterPathFinderv2,
   hunterPathFinderv4,
-
   totalFreedom,
   zigzagFreedom,
 } from "./ZeroPlayers_f_livingbeings.js";
@@ -271,7 +270,7 @@ class genericLivingBeing {
     this.preys = preys;
     this.movement = movement;
     this.initialNumber = initialNumber;
-       /*  if (this.initialNumber === 1) {
+    /*  if (this.initialNumber === 1) {
       this.x =
         simulationParameters.wideDimension /
         (simulationParameters.squareSide * 2);

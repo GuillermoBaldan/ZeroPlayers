@@ -25,6 +25,7 @@ import {
   debug_energyOfUniverse,
   debug_EnergyBalance,
   debug_circle,
+  debug_grid,
   debug_drawCoordinates,
 } from "./ZeroPlayers_f_debugging.js";
 import { refreshGUI, simulationStopAndEnd } from "./ZeroPlayers_f_GUI.js";

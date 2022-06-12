@@ -4,6 +4,7 @@ const exphbs = require("express-handlebars");
 const methodOverride = require("method-override");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
 
 //Initializations
 const app = express();
@@ -17,7 +18,11 @@ app.engine(
   exphbs.engine({
     defaultLayout: "main",
     layoutsDir: path.join(app.get("views"), "layouts"),
-    partialsDir: path.join(app.get("views"), "partials"),
+    partialsDir: [
+      path.join(app.get("views"), "partials"),
+      path.join(app.get("views"), "menu"),
+      path.join(app.get("views"), "playground"),
+    ],
     extname: ".hbs",
   })
 );
@@ -33,6 +38,9 @@ app.use(
     saveUninitialized: true,
   })
 );
+app.use(passport.initialize());
+app.use(passport.session());
+require("./config/passport")(passport);
 app.use(flash());
 //Glbal Variables
 app.use((req, res, next) => {
@@ -47,12 +55,18 @@ app.use(require("./routes/simulations"));
 app.use(require("./routes/users"));
 
 //Static Files
-app.use(express.static(path.join(__dirname, "public")));
+//app.use(express.static(path.join(__dirname, "public")));
+//app.use(express.static(path.join(__dirname, "test")));
+//app.use('/playground',express.static(path.join(__dirname, "../frontend")));
+//app.use(express.static("test"));
+//app.use('/test', express.static('public'));
 
 //Server is listenning
 app.listen(app.get("port"), () => {
   console.log("Server on port", app.get("port"));
 });
+
+module.exports = app;
 
 /* Código final
 https://github.com/FaztTech/nodejs-notes-app */

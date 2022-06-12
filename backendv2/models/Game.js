@@ -142,6 +142,39 @@ const GameSchema = new Schema({
     },
     speciesCounter: [],
   },
+  simulationParameters: {
+    simulationStepsNumber: {
+      type: Number,
+      default: 50,
+      required: true,
+    },
+    type: {
+      type: String,
+      enum: ["finite", "infinite"],
+      default: "finite",
+      required: true,
+    },
+    timePerStep: {
+      type: Number,
+      default: 600,
+      required: true,
+    },
+    wideDimension: {
+      type: Number,
+      default: 400,
+      required: true,
+    },
+    heightDimension: {
+      type: Number,
+      default: 400,
+      required: true,
+    },
+    squareSide: {
+      type: Number,
+      default: 20,
+      required: true,
+    },
+  },
 });
 
 module.exports = mongoose.model("Game", GameSchema);
