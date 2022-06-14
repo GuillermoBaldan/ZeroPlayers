@@ -91,7 +91,6 @@ function clickButtonsDetection() {
     },
     false
   );
-<<<<<<< HEAD
 
   document
     .getElementById("saveSimulation")
@@ -117,10 +116,9 @@ function clickButtonsDetection() {
         });
     });
 }
-=======
-}
 
-  document.getElementById("infiniteSimulation").addEventListener(
+
+/*   document.getElementById("infiniteSimulation").addEventListener(
     "click",
     function () {
       document.getElementById("progressBar").style.display = "block";
@@ -131,11 +129,9 @@ function clickButtonsDetection() {
     },
     false
   );
-}
+ */
 
->>>>>>> 88f4fea249c805f9c2dd4e1176b7be8ec2e95a64
 if (modalDialog.length == 2) {
-  console.log("modalDialog == 2");
   //Acciones asociadas al modal setting Stage
   document.getElementById("playButton_Modal").addEventListener(
     "click",
