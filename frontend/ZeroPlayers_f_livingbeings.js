@@ -34,7 +34,7 @@ import { gridConversion } from "./ZeroPlayers_f_pathfinder.js";
 import {
   genericLivingBeing,
   countingSpecies,
-} from "./ZeroPlayers_classes_livingbeings.js";
+} from "./ZeroPlayers_classes_livingBeings.js";
 
 function totalFreedom(item) {
   let buffer = randomSteps();
@@ -328,10 +328,9 @@ function cellDeath(stageParameters) {
 }
 
 function dynamicElementsGenerator(stageParameters) {
-  let i;
-
+ 
   stageParameters.livingBeingsCollection.forEach((element) => {
-    for (i = 0; i < element.number; i++) {
+    for (let i = 0; i < element.number; i++) {
       stageParameters.dynamicElementsArray.push(
         new genericLivingBeing(
           element.name,
