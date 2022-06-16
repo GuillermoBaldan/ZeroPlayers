@@ -106,6 +106,10 @@ let simulationParameters = {
   auxTempArray: [],
 };
 
+let debugSetting = {
+  grid: "on", //There are two options: 'on' and 'off'
+  }
+
 function modifyStopFlag(value) {
   //To avoid modifing an imported 'variable' causes 'Assignment to constant variable' even it is not a constant
   stopFlag = value;
