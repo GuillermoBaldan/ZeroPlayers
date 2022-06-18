@@ -63,6 +63,7 @@ import {
 } from "./ZeroPlayers_f_debugging.js";
 import { simulation } from "./ZeroPlayers_f_level1.js";
 import { gridConversion } from "./ZeroPlayers_f_pathfinder.js";
+import { debugSetting } from  "../test/snail-selection-test.js";
 
 function generateStaticStage(stageParameters, simulationParameters) {
   let a;
