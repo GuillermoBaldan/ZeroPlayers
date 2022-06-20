@@ -24,7 +24,8 @@ router.post(
   "/simulations/save-data-test",
   isAuthenticated,
   async (req, res) => {
-    const { variable } = req.body;
+    const { variable } = req;
+    console.log(req);
     const newData = new dataTest({ variable });
     newData.user = req.user._id;
     await newData.save();
