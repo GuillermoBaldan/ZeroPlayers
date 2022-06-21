@@ -107,7 +107,7 @@ let simulationParameters = {
 };
 
 let debugSetting = {
-  grid: "on", //There are two options: 'on' and 'off'
+  grid: true, //There are two options: 'on' and 'off'
   }
 
 function modifyStopFlag(value) {
