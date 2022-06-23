@@ -29,6 +29,7 @@ import {
   debug_drawCoordinates,
 } from "./ZeroPlayers_f_debugging.js";
 import { refreshGUI, simulationStopAndEnd } from "./ZeroPlayers_f_GUI.js";
+import { debugSetting } from "../tests/snail-selection-test.js";
 
 function continuosSimulationStep(stageParameters, simulationParameters) {
   // oneSimulationStep(simulationStepsNumber,timePerStep, staticStage,dynamicElementsArray,ctx, squareSide,wideDimension)
@@ -44,7 +45,9 @@ function continuosSimulationStep(stageParameters, simulationParameters) {
 
   drawingMatrix(stageParameters, simulationParameters);
   debug_drawCoordinates(simulationParameters.auxTempArray, "pink");
-  debug_grid();
+  if (debugSetting.grid) {
+    debug_grid();
+  }
 
   //drawSquare(0, 0, "pink", simulationParameters);
 
