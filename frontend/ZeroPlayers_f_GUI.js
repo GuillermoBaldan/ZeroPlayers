@@ -95,28 +95,33 @@ function clickButtonsDetection() {
   document
     .getElementById("saveSimulation")
     .addEventListener("click", function () {
-      const data = new FormData();
-      data.append("variable", "Este es un ejemplo de valor almacenado");
+      /* const data = new FormData();
+      data.append("variable", "Este es un ejemplo de valor almacenado"); */
+      const data = { variable: "Esto es una prueba" };
+      console.log("Primer console.log");
+      console.log(data);
       fetch("/simulations/save-data-test", {
         method: "POST",
         body: data,
       })
         .then(function (response) {
           if (response.ok) {
+            console.log("Punto 1");
             return response.text();
           } else {
             throw "Error en la llamada Ajax";
           }
         })
         .then(function (texto) {
+          console.log("Punto 2");
           console.log(texto);
         })
         .catch(function (err) {
+          console.log("Punto 3");
           console.log(err);
         });
     });
 }
-
 
 /*   document.getElementById("infiniteSimulation").addEventListener(
     "click",
