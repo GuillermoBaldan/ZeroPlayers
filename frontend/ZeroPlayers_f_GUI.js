@@ -16,6 +16,7 @@ import {
   allTerrain,
   circularIsland,
 } from "./ZeroPlayers_f_staticStageGeneration.js";
+//import { response } from "express";
 
 let livingBeingsCollectionAux = [];
 let modalDialog = document.getElementsByClassName("modalDialog");
@@ -98,43 +99,15 @@ function clickButtonsDetection() {
       /* const data = new FormData();
       data.append("variable", "Este es un ejemplo de valor almacenado"); */
       const data = { variable: "Esto es una prueba" };
-      console.log("Primer console.log");
-      console.log(data);
-      fetch("/simulations/save-data-test", {
+      const result = fetch("/simulations/save-data-test", {
         method: "POST",
         body: data,
-      })
-        .then(function (response) {
-          if (response.ok) {
-            console.log("Punto 1");
-            return response.text();
-          } else {
-            throw "Error en la llamada Ajax";
-          }
-        })
-        .then(function (texto) {
-          console.log("Punto 2");
-          console.log(texto);
-        })
-        .catch(function (err) {
-          console.log("Punto 3");
-          console.log(err);
-        });
+      });
+      result.then(function () {
+        console.log(result);
+      });
     });
 }
-
-/*   document.getElementById("infiniteSimulation").addEventListener(
-    "click",
-    function () {
-      document.getElementById("progressBar").style.display = "block";
-      simulationParameters.auxStep = 0;
-      simulationParameters.singularSimulationStep = 0;
-      simulation(stageParameters, simulationParameters);
-      document.getElementById("playButton").disabled = true;
-    },
-    false
-  );
- */
 
 if (modalDialog.length == 2) {
   //Acciones asociadas al modal setting Stage
