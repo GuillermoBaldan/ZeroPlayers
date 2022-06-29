@@ -101,6 +101,9 @@ function clickButtonsDetection() {
       const data = { variable: "Esto es una prueba" };
       const result = fetch("/simulations/save-data-test", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+        },
         body: data,
       });
       result.then(function () {
