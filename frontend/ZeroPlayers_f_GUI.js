@@ -98,13 +98,32 @@ function clickButtonsDetection() {
     .addEventListener("click", function () {
       /* const data = new FormData();
       data.append("variable", "Este es un ejemplo de valor almacenado"); */
-      const data = { variable: "Esto es una prueba" };
+      let data = { variable: "Esto es una tercera prueba con el id de usuario" };
+      let formBody = [];
+      for (let property in data) {
+        let encodedKey = encodeURIComponent(property);
+        let encodedValue = encodeURIComponent(data[property]);
+        formBody.push(encodedKey + "=" + encodedValue);
+      }
+      formBody = formBody.join("&");
       const result = fetch("/simulations/save-data-test", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
         },
-        body: data,
+        body: formBody,
+      });
+      result.then(function () {
+        console.log(result);
+      });
+    });
+
+    document
+    .getElementById("loadDataTest")
+    .addEventListener("click", function () {
+   
+      const result = fetch("/simulations/load-data-test", {
+        method: "GET"
       });
       result.then(function () {
         console.log(result);
