@@ -30,7 +30,7 @@ const GameSchema = new Schema({
     cyclesToReproduction: {
         type: Number,
         required: true,
-    }
+    },
     memorySense: {
         memory: [[{ type: String }]],
         senseRadius: {
