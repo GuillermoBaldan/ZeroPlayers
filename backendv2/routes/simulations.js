@@ -11,6 +11,29 @@ router.get("/simulations/add", isAuthenticated, (req, res) => {
   res.render("simulations/new-simulation");
 });
 
+router.get("/menu", isAuthenticated, async (req, res) => {
+  res.render("menu/main-menu");
+});
+
+router.get("/simulations/edit/:id", isAuthenticated, async (req, res) => {
+  const note = await Note.findById(req.params.id).lean();
+  res.render("simulations/edit-simulation", { note });
+});
+
+router.get("/playground/new-simulation", isAuthenticated, async (req, res) => {
+  app.use(
+    "/playground",
+    express.static(path.join(__dirname, "../../frontend"))
+  );
+  console.log(path.join(__dirname, "../frontend"));
+  res.redirect("index-script.html");
+});
+
+router.get("simulations/load-data-test", isAuthenticated, async (req, res) => {
+  const datalist = await dataTest.find({ user: req.user_id}).exec();
+  console.log(datalist);
+})
+
 router.post(
   "/simulations/new-simulation",
   isAuthenticated,
@@ -34,30 +57,8 @@ router.post(
   }
 );
 
-/* router.get("/simulations", isAuthenticated, async (req, res) => {
-  const notes = await Note.find({ user: req.user._id })
-    .sort({ date: "desc" })
-    .lean();
-  res.render("simulations/all-simulations", { notes });
-}); */
 
-router.get("/menu", isAuthenticated, async (req, res) => {
-  res.render("menu/main-menu");
-});
 
-router.get("/simulations/edit/:id", isAuthenticated, async (req, res) => {
-  const note = await Note.findById(req.params.id).lean();
-  res.render("simulations/edit-simulation", { note });
-});
-
-router.get("/playground/new-simulation", isAuthenticated, async (req, res) => {
-  app.use(
-    "/playground",
-    express.static(path.join(__dirname, "../../frontend"))
-  );
-  console.log(path.join(__dirname, "../frontend"));
-  res.redirect("index-script.html");
-});
 
 router.put(
   "/simulations/edit-simulation/:id",
