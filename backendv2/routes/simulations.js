@@ -25,12 +25,12 @@ router.get("/playground/new-simulation", isAuthenticated, async (req, res) => {
     "/playground",
     express.static(path.join(__dirname, "../../frontend"))
   );
-  console.log(path.join(__dirname, "../frontend"));
+  //console.log(path.join(__dirname, "../frontend"));
   res.redirect("index-script.html");
 });
 
-router.get("simulations/load-data-test", isAuthenticated, async (req, res) => {
-  const datalist = await dataTest.find({ user: req.user_id}).exec();
+router.get("/simulations/load-data-test", isAuthenticated, async (req, res) => {
+  const datalist = await dataTest.find({ user: req.user._id}).exec();
   console.log(datalist);
 })
 
