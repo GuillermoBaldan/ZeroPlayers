@@ -32,6 +32,8 @@ router.get("/playground/new-simulation", isAuthenticated, async (req, res) => {
 router.get("/simulations/load-data-test", isAuthenticated, async (req, res) => {
   const datalist = await dataTest.find({ user: req.user._id}).exec();
   console.log(datalist);
+  res.send(datalist)
+ 
 })
 
 router.post(
