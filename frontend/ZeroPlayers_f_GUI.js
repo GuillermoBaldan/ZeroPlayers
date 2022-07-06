@@ -122,11 +122,15 @@ function clickButtonsDetection() {
     .getElementById("loadDataTest")
     .addEventListener("click", function () {
    
-      const result = fetch("/simulations/load-data-test", {
+      fetch("/simulations/load-data-test", {
         method: "GET"
-      });
-      result.then(function () {
-        console.log(result);
+      }).then(function(response) {
+        // The response is a Response instance.
+        // You parse the data into a useable format using `.json()`
+        return response.json();
+      }).then(function(data) {
+        // `data` is the parsed version of the JSON returned from the above endpoint.
+        console.log(data);  // { "userId": 1, "id": 1, "title": "...", "body": "..." }
       });
     });
 }
