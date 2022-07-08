@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
+const User = mongoose.model('User');
 const { Schema } = mongoose;
 
 const GameSchema = new Schema({
+  user: { type: Schema.ObjectId, ref: "User" },
   stageParameters: {
     universeRules: {
       movementType: {
