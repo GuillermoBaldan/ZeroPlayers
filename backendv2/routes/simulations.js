@@ -6,6 +6,9 @@ const { isAuthenticated } = require("../helpers/auth");
 let app = require("./index");
 const express = require("express");
 const path = require("path");
+const queryString = require('querystring');
+const xform = require('x-www-form-urlencode');
+//const { stageParameters } = require("../../frontend");
 
 router.get("/simulations/add", isAuthenticated, (req, res) => {
   res.render("simulations/new-simulation");
@@ -31,7 +34,6 @@ router.get("/playground/new-simulation", isAuthenticated, async (req, res) => {
 
 router.get("/simulations/load-data-test", isAuthenticated, async (req, res) => {
   const datalist = await dataTest.find({ user: req.user._id}).exec();
-  console.log(datalist);
   res.send(datalist)
  
 })
@@ -59,6 +61,38 @@ router.post(
   }
 );
 
+router.post(
+  "/simulations/save-simulation",
+  isAuthenticated,
+  async (req, res) => {
+    //console.log(req.body)
+    
+    //const newData = new Game({ data });
+    let output = '';
+    //let data = JSON.parse(xform.decode(req.body))
+  let data2;
+   let data = JSON.parse(JSON.stringify(req.body))
+   console.log(data)
+   for(let key in data){
+    data2 = JSON.parse(key)
+   }
+   console.log(data2);
+    const newData = new Game({
+      stageParameters: data2.stageParameters,
+      simulationParameters: data2.simulationParameters
+    });
+    newData.user = req.user._id;
+    //newData.stageParameters.universeRules.frontier = stageParameters.universeRules.frontier;
+    /* newData.stageParameters = data.stageParameters;
+    newData.simulationParameters = data.simulationParameters;
+    */ 
+   //console.log(newData)
+    await newData.save();
+    req.flash("success_msg", "Data Simulation saved");
+    res.redirect("/menu/main-menu");
+  }
+);
+
 
 
 
@@ -78,5 +112,18 @@ router.delete("/simulations/delete/:id", isAuthenticated, async (req, res) => {
   req.flash("success_msg", "Simulation Deleted Successfully");
   res.redirect("/simulations");
 });
+
+function printObject(objeto){
+  let output = '';
+  
+  for (let property in objeto) {
+    if (typeof objeto === 'object' && objeto !== null){ //Si es objeto
+   output += property + ': ' + printObject(objeto[property])+'; ';
+    }else{ //si no es objeto
+    output += property + ': ' + objeto[property]+'; ';
+    }
+  }
+  return output;
+}
 
 module.exports = router;
