@@ -4,12 +4,16 @@ const { Schema } = mongoose;
 
 const GameSchema = new Schema({
   user: { type: Schema.ObjectId, ref: "User" },
+  date: {
+    type: String,
+    required: true
+  },
   stageParameters: {
     universeRules: {
       movementType: {
         type: String,
         enum: ["zigzag", "diagonal"],
-        default: "zigzag",
+        
         required: true,
       },
       frontier: {
@@ -128,10 +132,10 @@ const GameSchema = new Schema({
         },
       },
     ],
-    dynamicElementsArray: [],
+    //dynamicElementsArray: [],
     staticStage: [[{ type: String }]],
     matrix: [[{ type: String }]],
-    freePlacesArray: [],
+    //freePlacesArray: [], La verdad es que no me acuerdo que tipo de datos guardaba esto
     universeEnergy: {
       type: Number,
       default: 500000,
@@ -142,7 +146,7 @@ const GameSchema = new Schema({
       default: "allTerrain",
       required: true,
     },
-    speciesCounter: [],
+    //speciesCounter: [], Creo que de momento no hace falta
   },
   simulationParameters: {
     simulationStepsNumber: {
