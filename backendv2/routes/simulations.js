@@ -6,9 +6,6 @@ const { isAuthenticated } = require("../helpers/auth");
 let app = require("./index");
 const express = require("express");
 const path = require("path");
-const queryString = require('querystring');
-const xform = require('x-www-form-urlencode');
-//const { stageParameters } = require("../../frontend");
 
 router.get("/simulations/add", isAuthenticated, (req, res) => {
   res.render("simulations/new-simulation");
@@ -65,28 +62,18 @@ router.post(
   "/simulations/save-simulation",
   isAuthenticated,
   async (req, res) => {
-    //console.log(req.body)
-    
+    console.log(req.body)
+    const { stageParameters } = req.body;
     //const newData = new Game({ data });
     let output = '';
-    //let data = JSON.parse(xform.decode(req.body))
-  let data2;
-   let data = JSON.parse(JSON.stringify(req.body))
-   console.log(data)
-   for(let key in data){
-    data2 = JSON.parse(key)
-   }
-   console.log(data2);
-    const newData = new Game({
-      stageParameters: data2.stageParameters,
-      simulationParameters: data2.simulationParameters
-    });
+    const object = req.body;
+   console.log(printObject(object))
+    console.log(JSON.stringify(stageParameters))
+    console.log(stageParameters.universeRules)
+    console.log(`A continuación se lee el valor de frontier: ${stageParameters.universeRules.frontier}`)
+    const newData = new Game();
     newData.user = req.user._id;
-    //newData.stageParameters.universeRules.frontier = stageParameters.universeRules.frontier;
-    /* newData.stageParameters = data.stageParameters;
-    newData.simulationParameters = data.simulationParameters;
-    */ 
-   //console.log(newData)
+    newData.stageParameters.universeRules.frontier = stageParameters.universeRules.frontier;
     await newData.save();
     req.flash("success_msg", "Data Simulation saved");
     res.redirect("/menu/main-menu");
