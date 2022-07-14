@@ -98,7 +98,43 @@ function clickButtonsDetection() {
     .addEventListener("click", function () {
       /* const data = new FormData();
       data.append("variable", "Este es un ejemplo de valor almacenado"); */
-      let data = { variable: "Esto es una tercera prueba con el id de usuario" };
+      console.log(stageParameters.universeRules.frontier)
+      let data = { 
+        stageParameters : {
+          universeRules : {
+            movementType : stageParameters.universeRules.movementType,
+            frontier : stageParameters.universeRules.frontier
+          },
+          livingBeingsRules : {
+            reproduction : stageParameters.livingBeingsRules.reproduction,
+            probability : stageParameters.livingBeingsRules.probability,
+            distantTowater: stageParameters.livingBeingsRules.distantTowater,
+            proximityTosameCells: stageParameters.livingBeingsRules.proximityTosameCells
+          },
+          legendTerrain: {
+            ground : stageParameters.legendTerrain.ground,
+            water : stageParameters.legendTerrain.water,
+          },
+          legend : {
+            water: stageParameters.legend.water,
+            simpleCell : stageParameters.legend.simpleCell
+          },
+          legendForbiddenColors : stageParameters.legendForbiddenColors,
+          livingBeingsCollection : stageParameters.livingBeingsCollection,
+          staticStage : stageParameters.staticStage,
+          matrix : stageParameters.matrix,
+          universeEnergy : stageParameters.universeEnergy,
+          generationStageAlgorithm : stageParameters.generationStageAlgorithm,
+        },
+        simulationParameters : {
+          simulationStepsNumber : simulationParameters.simulationStepsNumber,
+          type : simulationParameters.type,
+          timePerStep : simulationParameters.timePerStep,
+          wideDimension : simulationParameters.wideDimension,
+          heightDimension : simulationParameters.heightDimension,
+          squareSide : simulationParameters.squareSide
+        }
+      };
       let formBody = [];
       for (let property in data) {
         let encodedKey = encodeURIComponent(property);
@@ -106,7 +142,7 @@ function clickButtonsDetection() {
         formBody.push(encodedKey + "=" + encodedValue);
       }
       formBody = formBody.join("&");
-      const result = fetch("/simulations/save-data-test", {
+      const result = fetch("/simulations/save-simulation", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
