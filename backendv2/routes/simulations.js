@@ -62,18 +62,21 @@ router.post(
   "/simulations/save-simulation",
   isAuthenticated,
   async (req, res) => {
-    console.log(req.body)
-    const { stageParameters } = req.body;
+    //console.log(req.body)
+    const data = req.body;
     //const newData = new Game({ data });
     let output = '';
     const object = req.body;
-   console.log(printObject(object))
-    console.log(JSON.stringify(stageParameters))
-    console.log(stageParameters.universeRules)
-    console.log(`A continuación se lee el valor de frontier: ${stageParameters.universeRules.frontier}`)
+   //console.log(printObject(object))
+   console.log(JSON.stringify(data)) 
+   //console.log(JSON.stringify(stageParameters))
+    //console.log(stageParameters.universeRules)
+    //console.log(`A continuación se lee el valor de frontier: ${stageParameters.universeRules.frontier}`)
     const newData = new Game();
     newData.user = req.user._id;
-    newData.stageParameters.universeRules.frontier = stageParameters.universeRules.frontier;
+    //newData.stageParameters.universeRules.frontier = stageParameters.universeRules.frontier;
+    newData.stageParameters = data.stageParameters;
+    newData.simulationParameters = data.simulationParameters;
     await newData.save();
     req.flash("success_msg", "Data Simulation saved");
     res.redirect("/menu/main-menu");
