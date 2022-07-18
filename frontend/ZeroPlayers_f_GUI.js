@@ -17,6 +17,7 @@ import {
   circularIsland,
 } from "./ZeroPlayers_f_staticStageGeneration.js";
 //import { response } from "express";
+import { formurlencoded } from './external-libraries/form-urlencoded.js';
 
 let livingBeingsCollectionAux = [];
 let modalDialog = document.getElementsByClassName("modalDialog");
@@ -135,13 +136,15 @@ function clickButtonsDetection() {
           squareSide : simulationParameters.squareSide
         }
       };
-      let formBody = [];
+      /* let formBody = [];
       for (let property in data) {
         let encodedKey = encodeURIComponent(property);
         let encodedValue = encodeURIComponent(data[property]);
         formBody.push(encodedKey + "=" + encodedValue);
       }
-      formBody = formBody.join("&");
+      formBody = formBody.join("&"); */
+      //let formBody = encodedXwwwFormUrlencoded(data);
+      let formBody = formurlencoded(data)
       const result = fetch("/simulations/save-simulation", {
         method: "POST",
         headers: {
@@ -149,6 +152,8 @@ function clickButtonsDetection() {
         },
         body: formBody,
       });
+      console.log(JSON.stringify(data))
+      console.log(formBody)
       result.then(function () {
         console.log(result);
       });
@@ -283,6 +288,17 @@ function simulationStopAndEnd() {
   }
 
   return flag;
+}
+
+function encodedXwwwFormUrlencoded(object){
+  let str = [];
+    for (let key in object) {
+         if (object.hasOwnProperty(key)) {
+               str.push(encodeURIComponent(key) + "=" + encodeURIComponent(object[key]))                  
+               //console.log(key + " -> " + object[key]);
+         }
+    }
+    return str.join("&");
 }
 
 export { refreshGUI, simulationStopAndEnd, clickButtonsDetection };
