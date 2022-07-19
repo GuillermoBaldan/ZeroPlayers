@@ -9,7 +9,7 @@ const GameSchema = new Schema({
       movementType: {
         type: String,
         enum: ["zigzag", "diagonal"],
-        default: "zigzag",
+        
         required: true,
       },
       frontier: {
