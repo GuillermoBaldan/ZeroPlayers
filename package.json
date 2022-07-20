@@ -25,7 +25,8 @@
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "validatorjs": "^3.22.1"
+    "validatorjs": "^3.22.1",
+    "x-www-form-urlencode": "^0.1.1"
   },
   "devDependencies": {},
   "scripts": {
