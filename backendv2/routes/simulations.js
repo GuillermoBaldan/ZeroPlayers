@@ -6,6 +6,9 @@ const { isAuthenticated } = require("../helpers/auth");
 let app = require("./index");
 const express = require("express");
 const path = require("path");
+const queryString = require('querystring');
+const xform = require('x-www-form-urlencode');
+//const { stageParameters } = require("../../frontend");
 
 router.get("/simulations/add", isAuthenticated, (req, res) => {
   res.render("simulations/new-simulation");
@@ -63,20 +66,39 @@ router.post(
   isAuthenticated,
   async (req, res) => {
     //console.log(req.body)
-    const data = req.body;
+    
     //const newData = new Game({ data });
     let output = '';
-    const object = req.body;
+    //let data = JSON.parse(xform.decode(req.body))
+    console.log(typeof req.body)
+    console.log(req.body)
+    console.log(JSON.stringify(req.body))
+    console.log(req.body.stageParameters)
    //console.log(printObject(object))
-   console.log(JSON.stringify(data)) 
-   //console.log(JSON.stringify(stageParameters))
+   //console.log(JSON.stringify(data)) 
+   //console.log(JSON.stringify(stageParameters))º
     //console.log(stageParameters.universeRules)
     //console.log(`A continuación se lee el valor de frontier: ${stageParameters.universeRules.frontier}`)
-    const newData = new Game();
+  /*   console.log(typeof data)
+    console.log(JSON.stringify(data))
+    console.log(data) */
+    const example = {
+      valor1: "hola",
+      valor2: "adios"
+    }
+    console.log(JSON.parse(JSON.stringify(example)))
+     //console.log(JSON.(req.body))
+    //console.log(data.stageParameters)
+    const newData = new Game({
+      stageParameters: data.stageParameters,
+      simulationParameters: data.simulationParameters
+    });
     newData.user = req.user._id;
     //newData.stageParameters.universeRules.frontier = stageParameters.universeRules.frontier;
-    newData.stageParameters = data.stageParameters;
+    /* newData.stageParameters = data.stageParameters;
     newData.simulationParameters = data.simulationParameters;
+    */ 
+   //console.log(newData)
     await newData.save();
     req.flash("success_msg", "Data Simulation saved");
     res.redirect("/menu/main-menu");
