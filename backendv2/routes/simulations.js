@@ -70,25 +70,13 @@ router.post(
     //const newData = new Game({ data });
     let output = '';
     //let data = JSON.parse(xform.decode(req.body))
-    console.log(typeof req.body)
-    console.log(req.body)
-    console.log(JSON.stringify(req.body))
-    console.log(req.body.stageParameters)
-   //console.log(printObject(object))
-   //console.log(JSON.stringify(data)) 
-   //console.log(JSON.stringify(stageParameters))º
-    //console.log(stageParameters.universeRules)
-    //console.log(`A continuación se lee el valor de frontier: ${stageParameters.universeRules.frontier}`)
-  /*   console.log(typeof data)
-    console.log(JSON.stringify(data))
-    console.log(data) */
-    const example = {
-      valor1: "hola",
-      valor2: "adios"
-    }
-    console.log(JSON.parse(JSON.stringify(example)))
-     //console.log(JSON.(req.body))
-    //console.log(data.stageParameters)
+  let data2;
+   let data = JSON.parse(JSON.stringify(req.body))
+   console.log(data)
+   for(let key in data){
+    data2 = JSON.parse(key)
+   }
+   console.log(data2);
     const newData = new Game({
       stageParameters: data.stageParameters,
       simulationParameters: data.simulationParameters
