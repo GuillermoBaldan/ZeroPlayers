@@ -12,6 +12,4 @@ function decodexwww(s) {
 		.replace(/\r\n/g, '\n')
 
 }
-module.exports = {
-	encodexwww, decodexwww
-}
+export { encodexwww, decodexwww }
