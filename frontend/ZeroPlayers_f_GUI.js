@@ -18,6 +18,7 @@ import {
 } from "./ZeroPlayers_f_staticStageGeneration.js";
 //import { response } from "express";
 import { formurlencoded } from './external-libraries/form-urlencoded.js';
+import { encodexwww, decodexwww} from './external-libraries/x-www-form-urlencode.js';
 
 let livingBeingsCollectionAux = [];
 let modalDialog = document.getElementsByClassName("modalDialog");
@@ -144,7 +145,8 @@ function clickButtonsDetection() {
       }
       formBody = formBody.join("&"); */
       //let formBody = encodedXwwwFormUrlencoded(data);
-      let formBody = formurlencoded(data)
+      console.log(data);
+      let formBody = encodexwww(JSON.stringify(data));
       const result = fetch("/simulations/save-simulation", {
         method: "POST",
         headers: {
@@ -152,8 +154,12 @@ function clickButtonsDetection() {
         },
         body: formBody,
       });
-      console.log(JSON.stringify(data))
       console.log(formBody)
+      console.log(JSON.parse(decodexwww(formBody)))
+         /*  console.log(JSON.stringify(data))
+      console.log(formBody)
+      console.log("A continuación decodificamos el formBody")
+      console.log(decodexwww(formBody)) */
       result.then(function () {
         console.log(result);
       });
