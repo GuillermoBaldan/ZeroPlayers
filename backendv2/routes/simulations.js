@@ -78,8 +78,8 @@ router.post(
    }
    console.log(data2);
     const newData = new Game({
-      stageParameters: data.stageParameters,
-      simulationParameters: data.simulationParameters
+      stageParameters: data2.stageParameters,
+      simulationParameters: data2.simulationParameters
     });
     newData.user = req.user._id;
     //newData.stageParameters.universeRules.frontier = stageParameters.universeRules.frontier;
