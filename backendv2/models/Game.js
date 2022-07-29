@@ -4,6 +4,10 @@ const { Schema } = mongoose;
 
 const GameSchema = new Schema({
   user: { type: Schema.ObjectId, ref: "User" },
+  date: {
+    type: String,
+    required: true
+  },
   stageParameters: {
     universeRules: {
       movementType: {
