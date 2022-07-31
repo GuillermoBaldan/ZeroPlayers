@@ -20,6 +20,7 @@ import {
 import { formurlencoded } from './external-libraries/form-urlencoded.js';
 import { encodexwww, decodexwww} from './external-libraries/x-www-form-urlencode.js';
 
+
 let livingBeingsCollectionAux = [];
 let modalDialog = document.getElementsByClassName("modalDialog");
 
@@ -102,6 +103,7 @@ function clickButtonsDetection() {
       data.append("variable", "Este es un ejemplo de valor almacenado"); */
       console.log(stageParameters.universeRules.frontier)
       let data = { 
+        date: 
         stageParameters : {
           universeRules : {
             movementType : stageParameters.universeRules.movementType,
