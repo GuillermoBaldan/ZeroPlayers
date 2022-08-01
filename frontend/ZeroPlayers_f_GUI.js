@@ -19,6 +19,7 @@ import {
 //import { response } from "express";
 import { formurlencoded } from './external-libraries/form-urlencoded.js';
 import { encodexwww, decodexwww} from './external-libraries/x-www-form-urlencode.js';
+import { currentDateString } from "./ZeroPlayers_f_aux.js";
 
 
 let livingBeingsCollectionAux = [];
@@ -103,7 +104,7 @@ function clickButtonsDetection() {
       data.append("variable", "Este es un ejemplo de valor almacenado"); */
       console.log(stageParameters.universeRules.frontier)
       let data = { 
-        date: 
+        date: currentDateString(),
         stageParameters : {
           universeRules : {
             movementType : stageParameters.universeRules.movementType,
