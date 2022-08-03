@@ -3,6 +3,10 @@ const User = mongoose.model('User');
 const { Schema } = mongoose;
 
 const GameSchema = new Schema({
+  simulationName: {
+    type: String,
+    required: true
+  },
   user: { type: Schema.ObjectId, ref: "User" },
   date: {
     type: String,
