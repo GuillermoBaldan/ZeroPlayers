@@ -78,6 +78,7 @@ router.post(
    }
    console.log(data2);
     const newData = new Game({
+      simulationName: data2.simulationName,
       date: data2.date,
       stageParameters: data2.stageParameters,
       simulationParameters: data2.simulationParameters
