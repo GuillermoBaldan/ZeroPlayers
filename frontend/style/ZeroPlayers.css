@@ -24,12 +24,17 @@ body {
 h1 {
   margin-bottom: 5%;
   font-size: 25px;
+  color: red;
 }
 
 .board {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  color: aquamarine;
+}
+
+#lienzo {
+margin: 0px auto;
 }
 
 .board-btns-canvas {
