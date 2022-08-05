@@ -30,7 +30,7 @@ h1 {
 .board {
   display: flex;
   text-align: center;
-  color: aquamarine;
+  background-color: aquamarine;
 }
 
 #lienzo {
