@@ -29,8 +29,13 @@ h1 {
 
 .board {
   display: flex;
+  flex-direction: column;
   text-align: center;
   background-color: aquamarine;
+}
+
+.info-board {
+  background-color: green;
 }
 
 #lienzo {
@@ -53,6 +58,7 @@ margin: 0px auto;
 }
 
 .btn-board {
+  flex-direction: row; 
   margin-left: 6%;
   margin-top: 0;
   margin-bottom: 30%;
@@ -61,6 +67,7 @@ margin: 0px auto;
   text-align: center;
   align-items: center;
   flex-direction: column;
+  background-color: pink;
 }
 .nes-btn {
   border-image-slice: 2;
