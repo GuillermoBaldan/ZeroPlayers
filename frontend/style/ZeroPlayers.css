@@ -13,6 +13,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
 }
 
 .title {
@@ -27,7 +30,15 @@ h1 {
   color: red;
 }
 
+.container {
+  background-color: purple;
+  margin: 5% 5% 5% 5%;
+  width: inherit;
+}
+
 .board {
+  margin: 5%;
+  height: inherit;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -36,6 +47,8 @@ h1 {
 
 .info-board {
   background-color: green;
+  border-color: black;
+  border-style: solid;
 }
 
 #lienzo {
@@ -58,17 +71,43 @@ margin: 0px auto;
 }
 
 .btn-board {
+  height: 25%;
   flex-direction: row; 
-  margin-left: 6%;
+  margin-left: 0;
   margin-top: 0;
-  margin-bottom: 30%;
+  margin-bottom: 0;
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
-  flex-direction: column;
   background-color: pink;
+ }
+
+.simulation-btn {
+  display: flex;
+  flex-direction: column;
+   align-items: center;
+  background-color: yellow;
+  border-color: black;
+  border-style: solid;
+
 }
+
+.setting-board{
+  background-color: orange;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-color: black;
+  border-style: solid;
+  height: inherit;
+
+}
+
+.btn {
+  margin: 10% 10% 10% 10%;
+}
+
 .nes-btn {
   border-image-slice: 2;
   border-image-width: 2;
