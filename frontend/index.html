@@ -16,27 +16,31 @@
         <h1>ZeroPlayers</h1>
       </div>
       <div class="board">
-        <div>
+   
           <canvas id="lienzo"> </canvas>
           
-        </div>
+       
         <div class="btn-board">
-          <button id="oneSimulationStep" class="nes-btn btn">
-            One Simulation Step
-          </button>
-          <progress
-            id="progressBar"
-            class="nes-progress is-primary"
-            value="0"
-            max="100"
-          ></progress>
-          <button id="playButton" class="nes-btn btn">Play Simulation</button>
+          <div class="simulation-btn">
+              <button id="oneSimulationStep" class="nes-btn btn">
+                One Simulation Step
+              </button>
+              <progress
+                id="progressBar"
+                class="nes-progress is-primary"
+                value="0"
+                max="100"
+              ></progress>
+              <button id="playButton" class="nes-btn btn">Play Simulation</button>
 
-          <button id="stopButton" class="nes-btn btn">Stop Simulation</button>
-          <button id="killButton" class="nes-btn btn">Kill Simulation</button>
-          <!-- <button class="nes-btn">test</button>-->
+              <button id="stopButton" class="nes-btn btn">Stop Simulation</button>
+              <button id="killButton" class="nes-btn btn">Kill Simulation</button>
+          </div>
           <!-- Write a modal -->
-          <button class="nes-btn btn"><a href="#Modal" >Setting Pannel</a></button>
+          <div class="setting-board">
+            <button class="nes-btn btn"><a href="#Modal" >Setting Pannel</a></button>
+          </div>
+         
           <div class="info-board nes-container with-title is-centered">
             <p class="title">Simulation Cicles</p>
             <p id="simulationCicles">0</p>
