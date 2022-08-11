@@ -10,9 +10,8 @@
 
 body {
   background-color: lightgreen;
-  display: block;
-  height: 100vh;
-  width: 100vw;
+  justify-content: center;
+  align-items: center;
   margin: 0;
 }
 
@@ -23,6 +22,7 @@ body {
 }
 
 h1 {
+  display: none;
   margin: 0;
   font-size: 25px;
   color: black;
@@ -31,36 +31,29 @@ h1 {
 }
 
 .container {
-  position: absolute;
   background-color: purple;
-  top: 25%;
+  width: 100vw;
+  height: auto;
   margin: 0;
-  width: inherit;
-  height: 50vh;
-  display: flex;
-  flex-direction: column;
+  position: absolute;
+  top: 25%;
 }
 
 .board {
-  margin: 0;
-  height: 20vh;
-  width: 100vw;
-  display: block;
-  flex-direction: column;
-  text-align: center;
+  margin: 1% 1% 1% 1%;
   background-color: aquamarine;
-  position: absolute;
+  height: 50vh;
 }
 
 .info-board {
-  background-color: green;
-  border-color: black;
-  border-style: solid;
-  height: inherit;
-  width: 10vw;
+  display: none;
+  background-color: pink;
+  margin: 0% 1% 0% 1%;
+  height: 25vh; 
 }
 
 #lienzo {
+  display: none;
 margin: 0px auto;
 }
 
@@ -80,10 +73,10 @@ margin: 0px auto;
 }
 
 .btn-board {
+  display: none;
   height: 20vh;
   width: 100vw;
   flex-direction: row;
-  display: flex;
   justify-content: center;
   align-items: center;
   background-color: pink;
@@ -92,6 +85,7 @@ margin: 0px auto;
  }
 
 .simulation-btn {
+  display: none;
   height: inherit;
   display: flex;
   flex-direction: column;
