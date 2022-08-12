@@ -43,8 +43,8 @@ h1 {
   margin: 1% 1% 1% 1%;
   background-color: aquamarine;
   height: 50vh;
+  text-align: center;
 }
-
 .info-board {
   display: none;
   background-color: pink;
@@ -53,8 +53,7 @@ h1 {
 }
 
 #lienzo {
-  display: none;
-margin: 0px auto;
+  margin: 1% 1% 1% 1%;
 }
 
 .board-btns-canvas {
