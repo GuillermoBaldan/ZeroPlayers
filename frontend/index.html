@@ -45,118 +45,119 @@
             <p class="title">Simulation Cicles</p>
             <p id="simulationCicles">0</p>
           </div>     
-              <div id="Modal" class="modalDialog">
-                <div>
-                    <a href="#close" title="Close" class="close">X</a>
-                    <h2>Settings Stage</h2>
-                    <form >
-                        <ul>
-                         <li>
-                           <label for="numberSteps">Simulation Steps</label>
-                           <input type="number" id="numberSteps" name="user_name">
-                         </li>
-                         <li>
-                           <label for="timePerStep">Time per Step (ms)</label>
-                           <input type="number" id="timePerStep">
-                         </li>
-                         <li>
-                          <label for="universeSize">Size of Universe</label>
-                          <select id="universeSize">
-
-                            <option value=80 >Tiny 4x4</option>
-                            
-                            <option value=400 selected>Small 20x20</optionv>
-                           
-                            <option value=1000>Medium 50x50</option>
-
-                            <option value=2000>Big 100x100</option>
-
-                           </select>
-                        </li>
-                        <li>
-                          <p>
-
-                            Borders Type<br>
-                        
-                            <input type="radio" name="borders" value="close">close borders<br>
-                        
-                            <input type="radio" name="borders" value="adjacent ends">adjacent ends<br>
-                        
-                       
-                          </p>
-                        </li>
-                        <li>
-                          <button id="speciesModalButton"><a href="#speciesModal" >Add species</a></button>
-                        </li>
-                         
-                        </ul>
-                        <button id="playButton_Modal" class="nes-btn btn" type="button">Play Simulation</button>
-
-                       </form>
-                </div>
-            </div>
-            <div id="speciesModal" class="modalDialog">
-              <div>
-                  <a id="closeSpeciesModal"href="#Modal" title="Close" class="close">X</a>
-                  <h2>Species editor</h2>
-                  <form >
-                      <ul>
-                       <li>
-                         <label for="speciesName">Name</label>
-                         <input type="text" id="speciesName" name="especies_name">
-                       </li>
-                       <li>
-                        <label for="speciesType">Type</label>
-                          <input type="radio" name="speciesType" value="vegetable">vegetable
-                      
-                          <input type="radio" name="speciesType" value="predator">predator
-                       </li>
-                       <li>
-                         <label for="color">color</label>
-                         <input type="text" id="color">
-                       </li>
-                       <li>
-                        <label for="preys">Preys</label>
-                        <select id="preys">
-
-                          <option value="None" >None</option>
-<!--
-                          <option value="gross cell" >gross Cell</option>
-                          
-                          <option value="yellow Predator" selected>yellow Predator</optionv>
-                         
-                          <option value="purple Predator">purple Predator</option>
-
-                          <option value="super Predator">super Predator</option>
--->
-                         </select>
-                      </li>
-                      <li>
-                        <label for="movement">Movement</label>
-                          <input type="radio" name="movement" value="Random">random
-                      
-                          <input type="radio" name="movement" value="path finder">path finder
-
-                          <input type="radio" name="movement" value="None">None
-                       </li>
-                       <li>
-                        <label for="initialNumber">Initial Number</label>
-                        <input type="number" id="initialNumber">
-                      </li>
-                      
-                      </ul>
-                      <!--
-                      <button id="addSpeciesButton_Modal" class="nes-btn btn" type="button">Add Species</button>
-                      -->
-                      <button><a  id="addThisSpecies" class="button" href="#Modal" >Add this species</a></button>
-                      <button><a  id="go-to-setting-stage-panel" class="button" href="#Modal" >Go to Setting Stage panel</a></button>
-
-
-                     </form>
-              </div>
-          </div>
+          
         </div>
       </div>
+      <div id="Modal" class="modalDialog">
+        <div>
+            <a href="#close" title="Close" class="close">X</a>
+            <h2>Settings Stage</h2>
+            <form >
+                <ul>
+                 <li>
+                   <label for="numberSteps">Simulation Steps</label>
+                   <input type="number" id="numberSteps" name="user_name">
+                 </li>
+                 <li>
+                   <label for="timePerStep">Time per Step (ms)</label>
+                   <input type="number" id="timePerStep">
+                 </li>
+                 <li>
+                  <label for="universeSize">Size of Universe</label>
+                  <select id="universeSize">
+
+                    <option value=80 >Tiny 4x4</option>
+                    
+                    <option value=400 selected>Small 20x20</optionv>
+                   
+                    <option value=1000>Medium 50x50</option>
+
+                    <option value=2000>Big 100x100</option>
+
+                   </select>
+                </li>
+                <li>
+                  <p>
+
+                    Borders Type<br>
+                
+                    <input type="radio" name="borders" value="close">close borders<br>
+                
+                    <input type="radio" name="borders" value="adjacent ends">adjacent ends<br>
+                
+               
+                  </p>
+                </li>
+                <li>
+                  <button id="speciesModalButton"><a href="#speciesModal" >Add species</a></button>
+                </li>
+                 
+                </ul>
+                <button id="playButton_Modal" class="nes-btn btn" type="button">Play Simulation</button>
+
+               </form>
+        </div>
+    </div>
+    <div id="speciesModal" class="modalDialog">
+      <div>
+          <a id="closeSpeciesModal"href="#Modal" title="Close" class="close">X</a>
+          <h2>Species editor</h2>
+          <form >
+              <ul>
+               <li>
+                 <label for="speciesName">Name</label>
+                 <input type="text" id="speciesName" name="especies_name">
+               </li>
+               <li>
+                <label for="speciesType">Type</label>
+                  <input type="radio" name="speciesType" value="vegetable">vegetable
+              
+                  <input type="radio" name="speciesType" value="predator">predator
+               </li>
+               <li>
+                 <label for="color">color</label>
+                 <input type="text" id="color">
+               </li>
+               <li>
+                <label for="preys">Preys</label>
+                <select id="preys">
+
+                  <option value="None" >None</option>
+<!--
+                  <option value="gross cell" >gross Cell</option>
+                  
+                  <option value="yellow Predator" selected>yellow Predator</optionv>
+                 
+                  <option value="purple Predator">purple Predator</option>
+
+                  <option value="super Predator">super Predator</option>
+-->
+                 </select>
+              </li>
+              <li>
+                <label for="movement">Movement</label>
+                  <input type="radio" name="movement" value="Random">random
+              
+                  <input type="radio" name="movement" value="path finder">path finder
+
+                  <input type="radio" name="movement" value="None">None
+               </li>
+               <li>
+                <label for="initialNumber">Initial Number</label>
+                <input type="number" id="initialNumber">
+              </li>
+              
+              </ul>
+              <!--
+              <button id="addSpeciesButton_Modal" class="nes-btn btn" type="button">Add Species</button>
+              -->
+              <button><a  id="addThisSpecies" class="button" href="#Modal" >Add this species</a></button>
+              <button><a  id="go-to-setting-stage-panel" class="button" href="#Modal" >Go to Setting Stage panel</a></button>
+
+
+             </form>
+      </div>
+  </div>
     </div>
   </body>
 </html>

@@ -71,40 +71,30 @@ h1 {
   height: 100%;
 }
 
-.btn-board {
-  display: none;
-  height: 20vh;
-  width: 100vw;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: pink;
-  top: 125%;
-  position: absolute;
- }
+  .btn-board {
+    height: calc(50vh - 200px - 8%);
+    width: auto;
+    background-color: pink;
+    margin: 1% 1% 1% 1%;
+}
 
-.simulation-btn {
+
+ .simulation-btn {
   display: none;
   height: inherit;
-  display: flex;
-  flex-direction: column;
-   align-items: center;
+  align-items: center;
   background-color: yellow;
   border-color: black;
   border-style: solid;
-
 }
 
-.setting-board{
+.setting-board {
+  display: none;
   height: inherit;
   background-color: orange;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   border-color: black;
   border-style: solid;
-
-
 }
 
 .btn {
@@ -137,8 +127,5 @@ h1 {
   background-color: #fff;
 }
 
-.nes-container {
- display: block;
-}
 
 
