@@ -40,13 +40,14 @@ h1 {
 }
 
 .board {
-  margin: 1% 1% 1% 1%;
+  margin: 1vh;
   background-color: aquamarine;
   height: 50vh;
   text-align: center;
   padding-block: 0;
   line-height: 0;
 }
+
 .info-board {
   display: none;
   background-color: pink;
@@ -55,7 +56,7 @@ h1 {
 }
 
 #lienzo {
-  margin: 0;
+  margin: 1vh;
 }
 
 .board-btns-canvas {
@@ -74,10 +75,10 @@ h1 {
 }
 
 .btn-board {
-  height: 100px;
+  height: calc(50vh - 200px - 3vh);
   width: auto;
   background-color: pink;
-  margin: 0;
+  margin: 0 1vh 1vh 1vh;
 }
 
 
