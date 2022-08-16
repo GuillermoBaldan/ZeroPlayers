@@ -116,6 +116,12 @@ function loadsingularSimulationStep(index) {
 }
 
 //debug_energyOfUniverse();
+
+//Cargamos las variables de css
+//De momento solo hay una variable que es lienzo-width;
+document.documentElement.style.setProperty('--lienzo-width', `${simulationParameters.wideDimension}px`);
+
+
 simulationParameters.init_output = init(stageParameters, simulationParameters);
 clickButtonsDetection();
 

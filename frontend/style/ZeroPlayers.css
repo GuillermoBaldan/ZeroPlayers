@@ -1,8 +1,8 @@
-/* html, body, pre, code, kbd, samp {
-    font-family: "Press Start 2P";
-
+:root{
+  --lienzo-width: 200px;
 }
-*/
+
+
 @font-face {
   font-family: "Press Start 2P";
   src: url(PressStart2P-Regular.ttf) format("opentype");
@@ -57,6 +57,7 @@ h1 {
 
 #lienzo {
   margin: 1vh;
+  width: var(--lienzo-width)
 }
 
 .board-btns-canvas {
@@ -75,7 +76,7 @@ h1 {
 }
 
 .btn-board {
-  height: calc(50vh - 200px - 3vh);
+  height: calc(50vh - var(--lienzo-width) - 3vh);
   width: auto;
   background-color: pink;
   margin: 0 1vh 1vh 1vh;
