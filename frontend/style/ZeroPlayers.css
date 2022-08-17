@@ -42,9 +42,9 @@ h1 {
 .board {
   margin: 1vh;
   background-color: aquamarine;
-  height: 50vh;
+  height: auto;
   text-align: center;
-  padding-block: 0;
+  padding-bottom: 1vh;
   line-height: 0;
 }
 
@@ -76,10 +76,10 @@ h1 {
 }
 
 .btn-board {
-  height: calc(50vh - var(--lienzo-width) - 3vh);
+  height: 20vh;
   width: auto;
   background-color: pink;
-  margin: 0 1vh 1vh 1vh;
+  margin: 0 1vh 0 1vh;
 }
 
 
