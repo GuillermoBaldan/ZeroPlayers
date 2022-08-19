@@ -13,6 +13,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
+  z-index: 0;
 }
 
 .title {
@@ -37,6 +38,7 @@ h1 {
   margin: 0;
   position: absolute;
   top: 25%;
+  z-index: 1;
 }
 
 .board {
@@ -46,6 +48,7 @@ h1 {
   text-align: center;
   padding-bottom: 1vh;
   line-height: 0;
+  z-index: 2;
 }
 
 .info-board {
@@ -61,7 +64,7 @@ h1 {
 }
 
 .board-btns-canvas {
-  display: block;
+  display: none;
   justify-content: center;
   align-items: center;
   background-color: blue;
@@ -80,16 +83,18 @@ h1 {
   width: auto;
   background-color: pink;
   margin: 0 1vh 0 1vh;
+  display: block;
 }
 
 
  .simulation-btn {
-  display: none;
+  display: inline;
   height: inherit;
   align-items: center;
   background-color: yellow;
   border-color: black;
   border-style: solid;
+  z-index: 5;
 }
 
 .setting-board {
@@ -109,10 +114,11 @@ h1 {
   border-image-slice: 2;
   border-image-width: 2;
   border-image-repeat: stretch;
+  /*
   border-image-source: url(
-    data:image/svg + xml;utf8,
+    data:image/svg;utf8,
     <?xmlversion="1.0"encoding="UTF-8"?><svgversion="1.1"width="5"height="5"xmlns="http://www.w3.org/2000/svg"><pathd="M2 1 h1 v1 h-1 z M1 2 h1 v1 h-1 z M3 2 h1 v1 h-1 z M2 3 h1 v1 h-1 z"fill="rgb(33,37,41)"/></svg>
-  );
+  );*/
   border-image-outset: 2;
   position: relative;
   display: block;
