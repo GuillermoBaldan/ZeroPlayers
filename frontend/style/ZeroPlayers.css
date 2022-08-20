@@ -52,10 +52,14 @@ h1 {
 }
 
 .info-board {
-  display: none;
-  background-color: pink;
-  margin: 0% 1% 0% 1%;
-  height: 25vh; 
+  display: inline-block;
+  background-color: saddlebrown;
+  height: inherit;
+  width: 30vw;
+  position: absolute;
+  border: black;
+  border-style: solid;
+  height: inherit;
 }
 
 #lienzo {
@@ -86,10 +90,10 @@ h1 {
   display: block;
 }
 
-
- .simulation-btn {
-  display: inline;
+.simulation-btn {
+  display: inline-block;
   height: inherit;
+  width: 30vw;
   align-items: center;
   background-color: yellow;
   border-color: black;
@@ -98,15 +102,18 @@ h1 {
 }
 
 .setting-board {
-  display: none;
+  display: inline-block;
+  width: 30vw;
   height: inherit;
   background-color: orange;
   align-items: center;
   border-color: black;
   border-style: solid;
+  position: absolute;
 }
 
 .btn {
+  display: none;
   margin: 10% 10% 10% 10%;
 }
 
@@ -121,7 +128,7 @@ h1 {
   );*/
   border-image-outset: 2;
   position: relative;
-  display: block;
+  display: none;
   padding: 6px 8px;
   margin-bottom: 10%;
   text-align: center;
