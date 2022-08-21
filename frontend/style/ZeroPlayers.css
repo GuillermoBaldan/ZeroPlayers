@@ -53,13 +53,11 @@ h1 {
 
 .info-board {
   display: inline-block;
-  background-color: saddlebrown;
-  height: inherit;
   width: 30vw;
-  position: absolute;
-  border: black;
-  border-style: solid;
   height: inherit;
+  background-color: green;
+  border-color: black;
+  border-style: solid;
 }
 
 #lienzo {
@@ -101,15 +99,14 @@ h1 {
   z-index: 5;
 }
 
-.setting-board {
-  display: inline-block;
-  width: 30vw;
-  height: inherit;
-  background-color: orange;
-  align-items: center;
-  border-color: black;
-  border-style: solid;
-  position: absolute;
+.setting-board{
+    display: inline-block;
+    width: 30vw;
+    height: inherit;
+    background-color: orange;
+    border-color: black;
+    border-style: solid;
+
 }
 
 .btn {

@@ -1,72 +1,140 @@
-const express = require("express");
-const path = require("path");
-const exphbs = require("express-handlebars");
-const methodOverride = require("method-override");
-const session = require("express-session");
-const flash = require("connect-flash");
-const passport = require("passport");
+import { init, simulation } from "./ZeroPlayers_f_level1.js";
+import {
+  down,
+  left,
+  right,
+  totalFreedom,
+  up,
+} from "./ZeroPlayers_f_livingbeings.js";
+import { generateStaticStage } from "./ZeroPlayers_f_matrixGeneration.js";
+import {
+  grossCell,
+  grossPredator,
+  yellowPredator,
+  vegetable,
+  predator,
+} from "./ZeroPlayers_classes_livingBeings.js";
+import {
+  continuosSimulationStep,
+  killSimulation,
+  oneSimulationStep,
+} from "./ZeroPlayers_f_simulation.js";
+import { debug_energyOfUniverse } from "./ZeroPlayers_f_debugging.js";
+import { clickButtonsDetection } from "./ZeroPlayers_f_GUI.js";
+import {
+  random,
+  islandGeneration,
+  circularIsland,
+  allTerrain,
+} from "./ZeroPlayers_f_staticStageGeneration.js";
 
-//Initializations
-const app = express();
-require("./database");
+let staticStage;
+let lienzo;
+let ctx;
+let init_output;
+let stopFlag = false;
+let singularSimulationStep = 0;
 
-//Setting
-app.set("port", process.env.PORT || 3000);
-app.set("views", path.join(__dirname, "views"));
-app.engine(
-  ".hbs",
-  exphbs.engine({
-    defaultLayout: "main",
-    layoutsDir: path.join(app.get("views"), "layouts"),
-    partialsDir: [
-      path.join(app.get("views"), "partials"),
-      path.join(app.get("views"), "menu"),
-      path.join(app.get("views"), "playground"),
-    ],
-    extname: ".hbs",
-  })
-);
-app.set("view engine", ".hbs");
+let universeRules = {
+  movementType: "zigzag", //There are two options: 'zigzag' and 'diagonal'
+  frontier: "adjacent ends", //There are two options: 'close' and 'adjacent ends'
+};
+//We put into one object, stageParamenters, the next objects: legend, cell, universeRules
 
-//Middlewares
-app.use(express.urlencoded({ extended: false }));
-app.use(methodOverride("_method"));
-app.use(
-  session({
-    secret: "mysecretapp",
-    resave: true,
-    saveUninitialized: true,
-  })
-);
-app.use(passport.initialize());
-app.use(passport.session());
-require("./config/passport")(passport);
-app.use(flash());
-//Glbal Variables
-app.use((req, res, next) => {
-  res.locals.success_msg = req.flash("success_msg");
-  res.locals.error_msg = req.flash("error_msg");
-  res.locals.error = req.flash("error");
-  next();
-});
-//Routes
-app.use(require("./routes/index"));
-app.use(require("./routes/simulations"));
-app.use(require("./routes/users"));
+let stageParameters = {
+  universeRules: universeRules,
+  livingBeingsRules: {
+    reproduction: {
+      type: "sexual", //There are two options: 'sexual' and 'asexual'
+      probability: 0.5, //It is the probability of reproduction
+      distantTowater: 1,
+      proximityTosameCells: 3,
+    },
+  },
+  legendTerrain: {
+    ground: "brown",
+    water: "blue",
+  },
+  legend: {
+    water: "blue",
+    simpleCell: "yellow",
+  },
+  legendForbiddenColors: ["blue", "yellow", "green", "purple"],
+  livingBeingsCollection: [
+    {
+      name: "gross predator",
+      type: "predator",
+      color: "yellow",
+      preys: ["gross"],
+      movement: "path finder",
+      number: 1,
+    },
+    {
+      name: "gross",
+      type: "vegetable",
+      color: "green",
+      preys: [],
+      movement: "None",
+      number: 2,
+    },
+  ],
+  dynamicElementsArray: [],
+  staticStage: [],
+  matrix: [],
+  freePlacesArray: [],
+  universeEnergy: 500000,
+  generationStageAlgorithm: allTerrain, //random, circularIsland, allTerrain
+  speciesCounter: [],
+};
 
-//Static Files
-//app.use(express.static(path.join(__dirname, "public")));
-//app.use(express.static(path.join(__dirname, "test")));
-//app.use('/playground',express.static(path.join(__dirname, "../frontend")));
-//app.use(express.static("test"));
-//app.use('/test', express.static('public'));
+let simulationParameters = {
+  simulationStepsNumber: 50,
+  type: "finite", //The other option is 'infinite' for a simulation with a infinite number of steps
+  timePerStep: 300,
+  wideDimension: 400,
+  heightDimension: 400,
+  squareSide: 20,
+  lienzo: lienzo,
+  ctx: ctx,
+  init_output: init_output,
+  stopFlag: false,
+  singularSimulationStep: 0,
+  historicalSimulationSteps: 0,
+  globalCounter: 0,
+  auxCounter: 0,
+  auxStep: 0,
+  auxTempArray: [],
+};
 
-//Server is listenning
-app.listen(app.get("port"), () => {
-  console.log("Server on port", app.get("port"));
-});
+function modifyStopFlag(value) {
+  //To avoid modifing an imported 'variable' causes 'Assignment to constant variable' even it is not a constant
+  stopFlag = value;
+}
 
-module.exports = app;
+function loadsingularSimulationStep(index) {
+  simulationParameters.singularSimulationStep = index;
+}
 
-/* Código final
-https://github.com/FaztTech/nodejs-notes-app */
+//debug_energyOfUniverse();
+
+//Cargamos las variables de css
+//De momento solo hay una variable que es lienzo-width;
+document.documentElement.style.setProperty('--lienzo-width', `${simulationParameters.wideDimension}px`);
+
+
+simulationParameters.init_output = init(stageParameters, simulationParameters);
+//clickButtonsDetection();
+
+/*If true, the listener receives synthetic events dispatched by web content
+ (the default is false for chrome and true for regular web pages). 
+ çThis parameter is only available in Gecko and is mainly useful for the code in add-ons and the browser itself. 
+ See Interaction between privileged and non-privileged pages for an example.*/
+
+export {
+  stopFlag,
+  singularSimulationStep,
+  loadsingularSimulationStep,
+  simulationParameters,
+  stageParameters,
+  modifyStopFlag,
+};
