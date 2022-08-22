@@ -51,13 +51,45 @@ h1 {
   z-index: 2;
 }
 
+.btn-board {
+  height: 20vh;
+  width: auto;
+  background-color: pink;
+  margin: 0 1vh 0 1vh;
+  display: block;
+}
+
 .info-board {
   display: inline-block;
-  width: 30vw;
+  width: 20vw;
   height: inherit;
   background-color: green;
   border-color: black;
   border-style: solid;
+}
+
+
+
+.simulation-btn {
+  display: inline-block;
+  height: inherit;
+  width: 40vw;
+  align-items: center;
+  background-color: yellow;
+  border-color: black;
+  border-style: solid;
+  z-index: 5;
+}
+
+
+.setting-board{
+  display: inline-block;
+  width: 20vw;
+  height: inherit;
+  background-color: orange;
+  border-color: black;
+  border-style: solid;
+
 }
 
 #lienzo {
@@ -80,37 +112,16 @@ h1 {
   height: 100%;
 }
 
-.btn-board {
-  height: 20vh;
-  width: auto;
-  background-color: pink;
-  margin: 0 1vh 0 1vh;
-  display: block;
-}
 
-.simulation-btn {
-  display: inline-block;
-  height: inherit;
-  width: 30vw;
-  align-items: center;
-  background-color: yellow;
-  border-color: black;
-  border-style: solid;
-  z-index: 5;
-}
+/* BUTTONS */
 
-.setting-board{
-    display: inline-block;
-    width: 30vw;
-    height: inherit;
-    background-color: orange;
-    border-color: black;
-    border-style: solid;
-
+#oneSimulationStep {
+  position: absolute;
+  margin: 1vh 1vh 1vh 1vh;
 }
 
 .btn {
-  display: none;
+  display: block;
   margin: 10% 10% 10% 10%;
 }
 
@@ -125,7 +136,6 @@ h1 {
   );*/
   border-image-outset: 2;
   position: relative;
-  display: none;
   padding: 6px 8px;
   margin-bottom: 10%;
   text-align: center;
