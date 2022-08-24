@@ -117,7 +117,6 @@ h1 {
 
 .simulation-board-btn {
   display: block;
-  position: absolute;
   margin: 1vh 1vh 1vh 1vh;
   /*text-align: left;*/
 }
@@ -128,7 +127,7 @@ h1 {
   margin: 10% 10% 10% 10%;
 }
 */
-
+/*
 .nes-btn {
   border-image-slice: 2;
   border-image-width: 2;
@@ -150,6 +149,6 @@ h1 {
   color: #212529;
   background-color: #fff;
 } 
-
+*/
 
 
